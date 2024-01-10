@@ -62,4 +62,4 @@ Experiment with entering different URLs in your browser to observe how web pages
 
 Remember, HTML is just the beginning. As you progress, you'll explore more technologies like CSS for styling and JavaScript for interactivity, enabling you to create dynamic and engaging web pages.
 
-Happy exploring!
+Happy exploring! and See you in the Class!!
