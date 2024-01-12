@@ -402,7 +402,7 @@ Button elements are used to create clickable elements that can trigger actions w
                 <h1>I'm a Frontend<br> <span>Developer</span></h1>
                 <p>Description</p>
                 <div>
-                    <button class="btn btn-secondary">DOWNLOAD RESUME</button>
+                    <button>DOWNLOAD RESUME</button>
                 </div>
             </div>
         </div>
