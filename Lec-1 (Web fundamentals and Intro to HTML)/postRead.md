@@ -1,4 +1,4 @@
-## The Complete process of request/response cycle in detail ->
+## The Complete process of request/response cycle and IP resolution->
 
 When we type in a website’s name
 The browser parses the information contained in the URL.
@@ -13,7 +13,7 @@ Like if you send someone a message you will need there phone number or if you se
 
 For this case (www.scaler.com) has a unique address that is know as the IP address
 
-What exactly is an IP address?
+* What exactly is an IP address?
 
 Imagine you live in a town, and every house in the town has a unique address. This address helps people find your house when they want to visit you or send you something. In the world of the internet, devices like computers, smartphones, and servers also need unique addresses to communicate with each other. That's where IP addresses come in.
 
