@@ -11,7 +11,7 @@ Corret answer - a. Domain Name System
 
 
 ## Question 2:
-What is the purpose of the <a> tag in HTML?
+What is the purpose of the "a" tag in HTML?
 * a. Display an image
 * b. Create a hyperlink
 * c. Define a table
