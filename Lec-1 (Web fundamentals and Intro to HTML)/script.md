@@ -164,6 +164,8 @@ Whether you write <head>, <HEAD>, or <HeAd>, it will be interpreted the same way
 However, it's considered good practice to stick to lowercase for consistency and readability.
 
 ## Tags
+
+
 Talk about how all that we see are tags . angle brackets
 Headings - h1 to h6
 Open any website  - zomato and discuss fonts
@@ -171,7 +173,7 @@ Paragraph tags - for writing some descriptive content
 Lorem - emmet abbreviations
 wikipedia or zomato content
 
-HTML tags like <p> and <h1>-<h6> give meaning to the text, making it easier for both people and computers ( screen readers ) to understand the structure and importance of the content
+HTML tags like 'p' and h1>-h6 give meaning to the text, making it easier for both people and computers ( screen readers ) to understand the structure and importance of the content
 
 Its like in shopping mall, you will see big banners of brand from outside, but outside the shop in the mall, the banner size will be small. The products also have name but again the size of the text is small
 
