@@ -32,13 +32,13 @@ That's where DNS comes into the Picture
 
 Let's Understand what DNS it's cache and lookup is and How it works
 
-DNS (Domain Name System):
+* DNS (Domain Name System):
 
 The Domain Name System is like a phonebook for the internet. Instead of remembering numerical IP addresses, which can be difficult for humans, we use domain names (like www.scaler.com) to access websites and online services.
 
 DNS translates these human-readable domain names into IP addresses that computers can understand. It's a distributed system that helps route traffic on the internet.
 
-DNS Cache:
+* DNS Cache:
 
 DNS servers store recently accessed domain names and their corresponding IP addresses in a temporary memory called the DNS cache.
 When you visit a website or use an online service for the first time, your computer queries a DNS server to get the IP address associated with the domain name. The result is then stored in the DNS cache for a certain period.
@@ -50,7 +50,7 @@ If the address is not foubd in cache then the whole lookup process starts
 Let's underdtand the lookup process
 
 
-DNS Lookup:
+* DNS Lookup:
 
 When you enter a website's domain name into your browser (e.g., www.example.com), your computer initiates a DNS lookup to find the corresponding IP address.
 The DNS lookup process involves several steps:
@@ -68,7 +68,7 @@ In summary, DNS is a crucial system that translates human-readable domain names 
 
 Now the IP address is obtained , Now What?
 
-TCP/IP handshaking Enters the picture
+* TCP/IP handshaking Enters the picture
 
 
 Initiating the TCP Connection:
