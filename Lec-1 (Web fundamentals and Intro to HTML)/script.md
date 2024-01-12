@@ -8,6 +8,35 @@ card_type: cue_card
 
 When we think about accessing a website, there's more happening behind the scenes than meets the eye. The URL, or Uniform Resource Locator, is what we usually type into the address bar to access a web page. However, the URL represents much more than just a web address. It's a pathway to the actual resource we're trying to access on the internet.
 
+
+To understand the whole process , let's think of story and 
+get to know your characters
+
+1. Clients and Servers
+Computers connected to the internet are called clients and servers
+
+Clients are the typical web user's internet-connected devices
+Servers are computers that store webpages, sites, or apps basically an external system
+
+2. Internet Connection
+Internet - network of networks
+
+https://www.submarinecablemap.com/
+
+
+Fibre optic cables under the sea
+The data transmission in these cables happen almost close to the speed of light
+Which is why you can connect to the other part of world almost instantly
+
+
+
+
+
+
+Starlink
+
+
+
 ---
 title: Process
 description:
@@ -45,6 +74,9 @@ When a request is made, the server applies specific protocols and data logic to 
 Bringing it all together, the customers in our dairy farm analogy represent clients or users of the website. The operations team corresponds to the DNS system, efficiently directing requests. The dairy farm itself serves as the server, assembling and providing the desired information. And finally, the warehouse embodies the database, housing all the necessary data for the website.
 
 In the grand scheme of things, even though we might simply see a website's interface through our browser, there's a complex interplay of components behind every web page that ensures we get the right information at the right time.
+
+
+
 
 ---
 title: Introduction to HTML
