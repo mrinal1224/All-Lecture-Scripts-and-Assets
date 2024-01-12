@@ -362,3 +362,109 @@ Button elements are used to create clickable elements that can trigger actions w
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/116/original/upload_e873e3ecb310330c64503dafcf33ad53.png?1695109456)
 
 
+## Create the Structure of the Portfolio
+
+
+#### Code:
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="flex items-centre justify-between">
+                <div class="left flex justfiy-right">
+                    <div class="logo">
+                        <img src="./assets/scaler-academy logo 2.png" width="50px" alt="logo">
+                    </div>
+                    <div>
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Projects</a>
+                        <a href="#">Blog</a></li>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="hero flex items-centre justify-between">
+            <div class="left flex-1 justify-center">
+                <img src="./assets/mrinal.jpg" alt="Profile">
+            </div>
+            <div class="right flex-1">
+                <h6>Mrinal Bhattacharya</h6>
+                <h1>I'm a Frontend<br> <span>Developer</span></h1>
+                <p>Description</p>
+                <div>
+                    <button class="btn btn-secondary">DOWNLOAD RESUME</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+     <section class="about">
+        <div class="container flex items-centre">
+            <div class="left flex-1 justify-right">
+                <img src="./assets/mrinal_profile.jpg" height="400px" alt="profile pic">
+            </div>
+            <div class="right flex-1">
+                <h1>About <span>Me</span></h1>
+                <h3>Hello! I'm Mrinal Bhattacharya</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque adipisci distinctio obcaecati aliquid,
+                    quia tempora quis optio repudiandae officia earum?
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                </p>
+                <div class="socials">
+                    <a href="#"><img src="./assets/linkedIn.png" width="40px"></a>
+                    <a href="#"><img src="./assets/github logo.png" width="40px"></a>
+                    <a href="#"><img src="./assets/leet logo.png" width="40px"></a>
+                    <a href="#"><img src="./assets/twitter logo.png" width="40px"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="services">
+        <div class="container">
+            <h1 class="services-head">My Projects</h1>
+            <p>I mostly work with HTML ,CSS ,JavaScript , React and Node</p>
+            <div class="card-grid">
+                <div class="card">
+                    <img src="./assets/calculator png.png">
+                    <h2>Calculator</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, debitis?</p>
+                </div>
+                <div class="card">
+                    <img src="./assets/cart png.png">
+                    <h2>Shopping Cart</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, debitis?</p>
+                </div>
+                <div class="card">
+                    <img src="./assets/to do list.png">
+                    <h2>To do List</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, debitis?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
+```
+
+* Write this structure and explan tags and how we create diffrent sections here
+
+* Start the Doubt Session Take doubts and wrap the class
+
+
+
+
