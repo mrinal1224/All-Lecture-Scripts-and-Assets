@@ -308,7 +308,7 @@ Semantic tags were introduced with HTML5.
 Create a new semantic.html file and copy the assets folder for portfolio , show the Demo and then start with writing basic Semantic HTML code
 
 
-## Section an alternate to Divs
+## Section Tag - An alternate to Divs
 Sections are used to structure the content of a web page into logical parts, such as chapters, articles, or different sections of a document.
 
 #### Code: 
