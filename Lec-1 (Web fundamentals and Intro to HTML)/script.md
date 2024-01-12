@@ -378,10 +378,10 @@ Button elements are used to create clickable elements that can trigger actions w
 
 <body>
     <header>
-        <div class="container">
-            <nav class="flex items-centre justify-between">
-                <div class="left flex justfiy-right">
-                    <div class="logo">
+        <div >
+            <nav>
+                <div>
+                    <div>
                         <img src="./assets/scaler-academy logo 2.png" width="50px" alt="logo">
                     </div>
                     <div>
@@ -393,11 +393,11 @@ Button elements are used to create clickable elements that can trigger actions w
                 </div>
             </nav>
         </div>
-        <div class="hero flex items-centre justify-between">
-            <div class="left flex-1 justify-center">
+        <div >
+            <div>
                 <img src="./assets/mrinal.jpg" alt="Profile">
             </div>
-            <div class="right flex-1">
+            <div>
                 <h6>Mrinal Bhattacharya</h6>
                 <h1>I'm a Frontend<br> <span>Developer</span></h1>
                 <p>Description</p>
@@ -408,19 +408,19 @@ Button elements are used to create clickable elements that can trigger actions w
         </div>
     </header>
 
-     <section class="about">
-        <div class="container flex items-centre">
-            <div class="left flex-1 justify-right">
+     <section>
+        <div>
+            <div>
                 <img src="./assets/mrinal_profile.jpg" height="400px" alt="profile pic">
             </div>
-            <div class="right flex-1">
+            <div>
                 <h1>About <span>Me</span></h1>
                 <h3>Hello! I'm Mrinal Bhattacharya</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque adipisci distinctio obcaecati aliquid,
                     quia tempora quis optio repudiandae officia earum?
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 </p>
-                <div class="socials">
+                <div>
                     <a href="#"><img src="./assets/linkedIn.png" width="40px"></a>
                     <a href="#"><img src="./assets/github logo.png" width="40px"></a>
                     <a href="#"><img src="./assets/leet logo.png" width="40px"></a>
@@ -431,22 +431,22 @@ Button elements are used to create clickable elements that can trigger actions w
     </section>
 
 
-    <section class="services">
-        <div class="container">
-            <h1 class="services-head">My Projects</h1>
+    <section>
+        <div>
+            <h1>My Projects</h1>
             <p>I mostly work with HTML ,CSS ,JavaScript , React and Node</p>
-            <div class="card-grid">
-                <div class="card">
+            <div>
+                <div>
                     <img src="./assets/calculator png.png">
                     <h2>Calculator</h2>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, debitis?</p>
                 </div>
-                <div class="card">
+                <div >
                     <img src="./assets/cart png.png">
                     <h2>Shopping Cart</h2>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, debitis?</p>
                 </div>
-                <div class="card">
+                <div>
                     <img src="./assets/to do list.png">
                     <h2>To do List</h2>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, debitis?</p>
