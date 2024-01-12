@@ -102,10 +102,11 @@ Open a folder - Give a Batch Name
 
 
 
-### HTML boiler plate code
 
 
-#### HTML
+
+## HTML
+
 Under the folder, create index.html
 Type exclamation and hit enter -> boilerplate code
 This boilerplate HTML code is like the skeleton of a webpage:
@@ -162,7 +163,7 @@ HTML is designed to be case-insensitive for its tags, meaning it doesn't matter 
 Whether you write <head>, <HEAD>, or <HeAd>, it will be interpreted the same way by the browser. This is part of the HTML specification to make the language more forgiving and easier to use, especially for beginners. 
 However, it's considered good practice to stick to lowercase for consistency and readability.
 
-#### Tags
+## Tags
 Talk about how all that we see are tags . angle brackets
 Headings - h1 to h6
 Open any website  - zomato and discuss fonts
@@ -185,7 +186,7 @@ Either break the url or disable images with extension to show the alt tags
 Write comments and discuss comment tags
 
 
-#### Anchor tags
+## Anchor tags
 <a> tags, commonly known as anchor tags, are used in HTML to create hyperlinks
 Ask class what are hyperlinks
 
@@ -207,7 +208,7 @@ Anchor tags are used to link to other web pages or resources, both within the sa
 
 ```
 
-### Structure your code
+## Structure your code
 #### Div
 Div elements are often used to structure and style sections of a web page, making it easier to apply CSS styles or JavaScript functionality to specific groups of content.
 
@@ -233,7 +234,7 @@ Div elements are often used to structure and style sections of a web page, makin
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/112/original/upload_b1f0471a9f3040bdd40eb364e9101835.png?1695109208)
 
-#### Explain Divs
+## Explain Divs
 Think of <div> tags as a way to divide the page into different areas, making it easier to design and manage the layout.
 In your house, you have different rooms
 <div> tags in HTML are like invisible boxes that help organize and group content on a webpage.
@@ -276,7 +277,7 @@ Let us divide our code into different divisions
 </html>
 ```
 
-#### Github account
+## Github account
 Signup and create a account if not done
 GitHub is like a big online library for computer code.
 Imagine every project as a book in this library. People from
@@ -290,7 +291,7 @@ make this a habit that after every section you push your code to a repo that lea
 
 
 
-#### Semantic tags
+## Semantic tags
 Imagine a book with no headings, index, markings, chapters, just text all the way through Will it be easy to read? Nope!
 
 
@@ -305,7 +306,7 @@ Semantic tags were introduced with HTML5.
 Create a new semantic.html file and copy the assets folder for portfolio , show the Demo and then start with writing basic Semantic HTML code
 
 
-#### Section an alternate to Divs
+## Section an alternate to Divs
 Sections are used to structure the content of a web page into logical parts, such as chapters, articles, or different sections of a document.
 
 #### Code: 
@@ -324,9 +325,9 @@ Sections are used to structure the content of a web page into logical parts, suc
 </body>
 </html>
 ```
-### Tags and buttons
+## Tags and buttons
 
-### Header tags
+## Header tags
 
 Header tags are used to structure the hierarchy of content on a webpage, with `<h1>` typically being the main title and `<h2>`, `<h3>`, and so on used for subsections. They help improve the accessibility and readability of content.
     
