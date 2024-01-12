@@ -9,34 +9,6 @@ card_type: cue_card
 When we think about accessing a website, there's more happening behind the scenes than meets the eye. The URL, or Uniform Resource Locator, is what we usually type into the address bar to access a web page. However, the URL represents much more than just a web address. It's a pathway to the actual resource we're trying to access on the internet.
 
 
-To understand the whole process , let's think of story and 
-get to know your characters
-
-1. Clients and Servers
-Computers connected to the internet are called clients and servers
-
-Clients are the typical web user's internet-connected devices
-Servers are computers that store webpages, sites, or apps basically an external system
-
-2. Internet Connection
-Internet - network of networks
-
-https://www.submarinecablemap.com/
-
-
-Fibre optic cables under the sea
-The data transmission in these cables happen almost close to the speed of light
-Which is why you can connect to the other part of world almost instantly
-
-
-
-
-
-
-Starlink
-
-
-
 ---
 title: Process
 description:
@@ -85,7 +57,58 @@ duration: 900
 card_type: cue_card
 ---
 
+
+## HTML / CSS
+
+* Use this analogy to Explain Learners about HTML/CSS and JS
+
+
+Lets say you have a construction company and given a task to create a shopping mall. How do you start
+
+* Map or blueprint - wireframe
+Wireframes in web development are basic blueprints for a website or application
+Wireframes are used to plan the functionality and user experience
+They are essential for planning the user interface and interaction flow, serving as a guide for developers and designers in the early stages of a project.
+Figma is one such tool to create wireframe, Adobe XD
+
+What is the next step after blueprint of the mall is ready 
+Create the structure, brick mortar structure , Build the Foundation etc
+
+HTML is structure of the web application
+Or you can think of it as the skeleton that supports the body
+
+
+After the structure is ready, you start to paint and make it beautiful
+That is what css does for you
+Show the web developer chrome extension by disabling css on any webiste and show how a webiste looks without CSS
+
+After the mall looks ready, we need to add some functionality like escalators, lifts, parking gates, payment systems, etc
+
+Similarly JS is what we introduce in our web application when we want interactivity like success message when button is clicked, hiding or showing a section, changing fonts , colors dynamically on user interaction
+
+
+Stat now with Installing and IDE (VScode)
+
+Integrated development environment
+
+* It's a comprehensive tool used by developers to write and test software
+* We are going to use Visual Studio Code (VS Code) which is a popular IDE. It's a lightweight IDE developed by Microsoft, widely used for programming in various languages. 
+
+* VS Code offers features like syntax highlighting, intelligent code completion, and other imp features making it a versatile tool for developers.
+
+* Download VS code (https://code.visualstudio.com/)
+
+Open a folder - Give a Batch Name
+
+
+
 ### HTML boiler plate code
+
+
+#### HTML
+Under the folder, create index.html
+Type exclamation and hit enter -> boilerplate code
+This boilerplate HTML code is like the skeleton of a webpage:
 
 #### Code
 ```html
@@ -94,12 +117,94 @@ card_type: cue_card
   <head>
     <meta charset = "utf - 8">
     <meta name = "viewport" content = "width = device - width, initial - scale = 1">
-    <title>Bootstrap demo</title>
+    <title>HTML DEMO</title>
   </head>
   <body>
     <h1>Hello, world ! </h1>
   </body>
 </html>
+```
+
+
+* <!DOCTYPE html>: It's like saying, "Hey, we're starting an HTML page!" ( actually HTML5 which is the latest version of HTML )
+
+* <html lang="en">: This is the main container of your page, and lang="en" means it's in English.
+
+* Inside <html>, there are two parts:
+<head>: Think of it as the brain of your page. Its not visible but contains imp info
+
+* Meta tags - 
+Meta tags in HTML are used to provide metadata about the web page. This data isn't displayed on the page itself but is important for browsers and search engines. 
+They're essentially instructions to the browser and search engines about how to handle and display your page.
+
+
+* <meta charset="UTF-8">: This makes sure your page can understand a wide range of characters from different languages.
+When you're coding, you might use characters that are specific to certain languages, like accents in French or characters in Chinese. 
+The UTF-8 character set includes a huge array of these characters from different languages. Without specifying UTF-8, your browser might not correctly interpret and display these characters, leading to garbled text or question marks on your webpage.
+
+
+* <meta name="viewport"...: This helps your page look good on phones and tablets.
+
+* <title>Document</title>: This is your page's title. You'll see it in the browser tab.
+
+* <body>: This is where all the content you see on the webpage goes, like text and images.
+
+
+* Running the file
+
+Write some text like hello world
+Open the index.html from the file system and double click to run the file
+Install live server extension
+
+* Case insensitive
+
+HTML is designed to be case-insensitive for its tags, meaning it doesn't matter if you use uppercase, lowercase, or a mix of both for the tag names. 
+Whether you write <head>, <HEAD>, or <HeAd>, it will be interpreted the same way by the browser. This is part of the HTML specification to make the language more forgiving and easier to use, especially for beginners. 
+However, it's considered good practice to stick to lowercase for consistency and readability.
+
+#### Tags
+Talk about how all that we see are tags . angle brackets
+Headings - h1 to h6
+Open any website  - zomato and discuss fonts
+Paragraph tags - for writing some descriptive content
+Lorem - emmet abbreviations
+wikipedia or zomato content
+
+HTML tags like <p> and <h1>-<h6> give meaning to the text, making it easier for both people and computers ( screen readers ) to understand the structure and importance of the content
+
+Its like in shopping mall, you will see big banners of brand from outside, but outside the shop in the mall, the banner size will be small. The products also have name but again the size of the text is small
+
+Img tags - self enclosing tag
+It has additional information which describes the img which are called as attributes
+This is like adding adjectives to nouns in a sentence. Just like adjectives give more detail or characteristics to a noun, attributes provide additional information about an HTML tag.
+accessories or features of a car. Just as a car can have features like a sunroof, a specific color, or a navigation system, HTML tags can have attributes that add extra features or details.
+
+Discuss the src and alt tags ( alternate to image )
+Either break the url or disable images with extension to show the alt tags
+
+Write comments and discuss comment tags
+
+
+#### Anchor tags
+<a> tags, commonly known as anchor tags, are used in HTML to create hyperlinks
+Ask class what are hyperlinks
+
+Anchor tags are used to link to other web pages or resources, both within the same website or externally to other websites.
+
+#### Code:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic HTML</title>
+</head>
+<body>
+    <section>
+        <a href = "https://www.scaler.com/topics/autoboxing-in-java/">Learn autoboxing - in - java</a>
+    </section>
+</body>
+</html>
+
 ```
 
 ### Structure your code
@@ -116,7 +221,7 @@ Div elements are often used to structure and style sections of a web page, makin
 </head>
 <body>
     <div>
-        <h2>Welcome to Scalar Topics</h2>
+        <h2>Welcome to Scaler Topics</h2>
         <p>
          We're glad you're here
         </p>
@@ -128,7 +233,79 @@ Div elements are often used to structure and style sections of a web page, makin
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/112/original/upload_b1f0471a9f3040bdd40eb364e9101835.png?1695109208)
 
-#### Section
+#### Explain Divs
+Think of <div> tags as a way to divide the page into different areas, making it easier to design and manage the layout.
+In your house, you have different rooms
+<div> tags in HTML are like invisible boxes that help organize and group content on a webpage.
+like a header, footer, some content area, buttons area
+Let us divide our code into different divisions
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Document</title>
+ </head>
+ <body>
+   <div>
+       <h1>heading 1</h1>
+       <h2>heading 1</h2>
+       <h3>heading 2 or 3</h3>
+       <h3>checking thus</h3>
+       <h5>comparing this</h5>
+   </div>
+   <div>
+       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptatibus a veniam doloribus omnis laborum ipsum, dolore incidunt earum delectus est? Culpa, aut voluptas voluptatem provident exercitationem magni accusantium! Laudantium.</p>
+   </div>
+   <div>
+       <!-- images are self closing tags -->
+       <img src="" alt="cute dog image"/>
+       <a href="http://www.google.com" target="_blank">take me to google</a>
+   </div>
+   <div>
+       <p>some detial</p>
+       <div>
+           <p>some more detail</p>
+       </div>
+   </div>
+
+
+ </body>
+</html>
+```
+
+#### Github account
+Signup and create a account if not done
+GitHub is like a big online library for computer code.
+Imagine every project as a book in this library. People from
+all over the world can store their code projects here, make changes, and work together. It keeps track of all the changes, so you can always see who changed what and when. It's a place where coders collaborate and share their work, making it easier to create and improve software.
+Create a new repository - coolest_batch_25Jan
+
+* Note for Instructor- 
+You dont have to teach anything about git or github here
+Just make sure learners create an accout and they can access the code you write and share during the class
+make this a habit that after every section you push your code to a repo that learners can access and you have to maintain it througout the Batch Timeline
+
+
+
+#### Semantic tags
+Imagine a book with no headings, index, markings, chapters, just text all the way through Will it be easy to read? Nope!
+
+
+if you have a book with intro, bibliography, index, chapters, then it makes it more usable and readable
+Semantic tags in HTML provide meaning to the structure of web pages, helping browsers, search engines, and assistive technologies understand the content better. 
+
+They were needed to improve web accessibility and search engine optimization, moving away from generic tags like <div> and <span> which don't convey specific meanings.
+
+https://www.semrush.com/blog/semantic-html5-guide/
+Semantic tags were introduced with HTML5.
+
+Create a new semantic.html file and copy the assets folder for portfolio , show the Demo and then start with writing basic Semantic HTML code
+
+
+#### Section an alternate to Divs
 Sections are used to structure the content of a web page into logical parts, such as chapters, articles, or different sections of a document.
 
 #### Code: 
@@ -165,45 +342,11 @@ Header tags are used to structure the hierarchy of content on a webpage, with `<
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/113/original/upload_0666ce092529c955114832a23824d462.png?1695109287)
 
-#### Anchor tags
-Anchor tags are used to link to other web pages or resources, both within the same website or externally to other websites.
 
-#### Code:
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Basic HTML</title>
-</head>
-<body>
-    <section>
-        <a href = "https://www.scaler.com/topics/autoboxing-in-java/">Learn autoboxing - in - java</a>
-    </section>
-</body>
-</html>
-
-```
 #### Output
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/114/original/upload_a280807eb2f3df89d88691096051f0eb.png?1695109351)
 
-#### Image tags
-Image tags are used to display graphics, photographs, icons, or any other visual content on a webpage. The alt attribute provides alternative text for accessibility and SEO purposes.
-
-#### Code:
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Basic HTML</title>
-</head>
-<body>
-   <img src = "img.jpg" alt = "Description of the image">
-</body>
-</html>
-```
-#### Output
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/115/original/upload_4f0ea4a42e75394bc79c854cbe6cafce.png?1695109387)
 
 #### Buttons
 Button elements are used to create clickable elements that can trigger actions when clicked, such as submitting a form or triggering JavaScript functions.
