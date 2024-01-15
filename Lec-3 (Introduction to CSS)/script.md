@@ -196,7 +196,7 @@ In this analogy:
 
 
 ## Descendent selectors
-- Anything down the order can be termed as a descendent. For example, a father is the descendent of their child.
+- Anything down the order can be termed as a descendent. For example, a child is the descendent of their father and grandfather as well.
 - Now, you need to select the obvious list as shown in the image and make it blue color.
 
 
