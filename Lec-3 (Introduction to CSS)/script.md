@@ -20,8 +20,6 @@ They are:
 2. Internal
 3. External
 
-> Q. Ask students about **CSS selectors**
-**Ans**- CSS selectors are used to select the elements that will undergo designing using CSS.
 
 These are the things that we will discuss. Now, let us see them one by one.
 
@@ -31,6 +29,7 @@ description: Adding CSS to an element
 duration: 300
 card_type: cue_card
 ---
+
 - Create a basic HTML file and add a heading **h1** inside the body tag entitled: "Heading 1" and open it in a browser to show how it looks.
 - Now, let us see how to add CSS to this element.
 
@@ -177,9 +176,9 @@ Now, let's create a CSS file (`styles.css`) to apply styles using the class sele
 }
 ```
 
-In this example, the class selector `.science and .literatre` are used to select elements with the specfict interest  and apply a style that changes the text color to blue and red based on the stundents interest.
+In this example, the class selector `.science and .literature` are used to select elements with the specific interest  and apply a style that changes the text color to blue and red based on the students interest.
 
-There can be multiple students with interest in science so by creating ascience class we can assign them similar properties as we gave them batches similary it wil work for literature studnets as well
+There can be multiple students with interest in science so by creating a science class we can assign them similar properties as we gave them batches similary it will work for literature studnets as well
 
 So class is just a way of grouping elements where they should behave and have similar properities.
 
@@ -190,20 +189,137 @@ In this analogy:
 - The color-coded badges are like class properties.
 
 
+### Now let's look at what is the purpose of id Selector
+
+In CSS (Cascading Style Sheets), an ID selector is used to select and style a specific HTML element based on its unique identifier. The syntax for an ID selector is to use the "#" symbol followed by the unique ID of the HTML element.
+
+**Real-life Analogy:**
+
+Imagine a library where each book has a unique identification number. In this analogy:
+
+- The library is like an HTML document.
+- Each book is like an HTML element.
+- The unique identification number assigned to each book is like the HTML element's ID.
+
+Now, consider that you want to highlight or mark a specific book you want to read . You would use its unique identification number to locate it. , here you cannot and should not provide the same highlight color to diffrent books that wont be good because then you wont be able to identify it uniquely 
+
+In CSS terms:
+
+- The unique identification number of the book is similar to the ID of an HTML element.
+- The process of styling or marking that specific book is like applying styles to the HTML element using the ID selector in CSS.
+
+
+
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID Selector Book Example</title>
+  <style>
+    #uniqueElement {
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+   <h1 id='uniqueElement'> The Great Gatsby </h1>
+   <h1> Harry Potter </h1>
+   <h1> A Tale of two Cities </h1>
+   <h1> Fourth Wing </h1>
+</body>
+</html>
+```
+
+In this example, the ID selector `#uniqueElement` is used to style the text within the `<h1>` element. The text inside the h1 will appear in blue and bold.
+
+
+Just as you use the library book card to identify and handle a specific book, you use the ID selector in CSS to identify and style a specific HTML element.
+
+
 
 
 
 
 
 ## Descendent selectors
+
+In CSS, the descendant selector is represented by a space (` `) and is used to select all instances of a particular element that are descendants of another specified element. The real-life analogy for the descendant selector can be likened to a family tree, where you want to select all the descendants of a particular ancestor.
+
+Let's imagine a family tree scenario where you have different generations. In this analogy, the ancestor is like the root of the family, and descendants are subsequent generations. For instance, you might want to style all the grandchildren in a family tree. The descendant selector allows you to do this by selecting all the grandchildren, regardless of the immediate parent.
+
+Here's a code example to illustrate this:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Style for the grandParent element */
+    .grandParent {
+      font-weight: bold;
+    }
+
+    .grandParent .parent {
+        color : red;
+    }
+
+
+    /* Style for all descendants (grandchildren) of the ancestor */
+    .grandParent .child {
+      text-decoration: underline;
+    }
+  </style>
+  <title>Descendant Selector Example</title>
+</head>
+<body>
+
+  <!-- Ancestor element -->
+  <div class="grandParent">
+    Ancestor
+    <!-- Immediate child of the ancestor -->
+    <div class="parent">
+      Parent
+      <!-- Grandchild of the ancestor -->
+      <p class="child">child 1</p>
+      <p class="child">child 2</p>
+    </div>
+    <!-- Another immediate child of the ancestor -->
+    <div class="parent">
+      Another Parent
+      <!-- Grandchild of the ancestor -->
+      <p class="child">child 3</p>
+      <p class="child">child 4</p>
+    </div>
+  </div>
+
+</body>
+</html>
+```
+
+In this example:
+
+- The `.grandParent` class represents the ancestor element.
+- The `.parent` class represents the immediate children of the ancestor.
+- The `.child` class, targeted by the descendant selector `.grandParent .child`, represents all descendants (grandchildren) of the ancestor.
+
+This way, you can apply different styles to the grandParent, immediate children (Parent), and all descendants in the family tree structure.
+
+
 - Anything down the order can be termed as a descendent. For example, a child is the descendent of their father and grandfather as well.
+
 - Now, you need to select the obvious list as shown in the image and make it blue color.
 
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/050/035/original/upload_741aa927d48eecd0dcd6ec59f15eba43.png?1695311213)
 
 
-- For that first discuss the "**descent selector**". 
 - When you select **ol li{}** as the selector then all the elements will get blue. So you need to select the specific parents that are "div" as shown in the example.
 
 - We will write the selector as:
@@ -212,9 +328,44 @@ div li{
     color: blue;
 }
 ```
+
+
 Now moving to Children Selectors.
 
-## Children selectors
+## Child selectors
+
+In CSS, a child selector is a way to target and style specific elements that are direct children of a particular parent element. The child combinator is represented by the ">" symbol, and it selects elements that are immediately nested within another element.
+
+Let's use a real-life analogy to understand this concept better:
+
+Imagine a family tree where you have grandparents at the top, followed by their children (your parents), and then you as the grandchild. If you want to specify something that only applies to your direct parents (not your grandparents or yourself), you could use the child selector.
+
+Now, let's translate this analogy into CSS with a code example. Suppose you have the following HTML structure representing a family tree:
+
+```html
+<div class="grandparent">
+    <div class="parent">
+        <p>You</p>
+    </div>
+    <div class="parent">
+        <p>Your Sibling</p>
+    </div>
+</div>
+```
+
+If you want to style only the `<p>` elements that are direct children of the elements with the class "parent," you can use the child selector like this:
+
+```css
+.parent > p {
+    color: blue;
+}
+```
+
+In this example, the CSS rule targets only the `<p>` elements that are immediate children of elements with the class "parent." The color property is set to blue for these specific paragraphs.
+
+So, the analogy here is similar to specifying something that only applies to your direct parents in a family tree, not to your grandparents or yourself.
+
+
 Let us take an example as shown below.
 
 
