@@ -509,19 +509,43 @@ This makes your element an **inline-block**. That's the work of the Display prop
 
 ## CSS positioning
 
-**[Ask the learners]**
-What do you understand when we talk about positioning or position?
+In CSS, the `position` property is used to control the positioning of an element within its containing element. The `position` property can take several values, and one of them is `static`. When an element's position is set to `static`, it means that the element will be positioned according to the normal flow of the document.
 
-> **Note to Instructor:** Wait for 5-10 seconds to get some answers and then continue
+Here are some key characteristics of an element with `position: static`:
 
-The concept of positioning in CSS can be understood by  arrangement of players on a sports field. Imagine football or cricket field. 
+1. **Default Behavior:** This is the default value for the `position` property. Elements with `position: static` are positioned in the normal flow of the document, meaning they will be displayed one after another, vertically and horizontally, based on their order in the HTML.
 
-**Think of a scenario in football:** you have a center forward positioned at one spot, and you'll find the center midfielder occupying another specific spot. This arrangement of players in different positions is scattered over the field.
+2. **No Offsetting:** Elements with `position: static` are not affected by the `top`, `right`, `bottom`, and `left` properties. Any attempts to apply these properties will have no effect.
 
-Similarly, in CSS, positioning involves placing elements within a web page layout. Just as players are situated precisely on the field, web elements can be located using various CSS positioning techniques. 
+Here's an example:
 
-Now that we know what is positioning in CSS. We will be now discussing types of position in CSS.
+```css
+.normal-flow {
+  position: static;
+  border: 1px solid #000;
+  padding: 10px;
+}
+```
 
+```html
+<div class="normal-flow">This is a static positioned element.</div>
+```
+
+In this example, the `.normal-flow` element will be displayed in the normal flow of the document, and any attempt to offset it using `top`, `right`, `bottom`, or `left` will have no effect.
+
+```css
+.normal-flow {
+  position: static;
+  border: 1px solid #000;
+  padding: 10px;
+  top: 20px; /* This has no effect */
+  left: 30px; /* This has no effect */
+}
+```
+
+So, in summary, `position: static` is the default positioning behavior, and elements with this position value are placed in the normal flow of the document without any special positioning.
+
+**Now how else can Positioning work let's understand**
 ---
 title: Types of Positions?
 description: This section explains everything about Position Property in CSS
@@ -843,27 +867,6 @@ Give **sticky** position value to box 3 and fix it at the top of the scrollable 
 ```
 
 Now if we scroll the page, the box3 will behave normally till it touches the top and them it becomes fixed to the top of the page.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
