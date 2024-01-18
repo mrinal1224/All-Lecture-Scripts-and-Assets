@@ -509,6 +509,57 @@ This makes your element an **inline-block**. That's the work of the Display prop
 
 ## CSS positioning
 
+**[Ask the learners]**
+What do you understand when we talk about positioning or position?
+
+> **Note to Instructor:** Wait for 5-10 seconds to get some answers and then continue
+
+The concept of positioning in CSS can be understood by  arrangement of players on a sports field. Imagine football or cricket field. 
+
+**Think of a scenario in football:** you have a center forward positioned at one spot, and you'll find the center midfielder occupying another specific spot. This arrangement of players in different positions is scattered over the field.
+
+Similarly, in CSS, positioning involves placing elements within a web page layout. Just as players are situated precisely on the field, web elements can be located using various CSS positioning techniques. 
+
+Now that we know what is positioning in CSS. We will be now discussing types of position in CSS.
+
+---
+title: Types of Positions?
+description: This section explains everything about Position Property in CSS
+duration: 600
+card_type: cue_card
+---
+
+So, let's understand two types of position in CSS:
+* **Absolute Position**
+* **Relative Position**
+
+Think about a table you have in front of you. Imagine you're looking straight down at the table. It's just a flat square surface, like the top of the table. This is the place where you might put things, like your phone or a cup of coffee.
+
+What we're going to talk about is how you can move this "cell phone" around on the table in two different ways.
+
+**[Ask the learners]**
+Can anyone tell what are the two ways we can move this cell phone on table.
+
+When we talk about moving the box around, we're talking about changing its position in these two main directions – X-Axis and Y-Axis. These two coordinates, X and Y, help us understand exactly where the box (or any object) is located on the table.
+
+Let's say you start with the cell phone placed at a specific spot on the table. Now, you want to move it a bit. In CSS terms, this is done by specifying how many centimeters (like pixels) you want to move the box from its current position. 
+
+For example, if you move the box 10 centimeters to the right. So the relative position of the cell phone from its starting point to ending point has changed by 10 cm.
+
+If you are measuring the distance from the starting of the Table. The distance between starting of the table and the cell phone will be the absolute position.
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/050/071/original/upload_189ab829bb663b192a1033cb2dbf5b52.png?1695317443)
+
+So we can define in terms of CSS as:
+
+* **Relative Position:** The element is positioned relative to its previous position.
+* **Absolute Position:** The element is positioned absolutely to its parent container.
+
+
+Now, that we know what is Relative and Absolute Positioning. Let's move forward by coding and understanding positions.
+
+
+
 
 **Position : realtive**
 
@@ -669,6 +720,138 @@ In simpler terms:
 In this example, "Book 2" (element with `class="book2"`) is using `position: absolute` to be placed wherever you specify (20px from the top and 30px from the left). It's like moving a book independently on the shelf without affecting others.
 
 Experiment with different values for `top`, `right`, `bottom`, and `left` to observe how the absolute positioning works in relation to its closest positioned ancestor or the initial containing block. It's a powerful tool for precise element placement on a webpage.
+
+
+
+**Fixed position:** 
+* Fixed Position is basically when your Element will take a place with the Respect to the window and it will not move from there.
+* Fixed-positioned element is "fixed" in a specific location on the screen, and it won't move when the user scrolls up or down the page. This can be useful for creating elements that should always be visible, like navigation bars or call-to-action buttons, regardless of where the user is on the page. 
+* The element will maintain its position relative to the viewport's coordinates, providing a consistent visual reference point as the user interacts with the content.
+
+### Exercise 4
+
+#### Problem Statement
+Give **fixed** position value to box 3 and fix it at the bottom of the scrollable page.
+
+#### Solution
+* In style of box_3, we can use position property and set the value as **fixed**.
+* For fixing it to the bottom of the page, we can give right property as 4px and bottom as 1px.
+
+#### Pseudocode
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning</title>
+    <style>
+        .container {
+            background-color: dodgerblue;
+            height: 4000px;
+        }
+
+        .box {
+            display: inline-block;
+            height: 150px;
+            width: 150px;
+            background-color: tomato;
+            margin: 10px;
+        }
+        
+        #box_3 {
+            position: fixed;
+            right: 4px;
+            bottom: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box" id="box_3">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+
+</html>
+```
+
+Now if we scroll the page, the box3 will be fixed at the bottom right of the page.
+
+
+**Sticky:**
+* When an element is given a "position" value of "sticky," it acts like a relative-positioned element within its containing element until a certain scroll threshold is reached. Once the user scrolls beyond that threshold, the element becomes "stuck" in place and behaves like a fixed-positioned element, remaining visible on the screen. 
+* In other words, a sticky element starts as part of the normal document flow, just like a relatively positioned element. As the user scrolls, the element follows its normal position until it reaches a designated point (usually when its top or bottom edge reaches a specific distance from the viewport's edge). At that point, it becomes "sticky" and remains fixed at that position while the rest of the content scrolls.
+
+Lets go to the zomato website and see its navbar, here you can see when we scroll the page, this navbar is getting fixed at the top of the page.
+
+So on reaching a particular value, sticky gets fixed.
+
+### Exercise 5
+
+#### Problem Statement
+Give **sticky** position value to box 3 and fix it at the top of the scrollable page.
+
+#### Solution
+* In style of box_3, we can use position property and set the value as **sticky**.
+* For fixing it to the top of the page, we can give top property as 0.
+
+#### Pseudocode
+```htmlembedded
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning</title>
+    <style>
+        .container {
+            background-color: dodgerblue;
+            height: 4000px;
+        }
+
+        .box {
+            display: inline-block;
+            height: 150px;
+            width: 150px;
+            background-color: tomato;
+            margin: 10px;
+        }
+        
+        #box_3 {
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box" id="box_3">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+
+</html>
+```
+
+Now if we scroll the page, the box3 will behave normally till it touches the top and them it becomes fixed to the top of the page.
+
+
+
+
+
+
+
+
+
 
 
 
