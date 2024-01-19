@@ -25,6 +25,7 @@ card_type: cue_card
 So, in the previous lecture, we left the background color in CSS.
 - It works the same as the color.
 - You can add CSS code for background color as :
+
 ```HTML=
 h1{
     background-color : blue;
@@ -33,9 +34,9 @@ h1{
 
 ## **Example**:
 
-[IMAGE_1 START SAMPLE]
+
 ![](https://hackmd.io/_uploads/ryUXY8npn.png)
-[IMAGE_1 FINISH SAMPLE]
+
 
 Here you will select the class namely "background" and apply CSS to them. It will be reflected to all the **h1s** inside that div tag.
 
@@ -89,11 +90,11 @@ Then we will apply CSS to the fonts. First, let us see font family.
 
 ## Font weight
 - This font property is used to decide the intensity of the font.
-- It's value ranges from lightest **100px** to boldest **800px**.
+- It's value ranges from lightest **100** to boldest **800**.
 - Syntax:
 
 ```HTML=
-font-weight: 800px;
+font-weight: 800;
 ```
 
 ## Font size
@@ -133,9 +134,9 @@ card_type: cue_card
 - Font focus on the look and styling but Text is the internal working of your text such as spacing, line width, etc.
 - First, create a file of HTML is shown below
 
-[IMAGE_4 START SAMPLE]
+
 ![](https://hackmd.io/_uploads/Sy-OFI263.png)
-[IMAGE_4 FINISH SAMPLE]
+
 
 First, let us see the text alignment property
 
@@ -197,54 +198,14 @@ card_type: cue_card
 
 Always remember to add height and width to your box otherwise, it will not be visible. Make the box as shown below.
 
-[IMAGE_5 START SAMPLE]
 ![](https://hackmd.io/_uploads/SkQYFU2a2.png)
-[IMAGE_5 FINISH SAMPLE]
+
 
 You can customize the size of the box by changing the height and width values.
 
-### Note to instructor - I have added two analogies here feel free to choose anyone or both if the time allows ,also feel free to frame these analogies in your way
+
 
 > Take a real-life example of creating a township including steps like making land cut, house placing, etc. to discuss the box concept. And introduce `margin padding and border` one by one.
-
-
-
-## Padding
-- It is the empty area inside the container.
-- Syntax to add padding:
-
-```HTML=
-h1{
-    padding : 20px;
-}
-```
-- **Increasing the padding** area **decreases the container** space. Because padding is only inside that specific container, it can not go outside of the box.
-
-
-## Margin
-- The CSS margin properties are used to create space around two different elements, outside of any defined borders.
-- It prevents your elements from getting overlapped.
-- Syntax:
-- Create another box as in the previous example then,
-
-```HTML=
-.box_2{
-    width: 100px;
-    height: 120px;
-    background-color: blue;
-}
-```
-- There are already some margins by CCS default. But you can customize it as :
-
-```HTML=
-.box_2{
-    width: 100px;
-    height: 120px;
-    background-color: blue;
-    margin : 0px;
-}
-```
-
 
 
 **2nd Real-life analogy: A Gift Box**
@@ -451,9 +412,9 @@ card_type: cue_card
 ---
 First, let us create a file as shown below to understand the working of the Display property:
 
-[IMAGE_7 START SAMPLE]
+
 ![](https://hackmd.io/_uploads/H1pRtL2T3.png)
-[IMAGE_7 FINISH SAMPLE]
+
 
 > Note: Rem is also a unit to define pixels. It converts the pixel into 10 times. For example **5rem** is **50px**.
 
@@ -462,9 +423,8 @@ When you see the output you can see that the border is taking the whole area of 
 
 Now, let us add a span tag to the file as shown below:
 
-[IMAGE_8 START SAMPLE]
 ![](https://hackmd.io/_uploads/Bk8TjInTh.png)
-[IMAGE_8 FINISH SAMPLE] 
+
 
 When you run this file, You can see that these **span tags** are not acting as a paragraph. This means that there are no borders applied to it.
 
@@ -505,6 +465,61 @@ p{
 }
 ```
 This makes your element an **inline-block**. That's the work of the Display property in CSS. After that, you can provide height and width to the inline elements too.
+
+
+## How Margins and Padding work for Inline Elements
+
+In CSS, both margin and padding are properties used to control the spacing around elements. However, the way they work for inline elements can be a bit different compared to block-level elements. Let's break down the concepts and provide a real-life analogy.
+
+**Margin:**
+- **Definition:** Margin is the space outside the border of an element. It creates space between the element's border and surrounding elements.
+- **Real-life analogy:** Think of it like the margin of a page in a book. The space between the content and the edge of the page.
+
+**Padding:**
+- **Definition:** Padding is the space between the content of an element and its border. It creates space inside the element.
+- **Real-life analogy:** Imagine a box with content inside. The padding would be the space between the content and the walls of the box.
+
+Now, for inline elements:
+
+**Inline Elements:**
+- **Definition:** Inline elements are those that do not start on a new line and only take up as much width as necessary.
+- **Real-life analogy:** Inline elements can be compared to words within a sentence. They flow within the content without breaking the line.
+
+**How Margin and Padding Work for Inline Elements:**
+
+Inline elements are treated a bit differently when it comes to margins and paddings. In most cases, horizontal margins (left and right) for inline elements do not have an effect, while vertical margins (top and bottom) can create space above and below the element.
+
+Let's see an example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .inline-element {
+      display: inline;
+      border: 1px solid black;
+      margin: 10px;   /* Vertical margins will take effect, horizontal margins won't */
+      padding: 5px;
+    }
+  </style>
+  <title>Inline Element Example</title>
+</head>
+<body>
+  <p>
+    Some text before
+    <span class="inline-element">Inline Element</span>
+    Some text after
+  </p>
+</body>
+</html>
+```
+
+In this example, the inline element (`span` with class "inline-element") will have vertical margins (top and bottom) of 10 pixels each, creating space above and below the element. The horizontal margins won't affect the inline flow. The padding of 5 pixels will create space between the content and the border of the inline element.
+
+Adjust the values and observe how the spacing changes in the rendered output.
 
 
 ## CSS positioning
