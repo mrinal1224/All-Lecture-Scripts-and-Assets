@@ -76,6 +76,7 @@ Let's create a basic layout of 9 items which we will use to understand Grid.
             width: 1200px;
             margin: 100px auto;
             padding: 10px;
+            display : grid;
         }
 
         .item{
