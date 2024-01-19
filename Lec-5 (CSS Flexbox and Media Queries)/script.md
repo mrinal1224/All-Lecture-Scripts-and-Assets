@@ -417,4 +417,76 @@ lets see a basic example:
 
 Now the box3 will grow the most on increasing the screen size
 
+
+
+
+
+
+---
+title: Media Queries
+description: This section explains how to use media queries in CSS for responsive design?
+duration: 900
+card_type: cue_card
+---
+
+**Responsiveness:**
+Responsiveness in web design refers to the ability of a website or web application to adapt and provide an optimal user experience across various devices and screen sizes. A responsive design ensures that the content and layout of a website adjust dynamically based on the device's characteristics, such as screen width, height, and orientation. This approach enhances usability and accessibility, offering a seamless experience for users on desktops, laptops, tablets, and smartphones.
+
+**Media Queries Analogy:**
+Imagine you're a chef preparing a dish. Your goal is to make the dish appealing to different types of eaters, each with specific preferences. Some like it spicy, some like it mild, and others prefer a balance. To achieve this, you use different recipes (styles) based on the preferences of the eater (device). In the world of web design, media queries are like the recipes that determine how your website looks and behaves based on the characteristics of the device viewing it.
+
+**Media Queries in Code:**
+Media queries are part of CSS (Cascading Style Sheets) and allow you to apply styles based on certain conditions, typically related to the device's features. Here's a basic example:
+
+ Here's a simple HTML document to complement the CSS with media queries:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Design Example</title>
+  <style>
+    /* General styles for all devices */
+    body {
+      font-size: 16px;
+      margin: 20px;
+    }
+
+    /* Media query for devices with a screen width of 600 pixels or less */
+    @media only screen and (max-width: 600px) {
+      body {
+        font-size: 14px;
+        background-color: lightcoral;
+      }
+    }
+
+    /* Media query for devices with a screen width between 601 and 900 pixels */
+    @media only screen and (min-width: 601px) and (max-width: 900px) {
+      body {
+        font-size: 18px;
+        background-color: lightblue;
+      }
+    }
+
+    /* Media query for devices with a screen width of 901 pixels or more */
+    @media only screen and (min-width: 901px) {
+      body {
+        font-size: 20px;
+        background-color: lightgreen;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Responsive Design Example</h1>
+  <p>This is a simple example demonstrating responsiveness using media queries.</p>
+</body>
+</html>
+```
+
+This HTML document includes a basic structure with a title, meta tags for viewport settings, and a styled body. The body styles are defined in the embedded CSS, which includes media queries for different screen widths. The background colors are added to make it visually evident when the media queries are applied. Feel free to customize the content and styles according to your preferences and requirements.
+
+
 > **Note to Instructor:** Now ask for doubts to the learners about the doubt that came up during the class.
