@@ -23,7 +23,6 @@ card_type: cue_card
 ---
 
 ### What is Cascading in CSS?
-Sure, I'd be happy to explain CSS cascading with a real-life analogy and provide some code examples for better understanding.
 
 **Real-life Analogy: The Clothing Hierarchy**
 
