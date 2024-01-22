@@ -24,7 +24,46 @@ card_type: cue_card
 
 ### What is Cascading in CSS?
 
+Before Directly Jumpinhg to Cascading Explain about User agent Stylesheets
+
+#### User Agent Style Sheet
+
+The user agent stylesheet in CSS is a set of default styles that web browsers apply to HTML documents when no specific styles are provided by the author. Each web browser has its own user agent stylesheet, and it serves as a baseline style for rendering HTML elements. The term "user agent" refers to the software (web browser) that acts on behalf of the user when interacting with web content.
+
+When a browser encounters an HTML document without any external or internal styles (through style sheets), it uses its default styles from the user agent stylesheet to present the content in a readable and visually consistent way. These default styles help ensure a minimum level of readability and usability for web pages.
+
+User agent stylesheets define the default rendering of various HTML elements, such as headings, paragraphs, lists, links, and more. The styles include properties like font size, color, margins, padding, and other layout-related attributes. The specific styles can vary between different browsers, reflecting the browser's design choices and preferences.
+
+While the user agent stylesheet provides a consistent starting point for rendering HTML content, it's common for web developers to override these styles by applying their own custom styles using external style sheets, internal styles, or inline styles. This allows developers to have more control over the appearance of their web pages and create a unique design tailored to their needs.
+
+Here's a brief example of how user agent styles might be applied to an HTML document:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Page</title>
+</head>
+<body>
+  <h1>This is a Heading</h1>
+  <p>This is a paragraph of text.</p>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+  <a href="#">This is a link</a>
+</body>
+</html>
+```
+
+In this example, if no custom styles are applied, the browser will use its user agent stylesheet to render the HTML elements with default styles. Developers can then use CSS to override these defaults and style the content according to their preferences.
+
 **Real-life Analogy: The Clothing Hierarchy**
+
+Now As we understood about user agent Stylesheet now let's move on and understand Cascading , i.e now you want to apply styles from your side how are they applied let's find out
 
 Imagine you're getting dressed in the morning, and you have several layers of clothing to choose from: Thermal wear, a shirt, a sweater, and a jacket. Each layer represents a different level of specificity or importance.
 
@@ -86,7 +125,7 @@ Here, the text color of this paragraph is directly set to green.
 
 So, in the cascade, styles can be inherited from the base  or overridden by more specific styles (shirt, sweater, jacket). Inline styles (accessories) take precedence over everything.
 
-So this is How Cascading in CSS works , thats why it's called Cascading Stylesheet and base on this there is one concpet that is Specificity 
+So this is How Cascading in CSS works , thats why it's called Cascading Stylesheet (in an order) and based on this there is one concpet that is Specificity 
 
 Let's Explore Specificity
 
