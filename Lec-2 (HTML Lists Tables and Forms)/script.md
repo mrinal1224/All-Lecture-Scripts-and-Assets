@@ -229,9 +229,9 @@ Just like any other forms are used to collect information, in context of HTML it
 
       <p>Gender</p>
       <label>Male</label>
-      <input type = "radio">
+      <input name='gender' value='male' type = "radio">
       <label>Female</label>
-      <input type = "radio">
+      <input name ='gender' value='female' type = "radio">
 
       <label for = "">Eyecolor</label>
       <select>
