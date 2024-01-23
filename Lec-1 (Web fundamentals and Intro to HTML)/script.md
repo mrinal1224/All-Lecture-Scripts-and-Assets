@@ -1,4 +1,57 @@
 ---
+title: Curriculum Overview
+description:
+duration: 900
+card_type: cue_card
+---
+
+
+Greet the Learners and talk about the curriculum
+
+**class wise breakup with project of Each module**
+
+HTML/CSS - 7 Class (Portfoilo Webiste)
+JavaScript and Machine Coding (DOM) - 22 Classes (Kanban Board and Mini Projects)
+React - 13 classes 
+MERN - 12 to 14 classes
+
+Explain in brief about each and every module
+
+**HTML/CSS-**
+
+Learning HTML (Hypertext Markup Language) and CSS (Cascading Style Sheets) is essential for anyone interested in web development, design, or even individuals who want to create and maintain their own websites. Here are several reasons why learning HTML and CSS is valuable:
+
+1. **Foundation of Web Development:**
+   - HTML is the backbone of web development. It provides the basic structure and markup for creating web pages.
+   - CSS complements HTML by allowing you to style and format the content, making it visually appealing.
+
+2. **Building Blocks of Websites:**
+   - HTML defines the structure of a webpage, including headings, paragraphs, lists, images, links, and more.
+   - CSS controls the layout and presentation of these elements, enabling you to create aesthetically pleasing and user-friendly websites.
+
+**JavaScript-**
+
+Web Development you cannot do without JavaScript!!!
+
+ JavaScript is a versatile programming language with widespread use in web development and beyond. Here are several reasons why learning JavaScript is valuable:
+
+   - **Client-Side Scripting:** JavaScript is the primary language for adding interactivity to websites. It allows you to create dynamic and responsive user interfaces, enhancing the overall user experience.
+
+   - **Frameworks and Libraries:** Many popular web development frameworks and libraries, such as React, Angular, and Vue.js, are built using JavaScript. Learning JavaScript will open doors to these powerful tools , also you can do cross platform Mobile Application development with tools like React Native etc
+
+   - **Full-Stack Development:** With the advent of technologies like Node.js, JavaScript is no longer limited to the browser. It can be used for server-side development, enabling full-stack development with a single language.
+
+
+   About React and Node We will talk about when we reach there!
+
+
+
+
+
+
+Start with the Actual Class
+
+---
 title: Introduction
 description:
 duration: 900
