@@ -79,7 +79,22 @@ You can also use many flex-direction property to arrange the elements in differe
 
 > **Note to instructor:** Use different-different values with flex-direction property like row, column, row-reverse, column-reverse etc, to explain it better.
 
-You can also use this important property called **justify-content**.
+> **Note to instructor:** Explain the axis using the below diagram. diagram refence: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/050/073/original/upload_1ec9fd4a198aa44de652e4864bd69a53.png?1695317491)
+
+**[Ask the learners]**
+If I say, I want my flex direction is row, what will be my main axis?
+
+- X axis
+
+**[Ask the learners]**
+And If I say, I want my flex direction is column, what will be my main axis?
+
+- Y axis
+
+
+ **justify-content**.
 
 **justify-content:** Defines how flex items are distributed along the main axis (horizontal for row layout, vertical for column layout). 
 
@@ -100,19 +115,6 @@ The justify-content: center; property applied to a flex container in CSS aligns 
 
 But there is 1 more property that is used to align items vertically that is **align-items**.
 
-> **Note to instructor:** Explain the axis using the below diagram. diagram refence: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/050/073/original/upload_1ec9fd4a198aa44de652e4864bd69a53.png?1695317491)
-
-**[Ask the learners]**
-If I say, I want my flex direction is row, what will be my main axis?
-
-- X axis
-
-**[Ask the learners]**
-And If I say, I want my flex direction is column, what will be my main axis?
-
-- Y axis
 
 Now lets take more examples of **justify-content** property.
 
