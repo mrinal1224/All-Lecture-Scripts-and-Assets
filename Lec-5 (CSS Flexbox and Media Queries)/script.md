@@ -364,7 +364,6 @@ We are providing flex-shrink property as 2 to box3.
             background-color: tomato;
             border: 2px solid black;
             height: 500px;
-            width: auto;
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -411,15 +410,11 @@ lets see a basic example:
 
 ```htmlembedded
 .box3{
-    flex-shrink: 2;
+    flex-grow: 2;
 }
 ```
 
 Now the box3 will grow the most on increasing the screen size
-
-
-
-
 
 
 ---
