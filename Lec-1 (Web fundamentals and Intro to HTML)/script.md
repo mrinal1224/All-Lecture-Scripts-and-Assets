@@ -12,8 +12,8 @@ Greet the Learners and talk about the curriculum
 
 1. HTML/CSS - 7 Class (Portfoilo Webiste)
 2. JavaScript and Machine Coding (DOM) - 22 Classes (Kanban Board and Mini Projects)
-3. React - 13 classes 
-4. MERN - 12 to 14 classes
+3. React - 13 classes (Movies App)
+4. MERN - 12 to 14 classes (BookMyShow)
 
 Explain in brief about each and every module
 
