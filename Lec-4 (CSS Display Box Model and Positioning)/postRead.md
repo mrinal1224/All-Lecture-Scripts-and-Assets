@@ -18,9 +18,6 @@ h1{
 
 ## **Example**:
 
-[IMAGE_1 START SAMPLE]
-![](https://hackmd.io/_uploads/ryUXY8npn.png)
-[IMAGE_1 FINISH SAMPLE]
 
 Here you will select the class namely "background" and apply CSS to them. It will be reflected to all the **h1s** inside that div tag.
 
@@ -46,9 +43,9 @@ h1{
 - You can customize various aspects of the font such as size, look, and many dynamics of it. Let us see them one by one.
 - First, create a file as shown below:
   
-[IMAGE_2 START SAMPLE]
+
 ![](https://hackmd.io/_uploads/rJ3VYLh62.png)
-[IMAGE_2 FINISH SAMPLE]
+
 
 Then we will apply CSS to the fonts. First, let us see font family.
 
