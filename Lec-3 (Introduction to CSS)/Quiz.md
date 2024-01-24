@@ -1,6 +1,4 @@
-Apologies for the oversight. Let's focus on CSS selectors for the next set of questions:
 
----
 
 **Question 1:**
 *Which CSS selector is used to select all elements with the class "highlight"?*
