@@ -1,6 +1,4 @@
-Certainly! Providing comprehensive pre-reading material is a great way to prepare learners for a class on CSS Grid. Here's a detailed pre-reading guide with resources for learning and practicing CSS Grid:
-
-## Pre-Reading Material: Mastering CSS Grid
+# Pre-Reading Material: Mastering CSS Grid
 
 ### I. Introduction to CSS Grid
 
