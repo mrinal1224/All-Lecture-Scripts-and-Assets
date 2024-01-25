@@ -1,3 +1,5 @@
+# Class 2 - Introduction to HTML Lists, Forms, and Tables
+
 ---
 title: List
 description:

@@ -1,4 +1,4 @@
-# CSS Cascading, Specificity, Inheritance and Overflow
+# Class-7 CSS Cascading, Specificity, Inheritance and Units
 
 ---
 title: CSS Cascading, Specificity, Units and Overflow

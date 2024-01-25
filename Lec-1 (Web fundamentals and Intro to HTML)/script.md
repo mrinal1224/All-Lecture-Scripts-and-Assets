@@ -1,3 +1,5 @@
+# Class 1 - Web Fundamentals and Intro to HTML
+
 ---
 title: Curriculum Overview
 description:

@@ -1,4 +1,6 @@
 
+# Class 3 - Introduction to CSS
+
 ---
 title: Introduction to CSS
 description: Brief overview of CSS and its various aspects
