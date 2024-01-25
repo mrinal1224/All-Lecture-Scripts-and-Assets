@@ -56,6 +56,7 @@ console.log(b); // Outputs 5
 const PI = 3.14;
 // SyntaxError: Assignment to constant variable
 PI = 3.14159;
+```
 
 
 
