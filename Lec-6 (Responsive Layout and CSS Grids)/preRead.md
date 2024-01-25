@@ -1,4 +1,3 @@
-
 ## Pre-Reading Material: Understanding CSS Grid
 
 ### Introduction to CSS Grid:
