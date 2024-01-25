@@ -59,10 +59,6 @@
      - [MDN Web Docs - Units and Values](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
      - [CSS Units: A Free Quick Reference by Example](https://www.sitepoint.com/css-units-free-reference/)
 
-### Additional Practice:
-- **Online Platforms:**
-  - [CodePen](https://codepen.io/)
-  - [JSFiddle](https://jsfiddle.net/)
 
 - **Interactive Practice:**
   - [freeCodeCamp - Responsive Web Design Certification](https://www.freecodecamp.org/)
