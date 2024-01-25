@@ -414,8 +414,6 @@ We can add any other property as well it will work similarly to the vertical con
 
 ### CSS Units in Detail
 
-Certainly! Let's create an HTML file and include CSS examples with the explanations provided earlier. Save the following code in an HTML file (e.g., `styles.html`) and open it in a web browser to see the styles in action.
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
