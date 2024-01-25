@@ -72,3 +72,64 @@ In summary:
 - Use `const` when you need block-scoping and the variable should not be reassigned.
 
 
+
+2. **What is Hoisting in JS?**
+
+Hoisting is a behavior in JavaScript where variable and function declarations are moved to the top of their containing scope during the compilation phase. This means that you can use a variable or a function before it's declared in your code. However, it's important to note that only the declarations are hoisted, not the initializations.
+
+Let's go through some examples to illustrate hoisting in JavaScript:
+
+### Example 1: Variable Hoisting
+
+```javascript
+console.log(x); // Output: undefined
+var x = 5;
+console.log(x); // Output: 5
+```
+
+In this example, the variable `x` is hoisted to the top of its scope during the compilation phase. The first `console.log` outputs `undefined` because the declaration is hoisted, but the initialization (`x = 5`) is not hoisted. The second `console.log` outputs `5` after the variable has been initialized.
+
+### Example 2: Function Hoisting
+
+```javascript
+sayHello(); // Output: "Hello, World!"
+
+function sayHello() {
+  console.log("Hello, World!");
+}
+```
+
+In this example, the function `sayHello` is hoisted to the top of its scope. That's why we can call the function before its declaration. The output is "Hello, World!" as expected.
+
+### Example 3: Hoisting with Function Expressions
+
+```javascript
+greet(); // TypeError: greet is not a function
+
+var greet = function() {
+  console.log("Hello!");
+};
+```
+
+In this case, the variable `greet` is hoisted, but since it's assigned a function expression (not a function declaration), the assignment is not hoisted. Therefore, when we try to call `greet()` before the assignment, we get a `TypeError` because `greet` is `undefined` at that point.
+
+### Example 4: Hoisting Inside Functions
+
+```javascript
+function example() {
+  console.log(a); // Output: undefined
+  var a = 10;
+  console.log(a); // Output: 10
+}
+
+example();
+```
+
+Even within functions, variables are hoisted to the top of their scope. In this example, the variable `a` is hoisted within the function `example`.
+
+It's important to understand hoisting in JavaScript, but it's generally considered good practice to declare and initialize variables at the beginning of their scope to avoid confusion and potential issues.
+
+
+
+
+
