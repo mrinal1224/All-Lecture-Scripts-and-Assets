@@ -358,3 +358,432 @@ p{
 This makes your element an **inline-block**. That's the work of the Display property in CSS. After that, you can provide height and width to the inline elements too.
 
 
+we will be discussing about positioning and flexbox in CSS.
+
+We will talk about Flexbox and responsive later, So first let's start with positioning in CSS.
+
+
+The concept of positioning in CSS can be understood by  arrangement of players on a sports field. Imagine football or cricket field. 
+
+**Think of a scenario in football:** you have a center forward positioned at one spot, and you'll find the center midfielder occupying another specific spot. This arrangement of players in different positions is scattered over the field.
+
+Similarly, in CSS, positioning involves placing elements within a web page layout. Just as players are situated precisely on the field, web elements can be located using various CSS positioning techniques. 
+
+Now that we know what is positioning in CSS. We will be now discussing types of position in CSS.
+
+
+
+So, let's understand two types of position in CSS:
+* **Absolute Position**
+* **Relative Position**
+
+Think about a table you have in front of you. Imagine you're looking straight down at the table. It's just a flat square surface, like the top of the table. This is the place where you might put things, like your phone or a cup of coffee.
+
+What we're going to talk about is how you can move this "cell phone" around on the table in two different ways.
+
+
+When we talk about moving the box around, we're talking about changing its position in these two main directions – X-Axis and Y-Axis. These two coordinates, X and Y, help us understand exactly where the box (or any object) is located on the table.
+
+Let's say you start with the cell phone placed at a specific spot on the table. Now, you want to move it a bit. In CSS terms, this is done by specifying how many centimeters (like pixels) you want to move the box from its current position. 
+
+For example, if you move the box 10 centimeters to the right. So the relative position of the cell phone from its starting point to ending point has changed by 10 cm.
+
+If you are measuring the distance from the starting of the Table. The distance between starting of the table and the cell phone will be the absolute position.
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/050/071/original/upload_189ab829bb663b192a1033cb2dbf5b52.png?1695317443)
+
+So we can define in terms of CSS as:
+
+* **Relative Position:** The element is positioned relative to its previous position.
+* **Absolute Position:** The element is positioned absolutely to its parent container.
+
+
+Now, that we know what is Relative and Absolute Positioning. Let's move forward by coding and understanding positions.
+
+
+Now let's move to VS Code and write some code to understand it better.
+
+
+**HTML Code:**
+
+```htmlembedded
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning</title>
+    <style>
+        .container {
+            background-color: dodgerblue;
+        }
+
+        .box {
+            display: inline-block;
+            height: 150px;
+            width: 150px;
+            background-color: tomato;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+
+</html>
+```
+
+Now lets target this 3rd box and apply position property on it. 
+
+### Exercise 1
+
+#### Problem Statement
+Give **static** position value to box 3.
+
+#### Solution
+* we can give a separate id to the box3, say box_3.
+* Now, in style tag, we can use position property and set the value as **static.**
+
+#### Pseudocode
+```htmlembedded
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning</title>
+    <style>
+        .container {
+            background-color: dodgerblue;
+        }
+
+        .box {
+            display: inline-block;
+            height: 150px;
+            width: 150px;
+            background-color: tomato;
+            margin: 10px;
+        }
+        
+        #box_3 {
+            position: static;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box" id="box_3">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+
+</html>
+```
+
+Static is the default position in which all the elements are positioned, so it will do nothing to the position of box3
+
+There are 5 positions in CSS that we will talk about:
+
+* static
+* relative
+* absolute
+* fixed
+* sticky
+
+Now lets give it relative position.
+
+### Exercise 2
+
+#### Problem Statement
+Give **relative** position value to box 3 and move it 20px.
+
+#### Solution
+* In style of box_3, we can use position property and set the value as **relative** along with top property as 20px.
+
+#### Pseudocode
+```htmlembedded
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning</title>
+    <style>
+        .container {
+            background-color: dodgerblue;
+        }
+
+        .box {
+            display: inline-block;
+            height: 150px;
+            width: 150px;
+            background-color: tomato;
+            margin: 10px;
+        }
+        
+        #box_3 {
+            position: relative;
+            top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box" id="box_3">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+
+</html>
+```
+
+Now, it will move 20 pixels from the top. We're instructing the box to move '20 pixels down from your original position at the top'.
+
+
+> **Tip to instructor:** Use different-different values to explain relative value to learners and ask learners if they have any doubt or not.
+
+
+Now lets give it absolute position.
+
+### Exercise 3
+
+#### Problem Statement
+Give **absolute** position value to box 3 and move it 20px.
+
+#### Solution
+* In style of box_3, we can use position property and set the value as **absolute**.
+
+#### Pseudocode
+```htmlembedded
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning</title>
+    <style>
+        .container {
+            background-color: dodgerblue;
+        }
+
+        .box {
+            display: inline-block;
+            height: 150px;
+            width: 150px;
+            background-color: tomato;
+            margin: 10px;
+        }
+        
+        #box_3 {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box" id="box_3">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+
+</html>
+```
+
+
+Now, we can see that box 4 has vanished but "box 4" could be positioned directly underneath "box 3", and because of the overlap, "box 4" might be hidden by "box 3".
+
+If we want "box 4" to be visible and not hidden by "box 3", you might need to adjust the positioning of box 3 and give some top value as 100px.
+
+```htmlembedded
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning</title>
+    <style>
+        .container {
+            background-color: dodgerblue;
+        }
+
+        .box {
+            display: inline-block;
+            height: 150px;
+            width: 150px;
+            background-color: tomato;
+            margin: 10px;
+        }
+        
+        #box_3 {
+            position: absolute;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box" id="box_3">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+
+</html>
+```
+
+Now, we can see it is moving down, so that means box3 is now trying to adjust with the window itself.
+
+In this case, the element box3 is removed from the normal document flow. The other elements will behave as if that box3 is not in the document. No space is created for the element in the page layout. The values of left, top, bottom and right determine the final position of the box3.
+
+Now box3 is not trying to move relative to its original position, it will try to move relative to the window, means from the entire top of the window it is taking 100px. 
+
+Now lets understand what fixed position is.
+
+**Fixed position:** 
+* Fixed Position is basically when your Element will take a place with the Respect to the window and it will not move from there.
+* Fixed-positioned element is "fixed" in a specific location on the screen, and it won't move when the user scrolls up or down the page. This can be useful for creating elements that should always be visible, like navigation bars or call-to-action buttons, regardless of where the user is on the page. 
+* The element will maintain its position relative to the viewport's coordinates, providing a consistent visual reference point as the user interacts with the content.
+
+### Exercise 4
+
+#### Problem Statement
+Give **fixed** position value to box 3 and fix it at the bottom of the scrollable page.
+
+#### Solution
+* In style of box_3, we can use position property and set the value as **fixed**.
+* For fixing it to the bottom of the page, we can give right property as 4px and bottom as 1px.
+
+#### Pseudocode
+```htmlembedded
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning</title>
+    <style>
+        .container {
+            background-color: dodgerblue;
+            height: 4000px;
+        }
+
+        .box {
+            display: inline-block;
+            height: 150px;
+            width: 150px;
+            background-color: tomato;
+            margin: 10px;
+        }
+        
+        #box_3 {
+            position: fixed;
+            right: 4px;
+            bottom: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box" id="box_3">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+
+</html>
+```
+
+Now if we scroll the page, the box3 will be fixed at the bottom right of the page.
+
+
+Now, lets understand sticky value:
+
+**Sticky:**
+* When an element is given a "position" value of "sticky," it acts like a relative-positioned element within its containing element until a certain scroll threshold is reached. Once the user scrolls beyond that threshold, the element becomes "stuck" in place and behaves like a fixed-positioned element, remaining visible on the screen. 
+* In other words, a sticky element starts as part of the normal document flow, just like a relatively positioned element. As the user scrolls, the element follows its normal position until it reaches a designated point (usually when its top or bottom edge reaches a specific distance from the viewport's edge). At that point, it becomes "sticky" and remains fixed at that position while the rest of the content scrolls.
+
+Lets go to the zomato website and see its navbar, here you can see when we scroll the page, this navbar is getting fixed at the top of the page.
+
+So on reaching a particular value, sticky gets fixed.
+
+### Exercise 5
+
+#### Problem Statement
+Give **sticky** position value to box 3 and fix it at the top of the scrollable page.
+
+#### Solution
+* In style of box_3, we can use position property and set the value as **sticky**.
+* For fixing it to the top of the page, we can give top property as 0.
+
+#### Pseudocode
+```htmlembedded
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning</title>
+    <style>
+        .container {
+            background-color: dodgerblue;
+            height: 4000px;
+        }
+
+        .box {
+            display: inline-block;
+            height: 150px;
+            width: 150px;
+            background-color: tomato;
+            margin: 10px;
+        }
+        
+        #box_3 {
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box" id="box_3">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+
+</html>
+```
+
+Now if we scroll the page, the box3 will behave normally will it touches the top and them it becomes fixed to the top of the page.
+
+
+
