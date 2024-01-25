@@ -1,5 +1,3 @@
-
-
 ## Title: Introduction to HTML Lists, Forms, and Tables
 
 Welcome to the upcoming class on HTML Lists, Forms, and Tables. This session aims to provide you with a comprehensive understanding of these essential HTML elements, empowering you to create structured and interactive web content. Before we delve into the class, let's explore the key concepts we'll be covering.

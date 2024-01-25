@@ -95,6 +95,25 @@ Understanding these basic CSS selectors is fundamental for various practical app
 8. **Vendor Prefixes:**
    - Ensure compatibility with different browsers during the implementation of experimental features.
 
+
+
+## Further Resources
+
+
+
+### **4. Resources for Further Learning:**
+
+- [Mozilla Developer Network (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS): A comprehensive CSS resource.
+
+- [CSS Tricks](https://css-tricks.com/): Articles, tips, and tricks for CSS.
+
+### **5. Practice Resources:**
+
+- [CSS Diner](https://flukeout.github.io/): A game for learning CSS selectors interactively.
+
+
+Prepare for an exciting journey into the world of CSS. Happy coding!
+
 ### What to Expect in the Class
 
 In our upcoming class, we will delve deeper into these concepts, exploring more advanced CSS selectors, styling techniques, and best practices. Practical examples and hands-on exercises will reinforce your understanding, allowing you to apply these skills in real-world web development projects.
