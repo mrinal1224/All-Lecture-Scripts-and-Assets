@@ -69,4 +69,5 @@ Explore and experiment with the concepts discussed above. Hands-on practice is c
 
 
 We will dive deep into these topics in the class!
+
 Happy Exploration and See you in the Class!
