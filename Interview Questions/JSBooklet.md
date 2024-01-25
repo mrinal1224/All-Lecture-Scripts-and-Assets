@@ -1,4 +1,4 @@
-1. **Compare the differences between let, var, and const when declaring variables in JavaScript.**
+1. ## Compare the differences between let, var, and const when declaring variables in JavaScript.
 
 In JavaScript, `let`, `var`, and `const` are used to declare variables, but they have some differences in terms of scoping, hoisting, and mutability. Let's explore each one separately:
 
@@ -73,7 +73,7 @@ In summary:
 
 
 
-2. **What is Hoisting in JS?**
+2. ## What is Hoisting in JS?
 
 Hoisting is a behavior in JavaScript where variable and function declarations are moved to the top of their containing scope during the compilation phase. This means that you can use a variable or a function before it's declared in your code. However, it's important to note that only the declarations are hoisted, not the initializations.
 
