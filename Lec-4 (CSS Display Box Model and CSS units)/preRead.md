@@ -47,28 +47,31 @@ Understanding the `display` property is essential for creating flexible and resp
 #### What is CSS Positioning?
 
 CSS Positioning refers to the techniques used to control the placement of HTML elements on a webpage. It allows precise positioning relative to their normal flow within the document.
+#### 4. Different CSS Units:
+   - **Absolute Units:**
+     - `px` (pixels)
+     - `pt` (points)
+     - `in` (inches)
+     - `cm` (centimeters)
 
-#### Positioning Properties:
+   - **Relative Units:**
+     - `em` (relative to the font-size of the element)
+     - `rem` (relative to the font-size of the root element)
+     - `%` (percentage of the parent element)
+     - `vw` (viewport width)
+     - `vh` (viewport height)
 
-1. **Static:** Default positioning, elements are placed according to the normal flow of the document.
+   - **Resources:**
+     - [MDN Web Docs - Units and Values](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
+     - [CSS Units: A Free Quick Reference by Example](https://www.sitepoint.com/css-units-free-reference/)
 
-2. **Relative:** Elements are positioned relative to their normal position, allowing shifting from the default position.
 
-3. **Absolute:** Elements are positioned relative to the nearest positioned ancestor, rather than the normal flow.
 
-4. **Fixed:** Elements are positioned relative to the viewport and do not move when the page is scrolled.
-
-5. **Sticky:** Elements are positioned based on the user's scroll position, acting as a hybrid of relative and fixed positioning.
-
-#### Practical Use of Positioning:
-
-Understanding positioning is crucial for creating complex layouts, implementing responsive designs, and achieving precise control over element placement on a webpage.
 
 ### Recommended Resources:
 
 1. [MDN Web Docs: Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
-2. [MDN Web Docs: CSS Display Property](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
-3. [MDN Web Docs: CSS Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+
 
 More Resources and pratice material will be provided in the class
 

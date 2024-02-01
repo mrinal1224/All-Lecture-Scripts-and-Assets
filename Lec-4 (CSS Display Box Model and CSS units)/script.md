@@ -1,4 +1,4 @@
-# Class 4 - CSS Box Model, Display Property, and Positioning
+# Class 4 - CSS Box Model, Display Property and CSS units
 ---
 title: Agenda
 description: Things that will be covered in today's session
