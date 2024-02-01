@@ -196,6 +196,7 @@ card_type: cue_card
 - You can check this by inspecting.
 - Go to any website that we have created till now, select an html element paragraph and right click, then click on **inspect**. Here you see the boxing of your content in the right panel.
 
+
 Always remember to add height and width to your box otherwise, it will not be visible. Make the box as shown below.
 
 ![](https://hackmd.io/_uploads/SkQYFU2a2.png)
@@ -403,6 +404,92 @@ Example Code:
 In summary, `box-sizing` influences how the size of an element is calculated. Content-Box calculates size based on the content, adding padding and border on top. Border-Box calculates size including content, padding, and border within the specified width and height.
 
 
+### CSS Overflow
+
+When the content goes out of the container is known as **Overflow**.
+
+Let's take an example where we create a div element and add content of 100 words to it. We create a container and give it a static width and height.
+
+```htmlembedded!
+<style>
+    .container{
+        border: 2px solid tomato;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+    <div class = "container">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a.
+    </div>
+</body>
+```
+
+The result will be that the box will not contain the whole content and it will create an overflow condition. Therefore, we will use overflow to overcome it. We can use auto, hidden, scroll and visible overflow properties.
+
+#### Example
+
+Let's understand how:
+
+```htmlembedded!
+<style>
+    .container{
+        border: 2px solid tomato;
+        width: 200px;
+        height: 200px;
+        overflow: hidden; /* the content going outside of the container will be hidden */
+    }
+</style>
+<body>
+    <div class = "container">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a.
+    </div>
+</body>
+```
+
+#### Properties of Overflow
+
+**Hidden**: The content that remains outside the container will be hidden or not visible. It does not occupy space where the content is hidden.
+
+**Scroll**: A scroll bar is added inside the container so that you can go through the whole content inside the container.
+
+**Auto**: It works similarly to scroll the only difference is that scroll will always show scroll inside the container while auto will only show when the content is overflowing.
+
+**Visible**: It will make the content visible. There will be no change.
+
+> The container takes only the space designated to it. Therefore, the overflow content will overlap with the other content added after the container.
+
+**[Ask the learners]**
+
+How will we apply the overflow condition if we make the container horizontal for the following div content?
+
+```htmlembedded!
+<div class = "horizontal-container">
+    Scaler
+</div>
+```
+
+--> 
+```htmlembedded!
+<style>
+    .horizontal-container{
+        font-size: 30px;
+        width: 50px;
+        height: 30px;
+        
+        border: 2px solid black;
+        
+        overflow: hidden;
+    }
+</style>
+```
+
+We can add any other property as well it will work similarly to the vertical container.
+
+> If you want to hide the vertical or horizontal scroll bar you can use the following syntax: `overflow-x: hidden;` or `overflow-y: hidden;`.
+
+
+
 
 ---
 title: CSS Display
@@ -521,95 +608,7 @@ In this example, the inline element (`span` with class "inline-element") will ha
 
 Adjust the values and observe how the spacing changes in the rendered output.
 
-
-## CSS positioning
-
-In CSS, the `position` property is used to control the positioning of an element within its containing element. The `position` property can take several values, and one of them is `static`. When an element's position is set to `static`, it means that the element will be positioned according to the normal flow of the document.
-
-Here are some key characteristics of an element with `position: static`:
-
-1. **Default Behavior:** This is the default value for the `position` property. Elements with `position: static` are positioned in the normal flow of the document, meaning they will be displayed one after another, vertically and horizontally, based on their order in the HTML.
-
-2. **No Offsetting:** Elements with `position: static` are not affected by the `top`, `right`, `bottom`, and `left` properties. Any attempts to apply these properties will have no effect.
-
-Here's an example:
-
-```css
-.normal-flow {
-  position: static;
-  border: 1px solid #000;
-  padding: 10px;
-}
-```
-
-```html
-<div class="normal-flow">This is a static positioned element.</div>
-```
-
-In this example, the `.normal-flow` element will be displayed in the normal flow of the document, and any attempt to offset it using `top`, `right`, `bottom`, or `left` will have no effect.
-
-```css
-.normal-flow {
-  position: static;
-  border: 1px solid #000;
-  padding: 10px;
-  top: 20px; /* This has no effect */
-  left: 30px; /* This has no effect */
-}
-```
-
-So, in summary, `position: static` is the default positioning behavior, and elements with this position value are placed in the normal flow of the document without any special positioning.
-
-**Now how else can Positioning work let's understand**
----
-title: Types of Positions?
-description: This section explains everything about Position Property in CSS
-duration: 600
-card_type: cue_card
----
-
-So, let's understand two types of position in CSS:
-* **Absolute Position**
-* **Relative Position**
-
-Think about a table you have in front of you. Imagine you're looking straight down at the table. It's just a flat square surface, like the top of the table. This is the place where you might put things, like your phone or a cup of coffee.
-
-What we're going to talk about is how you can move this "cell phone" around on the table in two different ways.
-
-**[Ask the learners]**
-Can anyone tell what are the two ways we can move this cell phone on table.
-
-When we talk about moving the box around, we're talking about changing its position in these two main directions – X-Axis and Y-Axis. These two coordinates, X and Y, help us understand exactly where the box (or any object) is located on the table.
-
-Let's say you start with the cell phone placed at a specific spot on the table. Now, you want to move it a bit. In CSS terms, this is done by specifying how many centimeters (like pixels) you want to move the box from its current position. 
-
-For example, if you move the box 10 centimeters to the right. So the relative position of the cell phone from its starting point to ending point has changed by 10 cm.
-
-If you are measuring the distance from the starting of the Table. The distance between starting of the table and the cell phone will be the absolute position.
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/050/071/original/upload_189ab829bb663b192a1033cb2dbf5b52.png?1695317443)
-
-So we can define in terms of CSS as:
-
-* **Relative Position:** The element is positioned relative to its previous position.
-* **Absolute Position:** The element is positioned absolutely to its parent container.
-
-
-Now, that we know what is Relative and Absolute Positioning. Let's move forward by coding and understanding positions.
-
-
-
-
-**Position : realtive**
-
-
-In CSS, the `position: relative` property is used to position an element relative to its normal position in the document flow. To explain this with a real-life analogy, let's consider a scenario of arranging books on a shelf.
-
-Imagine you have a bookshelf, and each book represents an HTML element on a webpage. By default, the books are placed on the shelf in a specific order, much like how HTML elements are positioned in the normal document flow. Now, if you decide to move a particular book a few inches to the right or left, you're changing its position relative to its normal place on the shelf.
-
-In CSS, the `position: relative` property allows you to make similar adjustments to the positioning of an element. When you apply `position: relative` to an element, it remains in the normal document flow, but you can then use the `top`, `right`, `bottom`, or `left` properties to move it from its original position.
-
-Here's a simple example:
+### CSS Units in Detail
 
 ```html
 <!DOCTYPE html>
@@ -617,272 +616,199 @@ Here's a simple example:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Units Examples</title>
   <style>
-    .bookshelf {
-      position: relative;
-      width: 300px;
-      height: 200px;
-      border: 1px solid #ccc;
+    /* Pixels (px) */
+    .px-example {
+      width: 200px;
+      height: 150px;
+      font-size: 16px;
+      background-color: lightblue;
     }
 
-    .book {
-      position: relative;
-      width: 50px;
-      height: 100px;
-      background-color: #3498db;
-      color: #fff;
-      text-align: center;
-      line-height: 100px;
+    /* Percentage (%) */
+    .percentage-example {
+      width: 50%;
+      padding: 5%;
+      font-size: 120%;
+      background-color: lightgreen;
     }
 
-    .book2 {
-      position: relative;
-      top: 20px;
-      left: 30px;
+    /* Viewport Width (vw) and Viewport Height (vh) */
+    .viewport-example {
+      width: 50vw;
+      height: 30vh;
+      background-color: lightcoral;
+    }
+
+    /* EM */
+    body {
+      font-size: 16px;
+    }
+
+    .em-example {
+      margin: 1em; /* Equivalent to 16px in this case */
+      background-color: lightsalmon;
+    }
+
+    /* REM */
+    html {
+      font-size: 16px;
+    }
+
+    .rem-example {
+      margin: 1rem; /* Always equivalent to 16px */
+      background-color: lightgoldenrodyellow;
+    }
+
+    /* Ch */
+    .ch-example {
+      width: 20ch; /* Approximately 20 times the width of '0' character */
+      background-color: lightblue;
+    }
+
+    /* Ex */
+    .ex-example {
+      line-height: 2ex; /* Twice the height of 'x' character */
+      background-color: lightpink;
+    }
+
+    /* Viewport Percentage Width/Height (vmin, vmax) */
+    .vmin-vmax-example {
+      width: 50vmin;
+      height: 70vmax;
+      background-color: lightseagreen;
     }
   </style>
 </head>
 <body>
-  <div class="bookshelf">
-    <div class="book">Book 1</div>
-    <div class="book book2">Book 2</div>
-  </div>
+
+  <div class="px-example">Pixel Example</div>
+
+  <div class="percentage-example">Percentage Example</div>
+
+  <div class="viewport-example">Viewport Example</div>
+
+  <div class="em-example">EM Example</div>
+
+  <div class="rem-example">REM Example</div>
+
+  <div class="ch-example">Ch Example</div>
+
+  <div class="ex-example">Ex Example</div>
+
+  <div class="vmin-vmax-example">Vmin/Vmax Example</div>
+
 </body>
 </html>
 ```
 
-In this example, the `.book2` class has `position: relative`, and it is moved 20 pixels down and 30 pixels to the right from its normal position within the `.bookshelf`. The positioning is relative to where it would have been in the normal flow.
+Open this HTML file in a web browser to see the different examples of CSS units in action. Adjust the values and observe how the layout changes based on the specified units.
 
-You can experiment with the values of `top`, `right`, `bottom`, and `left` to see how they affect the positioning of the element within its containing element. Keep in mind that using `position: relative` may not cause a visible change unless accompanied by additional positioning properties.
+With each unit Example you use these Definitions- 
 
+1. **Pixels (px):**
+   - The `px` unit is fixed and does not change with the size of the viewport or user settings.
+   - Useful for creating fixed layouts.
+   - Example:
 
-**Position : absolute**
+    ```css
+    div {
+      width: 200px;
+      height: 150px;
+      font-size: 16px;
+    }
+    ```
 
- Let's continue with the bookshelf analogy to explain the `position: absolute` property in CSS.
+2. **Percentage (%):**
+   - The `%` unit is relative to the size of the containing element.
+   - Useful for creating fluid layouts that adapt to different screen sizes.
+   - Example:
 
-In our bookshelf scenario, `position: absolute` can be said to taking a book out of the regular flow of the shelf and placing it in a specific position relative to the bookshelf itself. When a book has an absolute position, it's as if it's no longer part of the standard order on the shelf, and you can position it anywhere you want, ignoring the presence of other books.
+    ```css
+    div {
+      width: 50%;
+      padding: 5%;
+      font-size: 120%;
+    }
+    ```
 
-In CSS, applying `position: absolute` to an element takes it out of the normal document flow and positions it relative to its closest positioned ancestor (an ancestor element that has a position value other than `static`) or, if there is none, relative to the initial containing block, usually the viewport.
+3. **Viewport Width (vw) and Viewport Height (vh):**
+   - `vw` is a percentage of the viewport width, and `vh` is a percentage of the viewport height.
+   - Useful for creating responsive designs based on the viewport size.
+   - Example:
 
-Here's an example:
+    ```css
+    div {
+      width: 50vw;
+      height: 30vh;
+    }
+    ```
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .bookshelf {
-      position: relative; 
-      /* Add and remove this position propery to show how absolute position will depend on nearest ancestor */
-      width: 300px;
-      height: 300px;
-      border: 1px solid #ccc;
+4. **EM:**
+   - The `em` unit is relative to the font-size of the closest parent or the element itself.
+   - Useful for creating scalable and accessible layouts.
+   - Example:
+
+    ```css
+    body {
+      font-size: 16px;
     }
 
-    .book {
-        display: inline-block;
+    div {
+      margin: 1em; /* This is equivalent to 16px in this case */
+    }
+    ```
+
+5. **REM:**
+   - Similar to `em` but relative to the font-size of the root element (usually the `<html>` tag).
+   - Useful for maintaining consistent spacing throughout the document.
+   - Example:
+
+    ```css
+    html {
+      font-size: 16px;
     }
 
-    .book1 {
-      background-color: #3498db;
-      width: 50px;
-      height: 100px;
-      color: #fff;
-      text-align: center;
-      line-height: 100px;
-      margin: 5px;
+    div {
+      margin: 1rem; /* This is always equivalent to 16px */
     }
+    ```
 
-    .book2 {
-      background-color: red;
-      width: 50px;
-      height: 100px;
-      color: #fff;
-      text-align: center;
-      line-height: 100px;
-      margin: 5px;
+6. **Ch:**
+   - Represents the width of the "0" (zero) character in the font used.
+   - Useful for creating layouts based on character width.
+   - Example:
 
-      /* Carefully add these properties and explain line by line */
-
-      position: absolute;
-      top : 30px;
-      left: 50px;
-
+    ```css
+    div {
+      width: 20ch; /* Approximately 20 times the width of the '0' character */
     }
+    ```
 
-    .book3 {
-      background-color: green;
-      width: 50px;
-      height: 100px;
-      color: #fff;
-      text-align: center;
-      line-height: 100px;
-      margin: 5px;
+7. **Ex:**
+   - Represents the height of the "x" character in the font used.
+   - Useful for setting sizes based on the height of characters.
+   - Example:
 
+    ```css
+    div {
+      line-height: 2ex; /* This is equivalent to twice the height of the 'x' character */
     }
+    ```
 
-    .book4 {
-      background-color: magenta;
-      width: 50px;
-      height: 100px;
-      color: #fff;
-      text-align: center;
-      line-height: 100px;
-      margin: 5px;
+8. **Viewport Percentage Width/Height (vmin, vmax):**
+   - `vmin` is the smaller of `vw` and `vh`, while `vmax` is the larger of the two.
+   - Useful for responsive designs based on the smaller or larger viewport dimension.
+   - Example:
 
+    ```css
+    div {
+      width: 50vmin;
+      height: 70vmax;
     }
-  </style>
-</head>
-<body>
-  <div class="bookshelf">
-    <div class="book book1">Book 1</div>
-    <div class="book book2">Book 2</div>
-    <div class="book book3">Book 3</div>
-    <div class="book book4">Book 4</div>
-  </div>
-</body>
-</html>
-```
+    ```
 
-In this example, the `.book2` class has `position: absolute`, and it is positioned 20 pixels from the top and 30 pixels from the left of the closest positioned ancestor, which is the `.bookshelf`. Notice that Book 2 is now positioned independently of Book 1 and does not affect the layout of other elements.
-
-In simpler terms:
-
-1. **Normal Flow (Default Order):** Elements are like books on a shelf, placed in a default order.
-
-2. **`position: absolute`:** It's like taking a book out of the normal order and positioning it wherever you want, regardless of where other books are. The book (element) is no longer affecting the order of other books.
+Remember to choose units based on your specific design requirements and the behavior you want for your web page. Combining different units wisely can lead to more flexible and responsive layouts.
 
 
-
-In this example, "Book 2" (element with `class="book2"`) is using `position: absolute` to be placed wherever you specify (20px from the top and 30px from the left). It's like moving a book independently on the shelf without affecting others.
-
-Experiment with different values for `top`, `right`, `bottom`, and `left` to observe how the absolute positioning works in relation to its closest positioned ancestor or the initial containing block. It's a powerful tool for precise element placement on a webpage.
-
-
-
-**Fixed position:** 
-* Fixed Position is basically when your Element will take a place with the Respect to the window and it will not move from there.
-* Fixed-positioned element is "fixed" in a specific location on the screen, and it won't move when the user scrolls up or down the page. This can be useful for creating elements that should always be visible, like navigation bars or call-to-action buttons, regardless of where the user is on the page. 
-* The element will maintain its position relative to the viewport's coordinates, providing a consistent visual reference point as the user interacts with the content.
-
-### Exercise 4
-
-#### Problem Statement
-Give **fixed** position value to box 3 and fix it at the bottom of the scrollable page.
-
-#### Solution
-* In style of box_3, we can use position property and set the value as **fixed**.
-* For fixing it to the bottom of the page, we can give right property as 4px and bottom as 1px.
-
-#### Pseudocode
-```
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Positioning</title>
-    <style>
-        .container {
-            background-color: dodgerblue;
-            height: 4000px;
-        }
-
-        .box {
-            display: inline-block;
-            height: 150px;
-            width: 150px;
-            background-color: tomato;
-            margin: 10px;
-        }
-        
-        #box_3 {
-            position: fixed;
-            right: 4px;
-            bottom: 1px;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="box">1</div>
-        <div class="box">2</div>
-        <div class="box" id="box_3">3</div>
-        <div class="box">4</div>
-    </div>
-</body>
-
-</html>
-```
-
-Now if we scroll the page, the box3 will be fixed at the bottom right of the page.
-
-
-**Sticky:**
-* When an element is given a "position" value of "sticky," it acts like a relative-positioned element within its containing element until a certain scroll threshold is reached. Once the user scrolls beyond that threshold, the element becomes "stuck" in place and behaves like a fixed-positioned element, remaining visible on the screen. 
-* In other words, a sticky element starts as part of the normal document flow, just like a relatively positioned element. As the user scrolls, the element follows its normal position until it reaches a designated point (usually when its top or bottom edge reaches a specific distance from the viewport's edge). At that point, it becomes "sticky" and remains fixed at that position while the rest of the content scrolls.
-
-Lets go to the zomato website and see its navbar, here you can see when we scroll the page, this navbar is getting fixed at the top of the page.
-
-So on reaching a particular value, sticky gets fixed.
-
-### Exercise 5
-
-#### Problem Statement
-Give **sticky** position value to box 3 and fix it at the top of the scrollable page.
-
-#### Solution
-* In style of box_3, we can use position property and set the value as **sticky**.
-* For fixing it to the top of the page, we can give top property as 0.
-
-#### Pseudocode
-```htmlembedded
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Positioning</title>
-    <style>
-        .container {
-            background-color: dodgerblue;
-            height: 4000px;
-        }
-
-        .box {
-            display: inline-block;
-            height: 150px;
-            width: 150px;
-            background-color: tomato;
-            margin: 10px;
-        }
-        
-        #box_3 {
-            position: sticky;
-            top: 0;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="box">1</div>
-        <div class="box">2</div>
-        <div class="box" id="box_3">3</div>
-        <div class="box">4</div>
-    </div>
-</body>
-
-</html>
-```
-
-Now if we scroll the page, the box3 will behave normally till it touches the top and them it becomes fixed to the top of the page.
-
-
-
-That's all for today's session!
