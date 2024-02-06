@@ -634,14 +634,14 @@ Here you will select the class namely "background" and apply CSS to them. It wil
 - You can also use an image as the text background. To do this, you need to provide the image URL in the CSS as shown below:
 ```HTML=
 h1{
-    background-color : url(" url_of_that_specific_image.jpg ");
+    background-image : url(" url_of_that_specific_image.jpg ");
 }
 ```
 
 You can set the background size as:
 ```HTML=
 h1{
-    background-color : url(" url_of_that_specific_image.jpg ");
+    background-image : url(" url_of_that_specific_image.jpg ");
     background-size : 400px;
 }
 ```
