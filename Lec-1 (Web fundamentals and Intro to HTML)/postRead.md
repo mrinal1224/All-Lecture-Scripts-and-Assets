@@ -217,7 +217,7 @@ Sections are used to structure the content of a web page into logical parts, suc
 </body>
 </html>
 ```
-## Tags and buttons
+
 
 ## Header tags
 
