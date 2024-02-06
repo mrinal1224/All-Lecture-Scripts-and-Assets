@@ -96,22 +96,6 @@ Understanding these basic CSS selectors is fundamental for various practical app
    - Ensure compatibility with different browsers during the implementation of experimental features.
 
 
-
-## Further Resources
-
-
-
-### **4. Resources for Further Learning:**
-
-- [Mozilla Developer Network (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS): A comprehensive CSS resource.
-
-- [CSS Tricks](https://css-tricks.com/): Articles, tips, and tricks for CSS.
-
-### **5. Practice Resources:**
-
-- [CSS Diner](https://flukeout.github.io/): A game for learning CSS selectors interactively.
-
-
 Prepare for an exciting journey into the world of CSS. Happy coding!
 
 ### What to Expect in the Class

@@ -281,6 +281,22 @@ After the data exchange is complete, the TCP connection is closed using a proces
 In summary, the TCP/IP handshake after retrieving an IP address through DNS involves a three-way handshake to establish a connection between the client and the server. Once the connection is established, data can be exchanged in a reliable and orderly manner. Finally, when the data exchange is complete, the connection is closed using the four-way handshake. This process ensures the integrity and reliability of communication over the internet.
 
 
+## Extra Resources
+1. **Online Resources:**
+   - **HowStuffWorks - How the Internet Infrastructure Works:**
+     - [HowStuffWorks - Internet Infrastructure](https://computer.howstuffworks.com/internet-infrastructure.htm)
+ 
+
+2. **YouTube Videos:**
+ - **"The Internet: Wires, Cables & WiFi" by ColdFusion:**
+     - [The Internet: Wires, Cables & WiFi](https://www.youtube.com/watch?v=ZhEf7e4kopM)
+
+
+3. **Documentation and Standards:**
+   - **W3C (World Wide Web Consortium):**
+     - [W3C Website](https://www.w3.org/)
+
+
 
 
 

@@ -962,6 +962,22 @@ First, let us see the text alignment property
 These are all text and font properties.
 
 
+## Further Resources
+
+
+
+### **4. Resources for Further Learning:**
+
+- [Mozilla Developer Network (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS): A comprehensive CSS resource.
+
+- [CSS Tricks](https://css-tricks.com/): Articles, tips, and tricks for CSS.
+
+### **5. Practice Resources:**
+
+- [CSS Diner](https://flukeout.github.io/): A game for learning CSS selectors interactively.
+
+
+
 
 
 

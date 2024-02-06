@@ -57,17 +57,7 @@ Understanding the `display` property is essential for creating flexible and resp
      - `vw` (viewport width)
      - `vh` (viewport height)
 
-   - **Resources:**
-     - [MDN Web Docs - Units and Values](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
-     - [CSS Units: A Free Quick Reference by Example](https://www.sitepoint.com/css-units-free-reference/)
-
-
-
-
-### Recommended Resources:
-
-1. [MDN Web Docs: Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
-
+   
 
 More Resources and pratice material will be provided in the class
 

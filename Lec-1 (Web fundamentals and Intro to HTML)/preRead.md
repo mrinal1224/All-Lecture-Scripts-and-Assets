@@ -63,20 +63,7 @@ Experiment with entering different URLs in your browser to observe how web pages
 Remember, HTML is just the beginning. As you progress, you'll explore more technologies like CSS for styling and JavaScript for interactivity, enabling you to create dynamic and engaging web pages.
 
 
-## Extra Resources
-1. **Online Resources:**
-   - **HowStuffWorks - How the Internet Infrastructure Works:**
-     - [HowStuffWorks - Internet Infrastructure](https://computer.howstuffworks.com/internet-infrastructure.htm)
- 
 
-2. **YouTube Videos:**
- - **"The Internet: Wires, Cables & WiFi" by ColdFusion:**
-     - [The Internet: Wires, Cables & WiFi](https://www.youtube.com/watch?v=ZhEf7e4kopM)
-
-
-3. **Documentation and Standards:**
-   - **W3C (World Wide Web Consortium):**
-     - [W3C Website](https://www.w3.org/)
 
 
 
