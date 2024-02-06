@@ -8,9 +8,13 @@ card_type: cue_card
 ---
 
 # Agenda:
-- How Web works
-- Basic HTML Tags
-- Semantic tags
+- Overview of The curriculum
+- How Web Works
+- Setup and Installation of VS code
+- Introduction to HTML
+- HTML Tags
+- Semantic Tags
+
 
 
 So, lets start!
