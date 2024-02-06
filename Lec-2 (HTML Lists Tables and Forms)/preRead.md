@@ -44,9 +44,7 @@ Welcome to the upcoming class on HTML Lists, Forms, and Tables. This session aim
 #### 2. **Table Formatting:**
    - *Adding Borders and Spacing:* Explore how to add borders and control spacing within tables.
 
-#### 3. **Table Accessibility:**
-   - *Using Captions and Summaries:* Explore the use of `<caption>` and `<summary>` for better accessibility.
-   - *Incorporating Header and Data Cells:* Understand the importance of distinguishing between header and data cells in tables.
+
 
 ### Preparing for the Class:
 

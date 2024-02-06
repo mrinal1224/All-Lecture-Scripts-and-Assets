@@ -7,13 +7,39 @@ description: Brief overview of CSS and its various aspects
 duration: 300
 card_type: cue_card
 ---
+
+
 # Agenda:
-- What is CSS
-- Need for CSS
+- Rules of CSS
+- Ways to Add CSS
 - CSS Selectors
 - Properties of CSS (color, background, fonts, and texts)
 
 So, lets start!
+
+We have already discussed in the previous class a breif overview of css , now lets see how to use CSS and Rules to Use CSS.
+
+CSS is a rule-based language — you define the rules by specifying groups of styles that should be applied to particular elements or groups of elements on your web page.
+
+For example, you can decide to have the main heading on your page to be shown as large red text. The following code shows a very simple CSS rule that would achieve the styling described above:
+
+
+
+
+
+```css 
+h1 {
+  color: red;
+  font-size: 5em;
+}
+```
+
+In the above example, the CSS rule opens with a [selector](https://developer.mozilla.org/en-US/docs/Glossary/CSS_Selector). This _selects_ the HTML element that we are going to style. In this case, we are styling level one headings ([h1](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)).
+- We then have a set of curly braces `{ }`.
+- Inside the braces will be one or more **declarations**, which take the form of **property** and **value** pairs. We specify the property (`color` in the above example) before the colon, and we specify the value of the property after the colon (`red` in this example).
+- This example contains two declarations, one for `color` and the other for `font-size`. Each pair specifies a property of the element(s) we are selecting ([h1](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) in this case), then a value that we’d like to give the property.
+
+Now as we know the rules , Let's See how we can use CSS in Diffrent Ways
 
 
 > Ask about the various ways of using CSS
@@ -53,21 +79,6 @@ h1{
 
 
 ---
-title: Quiz 1
-description: Quiz 1
-duration: 90
-card_type: quiz_card
----
-# Question
-How many colors are there in CSS by default?
-# Choices
-
-- [ ] 125
-- [ ] 145
-- [x] 140
-- [ ] 147
-
----
 title: Various ways of using CSS 
 description: Various ways of using CSS
 duration: 300
@@ -75,8 +86,14 @@ card_type: cue_card
 ---
 # Using CSS in three different ways:
 
+
+
+
 ## 1. Internal CSS 
 - When you write CSS in the same HTML file. (using the style tag)
+
+<!-- 
+Add Examples of Internal CSS -->
 
 
 ## 2. Inline CSS
@@ -87,7 +104,7 @@ card_type: cue_card
 <h2 style = "color: red;"> I am heading 2 </h2>
 ```
 - Here we are providing the CSS to that specific element "h2" only, known as Inline CSS. Always try to add a style tag inside the **head tag**.
-- Inline CSS has more priority than Internal CSS.
+
 
 > Ask students about the difference between **style attribute** and **style tag**.
 

@@ -83,7 +83,7 @@ Use `<ul>` tags for displaying a list with the help of symbols/shapes. In this c
 
 ## Tables in HTML
 
-We gnerally tables are used to organize and display data in a structured format. Tables consist of rows and columns, where each cell is capable of storing data in form of text, images, links, or other HTML elements. But in-order to create tables in HTML one needs to be familiar with certain tags and attributes used such as:
+tables are used to organize and display data in a structured format. Tables consist of rows and columns, where each cell is capable of storing data in form of text, images, links, or other HTML elements. But in-order to create tables in HTML one needs to be familiar with certain tags and attributes used such as:
 1. `<table`:  tag is used to define the beginning of a table
 2.`<td>`: tag represents a table cell that contains data
 3. `<tr>`: tag represents a table row
@@ -92,6 +92,7 @@ We gnerally tables are used to organize and display data in a structured format.
 6. `<tbody>`: tag groups the body content of the table. 
 7. `<caption>`: tag is used to provide a title or caption for the table. It is placed immediately after the opening `<table>` tag.
 8. **border attribute**: is used to specify the thickness of the border around the table and its cells.
+
 
 
 #### Pseudocode
@@ -132,7 +133,7 @@ We gnerally tables are used to organize and display data in a structured format.
 ## HTML Forms
 
 Just like any other forms are used to collect information, in context of HTML it collects user input on a web page. They allow users to enter data, make selections, and submit that information to a server for processing. HTML forms are created using a combination of form-related tags and input elements such as 
-1. `<form>`: tag defines the beginning of a form and contains the elements that make up the form, such as text fields, checkboxes, and buttons. It has several attributes, including action (specifying the URL to which the form data should be submitted) and method (specifying the HTTP request method, usually "**GET**" or "**POST**")
+1. `<form>`: tag defines the beginning of a form and contains the elements that make up the form, such as text fields, checkboxes, and buttons. 
 2. `<input>`: The `<input>` tag is used to create various types of form input fields. The type attribute specifies the type of input field to be displayed. Common type values include:
    * **text:** Creates a single-line text input.
    * **password:** Creates a password input field (text is masked for security).
@@ -152,7 +153,7 @@ Just like any other forms are used to collect information, in context of HTML it
 <!DOCTYPE html>
 <html>
 <head>
-    <title>List Examples</title>
+    <title>Form Examples</title>
 </head>
 <body>
    <form>
@@ -191,10 +192,7 @@ Just like any other forms are used to collect information, in context of HTML it
          <option>Black</option>
          <option>Red</option>
       </select>
-
-
-
-   </form>
+ </form>
 </body>
 </html>
 ```
@@ -203,42 +201,15 @@ Just like any other forms are used to collect information, in context of HTML it
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/121/original/upload_f466e18fe597bb978dd2f93f02a9c0f7.png?1695110510)
 
 
+## Further Reading
 
-##  Inline Elements
+**Table Accessibility:**
+   - *Using Captions and Summaries:* Explore the use of `<caption>` and `<summary>` for better accessibility.
+   - *Incorporating Header and Data Cells:* Understand the importance of distinguishing between header and data cells in tables.
 
-In HTML, elements are categorized as either block-level elements or inline elements. Inline elements do not create new block-level containers and flow within the content of surrounding elements. The `<span> `element is one such common inline element used for various purposes. It's a generic inline container that is often used to apply styles or attributes to a specific portion of text within a larger block of content.
 
-#### Pseudocode
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Span in Inline Element Example</title>
-</head>
-<body>
-    <h1>Inline Element with Span</h1>
 
-    <p>This is a <strong><span style = "color: red ; ">red</span></strong> word.</p>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Span in Inline Element Example</title>
-</head>
-<body>
-    <h1>Inline Element with Span</h1>
-
-    <p>This is a <strong><span style = "color: red;">red</span></strong> word.</p>
-
-</body>
-</html>
-
-```
-#### Output:
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/122/original/upload_c10b7b956b460dadbe2f8996096eed32.png?1695111073)
 
 
