@@ -188,6 +188,17 @@ if you have a book with intro, bibliography, index, chapters, then it makes it m
 
 Semantic tags gives a way of moving away from generic tags like <div> and <span> which don't convey specific meanings.
 
+## Why Do I Need to Use Semantic HTML Tags?
+Besides the obvious reason that semantic HTML tags are easier to read and understand—for example, by web developers reviewing the code—there are two more specific reasons why you should always use semantic tags.
+### Accessibility
+For sighted users, it’s easy to identify the various parts of a webpage. Headers, footers, and the main content are all immediately visually apparent.
+However, it is not that easy for users who are **blind or visually impaired** and rely on screen readers.
+The proper use of HTML semantic tags will allow these readers to understand your content better because their screen readers will communicate your content more accurately.
+### SEO
+Semantic HTML tags are important for [SEO](https://www.semrush.com/blog/what-is-seo/) (search engine optimization) because they indicate the role of the content within the tags.
+That information gives [search engine crawlers](https://www.semrush.com/blog/site-crawler/), like Googlebot, a better understanding of your content. This increases the chances that your content will be selected as a candidate for ranking on the search engine results page (SERP) for relevant keywords.
+To put it simply, pages with correctly implemented semantic HTML have an advantage in SEO over those that don’t.
+
 Explain with this Diagram how Semantic tags makes the Layout more meaningful
 
 <img src='https://static.semrush.com/blog/uploads/media/cc/85/cc85d452a743e27f68d426df35e4da7d/EN-Semantic-Search-Non-Semantic.webp'/>
