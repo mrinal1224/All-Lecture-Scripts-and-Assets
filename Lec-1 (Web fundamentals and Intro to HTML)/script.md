@@ -131,7 +131,20 @@ Bringing it all together, the customers in our dairy farm analogy represent clie
 
 In the grand scheme of things, even though we might simply see a website's interface through our browser, there's a complex interplay of components behind every web page that ensures we get the right information at the right time.
 
+---
+title: Quiz 1
+description: Quiz 1
+duration: 90
+card_type: quiz_card
+---
+# Question
+What does DNS stand for?
+# Choices
 
+- [x] Domain Name System
+- [ ] Digital Network Security
+- [ ] Dynamic Naming Service
+- [ ]  Data Network System
 
 
 ---
