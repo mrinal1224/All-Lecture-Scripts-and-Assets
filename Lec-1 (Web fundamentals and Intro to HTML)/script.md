@@ -31,10 +31,7 @@ Which Design Patterns we are going to cover , What we will learn in Backend Modu
 Just answer We will be covering whatever is required for the Module and students will be provided with all the resources as we move forward if they need extra Resources
 `
 
-
-
-
- **HTML/CSS-** 
+**HTML/CSS-** 
 
 Learning HTML (Hypertext Markup Language) and CSS (Cascading Style Sheets) is essential for anyone interested in web development, design, or even individuals who want to create and maintain their own websites. Here are several reasons why learning HTML and CSS is valuable:
 
@@ -191,10 +188,7 @@ This boilerplate HTML code is like the skeleton of a webpage:
 ```
 
 
-Note to Instructor - ON Auto Save
-
-
-
+Note to Instructor - ON Auto Save in VS code
 
 
 * <!DOCTYPE html>: It's like saying, "Hey, we're starting an HTML page!" ( actually HTML5 which is the latest version of HTML )
@@ -208,7 +202,7 @@ Note to Instructor - ON Auto Save
 Meta tags in HTML are used to provide metadata about the web page. This data isn't displayed on the page itself but is important for browsers and search engines. 
 They're essentially instructions to the browser and search engines about how to handle and display your page.
 
-Note to Instrctor - If Students ask more about meta tag , We will be talking about it in deatil in upcoming Lectures 
+Note to Instructor - If Students ask more about meta tag , We will be talking about it in deatil in upcoming Lectures 
 
 
 * <title>Document</title>: This is your page's title. You'll see it in the browser tab.
@@ -271,6 +265,22 @@ accessories or features of a car. Just as a car can have features like a sunroof
 
 Discuss the src and alt tags ( alternate to image )
 Either break the url or disable images with extension to show the alt tags
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Document</title>
+ </head>
+ <body>
+       <!-- images are self closing tags -->
+       <img src="https://img.freepik.com/free-photo/shallow-focus-vertical-shot-cute-golden-retriever-puppy-sitting-grass-ground_181624-27259.jpg?size=626&ext=jpg&ga=GA1.1.1448711260.1707177600&semt=sph" alt="cute dog image"/>
+       <a href="http://www.google.com" target="_blank">take me to google</a>
+ </body>
+</html>
+```
 
 Write comments and discuss comment tags
 
@@ -428,11 +438,6 @@ Imagine a book with no headings, index, markings, chapters, just text all the wa
 
 
 if you have a book with intro, bibliography, index, chapters, then it makes it more usable and readable
-
-<!-- Post read
-Semantic tags in HTML provide meaning to the structure of web pages, helping browsers, search engines, and assistive technologies understand the content better. 
-
-They were needed to improve web accessibility and search engine optimization, -->
 
 Semantic tags gives a way of moving away from generic tags like <div> and <span> which don't convey specific meanings.
 

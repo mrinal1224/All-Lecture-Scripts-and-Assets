@@ -180,6 +180,176 @@ Button elements are used to create clickable elements that can trigger actions w
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/116/original/upload_e873e3ecb310330c64503dafcf33ad53.png?1695109456)
 
 
+## Semantic tags
+Imagine a book with no headings, index, markings, chapters, just text all the way through Will it be easy to read? Nope!
+
+
+if you have a book with intro, bibliography, index, chapters, then it makes it more usable and readable
+
+Semantic tags gives a way of moving away from generic tags like <div> and <span> which don't convey specific meanings.
+
+Explain with this Diagram how Semantic tags makes the Layout more meaningful
+
+<img src='https://static.semrush.com/blog/uploads/media/cc/85/cc85d452a743e27f68d426df35e4da7d/EN-Semantic-Search-Non-Semantic.webp'/>
+
+
+Semantic tags were introduced with HTML5.
+
+Create a new semantic.html file and copy the assets folder for portfolio , show the Demo and then start with writing basic Semantic HTML code
+
+
+## Section Tag - A better alternate to Divs
+Sections are used to structure the content of a web page into logical parts, such as chapters, articles, or different sections of a document.
+
+
+#### Code: 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic HTML</title>
+</head>
+<body>
+    <section>
+        <h2>Section Title</h2>
+        <p>This is a section of content.</p>
+    </section>
+</body>
+</html>
+```
+## Tags and buttons
+
+## Header tags
+
+Header tags are used to structure the hierarchy of content on a webpage, with `<h1>` typically being the main title and `<h2>`, `<h3>`, and so on used for subsections. They help improve the accessibility and readability of content.
+    
+#### Code:
+
+```html
+<h1>Main Heading</h1>
+<h2>Subheading</h2>
+<h3>Sub-subheading</h3>
+```
+
+#### Output
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/113/original/upload_0666ce092529c955114832a23824d462.png?1695109287)
+
+
+#### Output
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/114/original/upload_a280807eb2f3df89d88691096051f0eb.png?1695109351)
+
+
+
+
+## Create the Structure of the Portfolio
+
+
+#### Code:
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <header>
+        <div >
+            <nav>
+                <div>
+                    <div>
+                        <img src="./assets/scaler-academy logo 2.png" width="50px" alt="logo">
+                    </div>
+                    <div>
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Projects</a>
+                        <a href="#">Blog</a></li>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div >
+            <div>
+                <img src="./assets/mrinal.jpg" alt="Profile">
+            </div>
+            <div>
+                <h6>Mrinal Bhattacharya</h6>
+                <h1>I'm a Frontend<br> <span>Developer</span></h1>
+                <p>Description</p>
+                <div>
+                    <button>DOWNLOAD RESUME</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+     <section>
+        <div>
+            <div>
+                <img src="./assets/mrinal_profile.jpg" height="400px" alt="profile pic">
+            </div>
+            <div>
+                <h1>About <span>Me</span></h1>
+                <h3>Hello! I'm Mrinal Bhattacharya</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque adipisci distinctio obcaecati aliquid,
+                    quia tempora quis optio repudiandae officia earum?
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                </p>
+                <div>
+                    <a href="#"><img src="./assets/linkedIn.png" width="40px"></a>
+                    <a href="#"><img src="./assets/github logo.png" width="40px"></a>
+                    <a href="#"><img src="./assets/leet logo.png" width="40px"></a>
+                    <a href="#"><img src="./assets/twitter logo.png" width="40px"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div>
+            <h1>My Projects</h1>
+            <p>I mostly work with HTML ,CSS ,JavaScript , React and Node</p>
+            <div>
+                <div>
+                    <img src="./assets/calculator png.png">
+                    <h2>Calculator</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, debitis?</p>
+                </div>
+                <div >
+                    <img src="./assets/cart png.png">
+                    <h2>Shopping Cart</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, debitis?</p>
+                </div>
+                <div>
+                    <img src="./assets/to do list.png">
+                    <h2>To do List</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, debitis?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
+```
+
+
+
+
+
+
+
+
+
 
 
 # Further Reading
