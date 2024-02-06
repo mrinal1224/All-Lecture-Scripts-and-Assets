@@ -56,21 +56,11 @@ Now as we know the rules , Let's See how we can use CSS in Diffrent Ways
 
 
 
-> Ask about the various ways of using CSS
-They are: 
-1. Inline
-2. Internal
-3. External
+
 
 
 These are the things that we will discuss. Now, let us see them one by one.
 
----
-title: Adding CSS to an element
-description: Adding CSS to an element
-duration: 300
-card_type: cue_card
----
 
 - Create a basic HTML file and add a heading **h1** inside the body tag entitled: "Heading 1" and open it in a browser to show how it looks.
 - Now, let us see how to add CSS to this element.
@@ -98,6 +88,14 @@ description: Various ways of using CSS
 duration: 300
 card_type: cue_card
 ---
+
+
+> Ask about the various ways of using CSS
+They are: 
+1. Inline
+2. Internal
+3. External
+
 # Using CSS in three different ways:
 
 
