@@ -42,11 +42,7 @@ The CSS `display` property defines how an element should be displayed on the web
 
 Understanding the `display` property is essential for creating flexible and responsive designs.
 
-### CSS Positioning:
 
-#### What is CSS Positioning?
-
-CSS Positioning refers to the techniques used to control the placement of HTML elements on a webpage. It allows precise positioning relative to their normal flow within the document.
 #### 4. Different CSS Units:
    - **Absolute Units:**
      - `px` (pixels)

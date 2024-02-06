@@ -24,31 +24,32 @@ d. Universal selector
 
 ---
 
-**Question 3: CSS Units**
+---
 
-What does the 'em' unit in CSS represent?
+Question 3: In CSS, which positioning property is used to place an element relative to its normal position?
 
-a. Pixels  
-b. Percentage of the viewport width  
-c. Font-size of the element's parent  
-d. Centimeters  
+A) static
+B) relative
+C) absolute
+D) fixed
 
-**Correct Answer: c) Font-size of the element's parent**
+Correct Answer: B) relative
 
 ---
 
-**Question 4: CSS Units**
+Question 4: What is the default value for the position property in CSS?
 
-Which CSS unit is commonly used for responsive design and is based on the viewport size?
+A) static
+B) relative
+C) absolute
+D) fixed
 
-a. px (pixels)  
-b. vw (viewport width)  
-c. % (percentage)  
-d. em (em units)  
-
-**Correct Answer: b) vw (viewport width)**
+Correct Answer: A) static
 
 ---
+
+
+
 
 **Question 5: CSS Cascading and Specificity**
 

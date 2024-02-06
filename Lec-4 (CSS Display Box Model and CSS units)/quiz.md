@@ -18,27 +18,30 @@ D) spacing
 
 Correct Answer: B) padding
 
----
+**Question 3: CSS Units**
 
-Question 3: In CSS, which positioning property is used to place an element relative to its normal position?
+What does the 'em' unit in CSS represent?
 
-A) static
-B) relative
-C) absolute
-D) fixed
+a. Pixels  
+b. Percentage of the viewport width  
+c. Font-size of the element's parent  
+d. Centimeters  
 
-Correct Answer: B) relative
-
----
-
-Question 4: What is the default value for the position property in CSS?
-
-A) static
-B) relative
-C) absolute
-D) fixed
-
-Correct Answer: A) static
+**Correct Answer: c) Font-size of the element's parent**
 
 ---
+
+**Question 4: CSS Units**
+
+Which CSS unit is commonly used for responsive design and is based on the viewport size?
+
+a. px (pixels)  
+b. vw (viewport width)  
+c. % (percentage)  
+d. em (em units)  
+
+**Correct Answer: b) vw (viewport width)**
+
+---
+
 
