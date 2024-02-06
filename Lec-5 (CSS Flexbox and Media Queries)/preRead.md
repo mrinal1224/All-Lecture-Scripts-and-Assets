@@ -37,24 +37,6 @@ Media Queries enable the adaptation of styles for different devices and conditio
 
 Media Queries are crucial for creating a consistent user experience across different devices. They help your website look good and function well on everything from large desktop monitors to small mobile screens.
 
-## Resources for Further Exploration
 
-To deepen your understanding and gain practical experience, here are some resources you can explore:
-
-### CSS Flexbox:
-
-1. **MDN Web Docs - Flexbox Guide:**
-   - [Flexbox - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
-
-2. **CSS-Tricks - A Complete Guide to Flexbox:**
-   - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-
-### Media Queries:
-
-1. **MDN Web Docs - Media Queries:**
-   - [Using media queries - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
-
-2. **CSS-Tricks - Introduction to CSS Media Queries:**
-   - [Introduction to CSS Media Queries](https://css-tricks.com/a-complete-guide-to-css-media-queries/)
 
 By familiarizing yourself with these concepts and resources, you'll be well-prepared for our upcoming class on CSS Flexbox and Media Queries. Get ready to take your web development skills to the next level!

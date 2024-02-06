@@ -840,6 +840,32 @@ Give **sticky** position value to box 3 and fix it at the top of the scrollable 
 Now if we scroll the page, the box3 will behave normally will it touches the top and them it becomes fixed to the top of the page.
 
 
+## Cascading and Specificity Resources
+
+- **Resources:**
+     - [MDN Web Docs - Cascade and Inheritance](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade)
+     - [CSS Tricks - Understanding CSS Cascade](https://css-tricks.com/what-you-should-know-about-css-cascade/)
+
+- **Resources:**
+     - [MDN Web Docs - Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
+     - [CSS Tricks - Specifics on CSS Specificity](https://css-tricks.com/specifics-on-css-specificity/)
+
+
+## Inheritance Resources
+
+- **Resources:**
+     - [CSS Inheritance, The Cascade And Global Scope: Your New Old Worst Best Friends](https://www.smashingmagazine.com/2016/11/css-inheritance-cascade-global-scope-new-old-worst-best-friends/)
+
+## CSS Positioning Resources
+
+1. [MDN Web Docs: CSS Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+
+
+
+
+
+
+
 
 
 

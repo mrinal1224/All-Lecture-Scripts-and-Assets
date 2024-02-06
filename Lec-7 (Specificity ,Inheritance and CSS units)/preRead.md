@@ -3,15 +3,11 @@
 #### 1. Cascading:
    - **Definition:**
      Cascading refers to the process by which multiple style sheets are applied to a document, and conflicts are resolved when multiple styles target the same element.
-
+    
    - **Key Concepts:**
      - **Importance of Order:** Styles are applied based on their order of appearance.
      - **Specificity:** Styles with higher specificity take precedence.
      - **!important:** The `!important` declaration gives a style the highest priority.
-
-   - **Resources:**
-     - [MDN Web Docs - Cascade and Inheritance](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade)
-     - [CSS Tricks - Understanding CSS Cascade](https://css-tricks.com/what-you-should-know-about-css-cascade/)
 
 #### 2. CSS Specificity:
    - **Definition:**
@@ -26,10 +22,6 @@
    - **Calculating Specificity:**
      - Count the number of each type of selector in a rule.
 
-   - **Resources:**
-     - [MDN Web Docs - Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
-     - [CSS Tricks - Specifics on CSS Specificity](https://css-tricks.com/specifics-on-css-specificity/)
-
 #### 3. Inheritance:
    - **Definition:**
      Inheritance is the mechanism by which styles are applied not only to a specified element but also to its descendants.
@@ -37,11 +29,8 @@
    - **Inherited Properties:**
      Some properties are inherited by default, like font styles and colors.
 
-   - **Resources:**
-     - [MDN Web Docs - Inheritance](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance)
-     - [CSS Inheritance, The Cascade And Global Scope: Your New Old Worst Best Friends](https://www.smashingmagazine.com/2016/11/css-inheritance-cascade-global-scope-new-old-worst-best-friends/)
-
-    #### Positioning Properties:
+   
+#### Positioning Properties:
 
 1. **Static:** Default positioning, elements are placed according to the normal flow of the document.
 
@@ -56,11 +45,6 @@
 #### Practical Use of Positioning:
 
 Understanding positioning is crucial for creating complex layouts, implementing responsive designs, and achieving precise control over element placement on a webpage.
-
-2. [MDN Web Docs: CSS Display Property](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
-3. [MDN Web Docs: CSS Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
-
-
 
 - **Interactive Practice:**
   - [freeCodeCamp - Responsive Web Design Certification](https://www.freecodecamp.org/)

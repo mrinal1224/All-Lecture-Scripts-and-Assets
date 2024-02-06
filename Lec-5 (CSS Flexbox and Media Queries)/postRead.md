@@ -446,5 +446,31 @@ Media queries are part of CSS (Cascading Style Sheets) and allow you to apply st
 This HTML document includes a basic structure with a title, meta tags for viewport settings, and a styled body. The body styles are defined in the embedded CSS, which includes media queries for different screen widths. The background colors are added to make it visually evident when the media queries are applied. Feel free to customize the content and styles according to your preferences and requirements.
 
 
+## Resources for Further Exploration
+
+To deepen your understanding and gain practical experience, here are some resources you can explore:
+
+### CSS Flexbox:
+
+1. **MDN Web Docs - Flexbox Guide:**
+   - [Flexbox - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
+
+2. **CSS-Tricks - A Complete Guide to Flexbox:**
+   - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
+3. [Flexbox Froggy](https://flexboxfroggy.com/): While focused on Flexbox, it's a great resource to reinforce general layout concepts.
+
+### Media Queries:
+
+1. **MDN Web Docs - Media Queries:**
+   - [Using media queries - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+
+2. **CSS-Tricks - Introduction to CSS Media Queries:**
+   - [Introduction to CSS Media Queries](https://css-tricks.com/a-complete-guide-to-css-media-queries/)
+
+
+
+
+
 
 
