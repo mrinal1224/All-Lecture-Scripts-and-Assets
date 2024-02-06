@@ -809,34 +809,37 @@ In this, we have achieved the layout that we wanted to achieve.
 
 ## Combining Fixed and Flexible Sizes 
 
-Mixing Fixed and Auto: You can mix fixed widths with auto to create grids where some columns have a specific size, and others adjust based on content size. 
 
+1.  Mixing Fixed and Auto: You can mix fixed widths with auto to create grids where some columns have a specific size, and others adjust based on content size. For example
+    
 
-For example
+```
 grid-template-columns: 100px auto 200px;
-
+```
 
 This sets up a grid with three columns where the first is 100px wide, the second adjusts automatically, and the third is 200px wide.
-Using fr Unit for Flexible Columns: The fr unit represents a fraction of the available space in the grid container. It's great for creating flexible grids where columns take up a portion of the space. 
+    
+4.  Using fr Unit for Flexible Columns: The fr unit represents a fraction of the available space in the grid container. It's great for creating flexible grids where columns take up a portion of the space. 
 
 For example:
+    
+```
 grid-template-columns: 1fr 2fr 1fr;
 
-
+```
 This creates a three-column grid where the middle column is twice as wide as the side columns.
-
-Advanced Patterns with repeat()
+    
+### Advanced Patterns with repeat()
 Combining repeat() with Fixed and Flexible Sizes: You can use repeat() alongside fixed sizes and the fr unit. For instance:
-
-grid-template-columns: repeat(2, 1fr) 100px;
-
+    
+  ```grid-template-columns: repeat(2, 1fr) 100px;
+  ```
 This creates a grid with three columns: two flexible columns (each taking up an equal fraction of the available space) and a third 100px wide column.
-
-Creating Complex Grids: You can create more complex patterns by repeating a set of column sizes. 
-
-For example:
-grid-template-columns: repeat(3, 1fr 2fr);
-
+    
+Creating Complex Grids: You can create more complex patterns by repeating a set of column sizes. For example:
+    
+  ```grid-template-columns: repeat(3, 1fr 2fr);
+  ```
 This repeats the pattern 1fr 2fr three times, resulting in a six-column grid with alternating column sizes.
 
 
