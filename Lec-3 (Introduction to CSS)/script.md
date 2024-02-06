@@ -227,6 +227,9 @@ In this analogy:
 - The color-coded badges are like class properties.
 
 
+<!-- Extend this example with ID -->
+
+
 ### Now let's look at what is the purpose of id Selector
 
 In CSS (Cascading Style Sheets), an ID selector is used to select and style a specific HTML element based on its unique identifier. The syntax for an ID selector is to use the "#" symbol followed by the unique ID of the HTML element.
@@ -285,6 +288,8 @@ Just as you use the library book card to identify and handle a specific book, yo
 
 
 ## Descendent selectors
+
+<!-- Add to Post Reads -->
 
 In CSS, the descendant selector is represented by a space (` `) and is used to select all instances of a particular element that are descendants of another specified element. The real-life analogy for the descendant selector can be likened to a family tree, where you want to select all the descendants of a particular ancestor.
 
@@ -422,27 +427,7 @@ div > h1 > span{
 ```
 - It means that you are directing to apply CSS to the span element that is directly children to the **h1**.
 
-Let's see another type of selector which is the Classes
 
-## Classes
-
-- It is a very important part when you are learning CSS.
-- Classes are defined as separate entities of similar elements.
-- For real real-life example, if you are in class 10, then all the students there should be in class 10 only.
-- Similarly, in CSS, similar elements having the same behavior are separated in a specific class as shown below code:
-
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/050/037/original/upload_130e57374ed680b30734deba9ee0b2c7.png?1695311313)
-
-
-- We use dot (.) to select a class and apply CSS to them. Here the name of the class is test so we will apply CSS to this class as below:
-
-```HTML=
-.test{
-    color: blue;
-}
-```
-This will be applied to both the elements of the class namely the **test**.
 
 > Discuss a question having two different classes namely **class1** and **class2** and apply CSS on them to make one class **blue** and one class **red**.
 - Solution:
