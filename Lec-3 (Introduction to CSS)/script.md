@@ -576,18 +576,6 @@ color : rgba(255, 165, 100, 0.50);
 
 Now, let us see the 4th method of CSS Colors.
 
-# 4. HSC 
-- It stands for **Hue**, **Saturation**, and **Lightness**.
-
-## Example
-```HTML=
-h2{
-    color : hsl(100%, 15%, 25%)
-}
-```
-- In this, we define these three properties in percentage.
-
-
 
 # Final Question of the session
 
