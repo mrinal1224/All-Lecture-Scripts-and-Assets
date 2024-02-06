@@ -19,7 +19,22 @@ Greet the Learners and talk about the curriculum
 
 Explain in brief about each and every module
 
-**HTML/CSS-**
+
+
+`
+Note to Instructor - 
+
+Students can have Flowing Questions like 
+
+Which Design Patterns we are going to cover , What we will learn in Backend Module When we will learn node React etc
+
+Just answer We will be covering whatever is required for the Module and students will be provided with all the resources as we move forward if they need extra Resources
+`
+
+
+
+
+ **HTML/CSS-** 
 
 Learning HTML (Hypertext Markup Language) and CSS (Cascading Style Sheets) is essential for anyone interested in web development, design, or even individuals who want to create and maintain their own websites. Here are several reasons why learning HTML and CSS is valuable:
 
@@ -44,18 +59,14 @@ Web Development you cannot do without JavaScript!!!
    - **Full-Stack Development:** With the advent of technologies like Node.js, JavaScript is no longer limited to the browser. It can be used for server-side development, enabling full-stack development with a single language.
 
 
-   About React and Node We will talk about when we reach there!
-
-
-
-
+About React and Node We will talk about when we reach there!
 
 
 Start with the Actual Class
 
 ---
 title: Introduction
-description:
+description: How Web Works
 duration: 900
 card_type: cue_card
 ---
@@ -92,11 +103,11 @@ Here's an analogy to help clarify the roles involved: Imagine you own a dairy fa
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/111/original/upload_9cef5b39282b29f01216e706282bbb64.png?1695109075)
 
 
-In the context of websites, the operations team can be likened to the **DNS (Domain Name System)** system. The DNS system acts like an operations team, taking in requests and translating them into specific IP addresses. Think of DNS as a phonebook for the internet. When you enter a domain name like "scaler.com," the DNS system translates it to an IP address that points to a particular server.
+In the context of websites, the operations team can be linked to the **DNS (Domain Name System)** system. The DNS system acts like an operations team, taking in requests and translating them into specific IP addresses. Think of DNS as a phonebook for the internet. When you enter a domain name like "scaler.com," the DNS system translates it to an IP address that points to a particular server.
 
 However, it's important to note that the server itself is not where the data comes from. Instead, it's comparable to the dairy farm in our analogy—it's responsible for assembling and providing the products. In our website world, the actual data resides in a **database**. This database is akin to a **warehouse** for the dairy farm. All the products are stored there, ready to be accessed when needed.
 
-When a request is made, the server applies specific protocols and data logic to retrieve the necessary information from the database. This process is what ensures that we receive the correct data as a response to our request.
+When a request is made to the server , it follows specific set of rules (protocols) and data logic is used to retrieve the necessary information from the database. This process is what ensures that we receive the correct data as a response to our request.
 
 Bringing it all together, the customers in our dairy farm analogy represent clients or users of the website. The operations team corresponds to the DNS system, efficiently directing requests. The dairy farm itself serves as the server, assembling and providing the desired information. And finally, the warehouse embodies the database, housing all the necessary data for the website.
 
@@ -106,7 +117,7 @@ In the grand scheme of things, even though we might simply see a website's inter
 
 
 ---
-title: Introduction to HTML
+title: Installation and Introduction to HTML
 description:
 duration: 900
 card_type: cue_card
@@ -124,7 +135,7 @@ Lets say you have a construction company and given a task to create a shopping m
 Wireframes in web development are basic blueprints for a website or application
 Wireframes are used to plan the functionality and user experience
 They are essential for planning the user interface and interaction flow, serving as a guide for developers and designers in the early stages of a project.
-Figma is one such tool to create wireframe, Adobe XD
+Figma is one such tool to create wireframe, Adobe XD  , (This is done majorly by UX team)
 
 What is the next step after blueprint of the mall is ready 
 Create the structure, brick mortar structure , Build the Foundation etc
@@ -142,7 +153,7 @@ After the mall looks ready, we need to add some functionality like escalators, l
 Similarly JS is what we introduce in our web application when we want interactivity like success message when button is clicked, hiding or showing a section, changing fonts , colors dynamically on user interaction
 
 
-Stat now with Installing and IDE (VScode)
+Start now with Installing and IDE (VScode)
 
 Integrated development environment
 
@@ -154,8 +165,6 @@ Integrated development environment
 * Download VS code (https://code.visualstudio.com/)
 
 Open a folder - Give a Batch Name
-
-
 
 
 
@@ -182,6 +191,12 @@ This boilerplate HTML code is like the skeleton of a webpage:
 ```
 
 
+Note to Instructor - ON Auto Save
+
+
+
+
+
 * <!DOCTYPE html>: It's like saying, "Hey, we're starting an HTML page!" ( actually HTML5 which is the latest version of HTML )
 
 * <html lang="en">: This is the main container of your page, and lang="en" means it's in English.
@@ -193,17 +208,14 @@ This boilerplate HTML code is like the skeleton of a webpage:
 Meta tags in HTML are used to provide metadata about the web page. This data isn't displayed on the page itself but is important for browsers and search engines. 
 They're essentially instructions to the browser and search engines about how to handle and display your page.
 
+Note to Instrctor - If Students ask more about meta tag , We will be talking about it in deatil in upcoming Lectures 
 
-* <meta charset="UTF-8">: This makes sure your page can understand a wide range of characters from different languages.
-When you're coding, you might use characters that are specific to certain languages, like accents in French or characters in Chinese. 
-The UTF-8 character set includes a huge array of these characters from different languages. Without specifying UTF-8, your browser might not correctly interpret and display these characters, leading to garbled text or question marks on your webpage.
-
-
-* <meta name="viewport"...: This helps your page look good on phones and tablets.
 
 * <title>Document</title>: This is your page's title. You'll see it in the browser tab.
 
 * <body>: This is where all the content you see on the webpage goes, like text and images.
+
+
 
 
 * Running the file
@@ -218,32 +230,63 @@ HTML is designed to be case-insensitive for its tags, meaning it doesn't matter 
 Whether you write <head>, <HEAD>, or <HeAd>, it will be interpreted the same way by the browser. This is part of the HTML specification to make the language more forgiving and easier to use, especially for beginners. 
 However, it's considered good practice to stick to lowercase for consistency and readability.
 
-## Tags
+---
+title: HTML Tags
+description:
+duration: 900
+card_type: cue_card
+---
+
+## Overview and Demo of HTML Tags
 
 
-Talk about how all that we see are tags . angle brackets
+`Talk about how all that we see are tags . angle brackets
 Headings - h1 to h6
 Open any website  - zomato and discuss fonts
 Paragraph tags - for writing some descriptive content
 Lorem - emmet abbreviations
-wikipedia or zomato content
+wikipedia or zomato content`
 
-HTML tags like 'p' and h1>-h6 give meaning to the text, making it easier for both people and computers ( screen readers ) to understand the structure and importance of the content
+<!-- Put h1-h6 code example -->
+
+1. HTML tags like 'p' and h1>-h6 give meaning to the text, making it easier for both people and computers ( screen readers ) to understand the structure and importance of the content
+
+```html
+       <h1>heading 1</h1>
+       <h2>heading 1</h2>
+       <h3>heading 2 or 3</h3>
+       <h3>checking thus</h3>
+       <h5>comparing this</h5>
+
+```
 
 Its like in shopping mall, you will see big banners of brand from outside, but outside the shop in the mall, the banner size will be small. The products also have name but again the size of the text is small
 
-Img tags - self enclosing tag
+2. Img tags - self enclosing tag
 It has additional information which describes the img which are called as attributes
 This is like adding adjectives to nouns in a sentence. Just like adjectives give more detail or characteristics to a noun, attributes provide additional information about an HTML tag.
 accessories or features of a car. Just as a car can have features like a sunroof, a specific color, or a navigation system, HTML tags can have attributes that add extra features or details.
+
+<!-- Img code Examples -->
 
 Discuss the src and alt tags ( alternate to image )
 Either break the url or disable images with extension to show the alt tags
 
 Write comments and discuss comment tags
 
+3. Buttons
+Button elements are used to create clickable elements that can trigger actions when clicked, such as submitting a form or triggering JavaScript functions.
 
-## Anchor tags
+#### Code:
+```html
+<button type = "button"> BUTTON </button>
+```
+#### Output
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/116/original/upload_e873e3ecb310330c64503dafcf33ad53.png?1695109456)
+
+
+
+4. Anchor tags
 <a> tags, commonly known as anchor tags, are used in HTML to create hyperlinks
 Ask class what are hyperlinks
 
@@ -265,8 +308,19 @@ Anchor tags are used to link to other web pages or resources, both within the sa
 
 ```
 
+---
+title: Strcuture code with Div 
+description:
+duration: 900
+card_type: cue_card
+---
+
 ## Structure your code
 #### Div
+
+Note - Create a New file div.html and explain div in that file
+
+
 Div elements are often used to structure and style sections of a web page, making it easier to apply CSS styles or JavaScript functionality to specific groups of content.
 
 #### Code:
@@ -291,12 +345,18 @@ Div elements are often used to structure and style sections of a web page, makin
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/112/original/upload_b1f0471a9f3040bdd40eb364e9101835.png?1695109208)
 
-## Explain Divs
+## Using Div to Wrap Content
+
+
+
+
 Think of <div> tags as a way to divide the page into different areas, making it easier to design and manage the layout.
 In your house, you have different rooms
 <div> tags in HTML are like invisible boxes that help organize and group content on a webpage.
 like a header, footer, some content area, buttons area
 Let us divide our code into different divisions
+
+Note - In index.html file Wrap diffrent section in a div
 
 ```html
 <!DOCTYPE html>
@@ -334,17 +394,32 @@ Let us divide our code into different divisions
 </html>
 ```
 
+---
+title: Setting up Github Account 
+description:
+duration: 900
+card_type: cue_card
+---
+
+
 ## Github account
 Signup and create a account if not done
 GitHub is like a big online library for computer code.
 Imagine every project as a book in this library. People from
 all over the world can store their code projects here, make changes, and work together. It keeps track of all the changes, so you can always see who changed what and when. It's a place where coders collaborate and share their work, making it easier to create and improve software.
-Create a new repository - coolest_batch_25Jan
+Create a new repository for the batch where you will share code and provide the link to the Learners
 
 * Note for Instructor- 
 You dont have to teach anything about git or github here
 Just make sure learners create an accout and they can access the code you write and share during the class
 make this a habit that after every section you push your code to a repo that learners can access and you have to maintain it througout the Batch Timeline
+
+---
+title: Semantic Tags 
+description:
+duration: 900
+card_type: cue_card
+---
 
 
 
@@ -353,18 +428,27 @@ Imagine a book with no headings, index, markings, chapters, just text all the wa
 
 
 if you have a book with intro, bibliography, index, chapters, then it makes it more usable and readable
+
+<!-- Post read
 Semantic tags in HTML provide meaning to the structure of web pages, helping browsers, search engines, and assistive technologies understand the content better. 
 
-They were needed to improve web accessibility and search engine optimization, moving away from generic tags like <div> and <span> which don't convey specific meanings.
+They were needed to improve web accessibility and search engine optimization, -->
 
-https://www.semrush.com/blog/semantic-html5-guide/
+Semantic tags gives a way of moving away from generic tags like <div> and <span> which don't convey specific meanings.
+
+Explain with this Diagram how Semantic tags makes the Layout more meaningful
+
+<img src='https://static.semrush.com/blog/uploads/media/cc/85/cc85d452a743e27f68d426df35e4da7d/EN-Semantic-Search-Non-Semantic.webp'/>
+
+
 Semantic tags were introduced with HTML5.
 
 Create a new semantic.html file and copy the assets folder for portfolio , show the Demo and then start with writing basic Semantic HTML code
 
 
-## Section Tag - An alternate to Divs
+## Section Tag - A better alternate to Divs
 Sections are used to structure the content of a web page into logical parts, such as chapters, articles, or different sections of a document.
+
 
 #### Code: 
 ```html
@@ -377,7 +461,6 @@ Sections are used to structure the content of a web page into logical parts, suc
     <section>
         <h2>Section Title</h2>
         <p>This is a section of content.</p>
-        
     </section>
 </body>
 </html>
@@ -406,15 +489,6 @@ Header tags are used to structure the hierarchy of content on a webpage, with `<
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/114/original/upload_a280807eb2f3df89d88691096051f0eb.png?1695109351)
 
 
-#### Buttons
-Button elements are used to create clickable elements that can trigger actions when clicked, such as submitting a form or triggering JavaScript functions.
-
-#### Code:
-```html
-<button type = "button"> BUTTON </button>
-```
-#### Output
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/116/original/upload_e873e3ecb310330c64503dafcf33ad53.png?1695109456)
 
 
 ## Create the Structure of the Portfolio

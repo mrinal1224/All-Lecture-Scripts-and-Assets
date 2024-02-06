@@ -1,6 +1,5 @@
 # Class Notes- Web Fundamentals and Intro to HTML
 
-
 ## Introduction
 
 When we think about accessing a website, there's more happening behind the scenes than meets the eye. The URL, or Uniform Resource Locator, is what we usually type into the address bar to access a web page. However, the URL represents much more than just a web address. It's a pathway to the actual resource we're trying to access on the internet.
@@ -41,13 +40,31 @@ In the grand scheme of things, even though we might simply see a website's inter
   <head>
     <meta charset = "utf - 8">
     <meta name = "viewport" content = "width = device - width, initial - scale = 1">
-    <title>Bootstrap demo</title>
+    <title>HTML demo</title>
   </head>
   <body>
     <h1>Hello, world ! </h1>
   </body>
 </html>
 ```
+* <!DOCTYPE html>: It's like saying, "Hey, we're starting an HTML page!" ( actually HTML5 which is the latest version of HTML )
+
+
+* <html lang="en">: This is the main container of your page, and lang="en" means it's in English.
+
+* <title>Document</title>: This is your page's title. You'll see it in the browser tab.
+
+* Inside <html>, there are two parts:
+<head>: Think of it as the brain of your page. Its not visible but contains imp info
+
+* <body>: This is where all the content you see on the webpage goes, like text and images.
+
+* <meta charset="UTF-8">: This makes sure your page can understand a wide range of characters from different languages.
+When you're coding, you might use characters that are specific to certain languages, like accents in French or characters in Chinese. 
+The UTF-8 character set includes a huge array of these characters from different languages. Without specifying UTF-8, your browser might not correctly interpret and display these characters, leading to garbled text or question marks on your webpage.
+
+
+* <meta name="viewport"...: This helps your page look good on phones and tablets.
 
 ### Structure your code
 #### Div
