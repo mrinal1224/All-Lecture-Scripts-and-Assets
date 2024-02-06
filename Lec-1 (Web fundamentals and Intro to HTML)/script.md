@@ -132,7 +132,7 @@ Bringing it all together, the customers in our dairy farm analogy represent clie
 In the grand scheme of things, even though we might simply see a website's interface through our browser, there's a complex interplay of components behind every web page that ensures we get the right information at the right time.
 
 ---
-title: Quiz 1
+title: DNS Quiz
 description: Quiz 1
 duration: 90
 card_type: quiz_card
@@ -145,6 +145,22 @@ What does DNS stand for?
 - [ ] Digital Network Security
 - [ ] Dynamic Naming Service
 - [ ]  Data Network System
+
+---
+title: Client Server Quiz
+description: Quiz 2
+duration: 90
+card_type: quiz_card
+---
+# Question
+Explain the difference between a client and a server in the context of the web.
+# Choices
+
+- [x] A client requests services, and a server provides services.
+- [ ] A server requests services, and a client provides services
+- [ ] Both the client and server provide services simultaneously
+- [ ]  Clients and servers have the same roles; the terms are interchangeable
+
 
 
 ---
@@ -441,7 +457,25 @@ Note - In index.html file Wrap diffrent section in a div
 </html>
 ```
 
+
 ---
+title: HTML Tag Quiz 3
+description: Quiz 3
+duration: 90
+card_type: quiz_card
+---
+# Question
+What is the purpose of the "a" tag in HTML?
+# Choices
+
+- [ ] Display an image
+- [x] Create a hyperlink
+- [ ] Define a table
+- [ ] Add a video
+---
+
+
+
 title: Setting up Github Account 
 description:
 duration: 900
