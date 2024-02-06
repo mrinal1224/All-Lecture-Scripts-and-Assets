@@ -17,7 +17,18 @@ card_type: cue_card
 
 So, lets start!
 
+
+
 We have already discussed in the previous class a breif overview of css , now lets see how to use CSS and Rules to Use CSS.
+
+---
+title:CSS Rules
+description: Brief overview of CSS Rules 
+duration: 300
+card_type: cue_card
+---
+
+## CSS Rules
 
 CSS is a rule-based language — you define the rules by specifying groups of styles that should be applied to particular elements or groups of elements on your web page.
 
@@ -40,6 +51,9 @@ In the above example, the CSS rule opens with a [selector](https://developer.moz
 - This example contains two declarations, one for `color` and the other for `font-size`. Each pair specifies a property of the element(s) we are selecting ([h1](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) in this case), then a value that we’d like to give the property.
 
 Now as we know the rules , Let's See how we can use CSS in Diffrent Ways
+
+
+
 
 
 > Ask about the various ways of using CSS
