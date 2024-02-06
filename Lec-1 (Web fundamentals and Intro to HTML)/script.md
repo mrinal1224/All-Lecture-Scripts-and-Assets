@@ -22,7 +22,7 @@ Explain in brief about each and every module
 
 
 `
-Note to Instructor - 
+* Note to Instructor - 
 
 Students can have Flowing Questions like 
 
