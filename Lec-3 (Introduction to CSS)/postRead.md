@@ -828,5 +828,140 @@ The general sibling selector (`~`) selects all elements that are siblings of a s
 Feel free to use these examples as standalone HTML files to understand and experiment with each advanced CSS selector.
 
 
+So, let us start with the session.
+
+
+So, in the previous lecture, we left the background color in CSS.
+- It works the same as the color.
+- You can add CSS code for background color as :
+```HTML=
+h1{
+    background-color : blue;
+}
+```
+
+## **Example**:
+
+
+Here you will select the class namely "background" and apply CSS to them. It will be reflected to all the **h1s** inside that div tag.
+
+> `color` is used to change the text color but `background-color` is used to change the color area behind that text.
+
+- You can also use an image as the text background. To do this, you need to provide the image URL in the CSS as shown below:
+```HTML=
+h1{
+    background-image : url(" url_of_that_specific_image.jpg ");
+}
+```
+
+You can set the background size as:
+```HTML=
+h1{
+    background-image : url(" url_of_that_specific_image.jpg ");
+    background-size : 400px;
+}
+```
+- In the CSS background property, when it finds any empty space, it starts to repeat its element. You can use the property `background : no-repeat;` to avoid it. 
+- -You can customize the repetition of the BG image using the X and Y axis. 
+
+- You can customize various aspects of the font such as size, look, and many dynamics of it. Let us see them one by one.
+
+Then we will apply CSS to the fonts. First, let us see font family.
+
+## Font family
+- The different types of font available in the CSS are termed as font family.
+- The font-family property can hold several font names as a "**fallback**" system. If the browser does not support the first font, it tries the next font.
+- Font family are like "times", "courier", "arial". If you want to use a single font from this, you can just remove the other font styles from the font family.
+- Syntax:
+```HTML=
+.heading_1{
+    font-family: your_desired_font
+}
+```
+
+## Font weight
+- This font property is used to decide the intensity of the font.
+- It's value ranges from lightest **100px** to boldest **800px**.
+- Syntax:
+
+```HTML=
+font-weight: 800px;
+```
+
+## Font size
+- It refers to the size of the text.
+- Syntax:
+```HTML=
+font-size: xx-larger;
+```
+```HTML=
+font-size: 50%;
+```
+
+- There is also a font-style that you can choose to customize your font like bold, italic, etc.
+
+## Google font
+- If you are not unable to get the font requirement from the above font properties, then you can use the Google font option.
+- You just need to go to the Google search and search "**google font**". Refer website: `https://fonts.google.com/`.
+- Here you can find and choose the font. Click over the font and you will get a lot of options to customize that font.
+- Click on "**select font_style**" and select the link there.
+
+- Now copy the font family from the Google font website and you can use it in the CSS.
+- Since you have imported the Google fonts using API till now. Now you can just copy the font family from Google font and paste it at the font family section in the link of the head tag.
+
+- Font and text can be seen as similar but they are not.
+- Font focus on the look and styling but Text is the internal working of your text such as spacing, line width, etc.
+
+
+First, let us see the text alignment property
+
+## Text Alignment
+- It is used to make the alignment of your text like from the left, from the right, or in the center.
+- Syntax:
+
+```HTML=
+.heading_1{
+    text-align : left;
+}
+
+```
+
+## Text Decoration
+- It is used to make your text attractive using some properties.
+- These are oval-line, line-through, underline, etc.
+- Syntax:
+
+```HTML=
+.heading_1{
+    text-decoration : oval-line;
+}
+```
+
+## Word Spacing
+- It defines how many spaces are there between any two consecutive words.
+- It is defined using the pixel values.
+- Syntax:
+
+```HTML=
+.heading_1{
+    text-decoration : oval-line;
+    word-spacing : 100px;
+}
+```
+## Line Height
+- It defines the height between two consecutive lines.
+- Syntax:
+
+```HTML=
+.heading_1{
+    text-decoration : oval-line;
+    word-spacing : 100px;
+    line-height : 100px;
+}
+```
+These are all text and font properties.
+
+
+
 
 

@@ -7,11 +7,12 @@ card_type: cue_card
 ---
 
 The topics we are going to cover in today's session are:
-- Previous lecture recap with left topics
-- CSS Fonts
+
 - Box Model
 - Display Property in CSS
-- CSS positioning
+- Overflow in CSS
+- CSS Units
+
 
 So, let us start with the session.
 
