@@ -1,11 +1,28 @@
 # Class 1 - Web Fundamentals and Intro to HTML
 
 ---
+title: Agenda
+description:
+duration: 900
+card_type: cue_card
+---
+
+# Agenda:
+- How Web works
+- Basic HTML Tags
+- Semantic tags
+
+
+So, lets start!
+
+
+---
 title: Curriculum Overview
 description:
 duration: 900
 card_type: cue_card
 ---
+
 
 
 Greet the Learners and talk about the curriculum
