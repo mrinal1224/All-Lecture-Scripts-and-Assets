@@ -828,10 +828,10 @@ The general sibling selector (`~`) selects all elements that are siblings of a s
 Feel free to use these examples as standalone HTML files to understand and experiment with each advanced CSS selector.
 
 
-So, let us start with the session.
+## Background , Fonts and Texts
 
 
-So, in the previous lecture, we left the background color in CSS.
+**Background Color**
 - It works the same as the color.
 - You can add CSS code for background color as :
 ```HTML=
