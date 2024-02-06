@@ -26,7 +26,7 @@ d. Universal selector
 
 ---
 
-Question 3: In CSS, which positioning property is used to place an element relative to its normal position?
+**Question 3: In CSS, which positioning property is used to place an element relative to its normal position?**
 
 A) static
 B) relative
@@ -37,7 +37,7 @@ Correct Answer: B) relative
 
 ---
 
-Question 4: What is the default value for the position property in CSS?
+**Question 4: What is the default value for the position property in CSS?**
 
 A) static
 B) relative
@@ -47,8 +47,6 @@ D) fixed
 Correct Answer: A) static
 
 ---
-
-
 
 
 **Question 5: CSS Cascading and Specificity**
