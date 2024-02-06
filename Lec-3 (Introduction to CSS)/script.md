@@ -92,35 +92,16 @@ card_type: cue_card
 
 > Ask about the various ways of using CSS
 They are: 
-1. Inline
+1. External
 2. Internal
-3. External
+3. Inline
 
 # Using CSS in three different ways:
 
 
+<!-- Take h1 h2 h3 and apply  -->
 
-
-## 1. Internal CSS 
-- When you write CSS in the same HTML file. (using the style tag)
-
-<!-- 
-Add Examples of Internal CSS -->
-
-
-## 2. Inline CSS
-- It is writing CSS for a particular element. (using style attribute.) 
-
-### Example
-```
-<h2 style = "color: red;"> I am heading 2 </h2>
-```
-- Here we are providing the CSS to that specific element "h2" only, known as Inline CSS. Always try to add a style tag inside the **head tag**.
-
-
-> Ask students about the difference between **style attribute** and **style tag**.
-
-## 3. External CSS
+## 1. External CSS
 - You can create a separate file for CSS having the extension "**.css**".
 - Here you do not need to use any HTML tag. You can directly write your CSS and properties.
 
@@ -140,6 +121,32 @@ To reflect these CSS into your HTML file, you need to link that CSS file to the 
 - You can add the file location in the **href** to add the CSS file if it is at some other location in your system.
 
 > These are the three ways that can be used to apply CSS to your HTML file. Now we will discuss the ways of selecting a particular element.
+
+
+
+## 2. Internal CSS 
+- When you write CSS in the same HTML file. (using the style tag)
+
+<!-- 
+Add Examples of Internal CSS -->
+
+
+## 3. Inline CSS
+- It is writing CSS for a particular element. (using style attribute.) 
+
+### Example
+```
+<h2 style = "color: red;"> I am heading 2 </h2>
+```
+- Here we are providing the CSS to that specific element "h2" only, known as Inline CSS. Always try to add a style tag inside the **head tag**.
+
+
+> Ask students about the difference between **style attribute** and **style tag**.
+
+
+<!-- Add Precedence -->
+
+<!-- Show DevTools show all the elements and show the precedence (create a diffrent file also Introduce User Agent Stylesheet) -->
 
 
 ---
