@@ -6,7 +6,6 @@ title: Agenda
 description:
 duration: 900
 card_type: cue_card
-
 ---
 
 # Agenda:
@@ -17,12 +16,10 @@ card_type: cue_card
 - HTML Tables
 
 ---
-
 title: List
 description:
 duration: 900
 card_type: cue_card
-
 ---
 
 ## List
@@ -158,7 +155,7 @@ Which HTML tag is used to create an ordered list?
 - [ ] \<li>
 - [x] \<ol>
 - [ ] \<dl>
----
+
 
 ---
 
@@ -166,7 +163,6 @@ title: Tables in HTML
 description:
 duration: 900
 card_type: cue_card
-
 ---
 
 ## Tables in HTML
