@@ -12,7 +12,7 @@ card_type: cue_card
 # Agenda:
 
 - HTML List
-- Diffrent Types of Lists
+- Different Types of Lists
 - HTML Forms and its Attributes
 - HTML Tables
 
@@ -308,7 +308,10 @@ Just like any other forms are used to collect information, in context of HTML it
       <input type="email" />
 
       <label>Phone</label>
-      <input type="number" maxlength="10" />
+      <input type="number"  />
+
+      <!-- If you want to restrict the number to a certain digit use pattern -->
+      <input type="text" name="phoneNumber" pattern="\d{10}" maxlength="10" title="Enter a 10-digit phone number">
 
       <label>age</label>
       <input type="number" min="1" max="100" />
@@ -362,6 +365,6 @@ Which HTML tag is used to create a drop-down list in a form?
 ---
 
 
-* Note to Instructor - Ast the Learners to now create a form in their portfolio that from the previous class
+* Note to Instructor - Ask the Learners to now create a form in their portfolio  from the previous class
 
 Take Doubts and End the Session
