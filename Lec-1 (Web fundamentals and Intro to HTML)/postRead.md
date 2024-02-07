@@ -47,19 +47,19 @@ In the grand scheme of things, even though we might simply see a website's inter
   </body>
 </html>
 ```
-* <!DOCTYPE html>: It's like saying, "Hey, we're starting an HTML page!" ( actually HTML5 which is the latest version of HTML )
+* `<!DOCTYPE html>`: It's like saying, "Hey, we're starting an HTML page!" ( actually HTML5 which is the latest version of HTML )
 
 
-* <html lang="en">: This is the main container of your page, and lang="en" means it's in English.
+* `<html lang="en">`: This is the main container of your page, and lang="en" means it's in English.
 
-* <title>Document</title>: This is your page's title. You'll see it in the browser tab.
+* `<title>Document</title>`: This is your page's title. You'll see it in the browser tab.
 
-* Inside <html>, there are two parts:
-<head>: Think of it as the brain of your page. Its not visible but contains imp info
+* Inside `<html>`, there are two parts:
+`<head>`: Think of it as the brain of your page.
 
-* <body>: This is where all the content you see on the webpage goes, like text and images.
+* `<body>`: This is where all the content you see on the webpage goes, like text and images.
 
-* <meta charset="UTF-8">: This makes sure your page can understand a wide range of characters from different languages.
+* `<meta charset="UTF-8">`: This makes sure your page can understand a wide range of characters from different languages.
 When you're coding, you might use characters that are specific to certain languages, like accents in French or characters in Chinese. 
 The UTF-8 character set includes a huge array of these characters from different languages. Without specifying UTF-8, your browser might not correctly interpret and display these characters, leading to garbled text or question marks on your webpage.
 

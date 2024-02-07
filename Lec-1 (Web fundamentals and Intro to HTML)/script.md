@@ -41,8 +41,6 @@ Greet the Learners and talk about the curriculum
 Explain in brief about each and every module
 
 
-
-`
 * Note to Instructor - 
 
 Students can have Flowing Questions like 
@@ -50,7 +48,7 @@ Students can have Flowing Questions like
 Which Design Patterns we are going to cover , What we will learn in Backend Module When we will learn node React etc
 
 Just answer We will be covering whatever is required for the Module and students will be provided with all the resources as we move forward if they need extra Resources
-`
+
 
 **HTML/CSS-** 
 
@@ -109,7 +107,7 @@ To break it down, when we enter a URL, the full form of URL comes into play: **U
 A **server**, in this context, isn't a physical location but rather a program running somewhere in the world. This program generates the website content for us. It's important to note that a server is not a database. Rather, it's a responsive entity that resides somewhere in the vast expanse of the digital world. Imagine it as a helpful entity that receives your request and promptly serves you the requested information.
 
 ---
-title: Dairy Farm Analogy
+title: Analogy to explain Client server Working
 description:
 duration: 900
 card_type: cue_card
@@ -241,26 +239,24 @@ This boilerplate HTML code is like the skeleton of a webpage:
 Note to Instructor - ON Auto Save in VS code
 
 
-* <!DOCTYPE html>: It's like saying, "Hey, we're starting an HTML page!" ( actually HTML5 which is the latest version of HTML )
+* `<!DOCTYPE html>`: It's like saying, "Hey, we're starting an HTML page!" ( actually HTML5 which is the latest version of HTML )
 
-* <html lang="en">: This is the main container of your page, and lang="en" means it's in English.
+* `<html lang="en">`: This is the main container of your page, and lang="en" means it's in English.
 
-* Inside <html>, there are two parts:
-<head>: Think of it as the brain of your page. Its not visible but contains imp info
+* Inside `<html>`, there are two parts:
 
-* Meta tags - 
+`<head>`: Think of it as the brain of your page. 
+
+* `Meta tags` - 
 Meta tags in HTML are used to provide metadata about the web page. This data isn't displayed on the page itself but is important for browsers and search engines. 
 They're essentially instructions to the browser and search engines about how to handle and display your page.
 
 Note to Instructor - If Students ask more about meta tag , We will be talking about it in deatil in upcoming Lectures 
 
 
-* <title>Document</title>: This is your page's title. You'll see it in the browser tab.
+* `<title>Document</title>`: This is your page's title. You'll see it in the browser tab.
 
-* <body>: This is where all the content you see on the webpage goes, like text and images.
-
-
-
+* `<body>`: This is where all the content you see on the webpage goes, like text and images.
 
 * Running the file
 
@@ -309,7 +305,7 @@ wikipedia or zomato content`
 
 Its like in shopping mall, you will see big banners of brand from outside, but outside the shop in the mall, the banner size will be small. The products also have name but again the size of the text is small
 
-2. Img tags - self enclosing tag
+2. `Img tag` - self enclosing tag
 It has additional information which describes the img which are called as attributes
 This is like adding adjectives to nouns in a sentence. Just like adjectives give more detail or characteristics to a noun, attributes provide additional information about an HTML tag.
 accessories or features of a car. Just as a car can have features like a sunroof, a specific color, or a navigation system, HTML tags can have attributes that add extra features or details.
@@ -337,7 +333,8 @@ Either break the url or disable images with extension to show the alt tags
 
 Write comments and discuss comment tags
 
-3. Buttons
+3. `Buttons`
+
 Button elements are used to create clickable elements that can trigger actions when clicked, such as submitting a form or triggering JavaScript functions.
 
 #### Code:
@@ -349,8 +346,8 @@ Button elements are used to create clickable elements that can trigger actions w
 
 
 
-4. Anchor tags
-<a> tags, commonly known as anchor tags, are used in HTML to create hyperlinks
+4. Anchor tag
+`<a>` tag, commonly known as anchor tag, is used in HTML to create hyperlinks
 Ask class what are hyperlinks
 
 Anchor tags are used to link to other web pages or resources, both within the same website or externally to other websites.
@@ -413,9 +410,9 @@ Div elements are often used to structure and style sections of a web page, makin
 
 
 
-Think of <div> tags as a way to divide the page into different areas, making it easier to design and manage the layout.
+Think of `<div>` tags as a way to divide the page into different areas, making it easier to design and manage the layout.
 In your house, you have different rooms
-<div> tags in HTML are like invisible boxes that help organize and group content on a webpage.
+`<div>` tags in HTML are like invisible boxes that help organize and group content on a webpage.
 like a header, footer, some content area, buttons area
 Let us divide our code into different divisions
 

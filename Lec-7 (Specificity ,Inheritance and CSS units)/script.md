@@ -1,19 +1,21 @@
-# Class-7 CSS Cascading, Specificity, Inheritance and Units
+# Class-7 CSS Cascading, Specificity, Inheritance and Positioning
 
 ---
-title: CSS Cascading, Specificity, Units and Overflow
+title: Agenda
 description:
 duration: 220
 card_type: cue_card
 ---
 
-### Introduction
+The topics we are going to cover in today's session are:
 
-Before starting with the topic, let us understand the simple definition of *Priority and Specific*. These two words create a concept in CSS that is known as Specificity.
+- Cascading in CSS and how it works
+- Specificity in CSS
+- Inheritance
+- Positioning in CSS
 
-**Priority:** Suppose three tasks are to be done. All the tasks can be arranged based on the task that has to be done first. The task with the highest priority will be on the top.
 
-**Specific:** Suppose you are diagnosed with fever then the doctor prescribes you with some medicines that are *particular* to the disease i.e., fever. 
+
 
 ---
 title: What is Cascading in CSS?
@@ -24,7 +26,7 @@ card_type: cue_card
 
 ### What is Cascading in CSS?
 
-Before Directly Jumpinhg to Cascading Explain about User agent Stylesheets
+Before Directly Jumping to Cascading Explain about User agent Stylesheets
 
 #### User Agent Style Sheet
 
@@ -61,73 +63,27 @@ Here's a brief example of how user agent styles might be applied to an HTML docu
 
 In this example, if no custom styles are applied, the browser will use its user agent stylesheet to render the HTML elements with default styles. Developers can then use CSS to override these defaults and style the content according to their preferences.
 
-**Real-life Analogy: The Clothing Hierarchy**
 
-Now As we understood about user agent Stylesheet now let's move on and understand Cascading , i.e now you want to apply styles from your side how are they applied let's find out
 
-Imagine you're getting dressed in the morning, and you have several layers of clothing to choose from: Thermal wear, a shirt, a sweater, and a jacket. Each layer represents a different level of specificity or importance.
+## Cascading Nature of CSS - A Summary
 
-Now, let's relate this to CSS cascading:
 
-1. **Thermal Wear (Base Styles):**
-   - These are your basic styles that apply to everything. It's the foundation, just like your thermal wear is the base layer of clothing.
+1. In layman's terms, the "cascading" in CSS can be likened to a waterfall flowing down a series of steps. Just as water flows from the top and cascades down, styles in CSS are applied from the top of the stylesheet to the bottom, with later styles flowing down and potentially overriding earlier ones.
 
-```css
-body {
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-```
 
-Here, we've set the default font family and text color for the entire webpage. This is like applying base styles to your CSS body element
+2. Top-Down Application: Styles in CSS are applied in the order they are written in the stylesheet. This means a rule written at the bottom of your CSS file will be applied after all the rules written above it.
 
-2. **Shirt (Type Selectors):**
-   - The shirt is a specific layer that covers more than the thermal wear but less than the sweater and jacket. Similarly, type selectors in CSS apply to specific HTML tags.
 
-```css
-h1 {
-  color: #ff0000; /* Red color for all h1 headings */
-}
-```
+3. Inheritance: Some styles naturally cascade from parent elements to their children. For example, if you set the font-family on the body element, this style will be inherited by all the text inside the body, unless there's a more specific rule applied to the text.
 
-Here, we've specified a red color for all `h1` headings on the page.
+4. Specificity: When two styles conflict, the one with greater specificity takes precedence. Specificity is determined by the type of selector used (like tag, class, ID, or inline style), with each having a different level of "weight" or influence.
 
-3. **Sweater (Class Selectors):**
-   - The sweater is a more specific layer than the shirt. In CSS, class selectors target specific elements with a particular class.
+5. Last Rule Wins: If two rules have the same level of specificity, the last one written in the CSS file takes precedence. This is like the water at the bottom of the waterfall being the most recent to fall, and it's what determines the final outcome.
+Understanding these principles helps you predict how styles will be applied and how to effectively structure your stylesheets. It's the cascading nature of CSS that gives it both its power and its elegance.
 
-```css
-.sweater {
-  font-weight: bold;
-}
-```
 
-Now, any element with the class "sweater" will have bold text.
 
-4. **Jacket (ID Selectors):**
-   - The jacket is even more specific and unique. Similarly, ID selectors in CSS are very specific and should be used sparingly.
 
-```css
-#special-heading {
-  font-size: 24px;
-}
-```
-
-Here, the element with the ID "special-heading" will have a font size of 24 pixels.
-
-5. **Accessories (Inline Styles):**
-   - Sometimes, you might want to override everything and apply a style directly. This is like adding accessories to your outfit, which have the most immediate and direct impact.
-
-```html
-<p style="color: green;">This paragraph is styled with an inline style.</p>
-```
-
-Here, the text color of this paragraph is directly set to green.
-
-So, in the cascade, styles can be inherited from the base  or overridden by more specific styles (shirt, sweater, jacket). Inline styles (accessories) take precedence over everything.
-
-So this is How Cascading in CSS works , thats why it's called Cascading Stylesheet (in an order) and based on this there is one concpet that is Specificity 
-
-Let's Explore Specificity
 
 ---
 title: Specificity
@@ -136,6 +92,7 @@ duration: 930
 card_type: cue_card
 ---
 
+Let's Explore Specificity
 ### Specificity
 
 To understand specificity let's take a real life Example.
