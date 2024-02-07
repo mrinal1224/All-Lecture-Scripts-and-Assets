@@ -355,8 +355,8 @@ card_type: quiz_card
 Which HTML tag is used to create a drop-down list in a form?
 # Choices
 
-- []  \<input type="dropdown">
-- [x]  \<select>
+- [ ] \<input type="dropdown">
+- [x] \<select>
 - [ ] \<list>
 - [ ] \<dropdown>
 ---
