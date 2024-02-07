@@ -260,7 +260,6 @@ title: html forms
 description:
 duration: 900
 card_type: cue_card
-
 ---
 
 ## HTML Forms
