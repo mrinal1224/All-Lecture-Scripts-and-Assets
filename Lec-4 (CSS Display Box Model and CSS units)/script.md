@@ -78,7 +78,7 @@ What does the CSS Box Model consist of?
 - [x] Margin, Padding, Content, Border
 - [ ] Margin, Padding, Text, Border
 - [ ] Border, Content, Float, Padding
-- [ ]Margin, Float, Width, Padding
+- [ ] Margin, Float, Width, Padding
 
 ---
 title: Applying Margin Padding and Borders
