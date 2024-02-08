@@ -46,12 +46,8 @@ Understanding the `display` property is essential for creating flexible and resp
 #### 4. Different CSS Units:
    - **Absolute Units:**
      - `px` (pixels)
-     - `pt` (points)
-     - `in` (inches)
-     - `cm` (centimeters)
 
    - **Relative Units:**
-     - `em` (relative to the font-size of the element)
      - `rem` (relative to the font-size of the root element)
      - `%` (percentage of the parent element)
      - `vw` (viewport width)

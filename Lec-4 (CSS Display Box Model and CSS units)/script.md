@@ -24,6 +24,7 @@ description: What is Box model and display
 duration: 1500
 card_type: cue_card
 ---
+
 - Anything that we create in HTML and CSS takes the form of a box.
 - You can check this by inspecting.
 - Go to any website that we have created till now, select an html element paragraph and right click, then click on **inspect**. Here you see the boxing of your content in the right panel.
@@ -31,7 +32,7 @@ card_type: cue_card
 
 Always remember to add height and width to your box otherwise, it will not be visible. Make the box as shown below.
 
-<img src='https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_c6f46019f262ac291bb99831fae59f66.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1707391679&Signature=qLz0NILeuZo9NcfxII8byD7LysI%3D'/>
+<img src='./Box_Model_Image2.png'/>
 
 
 You can customize the size of the box by changing the height and width values.
@@ -62,6 +63,23 @@ Imagine you have a gift box, and you want to decorate it. The box has the actual
 
 This example demonstrates how the CSS Box Model works with a real-life analogy of a gift box.
 
+
+---
+title: Quiz 1
+description: Quiz 1
+duration: 90
+card_type: quiz_card
+---
+
+# Question
+What does the CSS Box Model consist of?
+# Choices
+
+- [x] Margin, Padding, Content, Border
+- [ ] Margin, Padding, Text, Border
+- [ ] Border, Content, Float, Padding
+- [ ]Margin, Float, Width, Padding
+
 ---
 title: Applying Margin Padding and Borders
 description: 
@@ -72,7 +90,7 @@ card_type: cue_card
 ## Applying Margins, Padding and Border 
 - First, let us create three containers:
 
-<img src='https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_ac4cffd6470dd5c36f8b284c0efc9af9.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1707391726&Signature=8aOz77z5y%2BQRHrCmUh4i4H4wFjw%3D'>
+<img src='./Box_Model_3.png'>
 
 - The CSS that we apply in the containers will be applied to all the containers because they all have the same name.
 - When you apply margin 20px, it gets reflected in the element from all sides.
@@ -138,8 +156,8 @@ You can also apply this radius to a specific side of the border for example : ``
 
 
 ---
-title: Quiz 1
-description: Quiz 1
+title: Quiz 2
+description: Quiz 2
 duration: 90
 card_type: quiz_card
 ---
@@ -308,14 +326,14 @@ card_type: cue_card
 First, let us create a file as shown below to understand the working of the Display property:
 
 
-<img src='https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_f01d4db7e2d7f62ee143bb49cd4db626.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1707392452&Signature=C6m3FwSa6dHnjfX2o%2FJ7no9uc28%3D'/>
+<img src='./Display_1.png'/>
 
 
 When you see the output you can see that the border is taking the whole area of paragraphs. But it should be on the paragraph **p1** only.
 
 Now, let us add a span tag to the file as shown below:
 
-<img src='https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_d84e36f2c57a038005ca90c77c4a67e1.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1707392519&Signature=5leJmxEE%2Ft0wCR3YRlqB%2Bj2q14k%3D'>
+<img src='./Display_2.png'>
 
 
 When you run this file, You can see that these **span tags** are not acting as a paragraph. This means that there are no borders applied to it.
