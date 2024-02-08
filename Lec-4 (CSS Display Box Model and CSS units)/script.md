@@ -31,17 +31,13 @@ card_type: cue_card
 
 Always remember to add height and width to your box otherwise, it will not be visible. Make the box as shown below.
 
-![](https://hackmd.io/_uploads/SkQYFU2a2.png)
+<img src='https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_c6f46019f262ac291bb99831fae59f66.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1707391679&Signature=qLz0NILeuZo9NcfxII8byD7LysI%3D'/>
 
 
 You can customize the size of the box by changing the height and width values.
 
 
-
-> Take a real-life example of creating a township including steps like making land cut, house placing, etc. to discuss the box concept. And introduce `margin padding and border` one by one.
-
-
-**2nd Real-life analogy: A Gift Box**
+**Real-life analogy: A Gift Box**
 let's use a real-life analogy to understand the CSS Box Model by comparing it to a physical box.
 
 Imagine you have a gift box, and you want to decorate it. The box has the actual gift inside, which is like the content of an HTML element. Now, let's break down the components of the CSS Box Model using this analogy:
@@ -62,55 +58,21 @@ Imagine you have a gift box, and you want to decorate it. The box has the actual
    - **Real-life analogy:** The space outside the gift box. It's the distance between this box and other elements or boxes around it.
    - **CSS analogy:** Margin is the space outside the border. It creates distance between the element and other elements on the page.
 
-Now, let's translate this analogy into a simple HTML and CSS example:
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* Style for the gift box (element) */
-    .gift-box {
-      width: 200px; /* Content width + padding + border */
-      padding: 20px; /* Empty space inside the box */
-      border: 2px solid #333; /* Border around the box */
-      margin: 30px; /* Space outside the box */
-    }
 
-    /* Style for the actual gift (content) */
-    .gift {
-      background-color: #ffd700; /* Yellow color for the gift */
-      height: 100px; /* Height of the content */
-    }
-  </style>
-</head>
-<body>
+This example demonstrates how the CSS Box Model works with a real-life analogy of a gift box.
 
-  <!-- The gift box (element) -->
-  <div class="gift-box">
-    <!-- The actual gift (content) -->
-    <div class="gift"></div>
-  </div>
-
-</body>
-</html>
-```
-
-Explanation:
-
-- The `.gift-box` class represents the box element, setting its width, padding, border, and margin.
-- The `.gift` class represents the content (the actual gift) inside the box, setting its background color and height.
-
-This example demonstrates how the CSS Box Model works with a real-life analogy of a gift box. Adjust the values and observe how the content, padding, border, and margin affect the overall layout.
+---
+title: Applying Margin Padding and Borders
+description: 
+duration: 1500
+card_type: cue_card
+---
 
 ## Applying Margins, Padding and Border 
 - First, let us create three containers:
 
-[IMAGE_6 START SAMPLE]
-![](https://hackmd.io/_uploads/BkXsY836h.png)
-[IMAGE_6 FINISH SAMPLE]
+<img src='https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_ac4cffd6470dd5c36f8b284c0efc9af9.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1707391726&Signature=8aOz77z5y%2BQRHrCmUh4i4H4wFjw%3D'>
 
 - The CSS that we apply in the containers will be applied to all the containers because they all have the same name.
 - When you apply margin 20px, it gets reflected in the element from all sides.
@@ -145,7 +107,7 @@ Coming to margins,
 
 
 ## Border
-- Border is defined as that extra space that you can create around your HTML elements.
+- Border is defined as that extra layer that you can create around your HTML elements.
 - There are many types of borders such as **solid**, **dashed**, **dotted**, etc. that you need to define in the syntax to see it.
 - Syntax:
 
@@ -197,6 +159,13 @@ What is the order of values when passing all four values in the margin?
 - It will have two dimensions that are Height and Width. 
 - And these boxes have three properties that are **Margin**. **Padding**, and **Border**.
 
+---
+title: Box Sizing
+description: 
+duration: 1500
+card_type: cue_card
+---
+
 
 ## BOX Sizing (content-box and border-box)
 
@@ -234,6 +203,13 @@ Example Code:
 ```
 
 In summary, `box-sizing` influences how the size of an element is calculated. Content-Box calculates size based on the content, adding padding and border on top. Border-Box calculates size including content, padding, and border within the specified width and height.
+
+---
+title: CSS Overflow
+description: 
+duration: 1500
+card_type: cue_card
+---
 
 
 ### CSS Overflow
@@ -332,17 +308,14 @@ card_type: cue_card
 First, let us create a file as shown below to understand the working of the Display property:
 
 
-![](https://hackmd.io/_uploads/H1pRtL2T3.png)
-
-
-> Note: Rem is also a unit to define pixels. It converts the pixel into 10 times. For example **5rem** is **50px**.
+<img src='https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_f01d4db7e2d7f62ee143bb49cd4db626.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1707392452&Signature=C6m3FwSa6dHnjfX2o%2FJ7no9uc28%3D'/>
 
 
 When you see the output you can see that the border is taking the whole area of paragraphs. But it should be on the paragraph **p1** only.
 
 Now, let us add a span tag to the file as shown below:
 
-![](https://hackmd.io/_uploads/Bk8TjInTh.png)
+<img src='https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_d84e36f2c57a038005ca90c77c4a67e1.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1707392519&Signature=5leJmxEE%2Ft0wCR3YRlqB%2Bj2q14k%3D'>
 
 
 When you run this file, You can see that these **span tags** are not acting as a paragraph. This means that there are no borders applied to it.
@@ -388,7 +361,7 @@ This makes your element an **inline-block**. That's the work of the Display prop
 
 ## How Margins and Padding work for Inline Elements
 
-In CSS, both margin and padding are properties used to control the spacing around elements. However, the way they work for inline elements can be a bit different compared to block-level elements. Let's break down the concepts and provide a real-life analogy.
+In CSS, both margin and padding are properties used to control the spacing around elements. However, the way they work for inline elements can be a bit different compared to block-level elements.
 
 **Margin:**
 - **Definition:** Margin is the space outside the border of an element. It creates space between the element's border and surrounding elements.
@@ -476,45 +449,16 @@ Adjust the values and observe how the spacing changes in the rendered output.
       background-color: lightcoral;
     }
 
-    /* EM */
-    body {
-      font-size: 16px;
-    }
-
-    .em-example {
-      margin: 1em; /* Equivalent to 16px in this case */
-      background-color: lightsalmon;
-    }
 
     /* REM */
-    html {
-      font-size: 16px;
-    }
 
     .rem-example {
       margin: 1rem; /* Always equivalent to 16px */
       background-color: lightgoldenrodyellow;
     }
 
-    /* Ch */
-    .ch-example {
-      width: 20ch; /* Approximately 20 times the width of '0' character */
-      background-color: lightblue;
-    }
 
-    /* Ex */
-    .ex-example {
-      line-height: 2ex; /* Twice the height of 'x' character */
-      background-color: lightpink;
-    }
-
-    /* Viewport Percentage Width/Height (vmin, vmax) */
-    .vmin-vmax-example {
-      width: 50vmin;
-      height: 70vmax;
-      background-color: lightseagreen;
-    }
-  </style>
+ </style>
 </head>
 <body>
 
@@ -524,15 +468,10 @@ Adjust the values and observe how the spacing changes in the rendered output.
 
   <div class="viewport-example">Viewport Example</div>
 
-  <div class="em-example">EM Example</div>
 
   <div class="rem-example">REM Example</div>
 
-  <div class="ch-example">Ch Example</div>
-
-  <div class="ex-example">Ex Example</div>
-
-  <div class="vmin-vmax-example">Vmin/Vmax Example</div>
+  Vmax Example</div>
 
 </body>
 </html>
@@ -543,6 +482,14 @@ Open this HTML file in a web browser to see the different examples of CSS units 
 With each unit Example you use these Definitions- 
 
 1. **Pixels (px):**
+- Pixels are like the tiny dots on your screen. When you use pixels, you're saying exactly how many dots something should be tall or wide.
+
+
+- Example: font-size: 16px; makes the text size equivalent to 16 dots high.
+
+
+- Use Case: Pixels are great for when you want precise control, like for a border width or a button size.
+
    - The `px` unit is fixed and does not change with the size of the viewport or user settings.
    - Useful for creating fixed layouts.
    - Example:
@@ -558,15 +505,94 @@ With each unit Example you use these Definitions-
 2. **Percentage (%):**
    - The `%` unit is relative to the size of the containing element.
    - Useful for creating fluid layouts that adapt to different screen sizes.
-   - Example:
 
-    ```css
-    div {
-      width: 50%;
-      padding: 5%;
-      font-size: 120%;
-    }
-    ```
+   - Keep in mind that percentages for padding and margin are calculated based on the width of the containing block, not the element itself.
+
+   - Percentages for font sizes are relative to the font size of the parent element.
+
+   - Percentages are relative to something else. For example, if you set a width in percentage, it's a percentage of the width of the parent element.
+
+
+   - Example: width: 50%; means the element will take up half the width of its parent.
+
+
+   - Use Case: Percentages are useful for responsive design, where you want elements to change size based on the screen or parent element.
+
+
+   - Code - add a div in the file
+
+```html
+<body>
+   <div class="px-example">Pixel Example</div>
+   <div class="container">
+     <div class="sidebar">Sidebar</div>
+     <div class="main-content">Main Content</div>
+   </div>
+ </body>
+```
+
+Add styles
+
+```css
+.container {
+       display: flex;
+       width: 100%; /* Full width of the parent/container */
+     }
+
+
+     .sidebar {
+       width: 25%; /* Takes up 25% of the container's width */
+       background-color: lightcoral;
+     }
+
+
+     .main-content {
+       width: 75%; /* Takes up the remaining 75% of the container's width */
+       background-color: lightgreen;
+     }
+```
+- When using percentages in CSS, the base value for the calculation depends on the property being set ( discuss on ipad ) .
+
+
+- Font Size:
+When you set the font size in percent, it's based on the font size of the element's parent.
+- Example: If the parent element has a font size of 16px, and you set a child element's font size to 150%, the child's font size will be 150% of 16px, which is 24px.
+
+
+- Padding and Margin:
+For padding and margin set in percent, the calculation is based on the width of the containing block (the parent element), regardless of whether you're setting vertical or horizontal padding/margin.
+
+
+Example: If a div has a width of 500px, setting padding: 10%; will result in a padding of 50px on all sides, because 10% of 500px is 50px.
+
+
+Generally we prefer to give fixed values because it might not be very intuitive otherwise
+
+
+Try giving padding and margin for sidebar in percent and see that it takes container’s width as base value even though we have width defined for it
+
+   
+```css 
+     .container {
+       display: flex;
+       width: 400px; /* Full width of the parent/container */
+     }
+
+
+     .sidebar {
+       width: 25%; /* Takes up 25% of the container's width */
+       background-color: lightcoral;
+       padding:10%;
+       margin:10%;
+     }
+```
+
+Width and Height:
+
+- Width and height percentages are relative to the dimensions of the parent element.
+
+- Example: If a parent element is 600px wide, setting a child element's width to 50% will make it 300px wide.
+
 
 3. **Viewport Width (vw) and Viewport Height (vh):**
    - `vw` is a percentage of the viewport width, and `vh` is a percentage of the viewport height.
@@ -580,23 +606,9 @@ With each unit Example you use these Definitions-
     }
     ```
 
-4. **EM:**
-   - The `em` unit is relative to the font-size of the closest parent or the element itself.
-   - Useful for creating scalable and accessible layouts.
-   - Example:
 
-    ```css
-    body {
-      font-size: 16px;
-    }
-
-    div {
-      margin: 1em; /* This is equivalent to 16px in this case */
-    }
-    ```
-
-5. **REM:**
-   - Similar to `em` but relative to the font-size of the root element (usually the `<html>` tag).
+4. **REM:**
+   - relative to the font-size of the root element (usually the `<html>` tag).
    - Useful for maintaining consistent spacing throughout the document.
    - Example:
 
@@ -612,17 +624,7 @@ With each unit Example you use these Definitions-
 
 
 
-6. **Viewport Percentage Width/Height (vmin, vmax):**
-   - `vmin` is the smaller of `vw` and `vh`, while `vmax` is the larger of the two.
-   - Useful for responsive designs based on the smaller or larger viewport dimension.
-   - Example:
 
-    ```css
-    div {
-      width: 50vmin;
-      height: 70vmax;
-    }
-    ```
 
 Remember to choose units based on your specific design requirements and the behavior you want for your web page. Combining different units wisely can lead to more flexible and responsive layouts.
 
