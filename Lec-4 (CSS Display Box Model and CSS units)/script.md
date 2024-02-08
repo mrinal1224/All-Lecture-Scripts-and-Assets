@@ -610,6 +610,11 @@ Width and Height:
 4. **REM:**
    - relative to the font-size of the root element (usually the `<html>` tag).
    - Useful for maintaining consistent spacing throughout the document.
+
+   -  Examples: If the base font size is 16px, font-size: 2rem; would be 32px.
+
+   - Use Case: Rems are great for consistent scaling across your website, as they always refer to a single base size.
+
    - Example:
 
     ```css
