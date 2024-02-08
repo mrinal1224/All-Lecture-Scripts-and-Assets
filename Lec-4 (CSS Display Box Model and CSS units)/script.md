@@ -103,17 +103,20 @@ card_type: cue_card
 }
 ```
 - Likewise, you can apply margin for **bottom**, **left** and **right** side too.
+  That we will see ahead!
 
 Now, let us apply padding.
 
 - If you apply padding to the container, it gets reflected in the **div tag**. You can check by applying padding to the container.
-- So, it should be avoided. Rather it is best practice to **apply padding to the elements** by targeting the element separately in the style tag  as:
+
 
 ```HTML=
-h1{
+.container{
     padding : 20px;
 }
 ```
+
+Show the box model by opening dev tools
 
 Coming to margins,
 - If can apply four values to the margin property as `margin : 10px 20px 30px 40px;` it will be reflected as `margin : top right bottom left`
@@ -132,7 +135,7 @@ Coming to margins,
 ```HTML=
 .container{
     background-color : lightgreen;
-    martin-top : 20px;
+    margin-top : 20px;
     border : 2px solid red;
 }
 ```
@@ -175,11 +178,19 @@ You can also apply this radius to a specific side of the border for example : ``
              margin-bottom: 50px;
              margin-left: 40px;
              margin-right: 50px; */
+
+             /* Case-1 Apply all four Values */
              /* top right bottom left */
              /* margin : 10px 20px 30px 40px;  */
+             
+             /* Case-2 Apply three Values */
+             
+             /* top , left and right , bottom */
 
-               /* top , left and right , bottom */
              /* margin: 10px 20px 30px ; */
+
+              /* Case-3 Apply two Values */
+
              /* top and bottom , left and right */
              margin : 20px 30px;
 
@@ -196,20 +207,15 @@ You can also apply this radius to a specific side of the border for example : ``
 
              border-top-left-radius: 20px ;
              border-bottom-left-radius: 30px;
-        }
 
-        h1 {
-            /* padding: 20px ; */
             padding-top: 20px;
             padding-left: 30px;
             padding-right: 40px;
             padding-bottom: 20px;
 
             padding: 10px 20px 30px 40px;
-
-
-
         }
+
 
 
     </style>
