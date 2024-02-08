@@ -431,7 +431,12 @@ In this example, the inline element (`span` with class "inline-element") will ha
 
 Adjust the values and observe how the spacing changes in the rendered output.
 
-
+---
+title: CSS Units
+description: CSS Units
+duration: 1800
+card_type: cue_card
+---
 
 
 ### CSS Units in Detail
