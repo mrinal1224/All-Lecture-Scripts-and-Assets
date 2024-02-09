@@ -394,118 +394,53 @@ card_type: cue_card
 #### Definition
 As the last names are inherited in a family same way inheritance works in CSS which inherits some property from the parent.
 
-We will be looking at the four properties - **Default, Inherit, Initial and Unset**.
+In CSS, the `inherit` property allows an element to inherit the computed value of a property from its parent element. This means that if a property is set to `inherit` for a specific element, that element will inherit the value of that property from its parent element.
 
-Let's take an example where we create an unordered list and add href to all the list elements:
+Here's an example to illustrate how the `inherit` property works:
 
-```htmlembedded!
-<ul>
-    <li>Default <a href="">Link</a> Color </li>
-    <li>Inherit <a href="">Link</a> Color </li>
-    <li>Initial <a href="">Link</a> Color </li>
-    <li>Unset <a href="">Link</a> Color </li>
-</ul>
-```
-
-First, Let's assign classes to the three properties: Inherit, Initial and Unset.
-
-```htmlembedded!
-<ul>
-    <li>Default <a href="">Link</a> Color </li>
-    <li class = "class-1">Inherit <a href="">Link</a> Color </li>
-    <li class = "class-2">Initial <a href="">Link</a> Color </li>
-    <li class = "class-3">Unset <a href="">Link</a> Color </li>
-</ul>
-```
-
-### Inherit Property
-
-Inherit is defined as the properties inherited from the parent. The properties applied to the parent are inherited by the child. 
-
-For example
-
-```htmlembedded!
-<style>
-    div{
-        color: blue;
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inherit Property Example</title>
+  <style>
+    /* Define a style for the parent element */
+    .parent {
+      color: blue; /* Set text color to blue */
+      font-size: 20px; /* Set font size to 20 pixels */
     }
-</style>
+
+    /* Define a style for the child element */
+    .child {
+      color: inherit; /* Inherit text color from parent */
+      font-size: inherit; /* Inherit font size from parent */
+    }
+  </style>
+</head>
 <body>
-    <div>
-        <h2>
-            Heading
-        </h2>
-    </div>
+  <!-- Parent element -->
+  <div class="parent">
+    <!-- Child element -->
+    <p class="child">This text will inherit color and font size from its parent.</p>
+  </div>
 </body>
+</html>
 ```
 
-The result will be that the heading tag will inherit the colour that is applied to the div element as it is the parent of the h2 tag.
+In this example:
 
-If the parent is not specified then the parent will always be the body tag by default.
-
-To understand it better, let's take "class-1" from our unordered list of inheritance properties and apply `color: inherit` to the anchor tag.
-
-```css!
-body{
-    color: red;
-}
-.class-1 a{
-    color: inherit;
-}
-```
-
-The term inherit means that whatever the colour of the parent tag is **(the default colour of CSS is black in most browsers)**, will be applied to the anchor tag of class: class-1 as well.
-
-### Initial Property
-
-The initial property will always take the default properties.
-
-```css!
-body{
-    color: red;
-}
-.class-1 a{
-    color: inherit;
-}
-.class-2 a{
-    color: initial;
-}
-```
-
-The color of the class-2 anchor tag will take the default color i.e., black.
-
-> There exists properties that cannot be inherited like display, and columns etc., You can check [w3schools](https://https://www.w3schools.com/cssref/css3_pr_columns.php) for more details on the properties.
-
-### Unset property
-
-Unset depends on the inherited value.
-Unset checks if any properties in the body can be inherited will be inherited.
-
-For example:
-
-```css
-body{
-    color: red;
-    display: inline;
-}
-.class-1 a{
-    color: inherit;
-}
-.class-2 a{
-    color: initial;
-}
-.class-3 a{
-    color: unset;
-}
-```
+- The `.parent` class sets the text color to blue and the font size to 20 pixels.
+- The `.child` class uses the `inherit` value for both `color` and `font-size` properties, which means it will inherit these properties from its parent element (`.parent`).
+- So, the text inside the `<p>` element with the class `.child` will appear in blue color and with a font size of 20 pixels, as it inherits these properties from its parent element.
 
 ---
-title: CSS Overflow
+title: CSS Positioning
 description:
-duration: 1260
+duration: 1290
 card_type: cue_card
 ---
-
 
 
 
