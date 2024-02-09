@@ -76,14 +76,16 @@ In this example, if no custom styles are applied, the browser will use its user 
 
 3. Inheritance: Some styles naturally cascade from parent elements to their children. For example, if you set the font-family on the body element, this style will be inherited by all the text inside the body, unless there's a more specific rule applied to the text.
 
-4. Specificity: When two styles conflict, the one with greater specificity takes precedence. Specificity is determined by the type of selector used (like tag, class, ID, or inline style), with each having a different level of "weight" or influence.
 
-5. Last Rule Wins: If two rules have the same level of specificity, the last one written in the CSS file takes precedence. This is like the water at the bottom of the waterfall being the most recent to fall, and it's what determines the final outcome.
+
+4. Last Rule Wins: If two rules have the same level of specificity, the last one written in the CSS file takes precedence. This is like the water at the bottom of the waterfall being the most recent to fall, and it's what determines the final outcome.
 Understanding these principles helps you predict how styles will be applied and how to effectively structure your stylesheets. It's the cascading nature of CSS that gives it both its power and its elegance.
 
+5. Specificity: When two styles conflict, the one with greater specificity takes precedence. Specificity is determined by the type of selector used (like tag, class, ID, or inline style), with each having a different level of "weight" or influence.
 
 
 
+First , let's take up Specificity and explore it in deatail that how diffrent selectors have different weightage
 
 ---
 title: Specificity
@@ -97,47 +99,121 @@ Let's Explore Specificity
 
 To understand specificity let's take a real life Example.
 
-**Real-life analogy: The Hotel Reservation System**
+**Real-life analogy: The Military Decree System**
 
-Imagine you're booking a hotel room, and the hotel has a reservation system that determines who gets which room based on certain criteria. In this analogy:
+- Analogy: Specificity can be compared to a hierarchy or rank in a game or military. Imagine a group of knights, archers, and soldiers. A general's command (an ID in CSS) is followed over a captain's (a class in CSS), and a captain's command is followed over a regular soldier's (an element or tag in CSS). If a soldier is given an order from both a captain and a general, they will follow the general because the general has higher rank or specificity.
 
-- **Inline styles are like VIP guests:** They get the best rooms, and their preferences override everything else.
 
-- **ID selectors are like hotel guests with a loyalty card:** They have a specific level of priority, but not as high as VIPs (inline styles).
 
-- **Class selectors are like regular guests:** They get good rooms but might have to yield to VIPs and loyal guests.
+- Using the same analogy, it happens sometimes that certain individuals or soldiers are chosen to do a covet operations right from the highest authority. These are like inline styling that takes precedence over other styling be it from element, class or id
 
-- **Element selectors are like walk-in guests:** They get the basic rooms, and their preferences are considered last.
+
+
+- But there is a trump card - !important
+For now just understand that this is like a royal decree 
+​​The Royal Edict (!important): At the top is the king or queen's royal edict. When they stamp a decree with the royal seal (!important), it must be followed above all else, no matter what the generals, captains, or soldiers have decided. This is the most powerful and overrides all other orders.
+
+
+- But use it sparingly; just as a kingdom where the ruler makes too many overriding decrees can become chaotic, overusing !important can make your stylesheets difficult to maintain and debug. It's best reserved for special cases where you need to enforce a style that absolutely must take precedence."
+
+
+Final order becomes -> !important > inline styles > id > class > element
 
 
 Now let's understand this in CSS terms- 
 
-**First**: Create an HTML file to understand specificity.
-**Second**: Create an unordered list of let's say "fruits".
+First: Create an HTML file to understand specificity. 
 
-```htmlembedded!
-<body>  
-    <ul>
-        <li>Apple</li>
-        <li>Mango</li>
-        <li>Orange</li>
-    </ul>
-</body>
+Second: Create an unordered list of let's say "fruits".
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Document</title>
+ </head>
+ <body>
+   <ul>
+     <li>Apple</li>
+     <li>Mango</li>
+     <li>Orange</li>
+   </ul>
+ </body>
+</html>
 ```
 
-**Third**: Assign 'id' and 'class' to your unordered list.
 
-```htmlembedded!
-<body>
-    <ul id = "fruits">
-        <li>Apple</li>
-        <li class ="favourite">Mango</li>
-        <li>Orange</li>
-    </ul>
-</body>
+
+```html
+<ul >
+     <li>Apple</li>
+     <li id="fruits" class ="favourite">Mango</li>
+     <li>Orange</li>
+   </ul>
 ```
+
+
+```html
+<title>Document</title>
+   <style>
+     .favourite {
+       color: green;
+     }
+     #fruits {
+       color: red;
+     }
+   </style>
+```
+
+Now the mango turns red because id has more specificity
+Hover over the rule and see the specificity values
+
+
+What if we add an inline style to this item
+
+
+```html
+<li id="fruits" class="favourite" style="color: yellow">Mango</li>
+```
+
+Now the Inline style takes Precedence
+
+
+
+### Calculating specificity
+
+1. Lets change the html a bit and add another ul
+2. Make all li under ul as red
+<style>
+     /* .favourite {
+       color: green;
+     }
+     #fruits {
+       color: red;
+     } */
+     ul li {
+       color: red;
+     }
+   </style>
+ </head>
+ <body>
+   <ul id="fruits">
+     <li>Apple</li>
+     <li class="favourite">Mango</li>
+     <li>Orange</li>
+   </ul>
+   <ul>
+     <li>eat</li>
+     <li>sleep</li>
+     <li>repeat</li>
+   </ul>
+
+
 
 **Fourth**: Using CSS, make the colour of the class "favourite" blue.
+
 
 The Selector will be id i.e., "fruits" Inside this id select a list element and then a specific class i.e., "favourite".
 
