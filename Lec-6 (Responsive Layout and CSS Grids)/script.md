@@ -326,6 +326,27 @@ All the columns will be pushed to the end of the container.
 
 Now we will be working on item level.
 
+
+
+---
+title: Quiz 1
+description: Quiz 1
+duration: 90
+card_type: quiz_card
+---
+
+# Question
+What property is used to define the size of columns and rows in a CSS Grid?
+
+# Choices
+
+- [ ] `grid-gap`    
+- [ ] `grid-size`
+- [x] `grid-template`   
+- [ ] `grid-column`
+
+---
+
 ---
 title: Item level Grid
 description: This section explains Item Level Grid by its HTML implementation.
@@ -452,6 +473,26 @@ There is 1 easier way to do this, you can give grid-column: span 2; and it will 
 The grid-column: span 2; property on the .item class indicates that each .item element will span two columns horizontally.
 
 > **Tip to instructor:** Now explain this property by using different different property values.
+
+
+---
+title: Quiz 2
+description: Quiz 2
+duration: 90
+card_type: quiz_card
+---
+
+# Question
+Which CSS property is used to create a gap between columns and rows in a CSS Grid?
+
+# Choices
+
+- [x] `grid-gap`    
+- [ ] `grid-space`
+- [ ] `grid-margin`  
+- [ ] `grid-padding`
+
+---
 
 
 ---
@@ -774,6 +815,34 @@ Now only height and width of the templates is left, so we can use grid-template-
 
 
 In this, we have achieved the layout that we wanted to achieve
+
+---
+title: Quiz 3
+description: Quiz 3
+duration: 90
+card_type: quiz_card
+---
+
+# Question
+Which CSS property is used to place an item in a specific cell within the CSS Grid?
+
+# Choices
+
+- [ ] `grid-position`    
+- [ ] `grid-row`
+- [ ] `grid-cell`   
+- [x] `grid-area`
+
+---
+
+
+
+---
+title: Flexbox vs Grid (A Comparision)
+description: This section explains what is Grid Areas
+duration: 900
+card_type: cue_card
+---
 
 
 ## Flexbox vs Grid 
