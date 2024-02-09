@@ -1,6 +1,25 @@
 # Class-5 CSS Flexbox and Media Queries
 
 ---
+title: Agenda
+description: 
+duration: 1800
+card_type: cue_card
+---
+
+The topics we are going to cover in today's session are:
+
+- What is FlexBox
+- Using Flexbox properties to Design Layouts
+- Media Queries for Responsive Layout
+
+So, let us start with the session.
+
+
+
+
+
+---
 title: Flex Box
 description: 
 duration: 1800
@@ -21,7 +40,7 @@ Flexbox is just a concept of CSS that makes your life very easy.
 
 Now, lets create some boxes again in HTML to start with flexbox.
 
-```htmlembedded
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,7 +98,17 @@ Default property of flex box is to arrange all the elements in the row as you ca
 
 You can also use many flex-direction property to arrange the elements in different ways.
 
+
+
+
+
 > **Note to instructor:** Use different-different values with flex-direction property like row, column, row-reverse, column-reverse etc, to explain it better.
+
+As mentioned, Flexbox is all about controlling the distribution of elements in a row or column. By default, items will stack side-by-side in a row, but we can flip to a column with the flex-direction property set to column
+
+With flex-direction: row, the main axis runs horizontally, from left to right. When we flip to flex-direction: column, the main axis runs vertically, from top to bottom.
+
+In Flexbox, everything is based on the main axis. The algorithm doesn't care about vertical/horizontal, or even rows/columns. All of the rules are structured around this primary axis, and the cross axis that runs perpendicularly.
 
 > **Note to instructor:** Explain the axis using the below diagram. diagram refence: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
@@ -94,6 +123,31 @@ If I say, I want my flex direction is row, what will be my main axis?
 And If I say, I want my flex direction is column, what will be my main axis?
 
 - Y axis
+
+---
+title: Quiz 1
+description: Quiz 1
+duration: 90
+card_type: quiz_card
+---
+
+# Question
+What is the default value for the `flex-direction` property in a flex container?
+# Choices
+
+- [ ] `column`  
+- [x] `row`
+- [ ] `row-reverse` 
+- [ ] `column-reverse`
+
+---
+
+---
+title: Justify Content
+description: 
+duration: 1800
+card_type: cue_card
+---
 
 
  **justify-content**.
@@ -115,7 +169,6 @@ So if we want to center all the row items, we can use **justify-content: center*
 
 The justify-content: center; property applied to a flex container in CSS aligns its child elements **horizontally** at the center of the container along the main axis. 
 
-But there is 1 more property that is used to align items vertically that is **align-items**.
 
 
 Now lets take more examples of **justify-content** property.
@@ -141,6 +194,13 @@ Now lets take more examples of **justify-content** property.
 
 There are many options for this property, you can choose to play around with all of them.
 
+---
+title: Align Items
+description: 
+duration: 1800
+card_type: cue_card
+---
+
 Now lets understand **align-items** property.
 
 The **align-items property** lets you control how flex items are positioned on the cross axis within the container.
@@ -162,6 +222,24 @@ The **align-items property** lets you control how flex items are positioned on t
 * **align-items: stretch;**
     * Flex items are stretched to fill the container's cross axis.
     * If no height is explicitly set on the items, they will take up the full height of the container.
+
+---
+title: Quiz 2
+description: Quiz 2
+duration: 90
+card_type: quiz_card
+---
+
+# Question
+In a flex container, what does the `align-items` property control?
+# Choices
+
+- [ ] The alignment of flex items along the main axis   
+- [x]  The alignment of flex items along the cross axis 
+- [ ] The order of flex items   
+- [ ] The flexibility of flex items 
+
+---
 
 
 
@@ -204,7 +282,7 @@ There is 1 property know as **flex-wrap**
 
 So if we use the above code with flex-wrap property, we can see that the boxes are now responsive and not shrinking.
 
-```htmlembedded
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -486,6 +564,24 @@ Media queries are part of CSS (Cascading Style Sheets) and allow you to apply st
 ```
 
 This HTML document includes a basic structure with a title, meta tags for viewport settings, and a styled body. The body styles are defined in the embedded CSS, which includes media queries for different screen widths. The background colors are added to make it visually evident when the media queries are applied. Feel free to customize the content and styles according to your preferences and requirements.
+
+---
+title: Quiz 3
+description: Quiz 2
+duration: 90
+card_type: quiz_card
+---
+
+# Question
+Which media query is used to apply styles only when the viewport width is 600 pixels or less?
+# Choices
+
+- [x] `@media (max-width: 600px)`  
+- [ ] `@media (min-width: 600px)`
+- [ ] `@media (width <= 600px)`   
+- [ ] `@media (max-width <= 600px)`
+
+---
 
 
 > **Note to Instructor:** Now ask for doubts to the learners about the doubt that came up during the class.
