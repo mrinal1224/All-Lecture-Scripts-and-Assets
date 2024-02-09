@@ -15,8 +15,6 @@ The topics we are going to cover in today's session are:
 - Positioning in CSS
 
 
-
-
 ---
 title: What is Cascading in CSS?
 description: Understanding the definition of "Cascading" in Cascading Style Sheet
@@ -144,7 +142,7 @@ Second: Create an unordered list of let's say "fruits".
 </html>
 ```
 
-
+- Now add id and Class as shown below
 
 ```html
 <ul >
@@ -154,6 +152,7 @@ Second: Create an unordered list of let's say "fruits".
    </ul>
 ```
 
+- Add styles to both class and the id
 
 ```html
 <title>Document</title>
@@ -179,7 +178,6 @@ What if we add an inline style to this item
 ```
 
 Now the Inline style takes Precedence
-
 
 
 ### Calculating specificity
