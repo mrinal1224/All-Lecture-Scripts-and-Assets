@@ -184,6 +184,8 @@ Now the Inline style takes Precedence
 
 1. Lets change the html a bit and add another ul
 2. Make all li under ul as red
+
+```html
 <style>
      /* .favourite {
        color: green;
@@ -207,6 +209,7 @@ Now the Inline style takes Precedence
      <li>sleep</li>
      <li>repeat</li>
    </ul>
+```
 
 
 
@@ -241,7 +244,7 @@ The Selector will be id i.e., "fruits" Inside this id select a list element and 
 
 What will happen if we change the colour of the unordered list to blue after changing the colour of class "favourite" to red?
 
-```htmlembedded!
+```html
 <style>
     ul#fruits li.favourite{
       color: red;  
@@ -262,7 +265,7 @@ Before understanding the Selector Specificity values:
 
 What if the style attribute is applied in the list tag with class = "favourite"?
 
-```htmlembedded!
+```html
 <body>
     <ul id = "fruits">
         <li>Apple</li>
