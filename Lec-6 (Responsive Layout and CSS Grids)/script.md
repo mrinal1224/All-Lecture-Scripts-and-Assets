@@ -9,11 +9,11 @@ card_type: cue_card
 
 ## Agenda
 
-Today we will be discussing about Responsive Layout and Grid in CSS.
+- What is a Grid Layout 
+- Exploring Grid Properties to Create Layouts
+- Flexbox vs Grid
 
-In previous session, we learned about flexbox and media queries. you can practice more about Flexbox via https://flexboxfroggy.com/.
 
-So let's start with today's session.
 
 ---
 title: What is Grid in CSS?
@@ -22,10 +22,17 @@ duration: 300
 card_type: cue_card
 ---
 
-Sometimes, when you have to create a very complex layout, you can use a Grid.
+Today we will be discussing about Responsive Layout and Grid in CSS.
+
+In previous session, we learned about flexbox and media queries. you can practice more about Flexbox via https://flexboxfroggy.com/.
+
+So let's start with today's session.
+
+
 
 **[Ask the learners]**
 What is a Grid?
+Sometimes, when you have to create a very complex layout and you do not, you can use a Grid.
 
 
 Let's take an example to understand this better, when we were kids, there were notebooks and the pages were of below structure. 
