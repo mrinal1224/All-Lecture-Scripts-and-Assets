@@ -641,7 +641,7 @@ card_type: cue_card
 - First, create a file as shown below:
   
 [IMAGE_2 START SAMPLE]
-![](https://hackmd.io/_uploads/rJ3VYLh62.png)
+<img src='./Screenshot 2024-02-10 at 3.33.11 PM.png'/>
 [IMAGE_2 FINISH SAMPLE]
 
 Then we will apply CSS to the fonts. First, let us see font family.
