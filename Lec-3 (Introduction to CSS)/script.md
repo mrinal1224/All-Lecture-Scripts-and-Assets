@@ -543,7 +543,7 @@ Here you can write the element like "input" and start the bracket "[]". Inside t
 - That's how the attribute selector works.
 
 ---
-title: Final Question with Discussing Colors and Pesudo Selector
+title: Final Question with Discussing Colors and Pesudo Class Selector
 description: 
 duration: 300
 card_type: cue_card
@@ -564,9 +564,9 @@ First, we will add a style tag and then write all the CSS provided in the questi
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/050/047/original/upload_2ea1f412f739128739787f0498ccba03.png?1695312161)
 
 
-Coming to the point 6 of the question. Let us first see what is pseudo selector.
+Coming to the point 6 of the question. Let us first see what is pseudo class selector.
 
-## Pseudo selector
+## Pseudo Class selector
 - Pseudo-selectors in CSS are selectors that are used to select and style elements based on their state or position in the document, without needing to add additional classes or IDs to those elements.
 
 A CSS pseudo-class selects HTML elements when they are in a specific state—for instance, when an element is in the hover state.
