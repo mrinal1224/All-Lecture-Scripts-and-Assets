@@ -567,11 +567,17 @@ First, we will add a style tag and then write all the CSS provided in the questi
 Coming to the point 6 of the question. Let us first see what is pseudo selector.
 
 ## Pseudo selector
-- When you hover over any element and it changes its behavior, it is known as a Pseudo selector.
-- For example, if you go on a sign-in button it becomes popped up.
+- Pseudo-selectors in CSS are selectors that are used to select and style elements based on their state or position in the document, without needing to add additional classes or IDs to those elements.
+
+A CSS pseudo-class selects HTML elements when they are in a specific state—for instance, when an element is in the hover state.
+
+Syntax of a pseudo-class selector
+A pseudo-class selector consists of a colon (:) and the pseudo-state's name you wish to target. Here's the syntax:
+
+- For example, if you go on a sign-in button it looks popped up.
 
 ```HTML=
-a.hover{
+a:hover{
     color : hsla(100%, 15%, 25%, 0.6)
 }
 ```
