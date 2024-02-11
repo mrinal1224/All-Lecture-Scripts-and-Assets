@@ -83,7 +83,7 @@ Why will be discussed later
 
 - Short answer - It helps in reducing the perceived load time of the page because the visual content of the page (HTML and CSS) is displayed to the user before the JavaScript starts executing.
 
-The last thing befire closing body tag is generally the script tag where the JS code goes
+The last thing before closing body tag is generally the script tag where the JS code goes
 
 The code goes like this- 
 
