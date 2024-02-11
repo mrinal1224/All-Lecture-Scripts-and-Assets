@@ -43,6 +43,11 @@ JavaScript is a language that is used to add interactivity to your websites, web
 
 #### Output in JavaScript
 
+
+- Show devtools
+- Discuss how to run few js command, we can do it in the console tab
+
+
 When you click on inspect in your browser, a console window is opened which allows you to write JavaScript code.
 
 Using `console.log` in JavaScript we can print out anything as we do in the other programming languages in Java we use `System.out.println()`.
@@ -69,6 +74,28 @@ What makes the Browser run the JavaScript code?
 For example, in Chrome: V8 Engine is used, while in Firefox: Spider Monkey is used.
 
 > As Developers cannot use developer tools and develop an application using the console of the browser, we will use VS code and link the JavaScript file with the HTML file. By using the `<script>` tag (written inside the `<body>` of the HTML file) similar to the `<style>` tag used to write the CSS code we can write JavaScript code inside the `<script>` tag.
+
+- Running JS code
+- Create intro.html
+
+- Discuss that just like style tag which goes in head, we have script tag for JS which goes at the end of body tag. 
+Why will be discussed later
+
+- Short answer - It helps in reducing the perceived load time of the page because the visual content of the page (HTML and CSS) is displayed to the user before the JavaScript starts executing.
+
+The last thing befire closing body tag is generally the script tag where the JS code goes
+
+The code goes like this- 
+
+```html 
+<body>
+   <script>
+       console.log('Hello World')
+   </script>
+  
+</body>
+```
+
 
 #### Creating External JavaScript file
 
