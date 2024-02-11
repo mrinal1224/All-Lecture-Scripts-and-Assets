@@ -1,5 +1,28 @@
 # Introduction to JavaScript
 
+
+---
+title: Agenda
+description: Agenda.
+duration: 1260
+card_type: cue_card
+---
+
+## Agenda 
+
+- What is JavaScript?
+- How JS runs on the Browser
+- Installing Node.js
+- How Node.js runs JS code
+- Variables in JavaScript
+- How Js is a Dynamically Typed Language
+- DataTypes in JS (Primitive and Refrenece)
+- Functions in JS
+- Arrays in JS
+- Objects in JS
+
+
+
 ---
 title: Introduction to JavaScript
 description: Basics of JavaScript, how to use JavaScript. Downloading nodejs.
