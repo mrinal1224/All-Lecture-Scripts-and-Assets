@@ -75,7 +75,7 @@ For example, in Chrome: V8 Engine is used, while in Firefox: Spider Monkey is us
 
 > As Developers cannot use developer tools and develop an application using the console of the browser, we will use VS code and link the JavaScript file with the HTML file. By using the `<script>` tag (written inside the `<body>` of the HTML file) similar to the `<style>` tag used to write the CSS code we can write JavaScript code inside the `<script>` tag.
 
-- Running JS code
+***Running JS code***
 - Create intro.html
 
 - Discuss that just like style tag which goes in head, we have script tag for JS which goes at the end of body tag. 
