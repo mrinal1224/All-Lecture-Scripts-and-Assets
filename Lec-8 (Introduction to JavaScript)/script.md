@@ -293,6 +293,11 @@ let a = 20
 let b = 1000000000
 let c = 12.57
 let d = -10.12
+
+let f = 2/0 // Infinity
+
+let s = 'hello'/0 -> NaN
+
 ```
 * **Strings**
 
@@ -301,6 +306,16 @@ let str = 'JavaScript'
 let str2 = "Hello"
 let str3 = `Hi, this is a string` // backticks are known as template literal
 ```
+Hotstar cricket audience count
+Backticks allow us to embed variables and expressions in string
+
+```js
+let activeUsers = 100
+const message = `There are ${activeUsers} users online`
+```
+
+
+
 * **Boolean**
 
 ```javascript!
@@ -309,62 +324,26 @@ let isOdd = false
 ```
 
 * **Undefined**
-When a variable is not defined is set as undefined.
+When a variable is not defined it is set as undefined by default.
 
 ```javascript!
 let a;
 ```
 * **Null**
-Null is assigned to a variable when we say that a value can be assigned later.
+Null is assigned to a variable when we say that a value for this doesnt's exists or can be assigned later.
+Null is a special value that represents ‘nothing’, ‘empty’ or value unknown
+null is an assignment value that represents a deliberate non-value (or an empty value). It indicates the absence of any value or object.
+
 
 ```javascript!
 let a = null
 ```
 
+While both null and undefined represent "no value", the choice between them is not interchangeable. undefined is used when a value has not been assigned and is the default state, while null is used to explicitly denote a null or "empty" value. 
+
 #### Reference DataTypes
 
-* **Arrays**
-Array is a data structure that holds similar kinds of data in indexed order which starts from 0.
-
-Syntax of declaring an array in JavaScript:
-
-```javascript!
-let arr = [1,2,3,4,5]
-console.log(arr)
-```
-To access a particular data from an array, you can use an index. Suppose you want to access a number '2' from the above array index[1] can be used as shown:
-
-```javascript!
-let arr = [1,2,3,4,5]
-console.log(arr)
-console.log(arr[1])
-```
-
-> In JavaScript, adding different datatypes in a single array is allowed.
-
-
-* **Objects**
-Objects in JavaScript are data stored in the form of key-value pairs. To initialise an object `{}` brackets are used.
-
-```javascript!
-let person = {
-    name: 'Alex',
-    age: 25,
-    phone_no: 634 29843
-}
-```
-
-To access a particular value from an object we can use: Dot notation and bracket notation. In bracket notation, always pass a key in a string.
-
-```javascript!
-//accessing object value using dot notation
-console.log(person.age) //object.key
-
-//accessing object value using bracket notation
-console.log(person['name'])
-```
-
-* **Functions**
+## Functions
 Functions are abstract bodies defined to do a particular task.
 The function is defined using the `function` keyword in JavaScript followed by the function name with parentheses.
 
@@ -383,3 +362,182 @@ serveBeverage('tea') //tea is an argument for drink parameter
 
 The function can be called multiple times and multiple arguments can be passed.
 
+
+
+# Arrays 
+The array is a data structure to store multiple values of multiple data types. The elements are stored in an indexed manner.
+
+## Accessing array element
+Any array element can be accessed by an index. If we want to access the fifth element of an array named `arr`, then we have to simply write `arr[4]`, as the array works on 0-indexing.
+
+```javascript=
+let arr = [1, 'Scaler', true, undefined, null, [1, 2, 3] ,function(){}]
+console.log(arr)
+// access an element with index from an array
+console.log(arr[4]) // print null
+
+let d=arr[5]
+console.log(d) // print [1, 2, 3]
+console.log(d[0]) // print 1
+
+```
+
+## Changing an array element
+We can change the value of any element by its index, if we want to change the value of the fourth element of an array named `arr`, then we need to simply write `arr[3]='new value'`
+
+```javascript=
+let arr = [1, 'Scaler', true, undefined, null, [1, 2, 3]]
+console.log(arr) // print [1, 'Scaler', true, undefined, null, [1, 2, 3]]
+// change an array element to a different value
+arr[3] = 'Mrinal'
+arr[4] = 700
+console.log(arr) //print [1, 'Scaler', true, 'Mrinal', 700, [1, 2, 3]]
+
+```
+
+## Length of an array
+Gives the length of the array, length means the total number of elements in an array.
+
+```javascript=
+let arr = [1, 'Scaler', true, undefined, null, [1, 2, 3]]
+console.log(arr.length) // print 6 as there are a total of 6 elements in an array.
+
+```
+
+## Array methods
+**Push Method:**
+Inserting an element into an array at the end
+```javascript=
+let cars = ['swift', 'BMW', 'Audi']
+console.log(cars) // print ['swift', 'BMW', 'Audi']
+cars.push('Urus')
+console.log(cars) // print ['swift', 'BMW', 'Audi', 'Urus']
+```
+
+**Pop Method:**
+Delete the element from the end of the array
+```javascript=
+let cars = ['swift', 'BMW', 'Audi', 'Urus']
+console.log(cars) // print ['swift', 'BMW', 'Audi', 'Urus']
+cars.pop()
+console.log(cars) // print ['swift', 'BMW', 'Audi']
+```
+Popped elements can also be stored in another variable.
+```javascript=
+let cars = ['swift', 'BMW', 'Audi', 'Urus']
+var removedElement = cars.pop()
+console.log(removedElement) // print Urus
+```
+
+**Unshift Method**
+Insert an element at the start of an array(0th index).
+
+```javascript=
+let cars = ['swift', 'BMW', 'Audi']
+console.log(cars) // print ['swift', 'BMW', 'Audi']
+cars.unshift('Urus')
+console.log(cars) // print ['Urus', 'Swift', 'BMW', 'Audi']
+```
+
+**Shift Method**
+Remove the 0th index element of an array.
+```javascript=
+let cars = ['swift', 'BMW', 'Audi', 'Urus']
+console.log(cars) // print ['swift', 'BMW', 'Audi', 'Urus']
+cars.shift()
+console.log(cars) // print ['BMW', 'Audi', 'Urus']
+```
+
+Shifted elements can also be stored in another variable.
+```javascript=
+let cars = ['swift', 'BMW', 'Audi', 'Urus']
+var removedElement = cars.shift()
+console.log(removedElement) // print swift
+```
+
+
+---
+title: Objects
+description: 
+duration: 1800
+card_type: cue_card
+---
+
+# Objects
+Objects are basically in which data is stored in the form of key-value pairs. 
+
+
+**Ways to create Objects**
+```js
+let user = new Object( ) // object constructor syntax
+let anotherUser = { } // object literal syntax
+console.log(user)
+console.log(anotherUser)
+```
+
+
+
+You Can directly create objects by specifying properties as shown below
+
+## Example
+```javascript=
+let person ={
+    name: 'Mrinal',
+    age: 24,
+    phone: 1234567
+}
+console.log(person)
+// dot notation
+console.log(person.age)
+// bracket notation
+console.log(person['phone'])
+```
+
+We can store any kind of value in an object. We can also write a function inside the object using `:`. Another object can also be created within the object and also arrays can be stored as values inside objects along with numbers strings and boolean
+
+Let's Take an Example to have all this inside an Object
+
+```javascript=
+let captainAmerica ={
+    name : 'Steve Rogers',
+    age : 102,
+    // Array
+    allies : ['Tony', 'bruce', 'bucky']
+    // function inside an object
+    sayHi : function(){
+        console.log('Captain says hi')
+    }
+    // nested object
+    address :{
+        country : 'USA',
+        city : {
+            name : 'Brokkly',
+            pincode : 12345
+        }
+    }
+    isAvenger : true
+}
+// accessing age from captainAmerica object
+console.log(captainAmerica.age)  // print 102
+// accessing element of array allies from captainAmerica object
+console.log(captainAmerica.allies[1]) // print bruce
+// accessing element from the nested object
+console.log(captainAmerica.address.city) // print complete city object
+console.log(captainAmerica.address.city.pincode) // print 12345
+
+// changing some values of an object
+captainAmerica.isAvenger=false
+
+// adding new key-value in object
+captainAmerica.movies=['End Game', 'Age of Ultorn', 'Civil War']
+//The above statement will create a key with movies if it is not available in the object otherwise it will update the previous value of movies.
+
+
+// calling function defined within an object
+captainAmerica.sayHi()
+
+
+//Deleting key from an object
+
+delete captainAmerica.age
+```

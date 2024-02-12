@@ -177,13 +177,13 @@ let square1 = square(n)
 
 
 ---
-title: More differences between let, var and const
+title: Hoisting
 description: 
 duration: 600
 card_type: cue_card
 ---
 
-# More differences between let, var and const.
+# Hoisting.
 
 ```javascript=
 var a = 4
@@ -194,6 +194,8 @@ function printName(){
 console.log(a)
 printName()
 ```
+
+
 
 **Output**
 ```
@@ -201,9 +203,16 @@ printName()
 my name is mrinal
 ```
 
+Perfectly Fine Output as you will expect of the above code
+
+Now consider this code-
+
 ```javascript=
-console.log(a)
-printName()
+
+console.log(a) // trying to execute it at the top
+
+printName() // trying to execute this at the top
+
 var a = 4
 
 function printName(){
@@ -212,14 +221,23 @@ function printName(){
 
 ```
 
+
 **Output**
 ```plaintext
 undefined
 my name is mrinal
 ```
 
+Now you See the function gets Executed and prints the Expected Output  but for the varibale 'a' the output is undefined
+
+[Ask students to figure out for a while that what must be happeing]
+
+
 **Explanation**
-First is the memory allocation phase of the program, and initially all the variables are initialized with undefined values before program execution. In the memory allocation phase, a = undefined and fn printName() will be created. After that program execution phase will start, in which first the value of a printed i.e. undefined after the function is called, function execution context will be created and then the value is assigned to the variable.
+First is the memory allocation phase of the program, and initially all the variables are initialized with undefined values before program execution. In the memory allocation phase, a = undefined and fn printName() will be created and as you know in the memory allocation phase itself the whole function body is assigned . 
+
+
+After that program execution phase will start, in which first the value of a is printed i.e. undefined after the function is called, function execution context will be created and then the value is assigned to the variable.
 
 ```javascript=
 console.log(a)
