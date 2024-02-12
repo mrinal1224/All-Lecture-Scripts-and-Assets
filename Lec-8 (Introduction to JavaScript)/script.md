@@ -103,6 +103,29 @@ Similar to CSS, an External JavaScript file can be created using the `.js` exten
 
 The External JavaScript file can be linked to the HTML file using `<script src=""></script>`. The `<script>` tag has a source attribute to link the JavaScript file to the HTML file.
 
+- Create index.js file
+and write basic JS code
+
+```JS
+ console.log("hello From the script File")
+```
+- add the index.js file in script tag's src attribute in  the index.html file like this-
+
+```html
+<body>
+
+
+   <script>
+       console.log('Hello World')
+   </script>
+   <script src="./index.js"></script>
+  
+</body>
+```
+
+ - see the  output in the Browser
+
+
 ---
 title: Download Nodejs
 description:
@@ -168,7 +191,7 @@ card_type: cue_card
 
 **Definition**
 
-Variables are a memory space in a system that is used to store values. These values can be a number, string, or boolean values.
+Variables are a memory space in a system that is used to store values. These values can be a number, string, or boolean values and many more.
 
 The `var` keyword is used in JavaScript to declare a variable.
 
@@ -213,8 +236,6 @@ console.log(a)
 
 The above code will throw an error named `Identifier a has already been declared`.
 
-* The var and let keyword allows re-initialization while const does not. The const keyword once declared will always remain constant.
-
 **Example**
 
 ```javascript!
@@ -223,9 +244,27 @@ r = 30; //reinitialising the value
 console.log(r)
 ```
 
+- reinitializing with let is possible
+
+* The var and let keyword allows re-initialization while const does not. The const keyword once declared will always remain constant.
+
+Const behavior
+
+```js
+const pi = 3.14
+pi = 3.15 // re-assign a variable not allowed
+   console.log(pi)
+
+```
+
+For const variables, declarations and assignment needs to be done in one line
+
+
+
+
 Let's understand it using a chart:
 
-| | Re-declaration | Re-Assignment |
+| | Re-declaration | Re-Initialization |
 | :--------: | :--------: | :--------: |
 |   **var** | Yes   | Yes     |
 |**let** | No | Yes |
