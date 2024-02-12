@@ -503,10 +503,12 @@ let captainAmerica ={
     age : 102,
     // Array
     allies : ['Tony', 'bruce', 'bucky']
+
     // function inside an object
     sayHi : function(){
         console.log('Captain says hi')
     }
+
     // nested object
     address :{
         country : 'USA',
@@ -515,14 +517,25 @@ let captainAmerica ={
             pincode : 12345
         }
     }
+
+
+    // Boolean
     isAvenger : true
 }
+
 // accessing age from captainAmerica object
-console.log(captainAmerica.age)  // print 102
+
+console.log(captainAmerica.age)  // prints 102
+
+
 // accessing element of array allies from captainAmerica object
-console.log(captainAmerica.allies[1]) // print bruce
+console.log(captainAmerica.allies[1]) // prints bruce
+
+
 // accessing element from the nested object
-console.log(captainAmerica.address.city) // print complete city object
+console.log(captainAmerica.address.city) 
+
+// print complete city object
 console.log(captainAmerica.address.city.pincode) // print 12345
 
 // changing some values of an object
@@ -530,11 +543,13 @@ captainAmerica.isAvenger=false
 
 // adding new key-value in object
 captainAmerica.movies=['End Game', 'Age of Ultorn', 'Civil War']
+
+
 //The above statement will create a key with movies if it is not available in the object otherwise it will update the previous value of movies.
 
 
 // calling function defined within an object
-captainAmerica.sayHi()
+captainAmerica.sayHi() 
 
 
 //Deleting key from an object
