@@ -70,7 +70,24 @@ card_type: cue_card
 ---
 
 # Execution context in javascript
+
+When the JavaScript engine scans a script file, it makes an environment called the Execution Context that handles the entire transformation and execution of the code.
+
+During the context runtime, the parser parses the source code and allocates memory for the variables and functions. The source code is generated and gets executed.
+
+There are two types of execution contexts: global and function. The global execution context is created when a JavaScript script first starts to run, and it represents the global scope in JavaScript. A function execution context is created whenever a function is called, representing the function's local scope.
+
+
+- Now let's try to visualize this with taking in a code Example-
+
+
+
+
 How the javascript code gets executed.
+
+We have this code to Execute-
+
+
 ```javascript=
 var a = 2
 var b = 3
@@ -87,12 +104,14 @@ console.log(add1) // prints 5
 console.log(add2) // prints 11
 ```
 
-Javascript code executes two phases:
+Javascript code executes in two phases:
+
 1. **Memory Allocation:** Every particular variable is assigned with undefined value initially. Initially, no value is assigned to the variable, only memory is allocated. And every function will get its whole body in this phase.
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/050/084/original/upload_85139e0f5170f5e8eece1dd1782b44b7.png?1695318758)
 
-2. **Code Execution:** Code will get executed in this phase. Now the values of variables are assigned. When the function is called and it starts executing then another memory allocation, the code block is created. For every function calling, another execution context will be created. And execution context of the whole program is known as the global execution context.
+2. **Code Execution:** Code will get executed in this phase. Now the values of variables are assigned. When the function is called and it starts executing then another memory allocation and the code block is created For every function calling. 
+basically another execution context will be created for the function. And execution context of the whole program is known as the global execution context, and for a function it is called function's Execution Context
 Variables declared inside the function are written inside the execution context of that particular function.
 
 
