@@ -157,6 +157,8 @@ After the invention of Nodejs JavaScript could be used for the following:
 * Tensorflow JS in AI and Machine learning is also being used currently.
 * Metaverse - AR/VR where JavaScript can be used.
 
+<!-- ADD ECMA Standards -->
+
 #### Use node in Vs code
 
 There is a terminal in Vs code that can be accessed for a particular file as well by right-clicking on the file and selecting the option 'Open in Integrated Terminal' as shown in the image.
@@ -219,6 +221,8 @@ console.log(a)
 ```
 
 The above code will print both true and false.
+
+
 
 #### Problems of Var keyword
 

@@ -237,7 +237,12 @@ Now you See the function gets Executed and prints the Expected Output  but for t
 First is the memory allocation phase of the program, and initially all the variables are initialized with undefined values before program execution. In the memory allocation phase, a = undefined and fn printName() will be created and as you know in the memory allocation phase itself the whole function body is assigned . 
 
 
-After that program execution phase will start, in which first the value of a is printed i.e. undefined after the function is called, function execution context will be created and then the value is assigned to the variable.
+After that program execution phase will start, in which first the value of a is printed but still in this phase before the assignment of 4 can happen to the varaiable `a` we are trying to access it so the value is still undefined thats why the output for console.log(a) which is at the top is undefined , and  after the function is called, as function has the whole reference of it's body it gets executed as you would expect with it's output
+
+hoisting is a behavior of the JS language through which declarations of functions, variables. etc can be moved to the top of their scope – all before code execution
+
+Great! We Now know what Hositing is, let's see another example but this time we will create a function as an expression
+
 
 ```javascript=
 console.log(a)
@@ -247,9 +252,12 @@ var a = 4
 function printName(){
     console.log('my name is mrinal')
 }
+
+
 let printAge = function(){
     console.log(24)
-}
+} // Function as Expression
+
 printAge()
 ```
 
@@ -260,6 +268,8 @@ my name is mrinal
 24
 ```
 
+Function as expression executes as it should , now , let's take it to the top
+
 
 ```javascript=
 console.log(a)
@@ -276,7 +286,7 @@ let printAge = function(){
 
 ```
 
-But now this program will give an error that printAge is not defined. We are getting this error as we are working with function as expression and printAge does not have a function during initialization. It has an undefined value during initialization.
+But now this program will give an error that printAge is not defined. We are getting this error as we are working with function as expression and printAge does not have a function during initialization. It has an undefined value during initialization as it is variable for every varaible in the memory allocation phase undefined is assigned
 
 **let**
 ```javascript=
