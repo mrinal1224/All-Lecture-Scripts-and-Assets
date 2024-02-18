@@ -313,7 +313,7 @@ card_type: cue_card
 ---
 
 # Temporal dead zone(TDZ)
-When you declare a variable with let or const, then these variables can not be accessible before their initialization and at this moment they will be in a temporal dead zone.
+When you declare a variable with let or const, then these variables will not be accessible before their initialization and at this moment they will be in a temporal dead zone.
 
 ||var|let|const|
 |:-:|:-:|:-:|:-:|
