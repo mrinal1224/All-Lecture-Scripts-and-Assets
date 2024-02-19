@@ -354,6 +354,11 @@ card_type: cue_card
 # Problem Statement
 You are given a transaction array treat the transaction amount in rupees, and convert those amounts into dollars and conversion rate is also provided to us.
 
+```js
+const transactions = [1000, 3000, 4000, 2000, - 898, 3800, - 4500];
+const inrtToUsd = 80;
+```
+
 ## Idea
 We can use the `map` to apply similar operations to all the elements of an array. 
 
