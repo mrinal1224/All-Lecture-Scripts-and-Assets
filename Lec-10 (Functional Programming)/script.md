@@ -13,11 +13,10 @@ card_type: cue_card
 - Array Methods(Map, Filter, Reduce, etc.)
 
 
-
 ---
 title: Functional Programming
 description: 
-duration: 1800
+duration: 180
 card_type: cue_card
 ---
 
@@ -86,7 +85,7 @@ We can also pass the callback function within another callback function.
 
 ---
 title: Pure and Impure Functions
-description: Given an array of radiuses, find the area, circumference and diameter.
+description: 
 duration: 900
 card_type: cue_card
 ---
@@ -205,7 +204,7 @@ This is Diameter array => [ 1, 1.5, 2, 2.5, 4 ]
 ## Better Approach
 Here we can see that every function has the same structure, and here we are violating the dry principle.
 **Dry Principle** says that do not repeat yourself.
-While writing a code just try to write generic code wherever possible code, so that you do not need to repeat the same structure again and again. Now we will try to generalize this code. Let us try to solve this problem using a higher-order function.
+While writing a code just try to write generic code wherever possible , so that you do not need to repeat the same structure again and again. Now we will try to generalize this code. Let us try to solve this problem using a higher-order function.
 
 ---
 title: Higher Order Function
@@ -216,6 +215,8 @@ card_type: cue_card
 
 # Higher Order Function
 Higher-order functions are those functions where the function is passed as an argument. A higher order function is a function that can take one or more functions as arguments, or returns a function as its result.
+
+Didn't make sense right? Let's create one and undestand the concpet of Higher oder function step by step
 
 
 ---
@@ -239,6 +240,7 @@ function circleCircumference(radius){
 function circleDiameter(radius){
     return 2 * radius;
 }
+
 function calculate(radiusArr, logic){
     let result = []
     for(let i = 0 ; i < radiusArr.length ; i ++ ){
@@ -246,10 +248,15 @@ function calculate(radiusArr, logic){
     }
     return result
 }
+
 let finalAreas = calculate(myRadiusArray, circleArea)
 console.log('This is area array => ', finalAreas)
+
+
 let finalCircumferences = calculate(myRadiusArray, circleCircumference)
 console.log('This is Circumference array =>', finalCircumferences)
+
+
 let finalDiameter = calculate(myRadiusArray,  circleDiameter)
 console.log('This is Diameter array =>', finalDiameters)
 ```
