@@ -11,7 +11,7 @@ card_type: cue_card
 - Higher Order Functions
 - Writing clean code with higher-order functions.
 - Array Methods(Map, Filter, Reduce, etc.)
-- Interview Questions
+
 
 
 ---
