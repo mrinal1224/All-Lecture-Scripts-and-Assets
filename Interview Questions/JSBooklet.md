@@ -130,6 +130,278 @@ Even within functions, variables are hoisted to the top of their scope. In this 
 It's important to understand hoisting in JavaScript, but it's generally considered good practice to declare and initialize variables at the beginning of their scope to avoid confusion and potential issues.
 
 
+## 3.What is Temporal dead zone in JS?
+
+The "temporal dead zone" in JavaScript refers to the period between entering scope and the actual declaration of a variable with `let` or `const`, during which accessing the variable results in a `ReferenceError`. Let me break it down with some code examples:
+
+```javascript
+console.log(x); // ReferenceError: Cannot access 'x' before initialization
+let x = 10;
+```
+
+In this example, even though `x` is declared later in the code, trying to access it before the declaration causes a `ReferenceError`. This is because `x` is in the temporal dead zone until the `let` initialization is encountered.
+
+Same thing Happens with const as well!
+
+
+
+## 4.What is a lexical Scope and Scope Chain in JS?
+
+Let's illustrate lexical scoping and the scope chain with an example:
+
+```javascript
+function outerFunction() {
+  var outerVar = "I'm outer";
+
+  function innerFunction() {
+    var innerVar = "I'm inner";
+    console.log(outerVar); // Output: I'm outer
+  }
+
+  innerFunction();
+}
+
+outerFunction();
+```
+
+In this example, `innerFunction` has access to the variable `outerVar` declared in its outer scope (`outerFunction`), but not vice versa. This is because of lexical scoping. The inner function has access to variables declared in its parent functions due to the lexical environment in which it is defined.
+
+The scope chain in this example can be visualized as follows:
+
+1. Global Scope
+   - Contains built-in objects and functions like `console`.
+2. `outerFunction` Scope
+   - Contains `outerVar`.
+   - Outer scope of `innerFunction`.
+3. `innerFunction` Scope
+   - Contains `innerVar`.
+   - Inner scope of `outerFunction`.
+
+When `innerFunction` tries to access `outerVar`, JavaScript first looks for `outerVar` in its local scope. If it doesn't find it there, it looks in the scope of its parent function, which is `outerFunction`'s scope. If `outerVar` is still not found there, it continues up the scope chain until it reaches the global scope. So basically a chain is formed to search for the value from innermost function to the outer functions that are up in the hierarchy but the vice versa is not possible , and this chain is known as Scope Chaining.
+
+So, in this case, `outerVar` is found in `outerFunction`'s scope, and that's where the value is retrieved from , if the value is not found anywhere up in the hierrarchy then an error is returned.
+
+## 5 What are Closures in JS and how they are formed?
+
+ In JavaScript, closure is a fundamental concept that arises from the combination of lexical scope and function definitions. 
+
+Lexical scope refers to the idea that a function's scope is determined by its surrounding code at the time of its definition, not at the time of its execution. This means that a function "remembers" the variables that were in scope at the time it was defined, even if it is executed in a different scope.
+
+The scope chain is the mechanism by which JavaScript resolves variable names. When a variable is referenced inside a function, JavaScript first looks for that variable within the function's own scope. If it's not found there, it looks in the next outer scope, and so on, until it reaches the global scope.
+
+Now, when a function is defined within another function, it forms a closure. This means that the inner function has access to the outer function's variables, even after the outer function has finished executing. This is possible because the inner function maintains a reference to the variables in the outer function's scope, creating a closure over those variables.
+
+Here's an example to illustrate:
+
+```javascript
+function outer() {
+  var outerVar = "I'm in the outer function";
+  
+  function inner() {
+    console.log(outerVar); // inner function has access to outerVar
+  }
+  
+  return inner;
+}
+
+var closureFunc = outer(); // outer function has finished executing, but inner function maintains a reference to outerVar
+closureFunc(); // Outputs: "I'm in the outer function"
+```
+
+In this example, `inner()` forms a closure over the variable `outerVar`, even though `outer()` has already finished executing. This is possible because `inner()` maintains a reference to `outerVar` through the closure, allowing it to access the variable's value when it's called later on.
+
+So, in summary, closure in JavaScript is the combination of lexical scope and function definitions, allowing inner functions to maintain access to variables in their outer scope even after the outer function has finished executing.
+
+## 6 What are Higher Order Functions and what are the advantages of using Higher order functions?
+
+In JavaScript, a higher-order function is a function that either takes one or more functions as arguments or returns a function as its result, or both. Essentially, it treats functions as first-class citizens, allowing them to be manipulated and passed around as data. Here's a simple example:
+
+```javascript
+// Higher-order function example
+function applyOperation(operation, x, y) {
+  return operation(x, y);
+}
+
+function add(x, y) {
+  return x + y;
+}
+
+function subtract(x, y) {
+  return x - y;
+}
+
+console.log(applyOperation(add, 5, 3)); // Output: 8
+console.log(applyOperation(subtract, 5, 3)); // Output: 2
+```
+
+In this example, `applyOperation` is a higher-order function because it takes another function (`operation`) as an argument.
+
+Advantages of using higher-order functions:
+
+1. **Code Reusability**: Higher-order functions promote code reuse by allowing you to abstract common functionality into separate functions. This can lead to more concise and maintainable code.
+
+2. **Abstraction**: They allow you to abstract over actions, promoting a more declarative and expressive coding style.
+
+3. **Encapsulation**: Higher-order functions can encapsulate complex behavior, making it easier to understand and reason about the code.
+
+4. **Functional Composition**: They facilitate functional composition, enabling you to build complex functions by composing simpler ones together.
+
+5. **Flexibility and Extensibility**: Higher-order functions make your code more flexible and extensible by enabling you to pass behavior as arguments or return it as a result.
+
+Overall, higher-order functions are a powerful feature of JavaScript that can lead to more modular, flexible, and expressive code.
+
+
+## 6 Explain Map , Filter and Reduce in JS?
+
+ In JavaScript, `map`, `filter`, and `reduce` are powerful array methods used for manipulating arrays and performing operations on their elements.
+
+1. **Map**: The `map` method creates a new array by applying a function to each element of the original array. It does not modify the original array.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// Example 1: Doubling each number
+const doubled = numbers.map(num => num * 2);
+console.log(doubled); // Output: [2, 4, 6, 8, 10]
+
+// Example 2: Converting each number to a string
+const stringNumbers = numbers.map(num => num.toString());
+console.log(stringNumbers); // Output: ['1', '2', '3', '4', '5']
+```
+
+2. **Filter**: The `filter` method creates a new array with all elements that pass the test implemented by the provided function basically on a condition
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// Example 1: Filtering even numbers
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4]
+
+// Example 2: Filtering numbers greater than 3
+const greaterThanThree = numbers.filter(num => num > 3);
+console.log(greaterThanThree); // Output: [4, 5]
+```
+
+3. **Reduce**: The `reduce` method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// Example 1: Summing all numbers
+const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+console.log(sum); // Output: 15
+
+// Example 2: Concatenating all numbers as a string
+const concatenatedString = numbers.reduce((accumulator, currentValue) => accumulator + currentValue.toString(), '');
+console.log(concatenatedString); // Output: '12345'
+```
+
+In each example:
+
+- `map` transforms each element of the array according to the function provided.
+- `filter` selectively includes elements from the original array based on a condition defined by the provided function.
+- `reduce` iterates over each element of the array, accumulating a final result based on the logic defined in the provided function.
+
+
+## 6 Write a Polyfill for Array.map() method?
+
+
+```javascript
+// Polyfill for Array.map()
+if (!Array.prototype.map) {
+  Array.prototype.map = function(callback, thisArg) {
+    if (this == null) {
+      throw new TypeError('Array.prototype.map called on null or undefined');
+    }
+    
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + ' is not a function');
+    }
+
+    const newArray = [];
+    for (let i = 0; i < this.length; i++) {
+      if (i in this) {
+        newArray[i] = callback.call(thisArg, this[i], i, this);
+      }
+    }
+    return newArray;
+  };
+}
+```
+
+Now let's break down how this polyfill works:
+
+1. It checks if `Array.prototype.map` does not exist. If it doesn't, it means the browser doesn't support the `map()` method, so we need to provide our own implementation.
+
+2. Inside the polyfill function, it first checks if the `this` value is `null` or `undefined`, as using `map()` on `null` or `undefined` would throw an error in a native implementation. 
+
+3. It checks if the `callback` provided is actually a function. If not, it throws a `TypeError`.
+
+4. It creates a new array `newArray` to store the results of applying the callback to each element of the original array.
+
+5. It iterates over each element of the array using a for loop, checking if the current index `i` is present in the array using `if (i in this)` to skip over holes in sparse arrays.
+
+6. For each element, it calls the `callback` function with three arguments: the current element, the current index, and the original array. It uses `call()` to ensure that the `this` value within the callback function is set to `thisArg`, if provided.
+
+7. It stores the result of the callback in the corresponding index of the `newArray`.
+
+8. Finally, it returns the `newArray` containing the results of applying the callback to each element of the original array.
+
+This polyfill provides a basic implementation of `Array.map()` that should work in older browsers or environments lacking support for it.
+
+
+## 7 Write a Polyfill for Array.filter() method?
+
+It is extremely common question in JavaScript interviews where it is asked to implement polyfill for the filter() method.
+
+Array.filter polyfill should have these three functionalities.
+
+- The filter() function should take an callback function as an argument.
+- Current element, its index, and the context should be passed as an argument to the callback function.
+- All the elements which pass text implemented in this callback function should be returned in a new array.
+
+```js
+Array.prototype.filter = function (callback) {
+  //Store the new array
+  const result = [];
+  for (let i = 0; i < this.length; i++) {
+    //call the callback with the current element, index, and context.
+    //if it passes the text then add the element in the new array.
+    if (callback(this[i], i, this)) {
+      result.push(this[i]);
+    }
+  }
+  
+  //return the array
+  return result
+}
+```
+
+## 8 Write a Polyfill for Array.reduce() method?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
