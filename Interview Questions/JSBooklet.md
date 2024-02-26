@@ -696,6 +696,156 @@ In this example:
 
 Using constructor functions allows for code reusability and organization, as you can easily create multiple instances of objects with similar properties and methods.
 
+## 14 What are Call Apply Bind Methods and how they work ?
+
+
+
+### 1. `call` Method:
+The `call` method allows you to call a function with a given `this` value and arguments provided individually.
+
+```javascript
+const person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const person2 = {
+  firstName: "John",
+  lastName: "Doe"
+}
+
+// Using call to invoke the method with a specific context
+const result = person1.fullName.call(person2); // "John Doe"
+console.log(result);
+```
+
+In this example, `call` invokes the `fullName` method of `person1` with the `this` value set to `person2`.
+
+### 2. `apply` Method:
+The `apply` method is similar to `call`, but it accepts arguments as an array.
+
+```javascript
+const person1 = {
+  fullName: function(city, country) {
+    return this.firstName + " " + this.lastName + ", " + city + ", " + country;
+  }
+}
+
+const person2 = {
+  firstName: "John",
+  lastName: "Doe"
+}
+
+const args = ["New York", "USA"];
+
+// Using apply to invoke the method with a specific context and arguments
+const result = person1.fullName.apply(person2, args); // "John Doe, New York, USA"
+console.log(result);
+```
+
+Here, `apply` invokes the `fullName` method of `person1` with the `this` value set to `person2` and the arguments provided in the array.
+
+### 3. `bind` Method:
+The `bind` method creates a new function with a specified `this` value and initial arguments.
+
+```javascript
+const person1 = {
+  fullName: function(city, country) {
+    return this.firstName + " " + this.lastName + ", " + city + ", " + country;
+  }
+}
+
+const person2 = {
+  firstName: "John",
+  lastName: "Doe"
+}
+
+// Using bind to create a new function with a specific context
+const boundFunction = person1.fullName.bind(person2, "New York", "USA");
+
+// Invoking the bound function
+const result = boundFunction(); // "John Doe, New York, USA"
+console.log(result);
+```
+
+In this example, `bind` creates a new function with `this` set to `person2` and `city` and `country` set to `"New York"` and `"USA"` respectively. The new function `boundFunction` can be invoked later.
+
+## 15 What are Call Apply Bind Methods and how they work ?
+
+Prototypal inheritance is a fundamental concept in JavaScript where objects inherit properties and methods from other objects. Every object in JavaScript has a prototype property, which references another object. When you access a property or method on an object, JavaScript first looks for it on that object. If it doesn't find it, it looks at the prototype of that object, and so on, forming a chain known as the prototype chain.
+
+Here's an example to illustrate prototypal inheritance:
+
+```javascript
+// Define a constructor function
+function Animal(name) {
+  this.name = name;
+}
+
+// Add a method to the prototype of Animal
+Animal.prototype.sayName = function() {
+  console.log("My name is " + this.name);
+};
+
+// Create a new object using the Animal constructor
+var cat = new Animal("Whiskers");
+
+// Call the method inherited from Animal's prototype
+cat.sayName(); // Output: My name is Whiskers
+```
+
+In this example:
+
+1. We define a constructor function `Animal` that initializes an object with a `name` property.
+2. We add a method `sayName` to the `prototype` of `Animal`, which all instances created using the `Animal` constructor will inherit.
+3. We create a new object `cat` using the `Animal` constructor.
+4. We call the `sayName` method on the `cat` object, which is inherited from the `Animal` prototype.
+
+Additionally, you can create a prototype chain by inheriting from another object. Here's how you can do it:
+
+```javascript
+// Define a constructor function
+function Dog(name, breed) {
+  Animal.call(this, name); // Call the Animal constructor with 'this' context
+  this.breed = breed;
+}
+
+// Inherit from Animal prototype
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog; // Reset constructor
+
+// Add a method specific to Dog
+Dog.prototype.bark = function() {
+  console.log("Woof! I'm a " + this.breed);
+};
+
+// Create a new Dog object
+var myDog = new Dog("Buddy", "Golden Retriever");
+
+// Call inherited method
+myDog.sayName(); // Output: My name is Buddy
+
+// Call the method specific to Dog
+myDog.bark(); // Output: Woof! I'm a Golden Retriever
+```
+
+In this example:
+
+1. We define a constructor function `Dog` that takes `name` and `breed` as parameters.
+2. We call the `Animal` constructor inside the `Dog` constructor using `Animal.call(this, name)`.
+3. We set `Dog.prototype` to a new object created with `Object.create(Animal.prototype)`, establishing a prototype chain.
+4. We define a new method `bark` on `Dog.prototype`.
+5. We create a new `Dog` object `myDog` and demonstrate calling both inherited (`sayName`) and specific (`bark`) methods.
+
+This demonstrates how you can achieve inheritance in JavaScript using prototypes.
+
+
+
+
+
+
+
 
 
 
