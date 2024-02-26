@@ -309,8 +309,8 @@ In each example:
 
 ```javascript
 // Polyfill for Array.map()
-if (!Array.prototype.map) {
-  Array.prototype.map = function(callback, thisArg) {
+
+  Array.prototype.myMap = function(callback, thisArg) {
     if (this == null) {
       throw new TypeError('Array.prototype.map called on null or undefined');
     }
@@ -327,7 +327,7 @@ if (!Array.prototype.map) {
     }
     return newArray;
   };
-}
+
 ```
 
 Now let's break down how this polyfill works:
@@ -362,7 +362,7 @@ Array.filter polyfill should have these three functionalities.
 - All the elements which pass text implemented in this callback function should be returned in a new array.
 
 ```js
-Array.prototype.filter = function (callback) {
+Array.prototype.myfilter = function (callback) {
   //Store the new array
   const result = [];
   for (let i = 0; i < this.length; i++) {
@@ -379,6 +379,147 @@ Array.prototype.filter = function (callback) {
 ```
 
 ## 8 Write a Polyfill for Array.reduce() method?
+
+`Array.reduce()` is a powerful method in JavaScript used to reduce an array into a single value. If you want to create a polyfill for it, you can follow these steps:
+
+
+Here's a polyfill for `Array.reduce()`:
+
+```javascript
+  // Define Array.reduce() if it doesn't exist
+  Array.prototype.reduce = function(callback, initialValue) {
+    // Check if the array is empty and there is no initial value
+    if (this.length === 0 && arguments.length < 2) {
+      throw new TypeError('Reduce of empty array with no initial value');
+    }
+    
+    // Set initial accumulator value
+    let accumulator = initialValue !== undefined ? initialValue : this[0];
+    
+    // Start iteration from the second element if initialValue is not provided
+    let startIndex = initialValue !== undefined ? 0 : 1;
+    
+    // Iterate through the array
+    for (let i = startIndex; i < this.length; i++) {
+      // Invoke callback function with accumulator and current element
+      accumulator = callback(accumulator, this[i], i, this);
+    }
+    
+    // Return the final accumulator value
+    return accumulator;
+  };
+
+```
+
+Now, let's break down this polyfill:
+
+- We first check if `Array.prototype.reduce` already exists.
+- If it doesn't exist, we define `Array.prototype.reduce` by assigning it a function.
+- This function takes two parameters: a callback function and an optional initialValue.
+- Inside the function, we handle the case where the array is empty and no initialValue is provided.
+- We set the initial accumulator value based on whether an initialValue is provided or not.
+- We start iteration from the second element if an initialValue is not provided.
+- We iterate through the array, invoking the callback function with the accumulator, current element, index, and the array itself.
+- Finally, we return the final accumulator value.
+
+This is the polyfill for reduce method.
+
+## 9 What are pure and impure functions in JS?
+
+In JavaScript, pure functions and impure functions serve different purposes and have distinct characteristics:
+
+1. **Pure Functions**:
+   - A pure function is a function where the return value is determined only by its input values, without observable side effects.
+   - It doesn't modify variables outside of its scope or perform any I/O operations.
+   - Given the same input, a pure function will always return the same output.
+   - Pure functions are predictable and easier to test.
+
+Here's an example of a pure function:
+
+```javascript
+function add(a, b) {
+    return a + b;
+}
+
+console.log(add(2, 3)); // Output: 5
+```
+
+In this example, the `add` function takes two parameters and returns their sum. It doesn't modify any variables outside its scope, and given the same inputs, it always produces the same output.
+
+2. **Impure Functions**:
+   - An impure function is a function that may produce side effects or depends on external factors.
+   - It can modify variables outside of its scope, perform I/O operations, or rely on mutable data.
+   - Impure functions may not always produce the same output for the same input, making them less predictable.
+
+Example of an impure function:
+
+```javascript
+let result = 0;
+
+function impureAdd(a) {
+    result += a; // Modifying external variable 'result'
+    return result;
+}
+
+console.log(impureAdd(2)); // Output: 2
+console.log(impureAdd(3)); // Output: 5
+```
+
+In this example, `impureAdd` modifies the external variable `result` each time it's called. The output of the function depends not only on its input but also on the current state of `result`, making it impure.
+
+In summary, pure functions are predictable and have no side effects, while impure functions may have side effects and rely on external factors.
+
+## 10 What are Imperative and declarative way of writing code?
+
+ let's compare imperative and declarative styles of writing code in JavaScript, particularly focusing on functions. 
+
+**Imperative Programming:**
+In imperative programming, you define the exact steps to achieve a desired result. This often involves explicitly stating how to do something, step by step.
+
+Example:
+```javascript
+// Imperative approach to finding the sum of an array
+function sumArray(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
+
+console.log(sumArray([1, 2, 3, 4, 5])); // Output: 15
+```
+
+In this imperative style, we explicitly loop through the array, keeping track of the sum by accumulating it with each element.
+
+**Declarative Programming:**
+In declarative programming, you focus more on what you want to achieve rather than how to achieve it. You describe the desired result without specifying the exact steps.
+
+Example:
+```javascript
+// Declarative approach to finding the sum of an array using Array.reduce()
+function sumArray(arr) {
+  return arr.reduce((acc, curr) => acc + curr, 0);
+}
+
+console.log(sumArray([1, 2, 3, 4, 5])); // Output: 15
+```
+
+In this declarative style, we use the `reduce()` method, which takes a callback function and an initial value. It abstracts away the looping process and accumulates the sum for us.
+
+**Comparison:**
+
+- **Imperative**: Focuses on the detailed steps of how to achieve a task. It often involves mutable state and explicit control flow (loops, conditionals).
+- **Declarative**: Focuses on the desired result or outcome. It often involves higher-order functions and functional composition, abstracting away implementation details.
+
+ while imperative programming emphasizes the "how," declarative programming emphasizes the "what." Declarative code tends to be more concise and easier to understand once you're familiar with the paradigms and functions being used.
+
+
+ ## 10 What are Imperative and declarative way of writing code?
+
+
+
+
 
 
 
