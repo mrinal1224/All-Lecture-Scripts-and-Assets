@@ -652,6 +652,52 @@ Here the this keyword will now start pointing to the person object.
 
 
 
+## 13 What is a  Constructor function in JS ?
+
+Constructor functions in JavaScript are a way to create objects with a blueprint or template. They are used to instantiate multiple objects with similar properties and methods.
+
+Here's how constructor functions work:
+
+1. **Definition**: You define a constructor function using the `function` keyword. By convention, constructor functions are named with an initial capital letter to distinguish them from regular functions.
+
+2. **Properties and Methods**: Inside the constructor function, you can define properties and methods using the `this` keyword. These properties and methods will be assigned to each instance of the object created using the constructor function.
+
+3. **Instantiation**: To create an instance of an object using a constructor function, you use the `new` keyword followed by the name of the constructor function.
+
+Here's an example to illustrate this:
+
+```javascript
+// Constructor function for creating Car objects
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  
+  // Method to display car information
+  this.displayInfo = function() {
+    return `This is a ${this.year} ${this.make} ${this.model}`;
+  };
+}
+
+// Creating instances of Car objects
+const car1 = new Car('Toyota', 'Camry', 2020);
+const car2 = new Car('Honda', 'Civic', 2018);
+
+// Accessing properties and methods of Car objects
+console.log(car1.displayInfo()); // Output: This is a 2020 Toyota Camry
+console.log(car2.displayInfo()); // Output: This is a 2018 Honda Civic
+```
+
+In this example:
+- `Car` is a constructor function that defines the blueprint for creating `Car` objects.
+- `this.make`, `this.model`, and `this.year` are properties of the `Car` objects.
+- `displayInfo()` is a method of the `Car` objects that returns a string containing information about the car.
+- `car1` and `car2` are instances of the `Car` objects created using the `new` keyword.
+
+Using constructor functions allows for code reusability and organization, as you can easily create multiple instances of objects with similar properties and methods.
+
+
+
 
 
 
