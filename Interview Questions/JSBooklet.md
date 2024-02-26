@@ -515,7 +515,141 @@ In this declarative style, we use the `reduce()` method, which takes a callback 
  while imperative programming emphasizes the "how," declarative programming emphasizes the "what." Declarative code tends to be more concise and easier to understand once you're familiar with the paradigms and functions being used.
 
 
- ## 10 What are Imperative and declarative way of writing code?
+ ## 11 What is Destructuring in JS?
+
+ Destructuring in JavaScript is a concise way to extract values from arrays or properties from objects and assign them to variables. It allows you to unpack values from arrays or objects into distinct variables, making your code cleaner and more readable.
+
+Here's how destructuring works with code examples:
+
+### Array Destructuring:
+
+```javascript
+// Example array
+const myArray = [1, 2, 3, 4, 5];
+
+// Destructuring assignment
+const [first, second, ...rest] = myArray;
+
+console.log(first);  // Output: 1
+console.log(second); // Output: 2
+console.log(rest);   // Output: [3, 4, 5]
+```
+
+In this example, `first` and `second` variables capture the first two elements of the array `myArray`, and the `rest` variable captures the rest of the elements using the rest syntax (`...`).
+
+### Object Destructuring:
+
+```javascript
+// Example object
+const myObject = { 
+  name: 'John', 
+  age: 30, 
+  country: 'USA' 
+};
+
+// Destructuring assignment
+const { name, age, country } = myObject;
+
+console.log(name);    // Output: John
+console.log(age);     // Output: 30
+console.log(country); // Output: USA
+```
+
+In this example, `name`, `age`, and `country` variables capture the corresponding properties of the `myObject`.
+
+### Nested Destructuring:
+
+```javascript
+// Nested object
+const person = {
+  name: 'Alice',
+  age: 25,
+  address: {
+    city: 'New York',
+    country: 'USA'
+  }
+};
+
+// Destructuring assignment with nested objects
+const { name, age, address: { city, country } } = person;
+
+console.log(name);    // Output: Alice
+console.log(age);     // Output: 25
+console.log(city);    // Output: New York
+console.log(country); // Output: USA
+```
+
+In this example, `city` and `country` variables are extracted from the nested `address` object within the `person` object.
+
+Destructuring provides a cleaner syntax for extracting values from arrays and objects, improving code readability.
+
+
+## 12 How does the this keyword works in JS?
+
+It seems like you're referring to the `this` keyword in JavaScript. The `this` keyword refers to the context in which a function is executed. Its value depends on how a function is called.
+
+In JavaScript, the value of `this` is determined by the invocation context of the function and can vary based on how a function is called:
+
+1. **Global Context**: When used in the global scope (outside of any function), `this` refers to the global object, which is `window` in a web browser and `global` in Node.js.
+
+```javascript
+console.log(this); //Window in a browser
+console.log(this); // Global in Node.js
+```
+
+2. **Function Context**: Inside a function, the value of `this` depends on how the function is called:
+   
+   a. **Regular Function**: In non-strict mode, `this` inside a regular function refers to the global object, but in strict mode, it defaults to `undefined`.
+
+   ```javascript
+   function myFunction() {
+       return this;
+   }
+   console.log(myFunction() === window); // true in a browser
+   ```
+
+   b. **Method**: When a function is called as a method of an object, `this` refers to the object itself.
+
+   ```javascript
+   const obj = {
+       method() {
+           return this;
+       }
+   };
+   console.log(obj.method() === obj); // true
+   ```
+
+   c. **Constructor Function**: When a function is used as a constructor with the `new` keyword, `this` refers to the newly created object.
+
+   ```javascript
+   function MyClass() {
+       this.property = 'value';
+   }
+   const instance = new MyClass();
+   console.log(instance.property); // 'value'
+   ```
+
+3. **Event Handlers**: In event handler functions, `this` usually refers to the element that triggered the event.
+
+```html
+<button onclick="console.log(this)">Click me</button>
+```
+
+4. **Explicit Binding**: You can explicitly set the value of `this` using `call()`, `apply()`, or `bind()` methods.
+
+```javascript
+function greet() {
+    return `Hello, ${this.name}!`;
+}
+
+const person = { name: 'Alice' };
+
+const greetPerson = greet.bind(person);
+console.log(greetPerson()); // Hello, Alice!
+```
+
+Here the this keyword will now start pointing to the person object.
+
 
 
 
