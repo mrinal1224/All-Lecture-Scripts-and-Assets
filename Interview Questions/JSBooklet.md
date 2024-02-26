@@ -771,7 +771,7 @@ console.log(result);
 
 In this example, `bind` creates a new function with `this` set to `person2` and `city` and `country` set to `"New York"` and `"USA"` respectively. The new function `boundFunction` can be invoked later.
 
-## 15 What are Call Apply Bind Methods and how they work ?
+## 15 What is Prototypal Inheritance in JS ?
 
 Prototypal inheritance is a fundamental concept in JavaScript where objects inherit properties and methods from other objects. Every object in JavaScript has a prototype property, which references another object. When you access a property or method on an object, JavaScript first looks for it on that object. If it doesn't find it, it looks at the prototype of that object, and so on, forming a chain known as the prototype chain.
 
@@ -839,6 +839,47 @@ In this example:
 5. We create a new `Dog` object `myDog` and demonstrate calling both inherited (`sayName`) and specific (`bark`) methods.
 
 This demonstrates how you can achieve inheritance in JavaScript using prototypes.
+
+
+## 16 What is Astnchronous Programming in JS an how it works ?
+
+Asynchronous JavaScript refers to the ability of JavaScript to execute multiple tasks concurrently without blocking the execution of other tasks. It allows JavaScript code to perform operations such as fetching data from a server, reading files, or executing time-consuming tasks without halting the entire program's execution.
+
+Asynchronous operations are crucial in web development because they enable better responsiveness and efficiency. Without them, tasks that require waiting for resources, like fetching data from an API or reading files, would cause the entire program to freeze, leading to a poor user experience.
+
+Here's a simple example to illustrate asynchronous JavaScript using the `setTimeout()` function:
+
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+    console.log("Inside setTimeout");
+}, 2000); // Wait for 2 seconds
+
+console.log("End");
+```
+
+In this example, "Start" and "End" will be logged immediately, while "Inside setTimeout" will be logged after a 2-second delay. This delay doesn't block the execution of subsequent code, allowing other operations to continue while waiting for the timeout to finish.
+
+Under the hood, asynchronous JavaScript relies on concepts like event loops and callback functions. When an asynchronous operation is initiated, it's scheduled to be executed later, and meanwhile, the JavaScript engine continues to execute other tasks. Once the asynchronous operation completes, a callback function associated with that operation is placed in the event queue. The event loop continuously checks the event queue and executes the callback functions when the execution stack is empty.
+
+Here's an example using a callback function with `setTimeout()`:
+
+```javascript
+console.log("Start");
+
+function callback() {
+    console.log("Inside setTimeout callback");
+}
+
+setTimeout(callback, 2000); // Wait for 2 seconds
+
+console.log("End");
+```
+
+In this example, the `callback()` function is executed after the timeout, maintaining the asynchronous behavior.
+
+Asynchronous programming in JavaScript has evolved with the introduction of Promises and async/await syntax, providing cleaner and more structured ways to handle asynchronous operations, but the underlying principles remain the same.
 
 
 
