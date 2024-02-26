@@ -251,7 +251,7 @@ Advantages of using higher-order functions:
 Overall, higher-order functions are a powerful feature of JavaScript that can lead to more modular, flexible, and expressive code.
 
 
-## 6 Explain Map , Filter and Reduce in JS?
+## 7 Explain Map , Filter and Reduce in JS?
 
  In JavaScript, `map`, `filter`, and `reduce` are powerful array methods used for manipulating arrays and performing operations on their elements.
 
@@ -304,7 +304,7 @@ In each example:
 - `reduce` iterates over each element of the array, accumulating a final result based on the logic defined in the provided function.
 
 
-## 6 Write a Polyfill for Array.map() method?
+## 8 Write a Polyfill for Array.map() method?
 
 
 ```javascript
@@ -351,7 +351,7 @@ Now let's break down how this polyfill works:
 This polyfill provides a basic implementation of `Array.map()` that should work in older browsers or environments lacking support for it.
 
 
-## 7 Write a Polyfill for Array.filter() method?
+## 9 Write a Polyfill for Array.filter() method?
 
 It is extremely common question in JavaScript interviews where it is asked to implement polyfill for the filter() method.
 
@@ -378,7 +378,7 @@ Array.prototype.myfilter = function (callback) {
 }
 ```
 
-## 8 Write a Polyfill for Array.reduce() method?
+## 10 Write a Polyfill for Array.reduce() method?
 
 `Array.reduce()` is a powerful method in JavaScript used to reduce an array into a single value. If you want to create a polyfill for it, you can follow these steps:
 
@@ -424,7 +424,7 @@ Now, let's break down this polyfill:
 
 This is the polyfill for reduce method.
 
-## 9 What are pure and impure functions in JS?
+## 11 What are pure and impure functions in JS?
 
 In JavaScript, pure functions and impure functions serve different purposes and have distinct characteristics:
 
@@ -469,7 +469,7 @@ In this example, `impureAdd` modifies the external variable `result` each time i
 
 In summary, pure functions are predictable and have no side effects, while impure functions may have side effects and rely on external factors.
 
-## 10 What are Imperative and declarative way of writing code?
+## 12 What are Imperative and declarative way of writing code?
 
  let's compare imperative and declarative styles of writing code in JavaScript, particularly focusing on functions. 
 
@@ -515,7 +515,7 @@ In this declarative style, we use the `reduce()` method, which takes a callback 
  while imperative programming emphasizes the "how," declarative programming emphasizes the "what." Declarative code tends to be more concise and easier to understand once you're familiar with the paradigms and functions being used.
 
 
- ## 11 What is Destructuring in JS?
+ ## 13 What is Destructuring in JS?
 
  Destructuring in JavaScript is a concise way to extract values from arrays or properties from objects and assign them to variables. It allows you to unpack values from arrays or objects into distinct variables, making your code cleaner and more readable.
 
@@ -584,7 +584,7 @@ In this example, `city` and `country` variables are extracted from the nested `a
 Destructuring provides a cleaner syntax for extracting values from arrays and objects, improving code readability.
 
 
-## 12 How does the this keyword works in JS?
+## 14 How does the this keyword works in JS?
 
 It seems like you're referring to the `this` keyword in JavaScript. The `this` keyword refers to the context in which a function is executed. Its value depends on how a function is called.
 
@@ -652,7 +652,7 @@ Here the this keyword will now start pointing to the person object.
 
 
 
-## 13 What is a  Constructor function in JS ?
+## 15 What is a  Constructor function in JS ?
 
 Constructor functions in JavaScript are a way to create objects with a blueprint or template. They are used to instantiate multiple objects with similar properties and methods.
 
@@ -696,7 +696,7 @@ In this example:
 
 Using constructor functions allows for code reusability and organization, as you can easily create multiple instances of objects with similar properties and methods.
 
-## 14 What are Call Apply Bind Methods and how they work ?
+## 16 What are Call Apply Bind Methods and how they work ?
 
 
 
@@ -771,7 +771,7 @@ console.log(result);
 
 In this example, `bind` creates a new function with `this` set to `person2` and `city` and `country` set to `"New York"` and `"USA"` respectively. The new function `boundFunction` can be invoked later.
 
-## 15 What is Prototypal Inheritance in JS ?
+## 17 What is Prototypal Inheritance in JS ?
 
 Prototypal inheritance is a fundamental concept in JavaScript where objects inherit properties and methods from other objects. Every object in JavaScript has a prototype property, which references another object. When you access a property or method on an object, JavaScript first looks for it on that object. If it doesn't find it, it looks at the prototype of that object, and so on, forming a chain known as the prototype chain.
 
@@ -841,7 +841,7 @@ In this example:
 This demonstrates how you can achieve inheritance in JavaScript using prototypes.
 
 
-## 16 What is Astnchronous Programming in JS an how it works ?
+## 18 What is Astnchronous Programming in JS an how it works ?
 
 Asynchronous JavaScript refers to the ability of JavaScript to execute multiple tasks concurrently without blocking the execution of other tasks. It allows JavaScript code to perform operations such as fetching data from a server, reading files, or executing time-consuming tasks without halting the entire program's execution.
 
@@ -882,7 +882,7 @@ In this example, the `callback()` function is executed after the timeout, mainta
 Asynchronous programming in JavaScript has evolved with the introduction of Promises and async/await syntax, providing cleaner and more structured ways to handle asynchronous operations, but the underlying principles remain the same.
 
 
-## 17 How Asynchronous Programming in JS works ?
+## 19 How Asynchronous Programming in JS works ?
 
 Asynchronous programming is a programming paradigm that allows tasks to be executed concurrently, enabling non-blocking behavior in applications. In JavaScript, it's commonly used for tasks such as fetching data from a server, handling user input, or performing I/O operations.
 
@@ -922,7 +922,7 @@ This demonstrates how asynchronous code (the callback inside `setTimeout`) is ex
 In more complex scenarios involving asynchronous operations like network requests or file I/O, callbacks or promises are typically used to handle the asynchronous results. These callbacks or promises are added to the task queue once the asynchronous operation completes, and they're executed when the call stack is empty.
 
 
-## 18 What are all the stages of a promise and how to use a promise ?
+## 20 What are all the stages of a promise and how to use a promise ?
 
 A Promise in JavaScript represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It has three states:
 
@@ -980,7 +980,7 @@ In this example:
 
 Promises provide a more structured way to handle asynchronous operations compared to callbacks, making code easier to read and maintain, especially when dealing with multiple asynchronous tasks.
 
-## 19 What is async await how it works
+## 21 What is async await how it works
 
 Sure! Asynchronous programming in JavaScript traditionally relied heavily on callbacks, which could lead to callback hell and hard-to-read code. To mitigate this issue, JavaScript introduced the `async/await` syntax as part of ES2017 (ES8). `async/await` makes asynchronous code look and behave more like synchronous code, which can greatly improve readability and maintainability.
 
