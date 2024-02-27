@@ -10,6 +10,7 @@ card_type: cue_card
 * This keyword 
 * This keyword in browser (strict and non strict)
 * This keyword in Node.js (strict and non strict)
+* This keyword with Arrow Functions
 
 
 It is going to be a very interesting session covering topics that are asked very frequently in interviews.
@@ -326,9 +327,72 @@ const add = (a, b) => {
 
 In this example, both functions `add` do the same thing: they take two numbers `a` and `b` and return their sum. The arrow function just looks a bit different and is shorter. You can use arrow functions especially when you have short functions or when you want to keep your code concise.
 
-But now only to make your code consise arrow function is there , there are some diffrences as well to note between a regular function and a  arrow function on how they handle the this keyword
+But not only to make your code consise arrow function is there , there are some diffrences as well to note between a regular function and an arrow function on how they handle the this keyword
 
 Let's see how an arrow function handles the `this` keyword
+
+
+ In JavaScript, the behavior of the `this` keyword differs between regular functions and arrow functions. Let's compare them with code examples:
+
+### Regular JavaScript Function:
+
+```javascript
+// Define an object
+const obj = {
+  name: 'John',
+  regularFunc: function() {
+    console.log('Regular function:', this.name);
+  }
+};
+
+// Call the regular function method
+obj.regularFunc(); // Output: Regular function: John
+
+// Assign the regular function to a variable
+const regularFuncVar = obj.regularFunc;
+
+// Call the regular function through the variable
+regularFuncVar(); // Output: Regular function: undefined (or an error in strict mode)
+```
+
+In a regular function, the value of `this` is determined by how the function is called. When a regular function is called as a method of an object, `this` refers to the object itself (`obj` in this case). However, if the function is called without any context, `this` typically refers to the global object (`window` in browsers, or `undefined` in strict mode).
+
+### Arrow Function:
+
+```javascript
+// Define an object
+const obj = {
+  name: 'John',
+  arrowFunc: () => {
+    console.log('Arrow function:', this.name);
+  }
+};
+
+// Call the arrow function method
+obj.arrowFunc(); // Output: Arrow function: undefined
+
+// Assign the arrow function to a variable
+const arrowFuncVar = obj.arrowFunc;
+
+// Call the arrow function through the variable
+arrowFuncVar(); // Output: Arrow function: undefined
+```
+
+In an arrow function, the value of `this` is lexically scoped, meaning it's determined by the surrounding scope where the arrow function is defined, rather than how it is called. As a result, arrow functions do not have their own `this` context; they inherit the `this` value from the enclosing lexical context. In the examples above, `this` within the arrow function refers to the `this` value of the enclosing scope where `obj.arrowFunc` is defined, which is typically the global object (`window`), resulting in `undefined`.
+
+In summary, arrow functions do not have their own `this` binding, whereas regular functions do, and the value of `this` in a regular function depends on how it is called.
+
+Start the doubt Session!
+
+
+
+
+
+
+
+
+
+
 
 
 
