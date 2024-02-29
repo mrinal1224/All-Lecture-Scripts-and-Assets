@@ -1,4 +1,4 @@
-Certainly! Here are three multiple-choice questions along with their correct answers:
+
 
 1. During hoisting in JavaScript, what gets moved to the top of their containing scope?
    A) Function definitions and variable declarations.
@@ -19,7 +19,7 @@ Certainly! Here are three multiple-choice questions along with their correct ans
 3. What does the term "temporal dead zone" refer to in JavaScript?
    A) It's a period during which a function is inaccessible.
    B) It's a phase where code execution stops temporarily.
-   C) It's the time between a variable's declaration and its initialization, during which accessing the variable results in a ReferenceError.
+   C)variable is inaccessible until the moment the it's initialized
    D) It's a zone where time-related operations are not allowed.
 
    **Correct Answer:** C) It's the time between a variable's declaration and its initialization, during which accessing the variable results in a ReferenceError.
