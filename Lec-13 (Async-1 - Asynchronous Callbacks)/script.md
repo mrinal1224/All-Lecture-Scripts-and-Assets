@@ -214,20 +214,43 @@ The code snippet you've provided is a simple JavaScript example demonstrating as
 
 2. **`console.log("Start")` Execution**: This line is executed immediately, printing "Start" to the console. It's placed on the call stack and then executed right away.
 
+<img src='./first.png'>
+
+<img src='./second.png'>
+
+
+
 3. **`setTimeout` Function Call**: The `setTimeout` function is called with a callback function to be executed after 2 seconds. This call is placed on the call stack, and since `setTimeout` is a Web API, it's handed off to the browser environment to wait for the specified delay time (2000ms). The callback function is moved to the Web API environment, waiting for the timer to expire.
+
+<img src='./third.png'>
+<img src='./fourth.png'>
+
+
 
 4. **`console.log("End")` Execution**: While the `setTimeout` callback is waiting, the execution continues, and `console.log("End")` is placed on the call stack and executed, printing "End" to the console.
 
+<img src='./fifth.png'>
+
+
+
 5. **Callback Execution**: After the 2-second delay, the callback function from `setTimeout` is moved to the Callback Queue.
 
+<img src='./sixth.png'>
+
+
+
 6. **Event Loop**: The Event Loop checks the Call Stack to see if it's empty (excluding the global execution context). Once it finds the Call Stack empty, it moves the callback function from the Callback Queue to the Call Stack.
+
+<img src='./seventh.png'>
+
+
 
 7. **`console.log("Hello")` Execution**: Finally, the callback function is executed, printing "Hello" to the console.
 
 Below is a simplified diagrammatic representation of this process:
 
 ```
-Call Stack                     Web APIs                  Callback Queue             Console
+Call Stack                     Web APIs/NodeApis                 Callback Queue             Console
 ---------                      ---------                 --------------             -------
  |                              |                        |                           |
  | console.log("Start")         |                        |                        "Start"
@@ -246,7 +269,13 @@ Call Stack                     Web APIs                  Callback Queue         
  |                              |                        |                           |
 ```
 
-This represents the event-driven, non-blocking nature of JavaScript execution, where asynchronous callbacks are managed outside the main call stack to ensure the application remains responsive.
+This represents the event-driven, non-blocking nature of JavaScript execution, where asynchronous callbacks are managed outside the main call stack to ensure the application doesn't block
+
+
+
+
+
+
 
 
 
