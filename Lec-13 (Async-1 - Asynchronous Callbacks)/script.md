@@ -507,20 +507,21 @@ So with this Now you know What is Synchronous and Asynchronous Programming How A
 
 
 
+At the end show the learners Ha tool where they can visualize the async code and see how everything works
+the website is https://www.jsv9000.app/ 
+
+Write any async code and try running this over here step by step and show the learners everything visually and also ask them to try something on theri own and see the behaviour.
 
 
-
-
-
-### Explanation
-
-The event loop is a core concept in asynchronous programming, particularly in JavaScript. It manages the execution flow by processing tasks from the callback queue and placing them on the call stack for execution. This ensures that non-blocking operations, like I/O tasks, can be handled while allowing the program to continue running other tasks, effectively preventing the main execution thread from being blocked.
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/454/original/Screenshot_2023-09-20_151701.png?1695203231)
 
-**Note:** In an asynchronous environment, the order in which callbacks are executed depends on the completion of tasks and their placement in the callback queue, resulting in no fixed sequence of execution.
 
-Parallel asynchronous operations involve executing multiple asynchronous tasks simultaneously, allowing for more efficient use of resources and reduced overall execution time. This is typically achieved using techniques like asynchronous functions, promises, or async/await in languages like JavaScript.
+
+Thats all for Today's class , In the next class we will start with Promises (that's a promise!)
+
+Start the doubt Session
+
 
 ---
 
