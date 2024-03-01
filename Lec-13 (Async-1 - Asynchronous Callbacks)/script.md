@@ -8,10 +8,10 @@ card_type: cue_card
 ---
 
 - Synchronous and asynchronous programming
-- Callbacks
+- Callbacks (setTimeout)
+- Event loop Mechanisam
 - Async function using inbuilt modules
-- Event loop and parallel async operations
-- Serial Operations
+- parallel and Serial Operations
 
 
 ---
@@ -192,9 +192,64 @@ To understand the complete event loop mechanism we need to know 4 things as of n
 
 Look at this diagram These are all the things that work togther to perform an asynchronous or non-blocking operation.
 
-Let's break the whole process down step by step
+```javascript
+console.log("Start");
+
+setTimeout(function() {
+  console.log("Hello");
+}, 2000);
+
+console.log("End");
+```
+
+We will take this code example only and let's do a dry run on how this code will work
+
+Let's break the whole process step by step
 
 **The Call Stack** - 
+
+The code snippet you've provided is a simple JavaScript example demonstrating asynchronous execution using `setTimeout`. Here's how it operates, diagrammatically:
+
+1. **Start of Execution**: The JavaScript engine starts running the script. The call stack and Web API environment are the primary areas of focus here.
+
+2. **`console.log("Start")` Execution**: This line is executed immediately, printing "Start" to the console. It's placed on the call stack and then executed right away.
+
+3. **`setTimeout` Function Call**: The `setTimeout` function is called with a callback function to be executed after 2 seconds. This call is placed on the call stack, and since `setTimeout` is a Web API, it's handed off to the browser environment to wait for the specified delay time (2000ms). The callback function is moved to the Web API environment, waiting for the timer to expire.
+
+4. **`console.log("End")` Execution**: While the `setTimeout` callback is waiting, the execution continues, and `console.log("End")` is placed on the call stack and executed, printing "End" to the console.
+
+5. **Callback Execution**: After the 2-second delay, the callback function from `setTimeout` is moved to the Callback Queue.
+
+6. **Event Loop**: The Event Loop checks the Call Stack to see if it's empty (excluding the global execution context). Once it finds the Call Stack empty, it moves the callback function from the Callback Queue to the Call Stack.
+
+7. **`console.log("Hello")` Execution**: Finally, the callback function is executed, printing "Hello" to the console.
+
+Below is a simplified diagrammatic representation of this process:
+
+```
+Call Stack                     Web APIs                  Callback Queue             Console
+---------                      ---------                 --------------             -------
+ |                              |                        |                           |
+ | console.log("Start")         |                        |                        "Start"
+ | -------------------------> Output                     |                           |
+ |                              |                        |                           |
+ | setTimeout(callback, 2000)  |                        |                           |
+ |                              |---------------------->|                           |
+ |                              |     (waits 2s)         |                           |
+ | console.log("End")           |                        |                           |
+ | -------------------------> Output                     |                        "End"
+ |                              |                        |                           |
+ |                              |                        | <-callback-               |
+ |                              |                        |                           |
+ | (empty, event loop checks)   |                        |                           |
+ | <-------------------------- |                        |                        "Hello"
+ |                              |                        |                           |
+```
+
+This represents the event-driven, non-blocking nature of JavaScript execution, where asynchronous callbacks are managed outside the main call stack to ensure the application remains responsive.
+
+
+
 
 
 
