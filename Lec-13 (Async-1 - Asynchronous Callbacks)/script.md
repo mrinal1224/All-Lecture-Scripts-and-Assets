@@ -514,7 +514,7 @@ So with this Now you know What is Synchronous and Asynchronous Programming How A
 
 
 
-At the end show the learners Ha tool where they can visualize the async code and see how everything works
+At the end show the learners a tool where they can visualize the async code and see how everything works
 the website is https://www.jsv9000.app/ 
 
 Write any async code and try running this over here step by step and show the learners everything visually and also ask them to try something on theri own and see the behaviour.
