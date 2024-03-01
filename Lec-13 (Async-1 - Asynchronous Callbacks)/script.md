@@ -437,6 +437,78 @@ Now, imagine a larger restaurant kitchen staffed by multiple chefs, each assigne
 This setup represents parallelism, where multiple processes (in this case, dish preparations) are truly happening simultaneously. The presence of multiple chefs allows the kitchen to significantly increase its output since many dishes can be fully prepared at the same time, reducing the total time needed to serve all tables.
 
 
+Fewh!! 
+
+Now we know How this thing is working
+
+
+Now suppose there are certain task where order is important but node js is not caring about the order here 
+
+For an example suppose I want to do sequntial file processing such as reading a configuration file before application startup or processing a series of data files where each file's output depends on the previous one.
+
+So here the order is important and we need to think of a way that we can mainatin the order ad still keep the asynchronous behaviour alive!!
+
+Sounds Like a Task no?
+
+It's Super Simple , We just need to make each file reading call depenedent on the previous file's call and the problem will be solved
+
+
+Let's see How can we achieve this
+
+```javascript 
+const fs = require("fs");
+
+console.log("before");
+
+fs.readFile("f1.txt", cb1);
+
+function cb1(err, data) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  console.log("The File data ->" + data);
+  fs.readFile("f2.txt", cb2);
+}
+
+function cb2(err, data) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  console.log("The File 2 data ->" + data);
+  fs.readFile("f3.txt", cb3);
+}
+
+function cb3(err, data) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+
+  console.log("The File 3 data ->" + data);
+}
+
+console.log("after");
+
+```
+
+You see in this code I am calling the cb of the first file for the first time and after it has been read then I am executing the second callback and after the second is read after that I am executing the third one!
+
+and there you have it!
+
+The output will be the data from 
+F1 , F2 , and F3 and now this seqeunce will never change
+
+So with this Now you know What is Synchronous and Asynchronous Programming How Asunchrnous Progamming works , How Event loop and the whole mechanism works and also how you can do concurrent and serial executions!
+
+
+
+
+
+
 
 
 
