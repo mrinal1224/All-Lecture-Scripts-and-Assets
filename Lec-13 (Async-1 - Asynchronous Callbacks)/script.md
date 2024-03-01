@@ -247,6 +247,16 @@ The code snippet you've provided is a simple JavaScript example demonstrating as
 
 7. **`console.log("Hello")` Execution**: Finally, the callback function is executed, printing "Hello" to the console.
 
+
+<img src='./eighth.png'>
+
+Thus the Final Output becomes- 
+
+Start
+End
+Hello
+
+
 Below is a simplified diagrammatic representation of this process:
 
 ```
@@ -272,156 +282,6 @@ Call Stack                     Web APIs/NodeApis                 Callback Queue 
 This represents the event-driven, non-blocking nature of JavaScript execution, where asynchronous callbacks are managed outside the main call stack to ensure the application doesn't block
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Consider this given below example:
-
-```javascript 
-// Sample data array
-let dataArray = [
-  { name: 'Adam', age: 23 },
-  { name: 'Steve', age: 25 },
-];
-
-// Function to fetch and display data asynchronously
-function getData() {
-  setTimeout(function() {
-    let output = '';
-
-    dataArray.forEach(function(data) {
-      output += `<li>${data.name}</li>`;
-    });
-
-    document.body.innerHTML = output;
-  }, 2000);
-}
-
-// Invoke the getData function
-getData();
-```
-
-This code snippet defines a sample data array and a function called `getData` to simulate asynchronous data fetching using `setTimeout`. The data is processed and displayed on the webpage after a 2-second delay. The function is invoked at the end to initiate the process.
-
-```javascript 
-// Sample data array
-let dataArray = [
-  { name: 'Adam', age: 23 },
-  { name: 'Steve', age: 25 },
-];
-
-// Function to fetch and display data asynchronously
-function getData() {
-  setTimeout(function() {
-    let output = '';
-
-    dataArray.forEach(function(data) {
-      output += `<li>${data.name}</li>`;
-    });
-
-    document.body.innerHTML = output;
-  }, 2000);
-}
-
-// Function to add new data and update the display
-function createData(newData) {
-  setTimeout(function() {
-    dataArray.push(newData);
-
-    // Update the display
-    getData();
-  }, 1000); // Reducing the delay for demonstration
-}
-
-// Example usage
-createData({ name: 'John', age: 30 });
-```
-
-In the context of the provided example, a callback function is a function that is passed as an argument to another function and is intended to be executed later, often after a specific event or task has completed. Callbacks are used to manage asynchronous operations and ensure that certain code is executed at the appropriate time.
-
-Here's how a callback function could be introduced in the given example:
-
-```javascript 
-// Sample data array
-let dataArray = [
-  { name: 'Adam', age: 23 },
-  { name: 'Steve', age: 25 },
-];
-
-// Function to fetch and display data asynchronously
-function getData(callback) {
-  setTimeout(function() {
-    let output = '';
-
-    dataArray.forEach(function(data) {
-      output += `<li>${data.name}</li>`;
-    });
-
-    document.body.innerHTML = output;
-
-    if (typeof callback === 'function') {
-      callback();
-    }
-  }, 2000);
-}
-
-// Function to add new data and update the display
-function createData(newData, callback) {
-  setTimeout(function() {
-    dataArray.push(newData);
-
-    // Update the display
-    getData();
-
-    if (typeof callback === 'function') {
-      callback();
-    }
-  }, 1000); // Reducing the delay for demonstration
-}
-
-// Callback function example
-function performAdditionalTask() {
-  console.log('Additional task performed.');
-}
-
-// Usage with callback functions
-createData({ name: 'John', age: 30 }, performAdditionalTask);
-```
-
-In this example, the `getData` and `createData` functions now accept an optional callback function parameter. After their respective tasks are completed (data is displayed or added), they check if a callback function is provided and then execute it. The `performAdditionalTask` function serves as an example of a callback being passed to the `createData` function.
 
 ---
 title: Asynchronous Function using in-built modules
