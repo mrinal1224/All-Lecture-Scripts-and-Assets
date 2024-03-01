@@ -439,7 +439,14 @@ This setup represents parallelism, where multiple processes (in this case, dish 
 
 Fewh!! 
 
-Now we know How this thing is working
+Now we know How this thing is working!
+
+---
+title: Serial Operations
+description: 
+duration: 900
+card_type: cue_card
+---
 
 
 Now suppose there are certain task where order is important but node js is not caring about the order here 
