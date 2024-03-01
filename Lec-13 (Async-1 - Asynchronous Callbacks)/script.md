@@ -395,8 +395,10 @@ console.log('After'); // This will be printed before the file is read
 
 
 You will see the output as
-Before
-After
+
+
+- Before
+- After
 
 but the files will be read in random order
 sometimes you will see F1 F2 F3 , sometimes it will be F3 F1 F2 and the order here can be anything!
