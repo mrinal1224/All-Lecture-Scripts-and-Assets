@@ -325,13 +325,13 @@ const fs = require("fs");
 console.log('Before'); // This will be printed first
 
 // Read file asynchronously (non-blocking)
-fs.readFile('f1.txt', (err, data2) => {
+fs.readFile('f1.txt', (err, data) => {
   if (err) {
     console.error('An error occurred:', err);
     return;
   }
   
-  console.log('This is File 2 data -> ' + data2); // This is printed when the file is read
+  console.log('This is File 1 data -> ' + data); // This is printed when the file is read
 });
 
 console.log('After'); // This will be printed before the file is read
@@ -345,14 +345,98 @@ In this code:
 * If no errors occur, `console.log('This is File 2 data -> ' + data2)` is executed when the file is read, and the file contents are printed to the console.
 * Finally, `console.log('After')` is executed, which is printed before the file reading is complete.
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/453/original/Screenshot_2023-09-20_151611.png?1695203184)
 
 ---
-title: Event Loop and Parallel asynchronous operations 
+title: Event Loop and Concurrent asynchronous operations 
 description: 
 duration: 900
 card_type: cue_card
 ---
+
+Now lets take three files and let's see some interesting things
+
+```javascript 
+// Import the 'fs' module
+const fs = require("fs");
+
+console.log('Before'); // This will be printed first
+
+// Read file asynchronously (non-blocking)
+fs.readFile('f1.txt', (err, data) => {
+  if (err) {
+    console.error('An error occurred:', err);
+    return;
+  }
+  
+  console.log('This is File 1 data -> ' + data); // This is printed when the file is read
+});
+
+fs.readFile('f2.txt', (err, data) => {
+  if (err) {
+    console.error('An error occurred:', err);
+    return;
+  }
+  
+  console.log('This is File 2 data -> ' + data); // This is printed when the file is read
+})
+
+
+fs.readFile('f3.txt', (err, data) => {
+  if (err) {
+    console.error('An error occurred:', err);
+    return;
+  }
+  
+  console.log('This is File 3 data -> ' + data); // This is printed when the file is read
+})
+
+console.log('After'); // This will be printed before the file is read
+```
+
+
+You will see the output as
+Before
+After
+
+but the files will be read in random order
+sometimes you will see F1 F2 F3 , sometimes it will be F3 F1 F2 and the order here can be anything!
+
+Give learners time to run this code and see the behaviour
+
+Now why is this happeining?
+
+Again the Event Loop Comes into the Picture
+Event Loop and the Callback Queue: Once the asynchronous operation is initiated, Node.js registers a callback function to be called when the operation is complete (i.e., when the file has been read). This callback function is not executed immediately but is placed in the callback queue. The event loop continuously checks this queue to see if there are any callbacks that are ready to be executed.
+
+Execution of Callbacks: The event loop follows the "first in, first out" (FIFO) principle for the callback queue. However, the order in which callbacks are added to the queue depends on several factors, including the time it takes for the asynchronous operation to complete. This timing can vary due to differences in file sizes, disk speed, system load, etc. As a result, even if you initiate file read operations in a specific order, their callbacks might be placed in the queue in a different order, depending on how quickly each operation completes.
+
+Callback Execution and Apparent "Disorder": The event loop takes callbacks from the queue and executes them as soon as the call stack is clear and they are ready to run. Because the completion time of each read operation can vary, the callbacks may not execute in the order you initiated the read operations. This is why you might observe what seems to be a lack of order in the way files are processed when using asynchronous fs functions.
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/453/original/Screenshot_2023-09-20_151611.png?1695203184)
+
+and this is what we call as Concurrent Operations in Node js , Some People may call it parallel but the correct word to describe this is concurrent behaviour
+
+Explain a little about parallel and concurrent Behaviour
+
+**Concurrent Execution**
+Concurrency refers to the ability of an application to make progress on multiple tasks at the same time without necessarily completing any single task before moving on to the next one. It's about dealing with lots of things at once. In the context of Node.js, concurrency is achieved through its event-driven, non-blocking I/O model. The system can handle multiple I/O operations by starting an operation and then moving on to another operation before the first one finishes. The actual I/O operations (like file reads) might be handled by the system's I/O mechanisms outside of the Node.js process, and Node.js can register callbacks to be executed when these operations complete. However, the JavaScript code in a Node.js application runs on a single thread, and the event loop handles callbacks one at a time, in an ordered queue.
+
+Imagine a restaurant kitchen with a single chef. This chef is responsible for preparing multiple dishes for various tables. The chef starts by preparing the first dish, but while waiting for the water to boil, they begin to chop vegetables for the second dish. Then, while the first dish is simmering and the vegetables for the second dish are chopped, the chef starts marinating the meat for the third dish.
+
+In this scenario, the chef is working on multiple dishes concurrently. They are not working on more than one dish at the exact same moment but are making progress on several tasks by switching between them during waiting times. The chef efficiently manages their time and resources (the kitchen space and utensils), ensuring that all dishes move forward towards completion, even though at any given moment, they are actively working on only one task.
+
+So this is the behaviour that node.js follows 
+
+**Parallel Execution**
+Parallelism, on the other hand, involves performing multiple operations at the exact same time, which usually requires multiple CPU cores. Parallel execution can significantly reduce the total time needed to complete multiple tasks because the tasks are literally running simultaneously.
+
+Now, imagine a larger restaurant kitchen staffed by multiple chefs, each assigned to different tasks simultaneously. One chef is boiling water and cooking pasta, another is grilling chicken, and a third is preparing a salad. All these tasks are happening at the same time, parallel to each other.
+
+This setup represents parallelism, where multiple processes (in this case, dish preparations) are truly happening simultaneously. The presence of multiple chefs allows the kitchen to significantly increase its output since many dishes can be fully prepared at the same time, reducing the total time needed to serve all tables.
+
+
+
+
 
 ### Explanation
 
