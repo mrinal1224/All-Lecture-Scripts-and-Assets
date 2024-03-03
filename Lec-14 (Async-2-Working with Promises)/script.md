@@ -316,7 +316,7 @@ I AM FILE 1 DATA
 **Explanation:** There is a in-built process of 'resolve' and 'reject' body which passes through the then and catch method. If the promise is fulfilled then it lies under the 'resolve' state using 'then' method. else it lies under the 'reject' state using 'catch' method.  
 
 ---
-title: Read the All File Using Promies
+title: Read  All File Using Promies
 description:
 duration: 900
 card_type: cue_card
@@ -375,7 +375,7 @@ I AM FILE 3 DATA
 
 ![](https://hackmd.io/_uploads/ByPjJNQ02.png)
 
-**Explanation:** Since we are using promises so the order can be changed every time becuase it's following parallel operation and parallel operations can only happens when the code is asynchronous.  
+**Explanation:** Since we are using promises , so promises also follow the event loop Mechanism , So you will see parallel order here Files will be read in a concurrent order 
 
 **Optimized Solution**
 
@@ -433,7 +433,37 @@ f3p.catch(handleError)
 
 ![](https://hackmd.io/_uploads/HJFA4EmRn.png)
 
-**Explanation:** Since we are using promises so the order can be changed every time becuase it's following parallel operation and parallel operations can only happens when the code is asynchronous.  
+**Explanation:** 
+
+The provided JavaScript code snippet demonstrates asynchronous file reading using the `fs.promises` API from Node.js. It reads three files (`f1.txt`, `f2.txt`, `f3.txt`) asynchronously and handles the outcomes (data or error) using promises. Let's break down how this code works, especially focusing on the event loop mechanism in Node.js.
+
+### Initialization Phase
+1. The `fs` module is required at the beginning. This module provides an API for interacting with the file system.
+2. Three variables (`promiseReadFile1`, `promiseReadFile2`, `promiseReadFile3`) are declared and assigned the promises returned by calling `fs.promises.readFile()` on three different files. These operations are asynchronous and non-blocking, meaning the code execution continues without waiting for these operations to complete.
+
+### Event Loop Phases
+The event loop is a mechanism that allows Node.js to perform non-blocking I/O operations, despite JavaScript being single-threaded. Here's how the event loop handles the promises:
+
+#### Poll Phase
+- **Reading Files**: The event loop moves to the poll phase, where it checks for I/O events and executes their callbacks when the file reading operations complete. The `fs.promises.readFile()` method initiates reading files asynchronously. The actual reading happens in the background (outside the event loop), thanks to Node's libuv library.
+
+#### Check Phase
+- Once a file read operation completes, the corresponding promise is either fulfilled or rejected, depending on the outcome of the operation.
+- If the file was read successfully, the promise is fulfilled, and the callback passed to `.then()` is scheduled to be called with the file data as its argument.
+- If there was an error reading the file (e.g., the file doesn't exist), the promise is rejected, and the callback passed to `.catch()` is scheduled to be called with the error as its argument.
+
+#### Microtasks Queue
+- **Promise Callbacks Execution**: Promise callbacks (`then` and `catch`) are considered microtasks in Node.js and are executed immediately after the current phase of the event loop completes and before moving to the next phase. This means that as soon as the promise settles (either fulfilled or rejected), the corresponding `.then()` or `.catch()` callbacks are placed in the microtasks queue and executed in the order they were scheduled.
+- The callbacks for reading `f1.txt`, `f2.txt`, and `f3.txt` are executed as soon as their respective read operations complete and the event loop gets to processing microtasks. The order of logs (`This is file 1 data ->`, `This is file 2 data ->`, `This is file 3 data ->`) to the console depends on the order in which the files are read successfully. It's not guaranteed to be in the order `f1.txt`, `f2.txt`, `f3.txt` as you already know why?.
+
+Ask students to answer this as they have already learnt about this in the previous class
+
+### Error Handling
+- Each `readFile` promise has a `.catch()` method attached. If any file read results in an error, its respective `.catch()` method logs the error to the console.
+
+### Conclusion
+- The event loop facilitates the non-blocking I/O operations by allowing the file reads to happen in the background. Once these operations are complete, the event loop ensures the registered callbacks are executed at the appropriate time.
+- The promises and the microtask queue allow handling asynchronous operations' outcomes in a clear and manageable way, executing promise callbacks as soon as possible after their asynchronous operations complete.
 
 ---
 title: How Asynchronous Works
