@@ -1,4 +1,19 @@
 # Asynchronous Programming 2
+
+---
+title: Agenda 
+description:
+duration: 900
+card_type: cue_card
+---
+
+
+- What are Promises
+- Asynchronous Programming with Promises
+
+
+
+
 ---
 title: Asynchronous Programming with Promises 
 description:
