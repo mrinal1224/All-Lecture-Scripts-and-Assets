@@ -41,155 +41,196 @@ Let's understand the stages of Promises
 * Promise can not be fulfilled => Rejected State
 * Settled => Promise Executed
 
-#### Syntax
+Promises in JavaScript are a powerful way to handle asynchronous operations. They are objects that represent the eventual completion (or failure) of an asynchronous operation and its resulting value. Before we dive deep into promises, let's understand why they are necessary.
+
+### The Need for Promises
+
+In traditional JavaScript, asynchronous operations like web requests were handled using callbacks. A callback is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action as you have seen in the previous class. However, callbacks can lead to complex, nested code structures known as "callback hell," making the code difficult to read and maintain.
+
+Now you may ask what is a callback hell? We will talk about this after learing Promises  We will see this issue and will solve this with Promises and also async/await , but before solving a problem with promises and async/await you must know what is a promise and async/await
+
+So let's see!
+
+
+### Creating a Promise
+
+A promise is created using the `Promise` constructor, which takes a function called the "executor" as its argument. The executor function is executed immediately by the Promise implementation, and it receives two functions as parameters: `resolve` and `reject`.
+
+- `resolve(value)` — If the operation is successful, this function is called with the result.
+- `reject(error)` — If the operation fails, this function is called with the error.
 
 ```javascript
-let myPromise = new Promise(function(resolve, reject){
-
-})
-
-console.log(myPromise)
+let promise = new Promise(function(resolve, reject) {
+  // executor (the producing code)
+});
 ```
 
-**Output:**
+### A Simple Example
 
-![](https://hackmd.io/_uploads/rJDlN6WAh.png)
-
-**Explanation:** Wherever there is no resolve and no reject condition so it always lies under the pending condition.
-
----
-title: Understand Promise State
-description:
-duration: 900
-card_type: cue_card
----
-
-#### Question
-
-Create resolve and reject states of Promise 
-
-#### Solution
-
-**Reject State:**
+Let's create a simple promise that simulates a coin toss:
 
 ```javascript
-let myPromise = new Promise(function(resolve, reject){
-    const a = 4
-    const b = 5
-
-    if(a == b) {
-        resolve('Yes They are Equal')
+let coinTossPromise = new Promise(function(resolve, reject) {
+  setTimeout(() => {
+    // simulate a coin toss delay
+    const isHeads = Math.random() > 0.5;
+    if (isHeads) {
+      resolve("Heads");
+    } else {
+      reject("Tails - Coin toss resulted in tails, considered as a fail for this example.");
     }
-    else {
-        reject('No They are not Equal')
-    }
-})
-
-console.log(myPromise)
-
+  }, 1000); // simulate a 1-second coin toss
+});
 ```
 
-**Output:**
+### Consuming a Promise
 
-![](https://hackmd.io/_uploads/rJV47ZMR3.png)
+To use a promise, you attach callbacks to it using the `.then()`, `.catch()`, and `.finally()` methods.
 
-**Explanation:** Whenever condition is not fulfilled or condition is not true it always lies under the rejected state
-
-**Resolve States:**
+- `.then()` takes two arguments: a callback for the success case and an optional callback for the failure case but now to handle failures we attach catch
+- `.catch()` is used to handle any errors or rejections from the promise.
+- `.finally()` allows you to execute logic regardless of the promise's outcome.
 
 ```javascript
-let myPromise = new Promise(function(resolve, reject){
-    const a = 4
-    const b = 4
-
-    if(a == b) {
-        resolve('Yes They are Equal')
-    }
-    else {
-        reject('No They are not Equal')
-    }
-})
-
-console.log(myPromise)
-
+coinTossPromise
+  .then((result) => {
+    console.log(result); // "Heads" if resolved
+  })
+  .catch((error) => {
+    console.error(error); // Error message if rejected
+  })
+  .finally(() => {
+    console.log("Coin toss completed."); // Always executed
+  });
 ```
 
-**Output:**
+### Chaining Promises
 
-![](https://hackmd.io/_uploads/B1U1VbfR3.png)
+One of the strengths of promises is their ability to be chained. The `.then()` method returns a new promise, which allows for sequential execution of asynchronous operations.
 
-**Explanation:** Whenever condition is fulfilled or condition is true it always lies under the resolved state.
+Now suppose , let's take a very real life example to understand this
 
+I have always been an unorganized guy , So my Mother says that If you clean your room and remove the garbage She will reward me with an Ice Cream , Sounds fun right?
 
----
-title: Understand then and catch method
-description:
-duration: 900
-card_type: cue_card
----
+So now there are some promises that I have to fulfill like clean room and remove garabage if both the promises are fulfilled then only my Mother will keep her end of the promise of rewarding me with an icecream and If I fail , No ice cream for me!
 
-#### Question
+So if you see the winIceCream promise is dependent on cleanRoom and removeGarbage promise , So how will you make sure that first these two promises are completed and then when they resolve the winIceCream promise should execute
 
-1. What is the use of then method and How to use then mehtod?
+The answer is by Chaining the Promises one after the other
+
+Let's see how chaining works with using the same example
 
 ```javascript
-let myPromise = new Promise(function(resolve, reject){
-    const a = 4
-    const b = 4
+let cleanRoom = function() {
+  return new Promise(function(resolve, reject) {
+    resolve('Cleaned The Room');
+  });
+};
 
-    if(a == b) {
-        resolve('Yes They are Equal')
-    }
-    else {
-        reject('No They are not Equal')
-    }
+let removeGarbage = function(message) {
+  return new Promise(function(resolve, reject) {
+    resolve(message + ' then removed Garbage');
+  });
+};
+
+let winIcecream = function(message) {
+  return new Promise(function(resolve, reject) {
+    resolve(message + ' then won Icecream');
+  });
+};
+
+cleanRoom().then(function(result){
+  return removeGarbage(result);
+}).then(function(result){
+  return winIcecream(result);
+}).then(function(result){
+  console.log('finished ' + result); // Logs the final message after all promises are resolved
 })
-
-
-// then method
-myPromise.then(function(data){
-    console.log(data)
-})
-
 ```
 
-**Output:**
+In this way you can mainatain your Promises in Sequence!
 
-![](https://hackmd.io/_uploads/B1YzDZfR3.png)
+### Error Handling in Chains
 
-**Explanation:** Whenever a promise is resolved the data inside the resolve passes to the then method.
+When chaining promises, a rejection in any promise will skip all the subsequent `.then()` methods until it finds a `.catch()`. This behavior simplifies error handling in a chain of asynchronous operations.
 
-2. What is the use of catch method and How to use catch mehtod?
+
+To handle rejection more explicitly in our ice cream example, let's adjust the functions to include scenarios where they might fail. We'll also incorporate explicit rejection handling to demonstrate how you can manage both success and failure outcomes in a promise chain.
+
+### Updated Example with Rejections
+
+
+Suppose I skip cleanRoom and I didn't Fulfill my end of the Promise , Should I win the ice cream then? Nope! or if I clean the room but do not remove the garabage then also I will fail to win the ice cream
+
+Suppose now there is a 50% chance that I will fulfill my Promises and 50% chance that I will not!
+
+First, we update our functions to include a possibility of failure, which will be represented by rejecting the promise. For simplicity, let's say each step has a 50% chance of failing.
 
 ```javascript
-let myPromise = new Promise(function(resolve, reject){
-    const a = 4
-    const b = 4
-
-    if(a == b) {
-        resolve('Yes They are Equal')
+let cleanRoom = function() {
+  return new Promise(function(resolve, reject) {
+    // 50% chance of success
+    if (Math.random() < 0.5) {
+      resolve('Cleaned The Room');
+    } else {
+        // 50% chance of failure
+      reject('Failed to clean the room');
     }
-    else {
-        reject('No They are not Equal')
+  });
+};
+
+let removeGarbage = function(message) {
+  return new Promise(function(resolve, reject) {
+    // 50% chance of success
+    if (Math.random() < 0.5) {
+      resolve(message + ' then removed Garbage');
+    } else {
+        // 50% chance of failure
+      reject('Failed to remove garbage');
     }
-})
+  });
+};
 
-
-// then method
-myPromise.then(function(data){
-    console.log(data)
-})
-
+let winIcecream = function(message) {
+    return new Promise(function(resolve, reject) {
+    resolve(message + ' then won Icecream');
+  });
+};
 ```
 
-**Output:**
+### Handling Rejections in Promise Chain
 
-![](https://hackmd.io/_uploads/H1iKeQ702.png)
+When chaining these promises, we can handle rejection at each step or at the end of the chain. Handling it at each step allows for more granular error handling, which might be useful if you want to attempt recovery or perform specific actions based on the type of failure.
 
-**Explanation:** Whenever a promise is rejected the method will throw an error and to handle these errors we use a catch method.  
+```javascript
+cleanRoom().then(function(result){
+  console.log(result);
+  return removeGarbage(result);
+}).then(function(result){
+  console.log(result);
+  return winIcecream(result);
+}).then(function(result){
+  console.log('finished ' + result);
+}).catch(function(error){
+  console.error(error); // This will catch any error that occurs in the chain basically the reject parts in this example.
+});
+```
+
+In this setup, if any of the promises are rejected, the execution jumps directly to the `.catch()` method, skipping any remaining `.then()` methods. This is useful for centralizing error handling logic.
+
+So now if there is any error or failure the sadly No Ice Cream for me!
+
+
+### Conclusion
+
+By introducing the possibility of failure and handling these failures explicitly, we can build robust asynchronous workflows that can gracefully handle both success and failure scenarios. This flexibility is one of the key strengths of using promises in JavaScript, allowing developers to write more reliable and maintainable code when dealing with asynchronous operations.
+
+
+
+- Note to Instructor - Stop for 5-10 mins discuss with the learners about any questions they may have give them some time to digest this whole thing and then move forward
 
 ---
-title: Read File Using JavaScript
+title: Read File Using Promises
 description:
 duration: 900
 card_type: cue_card
@@ -201,7 +242,7 @@ card_type: cue_card
 
 #### Solution
 
-First of we will se how to read file using javascript only
+First of we will se how to read file using callback only , this we have seen in our previous class
 
 ```javascript
 const fs = require('fs')
@@ -220,7 +261,7 @@ function cb(err, data) {
 
 **Output:**
 
-![](https://hackmd.io/_uploads/BJueDXX03.png)
+File 1's data
 
 
 Now we will se how to read the file with using promises.
@@ -251,7 +292,7 @@ For Reject State:
 ```javascript
 const fs = require('fs')
 
-let promiseReadFile = fs.promises.readFile('f5.txt')
+let promiseReadFile = fs.promises.readFile('f1.txt')
 
 promiseReadFile.then(function(data) {
     console.log('This is file data -> ' + data)
@@ -295,27 +336,21 @@ let promiseReadFile3 = fs.promises.readFile('f3.txt')
 // For File 1
 promiseReadFile1.then(function(data) {
     console.log('This is file 1 data -> ' + data)
-})
-
-promiseReadFile1.catch(function(err) {
+}).catch(function(err) {
     console.log('This is Your Error -> ' + err)
 })
 
 // For File 2
 promiseReadFile2.then(function(data) {
     console.log('This is file 2 data -> ' + data)
-})
-
-promiseReadFile2.catch(function(err) {
+}).catch(function(err) {
     console.log('This is Your Error -> ' + err)
 })
 
 // For File 3
 promiseReadFile3.then(function(data) {
     console.log('This is file 3 data -> ' + data)
-})
-
-promiseReadFile3.catch(function(err) {
+}).catch(function(err) {
     console.log('This is Your Error -> ' + err)
 })
 
