@@ -41,7 +41,7 @@ Now would you like to stand in a queue like this?
 
 Expext some answers from the learners maybe someone will point out that we can place the order and till the time order get's completed I can do other work , this will be a better approach right? 
 
-So how this process can be less cumbersome? so the satnding in queueu waiting for your coffee can be avoided?
+So how this process can be less cumbersome? so the standing in queuee placing order and getting your coffee and the whole  waiting time for your coffee can be avoided?
 
  
 Now, instead of standing at the counter waiting for your coffee to be made (synchronously waiting for a task to complete) you just place your order and move away from there to do other task, you and your friends sit down at a table and chat, or maybe even read a book or scroll through your phone (doing other tasks).
