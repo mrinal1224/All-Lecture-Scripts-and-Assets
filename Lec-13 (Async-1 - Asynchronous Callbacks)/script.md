@@ -27,35 +27,28 @@ Before directly jumping into the code , let's first understand what these two te
 
 
 ## Synchronous way of doing a task
+Imagine you're at a coffee shop with a group of friends, and you all decide to order different types of coffee.
 
-Let's suppose I am teaching and we have around 2.5 hrs of this class and there are 100 students , Now as I am Teaching I encounter some doubts 
-consider this thread as the whole timeline of my class
+ after you place your coffee order at the counter, you have to stand right there and wait for the barista to make your coffee. You can't go sit down, chat with your friends, read a book, or do anything else. You're stuck waiting in line until your coffee is ready. Only after you've received your coffee and moved away from the counter can the next person in line order their coffee and start waiting.
 
-<img src='./thread.png'/>
-
-Now I encounter some doubts in these time slots as shown below
+This process repeats for each friend in your group, with each person ordering their coffee and then waiting for it to be prepared and handed to them before the next person can even place their order. This means if you're the fifth person in line, you have to wait for all four orders ahead of you to be completed before the barista can even start on yours.
 
 
-<img src='./thread2.png'/>
 
+In synchronous JavaScript, operations that take time to complete (like reading from a file or querying a database) block further execution of the code until they are finished. This can lead to a situation where the browser or the code appears frozen or unresponsive because it's waiting for each task to complete in turn before moving on to the next task, much like waiting for your coffee in a very slow, one-at-a-time manner.
 
-Now if you see I only have time of 2.5 hrs to finish the content and now if I start taking doubts in between the class timeline I am actually making 97 other students wait to move forward as I am blocked at certain times with these doubts and in real I have wasted 20 mins of the alloted time
+Now would you like to stand in a queue like this?
 
-Do you think I should teach in this way?
-It will ruin the experinene of most of the learners
+Expext some answers from the learners maybe someone will point out that we can place the order and till the time order get's completed I can do other work , this will be a better approach right? 
 
-Similary now Imagine the class timeline as a single theard and when your program runs , there is only one thread that will manage all the opertaions , so suppose your program has heavy operations to do like read a large file calling some external api to get data and stuff like these which can take a while , So what will happen is that when this heavy operations will come to execute in the thread they will block all the operations until their purpose is finished , Similary as a doubt can stop me from moving forward with the actual class content
+So how this process can be less cumbersome? so the satnding in queueu waiting for your coffee can be avoided?
 
-<img src='./thread3.png'>
+ 
+Now, instead of standing at the counter waiting for your coffee to be made (synchronously waiting for a task to complete) you just place your order and move away from there to do other task, you and your friends sit down at a table and chat, or maybe even read a book or scroll through your phone (doing other tasks).
 
-So, Now you get the idea that JS is single threaded everything executes here in just one thread and heavier operations can block the thread and will not let other services or functions execute until they have finished.
+As each coffee order is ready, the barista calls out the name associated with the order. When you hear your name (the callback), you go to the counter to pick up your coffee (the completion of an asynchronous operation). This way, you're not wasting time just standing and waiting; you're free to do other things while your coffee is being made, and you're notified when it's ready.
 
-How to solve for this then? Let's try to solve this in such a way that whenever a doubt comes I will make the student wait until the whole class content of the class is finished and then at the end I can call the student back with his/her doubt and resolve it 
-
-<img src='./thread4.png'>
-
-Simple isn't it? That whenerver there are some heavy operations that will take time just address it and push it at the end and when all the other code has executed call them back and get the results at the end! So now the thread execution will not be blocked for any heavier opertions because we are saying that this will take time let's process it at the end and get done with all the code that are not heavy.
-
+In asynchronous JavaScript, functions that take some time to complete (like fetching data from a server) don't stop the browser from doing other things. Instead, you provide a function that will be called back once the task is done, much like you getting your coffee only when it's ready, while the rest of your code can continue to run (like enjoying your time at the table). This makes for a more efficient and better user experience because the web page or the code doesn't freeze while waiting for tasks to complete.
 
 What If I tell you this is the whole Principle of Asynchronous Programming 
 
