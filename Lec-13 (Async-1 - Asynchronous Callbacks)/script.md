@@ -44,7 +44,7 @@ Expext some answers from the learners maybe someone will point out that we can p
 So how this process can be less cumbersome? so the standing in queuee placing order and getting your coffee and the whole  waiting time for your coffee can be avoided?
 
  
-Now, instead of standing at the counter waiting for your coffee to be made (synchronously waiting for a task to complete) you just place your order and move away from there to do other task, you and your friends sit down at a table and chat, or maybe even read a book or scroll through your phone (doing other tasks).
+Now, instead of standing at the counter waiting for your coffee to be made (synchronously waiting for a task to complete) you just place your order and move away from there to do other task while the barisata  starts preparing your coffee, you and your friends sit down at a table and chat, or maybe even read a book or scroll through your phone (doing other tasks).
 
 As each coffee order is ready, the barista calls out the name associated with the order. When you hear your name (the callback), you go to the counter to pick up your coffee (the completion of an asynchronous operation). This way, you're not wasting time just standing and waiting; you're free to do other things while your coffee is being made, and you're notified when it's ready.
 
