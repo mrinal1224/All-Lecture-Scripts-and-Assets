@@ -10,12 +10,15 @@ card_type: cue_card
 
 - What are Promises
 - Asynchronous Programming with Promises
+- Chaining of Promises
+- Async Tasks in Concurrent Order
+- Async Task in Serial Order
 
 
 
 
 ---
-title: Asynchronous Programming with Promises 
+title: What are Promises
 description:
 duration: 900
 card_type: cue_card
@@ -31,6 +34,14 @@ When someone makes you promise , that person is not going complete their promise
 
 
 So in real life how a promise is done and works , the same principe is followed in JS as well.
+
+
+---
+title: Asynchronous Programming with Promises
+description:
+duration: 900
+card_type: cue_card
+---
 
 Let's understand the stages of Promises
 
@@ -103,6 +114,12 @@ coinTossPromise
     console.log("Coin toss completed."); // Always executed
   });
 ```
+---
+title: Chaining of Promises
+description:
+duration: 900
+card_type: cue_card
+---
 
 ### Chaining Promises
 
@@ -218,7 +235,7 @@ cleanRoom().then(function(result){
 
 In this setup, if any of the promises are rejected, the execution jumps directly to the `.catch()` method, skipping any remaining `.then()` methods. This is useful for centralizing error handling logic.
 
-So now if there is any error or failure the sadly No Ice Cream for me!
+So now if there is any error or failure then sadly No Ice Cream for me!
 
 
 ### Conclusion
@@ -230,7 +247,7 @@ By introducing the possibility of failure and handling these failures explicitly
 - Note to Instructor - Stop for 5-10 mins discuss with the learners about any questions they may have give them some time to digest this whole thing and then move forward
 
 ---
-title: Read File Using Promises
+title: Read File Using Promises (concurrent)
 description:
 duration: 900
 card_type: cue_card
@@ -242,7 +259,7 @@ card_type: cue_card
 
 #### Solution
 
-First of we will se how to read file using callback only , this we have seen in our previous class
+First of we will see how to read file using callback only , this we have seen in our previous class
 
 ```javascript
 const fs = require('fs')
@@ -285,38 +302,14 @@ promiseReadFile.catch(function(err) {
 
 **Output:**
 
-![](https://hackmd.io/_uploads/HkHSommCn.png)
+This is file data - file data
 
-For Reject State:  
 
-```javascript
-const fs = require('fs')
 
-let promiseReadFile = fs.promises.readFile('f1.txt')
-
-promiseReadFile.then(function(data) {
-    console.log('This is file data -> ' + data)
-})
-
-promiseReadFile.catch(function(err) {
-    console.log('This is Your Error -> ' + err)
-})
-
-```
-
-```f1.txt
-I AM FILE 1 DATA
-
-```
-
-**Output:**
-
-![](https://hackmd.io/_uploads/HJEe37Q0h.png)
-
-**Explanation:** There is a in-built process of 'resolve' and 'reject' body which passes through the then and catch method. If the promise is fulfilled then it lies under the 'resolve' state using 'then' method. else it lies under the 'reject' state using 'catch' method.  
+**Explanation:** There is a in-built process of 'resolve' and 'reject' body which passes through the then and catch method. If the promise is fulfilled then it lies under the 'resolve' state and we consume it using 'then' method. else it lies under the 'reject' state we consume using 'catch' method.  
 
 ---
-title: Read  All File Using Promies
+title: Read  All File Using Promises
 description:
 duration: 900
 card_type: cue_card
@@ -375,9 +368,9 @@ I AM FILE 3 DATA
 
 ![](https://hackmd.io/_uploads/ByPjJNQ02.png)
 
-**Explanation:** Since we are using promises , so promises also follow the event loop Mechanism , So you will see parallel order here Files will be read in a concurrent order 
+**Explanation:** Since we are using promises , so promises also follow the event loop Mechanism , So you will see random order here Files will be read in a concurrent fashion
 
-**Optimized Solution**
+**cleaning the code**
 
 For then method
 
@@ -431,11 +424,13 @@ f3p.catch(handleError)
 
 **Output:**
 
-![](https://hackmd.io/_uploads/HJFA4EmRn.png)
+F1 data , F3 data , F2 data
 
 **Explanation:** 
 
 The provided JavaScript code snippet demonstrates asynchronous file reading using the `fs.promises` API from Node.js. It reads three files (`f1.txt`, `f2.txt`, `f3.txt`) asynchronously and handles the outcomes (data or error) using promises. Let's break down how this code works, especially focusing on the event loop mechanism in Node.js.
+
+
 
 ### Initialization Phase
 1. The `fs` module is required at the beginning. This module provides an API for interacting with the file system.
@@ -454,7 +449,7 @@ The event loop is a mechanism that allows Node.js to perform non-blocking I/O op
 
 #### Microtasks Queue
 - **Promise Callbacks Execution**: Promise callbacks (`then` and `catch`) are considered microtasks in Node.js and are executed immediately after the current phase of the event loop completes and before moving to the next phase. This means that as soon as the promise settles (either fulfilled or rejected), the corresponding `.then()` or `.catch()` callbacks are placed in the microtasks queue and executed in the order they were scheduled.
-- The callbacks for reading `f1.txt`, `f2.txt`, and `f3.txt` are executed as soon as their respective read operations complete and the event loop gets to processing microtasks. The order of logs (`This is file 1 data ->`, `This is file 2 data ->`, `This is file 3 data ->`) to the console depends on the order in which the files are read successfully. It's not guaranteed to be in the order `f1.txt`, `f2.txt`, `f3.txt` as you already know why?.
+- The callbacks for reading `f1.txt`, `f2.txt`, and `f3.txt` are executed as soon as their respective read operations complete and the event loop gets to processing microtasks. The order of logs (`This is file 1 data ->`, `This is file 2 data ->`, `This is file 3 data ->`) to the console depends on the order in which the files are read successfully. It's not guaranteed to be in the order `f1.txt`, `f2.txt`, `f3.txt` as you already know why?. Concurrency!
 
 Ask students to answer this as they have already learnt about this in the previous class
 
@@ -465,55 +460,9 @@ Ask students to answer this as they have already learnt about this in the previo
 - The event loop facilitates the non-blocking I/O operations by allowing the file reads to happen in the background. Once these operations are complete, the event loop ensures the registered callbacks are executed at the appropriate time.
 - The promises and the microtask queue allow handling asynchronous operations' outcomes in a clear and manageable way, executing promise callbacks as soon as possible after their asynchronous operations complete.
 
----
-title: How Asynchronous Works
-description:
-duration: 900
-card_type: cue_card
----
 
-#### Definition:
-Asynchronous JavaScript is a programming paradigm that allows you to execute code concurrently without blocking the main execution thread.
 
-* Call Stack
-* Node APIs
-* Callback Queue
-* Event Loop
-
-```javascript
-const fs = require('fs')
-
-console.log('Before')
-
-let f1p = fs.promises.readFile('f1.txt')
-let f2p = fs.promises.readFile('f2.txt')
-let f3p = fs.promises.readFile('f3.txt')
-
-function readFileCallback(data) {
-    console.log('This is the data -> ' + data)
-}
-
-function handleError(err) {
-    console.log('This is my error -> ' + err)
-}
-
-f1p.then(readFileCallback)
-f2p.then(readFileCallback)
-f3p.then(readFileCallback)
-
-f1p.catch(handleError)
-f2p.catch(handleError)
-f3p.catch(handleError)
-
-console.log('After')
-
-```
-
-**Output:**
-
-![](https://hackmd.io/_uploads/HJGqwEm0h.png)
-
-**Visualization**
+**Visualization for microtask queue**
 
 ![](https://hackmd.io/_uploads/SyaF_4QCh.png)
 
@@ -526,7 +475,7 @@ function logB() { console.log('B') }
 function logC() { console.log('C') }
 function logD() { console.log('D') }
 
-// Click the "RUN" button to learn how this works!
+
 logA();
 setTimeout(logB, 0);
 Promise.resolve().then(logC);
@@ -551,7 +500,7 @@ duration: 900
 card_type: cue_card
 ---
 
-**Promise Chaining:** Promise chaining in JavaScript is a technique for working with asynchronous code using Promises. It involves linking multiple asynchronous operations together, ensuring that one operation starts only after the previous one has completed successfully. This is typically achieved using the `.then()` method to handle the result of a Promise and return another Promise, allowing you to chain multiple operations together in a clean and sequential manner.  
+**Promise Chaining:** Suppose Now , we Want all this files to be read in a serial order , You already know Promise chaining that how you can maintain a squence of Promises. It involves linking multiple asynchronous operations together, ensuring that one operation starts only after the previous one has completed successfully. This is typically achieved using the `.then()` method to handle the result of a Promise and return another Promise, allowing you to chain multiple operations together in a clean and sequential manner.  
 
 
 ![](https://hackmd.io/_uploads/Sy4elHQC2.png)
@@ -595,4 +544,29 @@ console.log('After')
 
 ![](https://hackmd.io/_uploads/SJAXSrQ02.png)
 
-**Explanation:** It's following serial operation and serial operations dosen't affect the order.  
+**Explanation:** 
+
+ this demonstrates how to read files asynchronously using Promises and the `fs` (File System) module's `promises` API. Let's break down what it does step by step:
+
+1. **Import the `fs` module**: The code starts by requiring the `fs` module, which provides a lot of functionality to work with the file system in Node.js.
+
+2. **Print a message "Before"**: This shows that the script has started executing. It's a simple console log that gets printed before any file operations are initiated.
+
+3. **Read the first file (`f1.txt`)**: It uses `fs.promises.readFile('f1.txt')` to asynchronously read the contents of `f1.txt`. This method returns a promise that will eventually be fulfilled with the contents of the file.
+
+4. **Define callback functions**: Three callback functions (`cb1`, `cb2`, `cb3`) are defined, each intended to handle the data from the files `f1.txt`, `f2.txt`, and `f3.txt`, respectively.
+   
+   - **`cb1(data)`**: This function is called when `f1.txt` has been read successfully. It logs the contents of `f1.txt` to the console, then proceeds to read `f2.txt` in a similar asynchronous manner, returning the promise from reading `f2.txt`.
+   
+   - **`cb2(data)`**: Similar to `cb1`, this function handles the data from `f2.txt`, logging it and then reading `f3.txt` asynchronously, again returning the promise from the read operation.
+   
+   - **`cb3(data)`**: This function is the final callback, handling the contents of `f3.txt` and logging them to the console.
+
+5. **Chain the operations**: The code then chains these operations using `.then()` syntax. This means that `cb1` will be called with the data from `f1.txt` once it's available. The promise returned by `cb1` (which involves reading `f2.txt`) is then handled by `cb2`, and similarly, `cb2` returns a promise for reading `f3.txt`, which is handled by `cb3`.
+
+
+In summary, this code demonstrates asynchronous file reading in Node.js, using Promises to handle the data from each file in sequence. It shows how to chain asynchronous operations in a clean and readable manner, with each step waiting for the previous one to complete before proceeding, without blocking the execution of subsequent code like the "After" log message.
+
+this is how you can achieve Serial Operations with Promises
+
+Start the Doubt Session

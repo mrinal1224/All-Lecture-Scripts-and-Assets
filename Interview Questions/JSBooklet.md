@@ -1,4 +1,4 @@
- ## 1.Compare the differences between let, var, and const when declaring variables in JavaScript.
+## 1.Compare the differences between let, var, and const when declaring variables in JavaScript.
 
 In JavaScript, `let`, `var`, and `const` are used to declare variables, but they have some differences in terms of scoping, hoisting, and mutability. Let's explore each one separately:
 
@@ -58,8 +58,6 @@ const PI = 3.14;
 PI = 3.14159;
 ```
 
-
-
 - **Scope:** `const` is also block-scoped.
 
 - **Hoisting:** Like `let`, variables declared with `const` are hoisted to the top of their block, but they are not initialized. Accessing the variable before its declaration results in a `ReferenceError` as they get in an area called Temporal Dead Zone
@@ -67,11 +65,10 @@ PI = 3.14159;
 - **Reassignment:** Variables declared with `const` cannot be reassigned. They are constants. However, if the variable is an object or an array, the properties or elements of the object/array can be modified.
 
 In summary:
+
 - Use `var` when you need function-scoping (though it's less common nowadays).
 - Use `let` when you need block-scoping and plan to reassign the variable.
 - Use `const` when you need block-scoping and the variable should not be reassigned.
-
-
 
 ## 2.What is Hoisting in JS?
 
@@ -106,7 +103,7 @@ In this example, the function `sayHello` is hoisted to the top of its scope. Tha
 ```javascript
 greet(); // TypeError: greet is not a function
 
-var greet = function() {
+var greet = function () {
   console.log("Hello!");
 };
 ```
@@ -129,7 +126,6 @@ Even within functions, variables are hoisted to the top of their scope. In this 
 
 It's important to understand hoisting in JavaScript, but it's generally considered good practice to declare and initialize variables at the beginning of their scope to avoid confusion and potential issues.
 
-
 ## 3.What is Temporal dead zone in JS?
 
 The "temporal dead zone" in JavaScript refers to the period between entering scope and the actual declaration of a variable with `let` or `const`, during which accessing the variable results in a `ReferenceError`. Let me break it down with some code examples:
@@ -142,8 +138,6 @@ let x = 10;
 In this example, even though `x` is declared later in the code, trying to access it before the declaration causes a `ReferenceError`. This is because `x` is in the temporal dead zone until the `let` initialization is encountered.
 
 Same thing Happens with const as well!
-
-
 
 ## 4.What is a lexical Scope and Scope Chain in JS?
 
@@ -183,7 +177,7 @@ So, in this case, `outerVar` is found in `outerFunction`'s scope, and that's whe
 
 ## 5 What are Closures in JS and how they are formed?
 
- In JavaScript, closure is a fundamental concept that arises from the combination of lexical scope and function definitions. 
+In JavaScript, closure is a fundamental concept that arises from the combination of lexical scope and function definitions.
 
 Lexical scope refers to the idea that a function's scope is determined by its surrounding code at the time of its definition, not at the time of its execution. This means that a function "remembers" the variables that were in scope at the time it was defined, even if it is executed in a different scope.
 
@@ -196,11 +190,11 @@ Here's an example to illustrate:
 ```javascript
 function outer() {
   var outerVar = "I'm in the outer function";
-  
+
   function inner() {
     console.log(outerVar); // inner function has access to outerVar
   }
-  
+
   return inner;
 }
 
@@ -250,10 +244,9 @@ Advantages of using higher-order functions:
 
 Overall, higher-order functions are a powerful feature of JavaScript that can lead to more modular, flexible, and expressive code.
 
-
 ## 7 Explain Map , Filter and Reduce in JS?
 
- In JavaScript, `map`, `filter`, and `reduce` are powerful array methods used for manipulating arrays and performing operations on their elements.
+In JavaScript, `map`, `filter`, and `reduce` are powerful array methods used for manipulating arrays and performing operations on their elements.
 
 1. **Map**: The `map` method creates a new array by applying a function to each element of the original array. It does not modify the original array.
 
@@ -261,11 +254,11 @@ Overall, higher-order functions are a powerful feature of JavaScript that can le
 const numbers = [1, 2, 3, 4, 5];
 
 // Example 1: Doubling each number
-const doubled = numbers.map(num => num * 2);
+const doubled = numbers.map((num) => num * 2);
 console.log(doubled); // Output: [2, 4, 6, 8, 10]
 
 // Example 2: Converting each number to a string
-const stringNumbers = numbers.map(num => num.toString());
+const stringNumbers = numbers.map((num) => num.toString());
 console.log(stringNumbers); // Output: ['1', '2', '3', '4', '5']
 ```
 
@@ -275,11 +268,11 @@ console.log(stringNumbers); // Output: ['1', '2', '3', '4', '5']
 const numbers = [1, 2, 3, 4, 5];
 
 // Example 1: Filtering even numbers
-const evenNumbers = numbers.filter(num => num % 2 === 0);
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
 console.log(evenNumbers); // Output: [2, 4]
 
 // Example 2: Filtering numbers greater than 3
-const greaterThanThree = numbers.filter(num => num > 3);
+const greaterThanThree = numbers.filter((num) => num > 3);
 console.log(greaterThanThree); // Output: [4, 5]
 ```
 
@@ -289,11 +282,17 @@ console.log(greaterThanThree); // Output: [4, 5]
 const numbers = [1, 2, 3, 4, 5];
 
 // Example 1: Summing all numbers
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+const sum = numbers.reduce(
+  (accumulator, currentValue) => accumulator + currentValue,
+  0
+);
 console.log(sum); // Output: 15
 
 // Example 2: Concatenating all numbers as a string
-const concatenatedString = numbers.reduce((accumulator, currentValue) => accumulator + currentValue.toString(), '');
+const concatenatedString = numbers.reduce(
+  (accumulator, currentValue) => accumulator + currentValue.toString(),
+  ""
+);
 console.log(concatenatedString); // Output: '12345'
 ```
 
@@ -303,38 +302,35 @@ In each example:
 - `filter` selectively includes elements from the original array based on a condition defined by the provided function.
 - `reduce` iterates over each element of the array, accumulating a final result based on the logic defined in the provided function.
 
-
 ## 8 Write a Polyfill for Array.map() method?
-
 
 ```javascript
 // Polyfill for Array.map()
 
-  Array.prototype.myMap = function(callback, thisArg) {
-    if (this == null) {
-      throw new TypeError('Array.prototype.map called on null or undefined');
-    }
-    
-    if (typeof callback !== 'function') {
-      throw new TypeError(callback + ' is not a function');
-    }
+Array.prototype.myMap = function (callback, thisArg) {
+  if (this == null) {
+    throw new TypeError("Array.prototype.map called on null or undefined");
+  }
 
-    const newArray = [];
-    for (let i = 0; i < this.length; i++) {
-      if (i in this) {
-        newArray[i] = callback.call(thisArg, this[i], i, this);
-      }
-    }
-    return newArray;
-  };
+  if (typeof callback !== "function") {
+    throw new TypeError(callback + " is not a function");
+  }
 
+  const newArray = [];
+  for (let i = 0; i < this.length; i++) {
+    if (i in this) {
+      newArray[i] = callback.call(thisArg, this[i], i, this);
+    }
+  }
+  return newArray;
+};
 ```
 
 Now let's break down how this polyfill works:
 
 1. It checks if `Array.prototype.map` does not exist. If it doesn't, it means the browser doesn't support the `map()` method, so we need to provide our own implementation.
 
-2. Inside the polyfill function, it first checks if the `this` value is `null` or `undefined`, as using `map()` on `null` or `undefined` would throw an error in a native implementation. 
+2. Inside the polyfill function, it first checks if the `this` value is `null` or `undefined`, as using `map()` on `null` or `undefined` would throw an error in a native implementation.
 
 3. It checks if the `callback` provided is actually a function. If not, it throws a `TypeError`.
 
@@ -349,7 +345,6 @@ Now let's break down how this polyfill works:
 8. Finally, it returns the `newArray` containing the results of applying the callback to each element of the original array.
 
 This polyfill provides a basic implementation of `Array.map()` that should work in older browsers or environments lacking support for it.
-
 
 ## 9 Write a Polyfill for Array.filter() method?
 
@@ -372,43 +367,41 @@ Array.prototype.myfilter = function (callback) {
       result.push(this[i]);
     }
   }
-  
+
   //return the array
-  return result
-}
+  return result;
+};
 ```
 
 ## 10 Write a Polyfill for Array.reduce() method?
 
 `Array.reduce()` is a powerful method in JavaScript used to reduce an array into a single value. If you want to create a polyfill for it, you can follow these steps:
 
-
 Here's a polyfill for `Array.reduce()`:
 
 ```javascript
-  // Define Array.reduce() if it doesn't exist
-  Array.prototype.reduce = function(callback, initialValue) {
-    // Check if the array is empty and there is no initial value
-    if (this.length === 0 && arguments.length < 2) {
-      throw new TypeError('Reduce of empty array with no initial value');
-    }
-    
-    // Set initial accumulator value
-    let accumulator = initialValue !== undefined ? initialValue : this[0];
-    
-    // Start iteration from the second element if initialValue is not provided
-    let startIndex = initialValue !== undefined ? 0 : 1;
-    
-    // Iterate through the array
-    for (let i = startIndex; i < this.length; i++) {
-      // Invoke callback function with accumulator and current element
-      accumulator = callback(accumulator, this[i], i, this);
-    }
-    
-    // Return the final accumulator value
-    return accumulator;
-  };
+// Define Array.reduce() if it doesn't exist
+Array.prototype.reduce = function (callback, initialValue) {
+  // Check if the array is empty and there is no initial value
+  if (this.length === 0 && arguments.length < 2) {
+    throw new TypeError("Reduce of empty array with no initial value");
+  }
 
+  // Set initial accumulator value
+  let accumulator = initialValue !== undefined ? initialValue : this[0];
+
+  // Start iteration from the second element if initialValue is not provided
+  let startIndex = initialValue !== undefined ? 0 : 1;
+
+  // Iterate through the array
+  for (let i = startIndex; i < this.length; i++) {
+    // Invoke callback function with accumulator and current element
+    accumulator = callback(accumulator, this[i], i, this);
+  }
+
+  // Return the final accumulator value
+  return accumulator;
+};
 ```
 
 Now, let's break down this polyfill:
@@ -438,7 +431,7 @@ Here's an example of a pure function:
 
 ```javascript
 function add(a, b) {
-    return a + b;
+  return a + b;
 }
 
 console.log(add(2, 3)); // Output: 5
@@ -457,8 +450,8 @@ Example of an impure function:
 let result = 0;
 
 function impureAdd(a) {
-    result += a; // Modifying external variable 'result'
-    return result;
+  result += a; // Modifying external variable 'result'
+  return result;
 }
 
 console.log(impureAdd(2)); // Output: 2
@@ -471,12 +464,13 @@ In summary, pure functions are predictable and have no side effects, while impur
 
 ## 12 What are Imperative and declarative way of writing code?
 
- let's compare imperative and declarative styles of writing code in JavaScript, particularly focusing on functions. 
+let's compare imperative and declarative styles of writing code in JavaScript, particularly focusing on functions.
 
 **Imperative Programming:**
 In imperative programming, you define the exact steps to achieve a desired result. This often involves explicitly stating how to do something, step by step.
 
 Example:
+
 ```javascript
 // Imperative approach to finding the sum of an array
 function sumArray(arr) {
@@ -496,6 +490,7 @@ In this imperative style, we explicitly loop through the array, keeping track of
 In declarative programming, you focus more on what you want to achieve rather than how to achieve it. You describe the desired result without specifying the exact steps.
 
 Example:
+
 ```javascript
 // Declarative approach to finding the sum of an array using Array.reduce()
 function sumArray(arr) {
@@ -512,12 +507,11 @@ In this declarative style, we use the `reduce()` method, which takes a callback 
 - **Imperative**: Focuses on the detailed steps of how to achieve a task. It often involves mutable state and explicit control flow (loops, conditionals).
 - **Declarative**: Focuses on the desired result or outcome. It often involves higher-order functions and functional composition, abstracting away implementation details.
 
- while imperative programming emphasizes the "how," declarative programming emphasizes the "what." Declarative code tends to be more concise and easier to understand once you're familiar with the paradigms and functions being used.
+while imperative programming emphasizes the "how," declarative programming emphasizes the "what." Declarative code tends to be more concise and easier to understand once you're familiar with the paradigms and functions being used.
 
+## 13 What is Destructuring in JS?
 
- ## 13 What is Destructuring in JS?
-
- Destructuring in JavaScript is a concise way to extract values from arrays or properties from objects and assign them to variables. It allows you to unpack values from arrays or objects into distinct variables, making your code cleaner and more readable.
+Destructuring in JavaScript is a concise way to extract values from arrays or properties from objects and assign them to variables. It allows you to unpack values from arrays or objects into distinct variables, making your code cleaner and more readable.
 
 Here's how destructuring works with code examples:
 
@@ -530,9 +524,9 @@ const myArray = [1, 2, 3, 4, 5];
 // Destructuring assignment
 const [first, second, ...rest] = myArray;
 
-console.log(first);  // Output: 1
+console.log(first); // Output: 1
 console.log(second); // Output: 2
-console.log(rest);   // Output: [3, 4, 5]
+console.log(rest); // Output: [3, 4, 5]
 ```
 
 In this example, `first` and `second` variables capture the first two elements of the array `myArray`, and the `rest` variable captures the rest of the elements using the rest syntax (`...`).
@@ -541,17 +535,17 @@ In this example, `first` and `second` variables capture the first two elements o
 
 ```javascript
 // Example object
-const myObject = { 
-  name: 'John', 
-  age: 30, 
-  country: 'USA' 
+const myObject = {
+  name: "John",
+  age: 30,
+  country: "USA",
 };
 
 // Destructuring assignment
 const { name, age, country } = myObject;
 
-console.log(name);    // Output: John
-console.log(age);     // Output: 30
+console.log(name); // Output: John
+console.log(age); // Output: 30
 console.log(country); // Output: USA
 ```
 
@@ -562,27 +556,30 @@ In this example, `name`, `age`, and `country` variables capture the correspondin
 ```javascript
 // Nested object
 const person = {
-  name: 'Alice',
+  name: "Alice",
   age: 25,
   address: {
-    city: 'New York',
-    country: 'USA'
-  }
+    city: "New York",
+    country: "USA",
+  },
 };
 
 // Destructuring assignment with nested objects
-const { name, age, address: { city, country } } = person;
+const {
+  name,
+  age,
+  address: { city, country },
+} = person;
 
-console.log(name);    // Output: Alice
-console.log(age);     // Output: 25
-console.log(city);    // Output: New York
+console.log(name); // Output: Alice
+console.log(age); // Output: 25
+console.log(city); // Output: New York
 console.log(country); // Output: USA
 ```
 
 In this example, `city` and `country` variables are extracted from the nested `address` object within the `person` object.
 
 Destructuring provides a cleaner syntax for extracting values from arrays and objects, improving code readability.
-
 
 ## 14 How does the this keyword works in JS?
 
@@ -598,12 +595,12 @@ console.log(this); // Global in Node.js
 ```
 
 2. **Function Context**: Inside a function, the value of `this` depends on how the function is called:
-   
+
    a. **Regular Function**: In non-strict mode, `this` inside a regular function refers to the global object, but in strict mode, it defaults to `undefined`.
 
    ```javascript
    function myFunction() {
-       return this;
+     return this;
    }
    console.log(myFunction() === window); // true in a browser
    ```
@@ -612,9 +609,9 @@ console.log(this); // Global in Node.js
 
    ```javascript
    const obj = {
-       method() {
-           return this;
-       }
+     method() {
+       return this;
+     },
    };
    console.log(obj.method() === obj); // true
    ```
@@ -623,7 +620,7 @@ console.log(this); // Global in Node.js
 
    ```javascript
    function MyClass() {
-       this.property = 'value';
+     this.property = "value";
    }
    const instance = new MyClass();
    console.log(instance.property); // 'value'
@@ -639,10 +636,10 @@ console.log(this); // Global in Node.js
 
 ```javascript
 function greet() {
-    return `Hello, ${this.name}!`;
+  return `Hello, ${this.name}!`;
 }
 
-const person = { name: 'Alice' };
+const person = { name: "Alice" };
 
 const greetPerson = greet.bind(person);
 console.log(greetPerson()); // Hello, Alice!
@@ -650,9 +647,7 @@ console.log(greetPerson()); // Hello, Alice!
 
 Here the this keyword will now start pointing to the person object.
 
-
-
-## 15 What is a  Constructor function in JS ?
+## 15 What is a Constructor function in JS ?
 
 Constructor functions in JavaScript are a way to create objects with a blueprint or template. They are used to instantiate multiple objects with similar properties and methods.
 
@@ -672,16 +667,16 @@ function Car(make, model, year) {
   this.make = make;
   this.model = model;
   this.year = year;
-  
+
   // Method to display car information
-  this.displayInfo = function() {
+  this.displayInfo = function () {
     return `This is a ${this.year} ${this.make} ${this.model}`;
   };
 }
 
 // Creating instances of Car objects
-const car1 = new Car('Toyota', 'Camry', 2020);
-const car2 = new Car('Honda', 'Civic', 2018);
+const car1 = new Car("Toyota", "Camry", 2020);
+const car2 = new Car("Honda", "Civic", 2018);
 
 // Accessing properties and methods of Car objects
 console.log(car1.displayInfo()); // Output: This is a 2020 Toyota Camry
@@ -689,6 +684,7 @@ console.log(car2.displayInfo()); // Output: This is a 2018 Honda Civic
 ```
 
 In this example:
+
 - `Car` is a constructor function that defines the blueprint for creating `Car` objects.
 - `this.make`, `this.model`, and `this.year` are properties of the `Car` objects.
 - `displayInfo()` is a method of the `Car` objects that returns a string containing information about the car.
@@ -698,22 +694,21 @@ Using constructor functions allows for code reusability and organization, as you
 
 ## 16 What are Call Apply Bind Methods and how they work ?
 
-
-
 ### 1. `call` Method:
+
 The `call` method allows you to call a function with a given `this` value and arguments provided individually.
 
 ```javascript
 const person1 = {
-  fullName: function() {
+  fullName: function () {
     return this.firstName + " " + this.lastName;
-  }
-}
+  },
+};
 
 const person2 = {
   firstName: "John",
-  lastName: "Doe"
-}
+  lastName: "Doe",
+};
 
 // Using call to invoke the method with a specific context
 const result = person1.fullName.call(person2); // "John Doe"
@@ -723,19 +718,20 @@ console.log(result);
 In this example, `call` invokes the `fullName` method of `person1` with the `this` value set to `person2`.
 
 ### 2. `apply` Method:
+
 The `apply` method is similar to `call`, but it accepts arguments as an array.
 
 ```javascript
 const person1 = {
-  fullName: function(city, country) {
+  fullName: function (city, country) {
     return this.firstName + " " + this.lastName + ", " + city + ", " + country;
-  }
-}
+  },
+};
 
 const person2 = {
   firstName: "John",
-  lastName: "Doe"
-}
+  lastName: "Doe",
+};
 
 const args = ["New York", "USA"];
 
@@ -747,19 +743,20 @@ console.log(result);
 Here, `apply` invokes the `fullName` method of `person1` with the `this` value set to `person2` and the arguments provided in the array.
 
 ### 3. `bind` Method:
+
 The `bind` method creates a new function with a specified `this` value and initial arguments.
 
 ```javascript
 const person1 = {
-  fullName: function(city, country) {
+  fullName: function (city, country) {
     return this.firstName + " " + this.lastName + ", " + city + ", " + country;
-  }
-}
+  },
+};
 
 const person2 = {
   firstName: "John",
-  lastName: "Doe"
-}
+  lastName: "Doe",
+};
 
 // Using bind to create a new function with a specific context
 const boundFunction = person1.fullName.bind(person2, "New York", "USA");
@@ -784,7 +781,7 @@ function Animal(name) {
 }
 
 // Add a method to the prototype of Animal
-Animal.prototype.sayName = function() {
+Animal.prototype.sayName = function () {
   console.log("My name is " + this.name);
 };
 
@@ -816,7 +813,7 @@ Dog.prototype = Object.create(Animal.prototype);
 Dog.prototype.constructor = Dog; // Reset constructor
 
 // Add a method specific to Dog
-Dog.prototype.bark = function() {
+Dog.prototype.bark = function () {
   console.log("Woof! I'm a " + this.breed);
 };
 
@@ -840,7 +837,6 @@ In this example:
 
 This demonstrates how you can achieve inheritance in JavaScript using prototypes.
 
-
 ## 18 What is Astnchronous Programming in JS an how it works ?
 
 Asynchronous JavaScript refers to the ability of JavaScript to execute multiple tasks concurrently without blocking the execution of other tasks. It allows JavaScript code to perform operations such as fetching data from a server, reading files, or executing time-consuming tasks without halting the entire program's execution.
@@ -853,7 +849,7 @@ Here's a simple example to illustrate asynchronous JavaScript using the `setTime
 console.log("Start");
 
 setTimeout(() => {
-    console.log("Inside setTimeout");
+  console.log("Inside setTimeout");
 }, 2000); // Wait for 2 seconds
 
 console.log("End");
@@ -869,7 +865,7 @@ Here's an example using a callback function with `setTimeout()`:
 console.log("Start");
 
 function callback() {
-    console.log("Inside setTimeout callback");
+  console.log("Inside setTimeout callback");
 }
 
 setTimeout(callback, 2000); // Wait for 2 seconds
@@ -880,7 +876,6 @@ console.log("End");
 In this example, the `callback()` function is executed after the timeout, maintaining the asynchronous behavior.
 
 Asynchronous programming in JavaScript has evolved with the introduction of Promises and async/await syntax, providing cleaner and more structured ways to handle asynchronous operations, but the underlying principles remain the same.
-
 
 ## 19 How Asynchronous Programming in JS works ?
 
@@ -920,7 +915,6 @@ When this code runs, here's what happens:
 This demonstrates how asynchronous code (the callback inside `setTimeout`) is executed after the synchronous code (logging "Start" and "End") has finished, thanks to the event loop.
 
 In more complex scenarios involving asynchronous operations like network requests or file I/O, callbacks or promises are typically used to handle the asynchronous results. These callbacks or promises are added to the task queue once the asynchronous operation completes, and they're executed when the call stack is empty.
-
 
 ## 20 What are all the stages of a promise and how to use a promise ?
 
@@ -964,11 +958,13 @@ myPromise
 In this example:
 
 1. **Creating a Promise**:
+
    - A Promise is created with the `new Promise()` constructor, which takes a function (executor) as an argument.
    - The executor function receives two parameters: `resolve` and `reject`. These are functions provided by JavaScript to change the state of the Promise.
    - Inside the executor function, you perform the asynchronous operation. Once the operation is completed, you call `resolve` with the result if successful, or `reject` with an error if it fails.
 
 2. **Consuming a Promise**:
+
    - You use the `then()` method to handle the fulfillment of the Promise. It takes a callback function as an argument, which is called when the Promise is resolved.
    - You use the `catch()` method to handle the rejection of the Promise. It takes a callback function as an argument, which is called when the Promise is rejected.
    - You can also use the `finally()` method, which takes a callback function as an argument and is called regardless of whether the Promise is fulfilled or rejected. This is often used for cleanup or final tasks.
@@ -987,25 +983,28 @@ Sure! Asynchronous programming in JavaScript traditionally relied heavily on cal
 Here's how `async/await` works:
 
 1. **Async Function Declaration (`async`):**
+
    - You declare a function as `async` by prefixing it with the `async` keyword. This tells JavaScript that the function will operate asynchronously and may contain `await` expressions inside it.
 
    ```javascript
    async function fetchData() {
-       // Asynchronous operations
+     // Asynchronous operations
    }
    ```
 
 2. **Await Expression (`await`):**
+
    - Inside an `async` function, you can use the `await` keyword before an expression that returns a Promise. The `await` keyword pauses the execution of the async function until the promise is resolved, and then it resumes the execution with the resolved value.
 
    ```javascript
    async function fetchData() {
-       const result = await someAsyncOperation();
-       // code here executes after someAsyncOperation() resolves
+     const result = await someAsyncOperation();
+     // code here executes after someAsyncOperation() resolves
    }
    ```
 
 3. **Promises:**
+
    - If the expression after `await` is not a Promise, JavaScript automatically wraps it into a resolved Promise. This simplifies error handling, as any errors thrown in the awaited expression will be caught and propagated as rejected Promises.
 
 4. **Event Loop Integration:**
@@ -1016,36 +1015,240 @@ Here's how `async/await` works:
 
 By utilizing `async/await`, you can write asynchronous code in a more readable and maintainable manner, avoiding the callback pyramid of doom and making error handling more straightforward.
 
+Certainly! Here are more advanced JavaScript interview questions focused on various key concepts, complete with problem descriptions, sample answers, and code examples.
 
+Focusing on the advanced topics you've mentioned, here are detailed questions along with their explanations and code examples.
 
+### 22. Prototypal Inheritance: Explain how prototypal inheritance works in JavaScript.
 
+**Problem Description:** JavaScript's object model is based on prototypal inheritance. Explain how this differs from classical inheritance and provide an example.
 
+**Sample Answer:**
+Prototypal inheritance allows JavaScript objects to inherit properties and methods from other objects. Unlike classical inheritance, where classes inherit from other classes, JavaScript uses prototypes—a special type of object from which other objects can inherit. Every JavaScript object has a prototype property that makes this inheritance possible. When you try to access a property on an object, JavaScript will first search on the object itself, and if it doesn't find it, it will continue searching on the object's prototype. This chain continues until the property is found or the end of the prototype chain is reached.
 
+**Example:**
+```javascript
+function Animal(name) {
+  this.name = name;
+}
+Animal.prototype.speak = function() {
+  console.log(`${this.name} makes a noise.`);
+};
 
+function Dog(name) {
+  Animal.call(this, name);
+}
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+Dog.prototype.speak = function() {
+  console.log(`${this.name} barks.`);
+};
 
+let dog = new Dog('Rex');
+dog.speak(); // Rex barks.
+```
 
+### 23. Flatten an Array: Implement a function to flatten an array.
 
+**Problem Description:** Write a function that flattens a nested array into a single array.
 
+**Sample Answer:**
+A common approach to flatten an array in JavaScript is to use recursion. The function checks each element to see if it is an array. If it is, the function is called recursively on that array. This process continues until all levels of the array are flattened.
 
+**Example:**
+```javascript
+function flattenArray(arr) {
+  return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenArray(val)) : acc.concat(val), []);
+}
 
+let nestedArray = [1, [2, 3], [4, [5, 6]]];
+console.log(flattenArray(nestedArray)); // [1, 2, 3, 4, 5, 6]
+```
 
+### 24. Flatten an Object: Write a function to flatten a nested object.
 
+**Problem Description:** Given a nested object, write a function that converts it into a flat object where the keys are paths to the values in the nested structure.
 
+**Sample Answer:**
+Flattening an object involves iterating over its properties and, for each property that is an object itself, recursively flatten it. The keys in the flattened object represent the path to the corresponding value in the nested structure, joined by dots.
 
+**Example:**
+```javascript
+function flattenObject(obj, prefix = '', res = {}) {
+  for (let [key, value] of Object.entries(obj)) {
+    const flatKey = prefix ? `${prefix}.${key}` : key;
+    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+      flattenObject(value, flatKey, res);
+    } else {
+      res[flatKey] = value;
+    }
+  }
+  return res;
+}
 
+let nestedObject = { a: 1, b: { c: 2, d: { e: 3 } } };
+console.log(flattenObject(nestedObject));
+// Output: { 'a': 1, 'b.c': 2, 'b.d.e': 3 }
+```
 
+### 25. Deep Copy vs. Shallow Copy: Explain the difference with examples.
 
+**Problem Description:** Describe the difference between a deep copy and a shallow copy of an object. Provide examples.
 
+**Sample Answer:**
+A shallow copy of an object copies the top-level properties, but the nested objects are shared between the original and the copy. A deep copy, on the other hand, recursively copies every level, making the copy completely independent of the original.
 
+**Example:**
+```javascript
+// Shallow Copy Example
+let original = { a: 1, b: { c: 2 } };
+let shallowCopy = { ...original };
+shallowCopy.b.c = 3;
+console.log(original.b.c); // 3 - original is affected
 
+// Deep Copy Example
+let deepCopy = JSON.parse(JSON.stringify(original));
+deepCopy.b.c = 4;
+console.log(original.b.c); // 3 - original is not affected
+```
 
+### 26. Currying: Implement a curried function.
 
+**Problem Description:** Explain currying in JavaScript and provide an example of a curried function.
 
+**Sample Answer:**
+Currying is a technique of evaluating functions with multiple arguments, transforming them into a sequence of functions with a single argument. In essence, when a function is called with fewer arguments than it expects, it returns another function that takes the remainder of
 
+ the arguments.
 
+**Example:**
+```javascript
+function curry(f) { // curry(f) does the currying transform
+  return function(a) {
+    return function(b) {
+      return f(a, b);
+    };
+  };
+}
 
+// Usage
+function sum(a, b) {
+  return a + b;
+}
 
+let curriedSum = curry(sum);
+console.log(curriedSum(1)(2)); // 3
+```
 
+### 27. Closures and the `this` Keyword: Explain with an example.
 
+**Problem Description:** Explain how closures work in JavaScript, especially in relation to the `this` keyword. Provide an example.
 
+**Sample Answer:**
+A closure is a function that has access to its outer scope variables even after the outer function has returned. The `this` keyword in closures can be tricky because it depends on how the function is called, not where it is defined. In the global context, `this` refers to the global object. In the context of an object method, `this` refers to the object.
 
+**Example:**
+```javascript
+function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    console.log(count, this);
+  };
+}
+
+const counter = outer();
+counter(); // 1, Window {...} or global object in node.js
+```
+
+In this example, `inner` is a closure that accesses `count` from its outer function `outer`. The `this` keyword inside `inner` refers to the global object because it's not called as a method of an object but as a standalone function.
+
+### 28. Promises vs. Async/Await: Differences and when to use each.
+
+**Problem Description:** Compare Promises and Async/Await in JavaScript. Explain the differences and provide scenarios where one might be preferred over the other.
+
+**Sample Answer:**
+Promises and async/await are both used to handle asynchronous operations in JavaScript. Promises provide a `.then()` method for chaining asynchronous operations in a more manageable way than callbacks. Async/await, introduced in ES2017, makes working with Promises more straightforward by allowing asynchronous code to be written in a synchronous style using the `async` function declaration and the `await` keyword.
+
+**Example:**
+
+```javascript
+// Using Promises
+function fetchUserData() {
+  fetch("https://api.example.com/user")
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error));
+}
+
+// Using async/await
+async function fetchUserDataAsync() {
+  try {
+    const response = await fetch("https://api.example.com/user");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
+
+Async/await provides a cleaner, more readable syntax for handling Promises, especially when dealing with complex chains of asynchronous operations. However, both approaches are still widely used and often a matter of personal or project-based preference.
+
+### 29. Module Patterns in JavaScript: Explain different ways to create modules.
+
+**Problem Description:** Modules are an essential part of building maintainable, scalable, and encapsulated applications. Describe different module patterns in JavaScript and their benefits.
+
+**Sample Answer:**
+JavaScript supports several module patterns, including the Module pattern, Revealing Module pattern, ES6 Modules, and CommonJS modules. The Module pattern uses closures to create private and public properties and methods. The Revealing Module pattern is a variation that explicitly returns an object literal with pointers to private functionality. ES6 Modules are the standard in modern JavaScript, allowing you to export and import modules across different files. CommonJS modules are used in Node.js for server-side development.
+
+**Example:**
+
+```javascript
+// Revealing Module Pattern
+const myModule = (function () {
+  let privateVar = "I am private";
+  function privateMethod() {
+    console.log(privateVar);
+  }
+
+  return {
+    publicMethod: function () {
+      privateMethod();
+    },
+  };
+})();
+
+myModule.publicMethod(); // Accesses the private method
+
+// ES6 Module (in a separate file, e.g., module.js)
+export const publicMethod = () => console.log("I am public");
+// Importing in another file
+import { publicMethod } from "./module.js";
+```
+
+### 30. Memory Leaks in JavaScript: Identify and prevent them.
+
+**Problem Description:** Memory leaks can significantly affect the performance of web applications. Explain what causes memory leaks in JavaScript and how to prevent them.
+
+**Sample Answer:**
+Memory leaks in JavaScript occur when the application retains unnecessary memory, leading to decreased performance and eventual crashes. Common causes include global variables, forgotten timers or callbacks, and detached DOM elements that are still referenced in JavaScript. To prevent memory leaks, ensure proper event listener management by removing listeners when they're no longer needed, avoiding the use of global variables, and using weak references with `WeakMap` or `WeakSet` when dealing with large amounts of data that don't need to be retained indefinitely.
+
+**Example:**
+
+```javascript
+// Potential memory leak with event listeners
+const element = document.getElementById('button');
+function onClick(event) {
+  // Event handling code
+}
+element.addEventListener('click', onClick);
+// Prevent memory leak by removing the event listener when the element is no longer needed
+element.removeEventListener('click', onClick);
+
+// Using WeakMap to avoid memory leaks
+let weakMap = new WeakMap();
+let domNode = document.getElementById('example');
+weakMap.set(domNode, {data: 'Some data'});
+// If the DOM node is removed, it becomes eligible for garbage collection since there are no more references to it
+```
