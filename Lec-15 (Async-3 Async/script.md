@@ -563,27 +563,8 @@ Ugh!!!!!!
 
 Trust me Folks! You will have to answer all of these things
 
-Dont Worry! It's super simple , let's break it down
+the output of the code will be like-
 
-This code snippet demonstrates the use of multiple Promises and the `async/await` syntax in JavaScript to handle asynchronous operations with different completion timings. Let's examine how this code works step-by-step:
-
-1. **Creating Promises (`p1` and `p2`):**
-   - Two `Promise` objects, `p1` and `p2`, are instantiated with executor functions. Both executor functions use `setTimeout` to simulate asynchronous operations, but with different durations: `p1` is set to resolve after 10 seconds (10000 milliseconds) with the string `'Promise Resolved'`, while `p2` resolves after 5 seconds (5000 milliseconds) with the same string.
-
-2. **Defining an asynchronous function (`handlePromise`):**
-   - An asynchronous function, `handlePromise`, is defined to handle the execution logic that awaits the resolution of these promises.
-
-3. **Execution within `handlePromise`:**
-   - Upon calling `handlePromise`, the first operation is a `console.log("Scaler")`, which prints `"Scaler"` to the console immediately.
-   - Next, the code encounters `await p1`. This causes the JavaScript engine to pause execution within the `handlePromise` function until `p1` is resolved, which will take 10 seconds. During this wait, no other code within `handlePromise` is executed.
-   - After 10 seconds, when `p1` resolves, its resolved value (`'Promise Resolved'`) is assigned to `val`. The function then continues execution, printing `"Create Impact 1"` and the resolved value of `p1` (`"Promise Resolved"`) to the console.
-   - The code then proceeds to `await p2`. However, by the time `p1` resolves, `p2` has already been resolved (since it only had a 5-second timer). Therefore, there is no additional wait time; the JavaScript engine can immediately assign the resolved value of `p2` to `val2` and continue execution.
-   - `"Create Impact 2"` and the resolved value of `p2` (`"Promise Resolved"`) are then printed to the console.
-
-4. **Calling `handlePromise` function:**
-   - Finally, the `handlePromise` function is called, triggering the sequence described above.
-
-In summary, the output of the program will be as follows, with a 10-second pause after printing `"Scaler"` and before the first `"Create Impact 1"` (note that there's no additional delay before `"Create Impact 2"` because `p2` has already resolved by the time `p1`'s resolution is handled):
 
 ```
 Scaler
@@ -594,7 +575,314 @@ Create Impact 2
 Promise Resolved
 ```
 
+Dont Worry! It's super simple , let's break it down
+
+The code snippet you've provided makes use of JavaScript Promises and the `async/await` syntax to handle asynchronous operations. Here's a step-by-step explanation of how the JavaScript engine, specifically the call stack, event loop, and other components like the Web API environment and the task queue, will handle this code:
+
+1. **Start Execution**: When the script starts executing, the top-level code is run. The definition of `p1` and `p2` are encountered, and they are both initialized as promises. Each promise is set to resolve after a certain timeout (`p1` after 10 seconds, and `p2` after 5 seconds). The `setTimeout` function calls are handed off to the Web API environment, which will handle the timer.
+
+2. **Call `handlePromise`**: Next, the `handlePromise` function is called. This call is placed on the call stack, and the function starts executing.
+
+3. **Log "Scaler"**: The first operation inside `handlePromise` is a `console.log("Scaler")`, which is executed immediately, logging "Scaler" to the console. This operation is synchronous and executed straight away.
+
+4. **Await `p1`**: The execution then reaches the `await p1` statement. At this point, the JavaScript engine checks the status of `p1`. Since `p1` is not yet resolved (it's set to resolve after 10 seconds), the `await` pauses the execution of `handlePromise`, allowing other operations to run (if there were any). The function's execution is essentially paused, waiting for `p1` to resolve. The function is removed from the call stack, and control is returned to the event loop.
+
+5. **`p2` Resolves First**: After 5 seconds, `p2` resolves ("Promise Resolved"). However, because `handlePromise` is currently awaiting the resolution of `p1` and not `p2`, this resolution does not immediately affect the paused state of `handlePromise`. The resolved promise (`p2`) is ready, but its handling awaits the execution flow to reach the `await p2` statement.
+
+6. **`p1` Resolves**: After 10 seconds from the start, `p1` resolves. Since `handlePromise` was awaiting `p1`, the resolution of `p1` allows the paused execution of `handlePromise` to resume. The resolved value of `p1` is assigned to `val`, and the execution continues to the next lines, logging "Create Impact 1" and the resolved value of `p1` to the console.
+
+7. **Await `p2`**: Immediately after logging the value of `p1`, the execution reaches `await p2`. Since `p2` has already resolved by this time (it resolved while we were waiting for `p1` to resolve), its resolved value is immediately available, and there is no pause in execution here. The resolved value of `p2` is assigned to `val2`.
+
+8. **Log "Create Impact 2"**: The last part of the function logs "Create Impact 2" and the resolved value of `p2` to the console. This concludes the execution of `handlePromise`.
+
+9. **Conclusion**: The event loop, during this process, continually checks if the call stack is empty and if there are any pending callbacks (from resolved promises or other asynchronous operations) that need to be executed. In this case, it ensures that once `p1` and `p2` are resolved, their results are properly handled according to the `async/await` logic within `handlePromise`.
+
+To summarize, the call stack executes synchronous operations immediately and utilizes the event loop and Web API environment to handle asynchronous operations like timeouts and promises. The `await` keyword pauses the execution of the async function until the awaited Promise is resolved, allowing other tasks to run in the meantime.
+
+
 This example illustrates how multiple asynchronous operations can be managed using Promises and the `async/await` syntax, allowing for sequential handling of asynchronous results even when those operations complete at different times.
+
+
+
+Now as you know the how async/await works , We will take a real example , first we will solve it by using promises and then we will use async/await to solve the same problem
+
+
+---
+title: Coffee Shop Problem
+description:
+duration: 900
+card_type: cue_card
+---
+
+#### Question
+
+Here we have a problem that we are at a coffee shop and the now the coffee shop only has coffee we cannot order for any other drink , it will reject if any other drink is ordered and if s coffee is ordered it will be accepted then it will be processed then it will be serverd and at the end we will recieve a bill
+
+How will you solve this problem and how do you think you can code this simple system
+
+Exactly! by using promises
+
+Create resolve and reject states of Promise to place a order, then process the order and then generate a bill process.
+
+#### Solution
+
+
+**Step - 1:** Create a Promise method for placing/accepting the order.
+
+1.1 Create resolve state if order is placed
+
+```javascript
+function placeOrder(drink) {
+    return new Promise(function(resolve, reject) {
+        if(drink === 'coffee') {
+            resolve('Order for Coffee Placed.')
+        }
+        else {
+            reject('Order can not be Placed.')
+        }
+    })
+}
+
+placeOrder('coffee').then(function(orderStatus) {
+    console.log(orderStatus)
+})
+
+```
+
+**Output:**
+
+![](https://hackmd.io/_uploads/rygdYvmA3.png)
+
+1.2 Create reject state if order is not placed
+
+```javascript
+function placeOrder(drink) {
+    return new Promise(function(resolve, reject) {
+        if(drink === 'coffee') {
+            resolve('Order for Coffee Placed.')
+        }
+        else {
+            reject('Order can not be Placed.')
+        }
+    })
+}
+
+placeOrder('tea').then(function(orderStatus) {
+    console.log(orderStatus)
+}).catch(function(error) {
+    console.log(error)
+})
+
+```
+
+**Output:**
+
+![](https://hackmd.io/_uploads/ByDBcPQR2.png)
+
+**Step - 2:** Create a Promise method for process the order.
+
+```javascript
+function placeOrder(drink) {
+    return new Promise(function(resolve, reject) {
+        if(drink === 'coffee') {
+            resolve('Order for Coffee Placed.')
+        }
+        else {
+            reject('Order can not be Placed.')
+        }
+    })
+}
+
+function processOrder(orderPlaced) {
+    return new Promise(function(resolve) {
+        resolve(`${orderPlaced} and Served.`)
+    })
+}
+
+placeOrder('coffee').then(function(orderStatus) {
+    console.log(orderStatus)
+    return orderStatus
+}).then(function(orderStatus) {
+    let orderIsProcessed = processOrder(orderStatus)
+    console.log(orderIsProcessed)
+    return orderIsProcessed
+}).then(function(orderIsProcessed) {
+    console.log(orderIsProcessed)
+})
+
+```
+
+**Output:**
+
+![](https://hackmd.io/_uploads/ByszAwmC2.png)
+
+
+**Step - 3:** Create a Promise method for generate the bill.
+
+```javascript
+function placeOrder(drink) {
+    return new Promise(function(resolve, reject) {
+        if(drink === 'coffee') {
+            resolve('Order for Coffee Placed.')
+        }
+        else {
+            reject('Order can not be Placed.')
+        }
+    })
+}
+
+function processOrder(orderPlaced) {
+    return new Promise(function(resolve) {
+        resolve(`${orderPlaced} and Served.`)
+    })
+}
+
+function generateBill(processedOrder) {
+    return new Promise(function(resolve) {
+        resolve(`${processedOrder} and Bill Generated with 200 Rs.`)
+    })
+}
+
+placeOrder('coffee').then(function(orderStatus) {
+    console.log(orderStatus)
+    return orderStatus
+}).then(function(orderStatus) {
+    let orderIsProcessed = processOrder(orderStatus)
+    console.log(orderIsProcessed)
+    return orderIsProcessed
+}).then(function(orderIsProcessed) {
+    console.log(orderIsProcessed)
+    return orderIsProcessed
+}).then(function(orderIsProcessed) {
+    let BillGenerated = generateBill(orderIsProcessed)
+    return BillGenerated
+}).then(function(BillGenerated) {
+    console.log(BillGenerated)
+}).catch(function(err) {    
+    console.log(err)
+})
+    
+```
+**Output:**
+
+![](https://hackmd.io/_uploads/r1hZ-O70h.png)
+
+**Explanation:** Firstly, we have create placeOrder function to place the order then if we pass 'coffee' then the promise is in resolve state. As soon as it is resolved we get the orderStatus and printing it. After that as soon as order is placed then we need to process the order this will be also in resolved state. After processing the order we need to generate the bill this should be also in resolved state, this process called the promise chaining method as you already know
+
+
+But do you see a problem here the code looks very unclean you have return promise at each then step resolve it and get the output , You can write the solution for the same problem with using async/await with a very clen structure
+
+
+**Optimized Solution:** Using Async & Await
+
+**Step - 1:** We will use async and await method to make code more clean and readable. to use async and await we need to create a function.
+
+```javascript
+function placeOrder(drink){
+    return new Promise(function(resolve , reject){
+        if(drink ==='coffee'){
+            resolve('Order for Coffee Placed')
+        }
+        else{
+            reject('Order cannot be Placed')
+        }
+    })
+  }
+  
+  
+  function processOrder(orderPlaced){
+      return new Promise(function(resolve){
+          resolve(`${orderPlaced} and Served`)
+      })
+  }
+  
+  function genreateBill(processedOrder){
+      return new Promise(function(resolve){
+          resolve(`${processedOrder} and Bill generated with 200Rs`)
+      })
+  }
+
+// Async and Await 
+// to use async await you need to create Functions
+
+async function serveOrder(){
+        let orderstatus = await placeOrder('coffee')
+        console.log(orderstatus)
+        let processedOrder = await processOrder(orderstatus)
+        console.log(processedOrder)
+        let generatedBill = await genreateBill(processedOrder)
+        console.log(generatedBill)
+}
+
+serveOrder()
+
+```
+
+**Output:**
+
+![](https://hackmd.io/_uploads/B10D6OQCh.png)
+
+**Step - 2:** To Handle error we will use try and cacth method
+
+```javascript
+function placeOrder(drink){
+    return new Promise(function(resolve , reject){
+        if(drink ==='coffee'){
+            resolve('Order for Coffee Placed')
+        }
+        else{
+            reject('Order cannot be Placed')
+        }
+    })
+  }
+  
+  
+  function processOrder(orderPlaced){
+      return new Promise(function(resolve){
+          resolve(`${orderPlaced} and Served`)
+      })
+  }
+  
+  function genreateBill(processedOrder){
+      return new Promise(function(resolve){
+          resolve(`${processedOrder} and Bill generated with 200Rs`)
+      })
+  }
+
+// Async and Await 
+// to use async await you need to create Functions
+
+async function serveOrder(){
+    try {
+        let orderstatus = await placeOrder('tea')
+        console.log(orderstatus)
+        let processedOrder = await processOrder(orderstatus)
+        console.log(processedOrder)
+        let generatedBill = await genreateBill(processedOrder)
+        console.log(generatedBill)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+serveOrder()
+
+```
+
+At each await statment the promise related to it will be resolved and in a sequntial manner everything will be executed!
+
+
+This is how you can use async/await in JS
+
+
+
+
+
+
+
+
+
+
 
 
 
