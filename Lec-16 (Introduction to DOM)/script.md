@@ -312,7 +312,7 @@ Here's an example illustrating how to use `addEventListener` to make the button 
 
 ### Adding an Event Listener to the Button
 ```javascript
-btn.addEventListener('click', function(e){
+btn.addEventListener('click', function(){
     console.log("button Clicked)
 });
 ```
