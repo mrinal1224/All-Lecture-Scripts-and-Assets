@@ -82,23 +82,7 @@ JavaScript can be used to interact with the DOM to:
 - **Change styles:** Modify the CSS of elements to change their appearance.
 - **Respond to events:** Set up event listeners to respond to user actions like clicks, keyboard input, or page loading.
 
-#### Example of DOM Manipulation
-
-```javascript
-document.getElementById('exampleDiv').innerHTML = 'New Content';
-```
-
-This JavaScript code finds an element with the ID `exampleDiv` and changes its content to 'New Content'.
-
-### Conclusion
-
-The DOM is a powerful concept in web development, enabling dynamic content manipulation. By understanding the DOM's structure and how to interact with it through JavaScript, developers can create engaging and interactive web experiences.
-
----
-
-This elaboration provides a comprehensive overview of the DOM, explaining its importance, structure, and how it can be manipulated using JavaScript. This should give your class a solid understanding of the DOM and its role in web development.
-
-
+We will explore DOM and how we can put interactivity in our web pages by solving problems, that's a very fun way to learn DOM to do some actual tasks with your nodes
 
 
 
@@ -109,21 +93,28 @@ duration: 900
 card_type: cue_card
 ---
 
+So , let's start with a very basic task that we have a html button and whenever we click on that hello should be printed on the page
+
 #### Question
 
 On clicking the button append hello to the page.
 
+We will go step by step by taking into account each and everthing
+
 #### Solution
 
-**Step 1:**  Slecting html element
+**Step 1:**  Selecting the html element
 
-To select oe identify a particular html element we have methods.
-* getElementById
-* QuerySelector
-* QuerySelectorAll
+To select or identify a particular html element we have methods.
+* getElementById - If you want to select an element based on ID
+* querySelector - If you want to select an element based on any selector like class id or a combination or a specific element
+
 
 
 **Code:** Using getElementById
+
+#### Using `getElementById`
+
 
 ```htmlembedded
 <!DOCTYPE html>
@@ -134,55 +125,34 @@ To select oe identify a particular html element we have methods.
     <title>Document</title>
 </head>
 <body>
-    <button id = "btn - 1"> Say Hello </button>
+    <button id ="btn-1"> Say Hello </button>
 
     <script>
     
         // on clicking the button append hello to the page
 
         let btn = document.getElementById('btn-1')
-        console.log(btn)
+        console.log(btn) // shows the button
 
     </script>
 </body>
 </html>
 
 ```
+
+
+- **Method Used**: `document.getElementById('btn-1')`
+- **Purpose**: Selects the first element with the specified ID. It's a straightforward and efficient way to select elements if they have a unique ID.
+- **Example Use**: In the provided code, this method selects a button with the ID `btn-1`.
+
+
 
 **Output:**
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/260/original/upload_a6d7d3c5b18e7b6ed529ca4088ae1dee.png?1695145319)
 
 
-**Code:** Using getElementsByClassName
 
-```htmlembedded
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    <meta charset = "UTF - 8">
-    <meta name = "viewport" content = "width = device - width, initial - scale = 1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button class = "btn - 1"> Say Hello </button>
-
-    <script>
-    
-        // on clicking the button append hello to the page
-
-        let btn = document.getElementsByClassName('btn - 1')
-        console.log(btn)
-
-    </script>
-</body>
-</html>
-
-```
-
-**Output:**
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/261/original/upload_a6d7d3c5b18e7b6ed529ca4088ae1dee_%281%29.png?1695145383)
 
 
 **Code:** Using querySelector by ID
@@ -196,7 +166,7 @@ To select oe identify a particular html element we have methods.
     <title>Document</title>
 </head>
 <body>
-    <button id = "btn - 1"> Say Hello </button>
+    <button id="btn - 1"> Say Hello </button>
 
     <script>
     
@@ -210,6 +180,12 @@ To select oe identify a particular html element we have methods.
 </html>
 
 ```
+
+#### Using `querySelector` by ID
+
+- **Method Used**: `document.querySelector('#btn-1')`
+- **Purpose**: Selects the first element that matches the specified CSS selector. In this case, it selects the element with the ID `btn-1`. `querySelector` is more versatile than `getElementById` because it can select elements based on classes, attributes, and more complex selectors. here you will just need to pass the exact identifier as well for id `#` for class `.` and so on
+- **Example Use**: The script uses this method to select a button by its ID in a similar manner to `getElementById`, showcasing an alternative approach.
 
 **Output:**
 
@@ -242,6 +218,13 @@ To select oe identify a particular html element we have methods.
 
 ```
 
+
+#### Using `querySelector` by Class
+
+- **Method Used**: `document.querySelector('.btn-1')`
+- **Purpose**: Selects the first element that matches the specified class. This is useful when you're working with CSS classes instead of IDs or need to select elements based on other attributes or complex selectors.
+- **Example Use**: This variant selects a button with the class `btn-1`, demonstrating how to use `querySelector` to select elements by class name.
+
 **Output:**
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/265/original/upload_4718ed7f5720b3cee58f8644ee6a62d2.png?1695145596)
 
@@ -273,12 +256,86 @@ The document method querySelector() returns the first element within the documen
 </html>
 
 ```
+#### Using `querySelector` by Element
+
+- **Method Used**: `document.querySelector('button')`
+- **Purpose**: Selects the first `<button>` element on the page. This method is useful when you want to select elements by their tag name and are sure there's either only one such element or you specifically need the first one.
+- **Example Use**: The code uses this method to select the first button element in the document, regardless of its class or ID.
 
 **Output:**
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/266/original/upload_a6d7d3c5b18e7b6ed529ca4088ae1dee_%282%29.png?1695145709)
 
+
+Now as we know ho to select elements based on diffrent approcahes now let's make this element do something as well..
+
+
+
+**Step 2:** Append "Hello" to the page
+
+Before we dive into making the button functional, it's crucial to understand what an event is in the context of web development.
+
+**What is an Event?**
+An event refers to any action that triggers a specific response . For instance, clicking a button is and event which will trigger the action to display "Hello" on the screen.
+Event is much more than this but for now just understand this, We will deep dive into events moving forward
+
+Now how to make a element respond to an event?
+Comes into the picture event listeners!
+
+**Method - addEventListener:** 
+The `addEventListener` method allows us to attach an event to any DOM element. This method is essential for interactive web development, enabling dynamic responses to user actions.
+
+Here's an example illustrating how to use `addEventListener` to make the button work and print Button Clicked on an event:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn-1">Say Hello</button>
+
+    <script>
+        // Target the button and attach a click event listener
+        let btn = document.querySelector('#btn-1');
+
+        btn.addEventListener('click', function(e){
+            console.log("button Clicked")
+        });
+    </script>
+</body>
+</html>
+```
+
+### Adding an Event Listener to the Button
+```javascript
+btn.addEventListener('click', function(e){
+    console.log("button Clicked)
+});
+```
+- `btn.addEventListener('click', ...)`: This method is called on the button element (`btn`). It listens for a "click" event, meaning it waits for the button to be clicked. When a click occurs, it executes the function provided as the second argument.
+- `function(e){ ... }`: This is an anonymous function (a function without a name) that is executed when the button is clicked. 
+- `console.log("button Clicked)`: Inside the function, this line is supposed to log the message "button Clicked" to the browser's console. This indicates that the button has been clicked. 
+
+Show this whole thing in the Browser
+
+
+
+#### Append "Hello" to the DOM Tree
+
+The accompanying images illustrate the initial state and the DOM tree after appending "Hello", showcasing the practical application of event-driven programming in web development.
+
+---
+
+This revised text offers a clearer, more concise explanation and code example for adding an event listener to a button, enhancing readability and comprehension.
+
+
 **Step 2:** hello should get appended
+
+before moving to writing the logic to make the button work let's first see what is an event overall
 
 **What is an event?**
 Anything that happens depending on some other thins is an event. Let's say you are clicking on button then something will happen (hello is getting printed).  
