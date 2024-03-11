@@ -5,9 +5,7 @@ description:
 duration: 900
 card_type: cue_card
 ---
-To elaborate on your introduction to the Document Object Model (DOM), it's helpful to break down the concept into more detailed segments. The DOM is an essential concept for web development, especially for those working with JavaScript to manipulate webpage content. Here's a more comprehensive way to present the information in your class:
 
----
 
 ## Introduction to the Document Object Model (DOM)
 
