@@ -59,6 +59,21 @@ Let's analyze the given HTML document in the context of the DOM:
 
 This structure shows how elements in the HTML document are represented as a tree in the DOM, with each tag corresponding to a node in the tree. By accessing these nodes via JavaScript, developers can dynamically change the content, style, or structure of the webpage.
 
+#### Output
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/258/original/upload_364afb8e43132cd223c90b39c021e52a.png?1695145205)
+
+
+#### DOM tree visualization of above example
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/259/original/upload_604c9f192818c3459c15d376d0569b83.png?1695145257)
+
+**Note:**
+* We will be uisng javascript to put the interactivity in our web apps or websites.
+* JavaScript is used to put interactivity in DOM elements.
+
+
+
 ### Manipulating the DOM with JavaScript
 
 JavaScript can be used to interact with the DOM to:
@@ -83,18 +98,9 @@ The DOM is a powerful concept in web development, enabling dynamic content manip
 
 This elaboration provides a comprehensive overview of the DOM, explaining its importance, structure, and how it can be manipulated using JavaScript. This should give your class a solid understanding of the DOM and its role in web development.
 
-#### Output
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/258/original/upload_364afb8e43132cd223c90b39c021e52a.png?1695145205)
 
 
-#### DOM tree visualization of above example
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/259/original/upload_604c9f192818c3459c15d376d0569b83.png?1695145257)
-
-**Note:**
-* We will be uisng javascript to put the interactivity in our web apps or websites.
-* JavaScript is used to put interactivity in DOM elements.
 
 ---
 title: On clicking the button append hello to the page
