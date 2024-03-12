@@ -311,25 +311,9 @@ btn.addEventListener('click', function(){
 Show this whole thing in the Browser and the Browser's Console
 
 
+**Step 3:**  CreateElement and AppendChild
 
-#### Append "Hello" to the DOM Tree
-
-The accompanying images illustrate the initial state and the DOM tree after appending "Hello", showcasing the practical application of event-driven programming in web development.
-
----
-
-This revised text offers a clearer, more concise explanation and code example for adding an event listener to a button, enhancing readability and comprehension.
-
-
-**Step 2:** hello should get appended
-
-before moving to writing the logic to make the button work let's first see what is an event overall
-
-**What is an event?**
-Anything that happens depending on some other thins is an event. Let's say you are clicking on button then something will happen (hello is getting printed).  
-
-**Method - addEventListener:** We can add any event to any of our elements with using addEventListener method.  
-
+So now to append hello on the click of the button we first need to create a element in which `hello` will be placed then we need to attach that element in our DOM tree in a appropriate position to get it appended and visible  , We can do this by using two methods to Create an element where Hello will go we can use `createElement` method and to attach that element to DOM we can use `appendChild` , let's see how they work and how to use them
 
 ```javascript
 <!DOCTYPE html>
@@ -349,9 +333,8 @@ Anything that happens depending on some other thins is an event. Let's say you a
         let btn = document.querySelector('#btn-1')
         console.log(btn)
 
-        btn.addEventListener('click', function(e){
+        btn.addEventListener('click', function(){
             
-            // console.log(e)
 
             let divElem = document.createElement('div')
 
@@ -368,6 +351,39 @@ Anything that happens depending on some other thins is an event. Let's say you a
 </html>
 
 ```
+Let's break this down
+
+
+1. **Creating a New `<div>` Element**:
+   ```javascript
+   let divElem = document.createElement('div')
+   ```
+   - `document.createElement('div')` creates a new `<div>` element. This method takes one argument, the tag name of the element to be created.
+   - The new `<div>` element is stored in the variable `divElem`.
+   - This method (`createElement`) is crucial for dynamically adding new elements to the DOM (Document Object Model).
+
+2. **Setting the Inner Text of the `<div>` Element**:
+   ```javascript
+   divElem.innerText = 'Hello'
+   ```
+   - The `innerText` property of `divElem` is set to `'Hello'`. This means the text content of the newly created `<div>` will be "Hello".
+   - `innerText` is used here to define what text the `<div>` element will display.
+
+3. **Selecting the `<body>` Element**:
+   ```javascript
+   let body = document.querySelector('body')
+   ```
+   - `document.querySelector('body')` selects the `<body>` element of the page.
+   - The selected `<body>` element is stored in the variable `body`.
+
+4. **Appending the `<div>` to the `<body>`**:
+   ```javascript
+   body.appendChild(divElem)
+   ```
+   - `appendChild` is a method used to append a node as the last child of a node. In this case, `divElem` (the newly created `<div>` with the text "Hello") is appended to `body` (the `<body>` element of the document).
+   - After this method is executed, the new `<div>` will appear on the webpage as part of the document's body. Each click on the button will create and append a new `<div>` with "Hello" to the body.
+
+ this JavaScript code listens for clicks on a button. Upon each click, it creates a new `<div>` element, sets its text content to "Hello", and appends this `<div>` to the body of the document, resulting in "Hello" being added to the page each time the button is clicked. The `createElement` and `appendChild` methods are fundamental here for dynamically adding elements to the DOM.
 
 **Output:**
 
