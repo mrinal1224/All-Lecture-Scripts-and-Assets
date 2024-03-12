@@ -301,14 +301,14 @@ Here's an example illustrating how to use `addEventListener` to make the button 
 ### Adding an Event Listener to the Button
 ```javascript
 btn.addEventListener('click', function(){
-    console.log("button Clicked)
+    console.log("button Clicked")
 });
 ```
 - `btn.addEventListener('click', ...)`: This method is called on the button element (`btn`). It listens for a "click" event, meaning it waits for the button to be clicked. When a click occurs, it executes the function provided as the second argument.
-- `function(e){ ... }`: This is an anonymous function (a function without a name) that is executed when the button is clicked. 
+- `function(){ ... }`: This is an anonymous function (a function without a name) that is executed when the button is clicked. 
 - `console.log("button Clicked)`: Inside the function, this line is supposed to log the message "button Clicked" to the browser's console. This indicates that the button has been clicked. 
 
-Show this whole thing in the Browser
+Show this whole thing in the Browser and the Browser's Console
 
 
 
