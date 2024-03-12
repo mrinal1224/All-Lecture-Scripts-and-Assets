@@ -147,11 +147,6 @@ To select or identify a particular html element we have methods.
 
 
 
-**Output:**
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/260/original/upload_a6d7d3c5b18e7b6ed529ca4088ae1dee.png?1695145319)
-
-
 
 
 
@@ -187,9 +182,6 @@ To select or identify a particular html element we have methods.
 - **Purpose**: Selects the first element that matches the specified CSS selector. In this case, it selects the element with the ID `btn-1`. `querySelector` is more versatile than `getElementById` because it can select elements based on classes, attributes, and more complex selectors. here you will just need to pass the exact identifier as well for id `#` for class `.` and so on
 - **Example Use**: The script uses this method to select a button by its ID in a similar manner to `getElementById`, showcasing an alternative approach.
 
-**Output:**
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/262/original/upload_7fbdad793912e0939837795b61709f36.png?1695145503)
 
 **Code:** Using querySelector by class
 
@@ -225,8 +217,6 @@ To select or identify a particular html element we have methods.
 - **Purpose**: Selects the first element that matches the specified class. This is useful when you're working with CSS classes instead of IDs or need to select elements based on other attributes or complex selectors.
 - **Example Use**: This variant selects a button with the class `btn-1`, demonstrating how to use `querySelector` to select elements by class name.
 
-**Output:**
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/265/original/upload_4718ed7f5720b3cee58f8644ee6a62d2.png?1695145596)
 
 
 **Code:** Using querySelector by elements
@@ -262,9 +252,7 @@ The document method querySelector() returns the first element within the documen
 - **Purpose**: Selects the first `<button>` element on the page. This method is useful when you want to select elements by their tag name and are sure there's either only one such element or you specifically need the first one.
 - **Example Use**: The code uses this method to select the first button element in the document, regardless of its class or ID.
 
-**Output:**
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/266/original/upload_a6d7d3c5b18e7b6ed529ca4088ae1dee_%282%29.png?1695145709)
 
 
 Now as we know ho to select elements based on diffrent approcahes now let's make this element do something as well..
