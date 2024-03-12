@@ -390,6 +390,10 @@ Let's break this down
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/267/original/upload_c04b7917d2c7dd94fad263612d3bae02.png?1695145825)
 
 
+**By Solving this simple problem You now know how to slelect elements based on diffrennt approcahes how to listen to events and respond to them by event listeners and how you can create and append element in the DOM tree**
+
+**take 5 mins here to clear any doubts and move to next question**
+
 ---
 title: Fixing the list
 description:
