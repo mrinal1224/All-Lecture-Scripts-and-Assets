@@ -389,9 +389,6 @@ Let's break this down
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/267/original/upload_c04b7917d2c7dd94fad263612d3bae02.png?1695145825)
 
-#### Append Hello DOM Tree
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/270/original/upload_604c9f192818c3459c15d376d0569b83.png?1695145889)
 
 ---
 title: Fixing the list
