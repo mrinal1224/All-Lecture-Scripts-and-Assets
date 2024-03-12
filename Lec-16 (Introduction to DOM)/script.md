@@ -569,6 +569,10 @@ card_type: cue_card
 
 Fix the mathmatical problem using JS 
 
+- Problem Statement : Given a mathematical expression Fix the expression by using Javascript and taking help of the DOM
+
+(Pass this question as a fun question in the class ask students to solve this in break)
+
 #### Solution
 
 ```javascript
@@ -598,11 +602,61 @@ Fix the mathmatical problem using JS
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/274/original/upload_7e599ac46343deed76441a6ec8a415e8.png?1695146150)
 
 ---
-title: Script for Double Clicking Cards
+title: Double Clicking Cards
 description:
 duration: 900
 card_type: cue_card
 ---
+
+
+**Before Moving to the Next Question Lets discuss about something known as `classList`**
+
+The `classList` property in the Document Object Model (DOM) is a read-only property that returns a live  collection of the class attributes of the element. It provides a convenient way to access and manipulate the class names of an element. With `classList`, you can easily add, remove, and toggle CSS classes on an element, which is particularly useful for dynamically changing the appearance or behavior of elements in response to user interactions.
+
+Here are some of the most commonly used methods of `classList`:
+
+- `add(className)`: Adds a specified class to the element. If the class already exists in the element's class list, it will not add it again.
+
+- `remove(className)`: Removes a specified class from the element. If the class does not exist, it does nothing.
+
+- `contains(className)`: Checks if a specified class exists in the element's class list, returning `true` if it does and `false` otherwise.
+
+
+### Small Example:
+
+Suppose you have an HTML element like this:
+
+```html
+<div id="myDiv" class="content visible">Hello, world!</div>
+```
+
+You can use the `classList` property to manipulate this element's classes in JavaScript:
+
+```javascript
+// Get the element
+var div = document.getElementById('myDiv');
+
+// Add a new class
+div.classList.add('highlight');
+
+// Remove a class
+div.classList.remove('visible');
+
+
+// Check if a class exists
+if (div.classList.contains('content')) {
+    console.log('The div has a "content" class.');
+}
+else{
+    console.log('The div does not has a "content" class.');
+}
+```
+
+After running this script, the class attribute of the `div` element would be modified based on the operations performed. For example, if the `highlight` class didn't exist before, it would be added; the `visible` class would be removed; and the `hidden` class would be toggled, adding it if it wasn't there or removing it if it was.
+
+
+
+**Now Let's move forward with the next Problem**
 
 #### Question
 
@@ -687,6 +741,9 @@ The classList for this div will be - [card, test, blue]
 
       for(let i = 0 ; i < cardsNodeList.length; i ++ ){
         cardsNodeList[i].addEventListener('dblclick' , function(e){
+
+         console.log(e) // In this line explain all about the e object
+
           console.log(e.currentTarget)
            let classTobeAttached = e.currentTarget.getAttribute('data-color')
 
@@ -702,6 +759,59 @@ The classList for this div will be - [card, test, blue]
 
 ```
 
+This code consists of an HTML document with embedded CSS and JavaScript. The purpose of this code is to modify the appearance and attributes of div elements with a class of "card" upon a double-click event. Let's break down the code piece by piece, focusing mainly on the JavaScript part as requested:
+
+### HTML Brief
+
+- **DOCTYPE, html, head, meta tags, and title**: These lines define the basic structure of an HTML document, including setting the character set, compatibility, viewport settings for responsive design, and the title of the document.
+
+- **style tags**: Inside these tags, CSS is used to style elements on the page. Every element is set to `box-sizing: border-box;`. The body is styled to display its children in a flex layout, centered and with some padding at the top. Classes `.blue`, `.green`, and `.red` assign background colors and a box-shadow to elements. The `.card` class defines a bordered box with specified height, width, and margin.
+
+### JavaScript In-depth
+
+- **let cardsNodeList = document.querySelectorAll('.card')**: This line selects all elements with the class "card" and stores them in `cardsNodeList`. `querySelectorAll` returns a NodeList, which is a collection of document nodes.
+
+- **console.log(cardsNodeList)**: This line logs the NodeList of card elements to the console, allowing you to see the elements selected by the previous command.
+
+- **for loop**: The loop iterates over each item in the `cardsNodeList`. The variable `i` is used as the index to access each element in the NodeList.
+
+- **cardsNodeList[i].addEventListener('dblclick', function(e))**: This line adds an event listener to each card element. The event listener listens for a 'dblclick' event (a double-click), and when such an event occurs, it executes the function provided as the second argument. The `e` parameter represents the event object that gets passed to the function when the event occurs.
+
+#### The `e` (Event) Object Explained:
+
+- **console.log(e)**: This logs the event object to the console. The event object `e` contains all the information about the event that occurred, including which element was clicked, the type of event, the position of the mouse, and more.
+
+- **e.currentTarget**: This property of the event object refers to the element to which the event listener was attached. In this context, `e.currentTarget` is the card that was double-clicked.
+
+- **e.currentTarget.getAttribute('data-color')**: This method gets the value of the `data-color` attribute from the clicked card. This value indicates the color class (blue, red, or green) that should be applied to the card.
+
+- **e.currentTarget.classList.add(classTobeAttached)**: This line adds the class (obtained from the `data-color` attribute) to the clicked card's class list, changing its appearance according to the CSS definitions for `.blue`, `.green`, or `.red`.
+
+- **e.currentTarget.setAttribute('data-color', 'used')**: Finally, this line changes the `data-color` attribute of the clicked card to "used", indicating that the card's color has been set and the attribute has been utilized.
+
+### Summary:
+
+The JavaScript code dynamically adds event listeners to each card element, allowing them to respond to double-click events. Upon a double-click, the script reads the card's `data-color` attribute to determine which color class to apply, adds that class to the card, and then marks the `data-color` attribute as "used". The `e` object, representing the event, plays a crucial role in accessing the target element and its attributes.
+
 **Output:**
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/276/original/upload_108dfa145e3eef14525de6578e2be0f0.png?1695146343)
+
+
+We will be exploring more about the `event object (e)` and how it can be used further in solving diffrent problems
+
+
+So, with this class you now have a deep understanding about.
+
+
+- Selecting Elements (querySelector , querySelectorALL , getElementbyID etc)
+- Event Listeners
+- Creating appending and inserting Elements (createElement , appendChild , insertBefore)
+- NodeList and ClassList 
+- the event object
+- getAttribute and setAttribute methods
+
+
+Let me know if the questions were fun!! in the next class we will have more questions and will explore more DOM property and methods
+
+Till then! Take care and Bye!
