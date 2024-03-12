@@ -401,15 +401,40 @@ duration: 900
 card_type: cue_card
 ---
 
-#### Question
 
-Fix the list by inserting the missing element using querySelectorAll and insertBefore
+### Problem Statement
+
+You are given an HTML document containing an unordered list (`<ul>`) with list items (`<li>`) representing numbers 1 through 10. However, there is an element missing between the numbers 6 and 8. Your task is to identify the missing number in the sequence and insert it appropriately into the list to maintain the sequential order using JavaScript.
+
+**Ask learners how they may approcah this**
+
+
+Explain step by step that how to break down a problem and solve it step by step 
+
+To achieve this, you should:
+
+1. Identify the missing number in the list.
+2. Create a new list item (`<li>`) with the missing number as its content.
+3. Insert the new list item into the correct position in the list to maintain the sequential numbering 
+
+Always without thinking of the methods , code or anything else only think about what should be done to achieve something and then you can read , google or research about what you can use to achieve the end results , Software Engineering works like this , so make habit of thinking of the solution in parts without focusing on the implementatiom first then step by step start implementing things
+
+
+Ok! enough Talk , now let's solve this
 
 #### Solution
 
 **Step 1:** creating node list
 
-**Note:** Node list is an array like structure which will have your elements in indexed form stored.  
+Now as you can see the whole list , the number 7 is missing , so now to put 7 in between 6 and 8 we will need access to the whole list , that means I will need every list node in the same order and then I can identfy where the node is missing and can add that right?
+
+So to do that we can use the method `querySelectorAll` and can pass the element name inside it 
+
+The `querySelectorAll` method is a powerful tool provided by the Document Object Model (DOM) Web API that allows you to select and manipulate elements on a webpage. It enables you to find all elements within the document that match a specified CSS selector(s). Here's a breakdown of its functionality:
+
+ **Return Value**: `querySelectorAll` returns a `NodeList` of all elements within the document that match the specified group of selectors. A `NodeList` is a collection of DOM nodes that can be iterated over like an array but it is not an array it is a array like structure which is indexed and that's why it can be iterated over
+
+To Sum up ,  Node list is an array like structure which will have your elements stored in indexed form.  
 
 ```javascript
 <!DOCTYPE html>
