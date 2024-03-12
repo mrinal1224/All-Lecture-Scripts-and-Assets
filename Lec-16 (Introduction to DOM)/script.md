@@ -520,9 +520,43 @@ To Sum up ,  Node list is an array like structure which will have your elements 
 
 ```
 
+**Explanation of the code and all the methods step by step**
+
+1. **Select the unordered list**: `let ourList = document.querySelector('ul');`
+   - This line selects the first `<ul>` element found in the document and stores it in the variable `ourList`.
+   - `document.querySelector('ul')` uses the `querySelector` method to find the first element that matches the specified CSS selector ('ul' in this case).
+
+2. **Log the unordered list to the console**: `console.log(ourList);`
+   - This line prints the unordered list element (referenced by `ourList`) to the browser's console. It's a way to verify that the correct element has been selected.
+
+3. **Select all list items**: `let allItems = document.querySelectorAll('li');`
+   - This line selects all `<li>` elements (list items) within the document and stores them in the `allItems` variable.
+   - `document.querySelectorAll('li')` returns a NodeList containing all the `<li>` elements found. This method is used to select multiple elements that match the given CSS selector.
+
+4. **Log all list items to the console**: `console.log(allItems);`
+   - This prints the NodeList of all list items (referenced by `allItems`) to the console, allowing you to see all the list items in the console for debugging or verification purposes.
+
+5. **Identify the position of the list item that contains "8"**: `let indexThatHas8 = allItems[6];`
+   - This line assigns the seventh `<li>` element in the NodeList (which contains the number "8") to the variable `indexThatHas8`. Note that array indexing starts at 0, so `allItems[6]` refers to the seventh element in the list.
+
+6. **Create a new list item with the text "7"**: 
+   - `let sevenElement = document.createElement('li')`
+     - This line creates a new `<li>` element but does not yet insert it into the document. The new element is stored in the variable `sevenElement`.
+   - `sevenElement.innerText = '7'`
+     - This sets the text content of the newly created `<li>` element to "7".
+
+7. **Insert the new list item before the one that contains "8"**: `ourList.insertBefore(sevenElement, indexThatHas8)`
+   - This line inserts the newly created list item (`sevenElement`) into the unordered list (`ourList`) right before the list item that contains "8" (referenced by `indexThatHas8`).
+   - The `insertBefore` method is used to insert a node before the reference node as a child of a specified parent node. Here, it ensures the list item "7" is added in the correct place to maintain numerical order.
+
+the JavaScript part of the code fixes the missing "7" in the list by dynamically creating a new `<li>` element with the text "7" and inserting it into the correct position in the unordered list.
+
 **Output:**
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/273/original/upload_9cda233672dc980dc39259973628c350.png?1695146091)
+
+
+**By Solving this problem you have learnt about how querySelectorAll works , What is a NodeList and insertBefore Method works**
 
 ---
 title: Fixing the mathmatical problem
