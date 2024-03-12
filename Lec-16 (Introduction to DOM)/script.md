@@ -1,4 +1,29 @@
 # Introduction to Document Object Model
+
+---
+title: Introduction to Document Object Model
+description:
+duration: 900
+card_type: cue_card
+---
+
+
+## Agenda
+
+**First of all today we will start with Introduction of DOM and then we will solve some fun problems to understand how you can put interactivity to your web pages by using DOM methods and Properties , Today we will target to complete the topics listed below-**
+
+
+- Selecting Elements (querySelector , querySelectorALL , getElementbyID etc)
+- Event Listeners
+- Creating appending and inserting Elements (createElement , appendChild , insertBefore)
+- NodeList and ClassList 
+- the event object
+- getAttribute and setAttribute methods
+
+
+
+
+
 ---
 title: Introduction to Document Object Model
 description:
@@ -664,17 +689,6 @@ Write a script which fetches the data-color attribute of the card and double cli
 
 #### Solution
 
-**classList:** An element can have multiple classes attached to it and all of those classes are collected in a structure called classList.
-
-Example:
-
-```javascript
-<div class = "card test blue"> Our card </div>
-
-```
-
-The classList for this div will be - [card, test, blue]
-
 ```javascript
 <!DOCTYPE html>
 <html lang = "en">
@@ -759,7 +773,6 @@ The classList for this div will be - [card, test, blue]
 
 ```
 
-This code consists of an HTML document with embedded CSS and JavaScript. The purpose of this code is to modify the appearance and attributes of div elements with a class of "card" upon a double-click event. Let's break down the code piece by piece, focusing mainly on the JavaScript part as requested:
 
 ### HTML Brief
 
@@ -767,7 +780,7 @@ This code consists of an HTML document with embedded CSS and JavaScript. The pur
 
 - **style tags**: Inside these tags, CSS is used to style elements on the page. Every element is set to `box-sizing: border-box;`. The body is styled to display its children in a flex layout, centered and with some padding at the top. Classes `.blue`, `.green`, and `.red` assign background colors and a box-shadow to elements. The `.card` class defines a bordered box with specified height, width, and margin.
 
-### JavaScript In-depth
+### JavaScript
 
 - **let cardsNodeList = document.querySelectorAll('.card')**: This line selects all elements with the class "card" and stores them in `cardsNodeList`. `querySelectorAll` returns a NodeList, which is a collection of document nodes.
 
