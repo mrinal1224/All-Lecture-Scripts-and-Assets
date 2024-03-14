@@ -1979,7 +1979,7 @@ This script effectively allows users to navigate through different sections of a
 
 
 ---
-title: Button working
+title: The Remove and Remove All Button
 description:
 duration: 900
 card_type: cue_card
@@ -1987,8 +1987,55 @@ card_type: cue_card
 
 #### Question 4
 
-Make remove all button work  and make individual delete btn work
+**Problem Statement:**
+
+Implement JavaScript functionality for a task management web application that allows users to individually remove tasks from a list or clear the entire list at once. The HTML template includes a list of tasks, each with a dedicated "delete" button, and a separate "Remove All" button for bulk deletion. Your solution should enable the "delete" buttons to remove their respective tasks from the list and the "Remove All" button to clear all tasks from the list simultaneously.
  
+#### BoilerPlate
+
+```javascript
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "UTF - 8" />
+    <meta http-equiv = "X - UA - Compatible" content = "IE = edge" />
+    <meta name = "viewport" content = "width = device - width, initial-scale = 1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id = "removeAll">Remove All</button>
+    <ul>
+      <li>
+        <p>Task - 1</p>
+        <button class="delete_button">delete</button>
+      </li>
+      <li>
+        <p>Task - 2</p>
+        <button class="delete_button">delete</button>
+      </li>
+      <li>
+        <p>Task - 3</p>
+        <button class="delete_button">delete</button>
+      </li>
+      <li>
+        <p>Task - 4</p>
+        <button class="delete_button">delete</button>
+      </li>
+    </ul>
+    <script>
+      // Q- Make remove all button work  and make individual delete btn work
+    
+    </script>
+  </body>
+</html>
+
+```
+
+**Output:**
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/285/original/upload_ce32e1b3379121858f8ccc0ec9bb1268.png?1695148118)
+
+
 #### Solution
 
 ```javascript
@@ -2022,9 +2069,11 @@ Make remove all button work  and make individual delete btn work
     </ul>
     <script>
       // Q- Make remove all button work  and make individual delete btn work
+
       //   Solution:
 
       let removeAllBtn = document.querySelector("#removeAll");
+      let AllListItems = ul.querySelectorAll("li");
 
       let ul = document.querySelector("ul");
 
@@ -2032,11 +2081,17 @@ Make remove all button work  and make individual delete btn work
 
       let AllListItems = ul.querySelectorAll("li");
 
+
+
+      // Individual Delete buttons
+
       for (let i = 0; i < AllDeleteButton.length; i ++ ) {
         AllDeleteButton[i].addEventListener("click", function (e) {
           e.currentTarget.parentElement.remove();
         });
       }
+
+      // Remove all at once
 
       removeAllBtn.addEventListener("click", function () {
         AllListItems = ul.querySelectorAll("li");
@@ -2051,21 +2106,75 @@ Make remove all button work  and make individual delete btn work
 
 ```
 
-**Output:**
+**Solution Breakdown**
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/285/original/upload_ce32e1b3379121858f8ccc0ec9bb1268.png?1695148118)
+This JavaScript solution is designed to interact with an HTML document to provide two functionalities: the ability to delete individual list items and the ability to remove all list items at once. The HTML document includes a button with the ID `removeAll` for removing all list items, a list (`<ul>`) of tasks, each accompanied by a `delete` button with the class `delete_button` to remove that specific task. 
+
+Here's a step-by-step explanation of how the JavaScript solution works:
+
+### 1. Selecting Elements
+- `let removeAllBtn = document.querySelector("#removeAll");` selects the button with the ID `removeAll` and stores a reference to it in `removeAllBtn`. This button, when clicked, will remove all tasks.
+- `let ul = document.querySelector("ul");` selects the first `<ul>` element found in the document, which contains the list of tasks.
+- `let AllDeleteButton = document.querySelectorAll(".delete_button");` selects all elements with the class `delete_button` (the delete buttons for individual tasks) and stores them in `AllDeleteButton`.
+- `let AllListItems = ul.querySelectorAll("li");` selects all `<li>` elements (list items) within the `<ul>` and stores them in `AllListItems`.
+
+### 2. Adding Event Listeners to Delete Buttons
+The code iterates over each delete button (`AllDeleteButton`) using a for loop. For each button, it adds an event listener that listens for the "click" event.
+
+- Inside the loop, `AllDeleteButton[i].addEventListener("click", function (e) {...});` adds an event listener to each delete button. When a button is clicked, the anonymous function provided as the second argument is called.
+- `e.currentTarget.parentElement.remove();` within the event listener function, `e.currentTarget` refers to the button that was clicked. `.parentElement` gets the parent element of this button, which is the `<li>` element containing both the task and the delete button. `.remove()` removes this `<li>` element from the document, effectively deleting the task.
+
+### 3. Adding an Event Listener to the Remove All Button
+- `removeAllBtn.addEventListener("click", function () {...});` adds an event listener to the `removeAll` button. When clicked, the anonymous function provided as the second argument is called.
+- Inside the event listener for the `removeAll` button:
+  - `AllListItems = ul.querySelectorAll("li");` is used again to refresh the list of `<li>` elements, in case new tasks were added after the initial selection. It ensures that the operation includes all current list items.
+  - A for loop iterates over all the `<li>` elements in `AllListItems`, and `ul.removeChild(AllListItems[i]);` removes each `<li>` element from the `<ul>`, effectively clearing all tasks.
+
+### Summary
+The JavaScript solution works by first selecting necessary elements from the DOM, then attaching event listeners to both the individual delete buttons and the remove all button. The individual delete buttons remove their parent list item from the list, while the remove all button iterates over and removes all list items within the `<ul>`. This approach provides a dynamic interaction, allowing users to manage a list of tasks with individual and bulk deletion options.
 
 ---
-title: Destroy and create Buttons
+title: Destroy and Create Buttons
 description:
 duration: 900
 card_type: cue_card
 ---
 
-#### Question 5
+#### Question 4
 
-Create a button that is destroyed by clicking on it but two new buttons are created in it's place.
+### Problem Statement
+
+Create a web application feature where clicking a button causes it to be removed from the page, and simultaneously, two new buttons are created and added to the page in its place.
  
+#### BoilerPlate
+
+```javascript
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "UTF - 8" />
+    <meta http-equiv = "X - UA - Compatible" content = "IE = edge" />
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id = "doubleHolder">
+      <button class = "double">double</button>
+    </div>
+
+    <script>
+      //Q Create a button that is destroyed by clicking on it but two new buttons are created in it's place.
+
+
+    </script>
+  </body>
+</html>
+
+```
+
+This is a very simple boilerplate which will just show a button `double` as soon as you click on it , the `double` button will be destroyed and two new buttons should be created on click of it.
+
+
 #### Solution
 
 ```javascript
@@ -2092,12 +2201,12 @@ Create a button that is destroyed by clicking on it but two new buttons are crea
         .addEventListener("click", function (e) {
           if (e.target.classList.contains("double")) {
             let btn = document.createElement("button");
-            btn.setAttribute("class", "triple");
-            btn.innerHTML = "Double";
+            btn.setAttribute("class", "first-button");
+            btn.innerHTML = "first button";
 
             let btn2 = document.createElement("button");
-            btn2.setAttribute("class", "triple");
-            btn2.innerHTML = "Double";
+            btn2.setAttribute("class", "second-button");
+            btn2.innerHTML = "second button";
 
             e.currentTarget.appendChild(btn);
             e.currentTarget.appendChild(btn2);
@@ -2108,9 +2217,49 @@ Create a button that is destroyed by clicking on it but two new buttons are crea
     </script>
   </body>
 </html>
-
 ```
+
+**Code Breakdown**
+
+1. **Select the Container**: The script starts by selecting the container with the ID `doubleHolder`. This container is where the initial button is placed and where new buttons will be added or removed.
+
+2. **Attach a Click Event Listener**: It attaches a click event listener to the `doubleHolder`. When anything inside this container is clicked, the function provided to the event listener will execute.
+
+3. **Check Clicked Element**: Inside the function, there's a condition that checks if the clicked element (identified through `e.target`) has a class of `"double"`. This is to ensure the following steps only happen when the specific button with class `"double"` is clicked.
+
+4. **Create Two New Buttons**:
+   - **First Button**: 
+     - A new button is created using `document.createElement("button")`.
+     - This button is assigned a class of `"first-button"` and its text is set to `"first button"`. 
+     - This newly created button is then added to the `doubleHolder` container.
+   - **Second Button**: 
+     - Similarly, another new button is created.
+     - This second button is given a class of `"second-button"` and its text is set to `"second button"`.
+     - It's also added to the `doubleHolder` container.
+
+5. **Remove the Original Button**: Finally, the original button that was clicked (the one that triggered the event) is removed from the `doubleHolder` container. This is done by calling `removeChild` on the container (`e.currentTarget`) and passing the clicked button (`e.target`) as the argument to remove it.
+
+Simply put, when the specific button is clicked inside the container, it gets removed, and in its place, two new buttons with different identifiers are added to the container.
 
 **Output:**
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/286/original/upload_41220be67c87ecd8f41c99e72309656a.png?1695148181)
+
+
+Today we Have solved more Fun questions and now by solving these 8-9 problems You must now have a fair bit of idea how to use javascript to manipulate the DOM , So in the next class we will put all of learnings into use and will create a RealTime Weather app bu using an external api 
+
+So in the next class we will see
+- Design a beautiful looking weather app layout
+- What is JSON?
+- What is an API and how data is stored in JSON format 
+- Fetching data from the api by using fetch method (async/await will also be used)
+- Populating the data that we fetched in specific fields
+
+
+Super Excited! for the next class , but before the next class please atleast practice these questions , Solve your assignments and Homeworks and also do make sure to revise async/await atleast because here you will see the application of asynchronous programming as well
+
+See you in the Next Class!
+
+Start the Doubt Session
+
+
