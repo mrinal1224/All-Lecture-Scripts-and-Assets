@@ -1,17 +1,28 @@
-# Events and Event Handling
-
 ---
-title: Events and Event Handling
+title: Agenda
 description:
 duration: 900
 card_type: cue_card
 ---
 
-#### Definition
+1. **Events and Event Handling**
+    - An introductory segment explaining the core concept of events in web development and how to handle them using JavaScript. This would cover the basics of events like clicks, keyboard input, handling dropdown events etc
 
-**Event:** In JavaScript, an event is a signal that something has happened in the web page or application. This could be user interactions like clicks, key presses, or page loading.
+2. **Make the Filter Work -> Problem-1** 
+    - A practical exercise where the task is to make a filter function work. The scenario involves filtering movie tickets based on categories like action, romance, and comedy. The solution involves manipulating the DOM to only display movies of the selected category.
 
-**Event Handling:** Event handling in JavaScript refers to the process of writing code to respond to events. This involves attaching event listeners to specific elements in the DOM (Document Object Model) and defining functions that are executed when the specified event occurs. Event handling allows developers to create interactive and dynamic web experiences.
+3. **Key Tap Implementation for Section Scrolling and Page Navigation-> Problem-2**
+    - This section focuses on enhancing navigation within a web page through keyboard inputs. It includes implementing functionality where pressing certain keys (1, 2, 3, b, t) navigates the user to different sections of the page or to the top/bottom of the page.
+
+4. **Button Working -> Problem-3**
+    - A practical guide on creating interactive elements with JavaScript. The task involves making a "Remove All" button that deletes all items in a list and individual delete buttons for each item. It's a common pattern seen in to-do lists or item management systems.
+
+5. **Destroy and create Buttons -> Probelm-4**
+    - This segment covers the `Destroy and Create Buttons` problem. The exercise involves a button that, upon being clicked, is replaced by two new buttons, demonstrating dynamic DOM manipulation.
+
+ The exercises range from basic DOM manipulation to more advanced topics like event handling and dynamic content creation.
+
+ So let's get Started
 
 ---
 title: Make the filter work
@@ -19,12 +30,140 @@ description:
 duration: 900
 card_type: cue_card
 ---
+#### Problem-1
 
-#### Question 1
+**Problem Statement**
 
-Make the filter work
+Develop a dynamic filter functionality for a webpage that lists movies by their categories, such as Action, Romance, and Comedy. When a user selects a category from a dropdown menu, the page should update to display only the movies that belong to the selected category. If "None" is selected, all movies should be shown. This feature should enhance the user experience by allowing them to easily find movies of their interest without scrolling through all available options.
+
+**BoilerPlate code Provided**
+
+```javascript
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "UTF - 8" />
+    <meta http - equiv = "X - UA - Compatible" content = "IE = edge" />
+    <meta name = "viewport" content = "width = device - width, initial - scale = 1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-top: 5rem;
+      }
+
+      .movies {
+        height: 10rem;
+        width: 10rem;
+        margin: 2rem;
+      }
+
+      .price {
+        background-color: rgb(247 84 33);
+        height: 8rem;
+        padding: 1.5rem;
+        font-size: 2rem;
+      }
+
+      .heading {
+        background-color: rgba(0, 0, 0, 0.856);
+        height: 2rem;
+      }
+
+      .heading,
+      .price {
+        color: white;
+        text-align: center;
+        margin: 0;
+      }
+
+      select,
+      h1 {
+        position: fixed;
+      }
+
+      h1 {
+        top: 0px;
+      }
+
+      select {
+        width: 8rem;
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <h1>BOOK MY SHOW</h1>
+    <select>
+      <option value = "none">None</option>
+      <option value = "action">Action</option>
+      <option value = "romance">Romance</option>
+      <option value = "comedy">Comedy</option>
+    </select>
+
+    <div class = "movies">
+      <h3 class = "heading">Action Movie - 1</h3>
+      <p class = "price" data-category = "action">Rs. 100</p>
+    </div>
+    <div class = "movies">
+      <h3 class = "heading">Action Movie - 2</h3>
+      <p class = "price" data-category = "action">Rs 200</p>
+    </div>
+    <div class = "movies">
+      <h3 class = "heading">Action Movie - 3</h3>
+      <p class = "price" data-category = "action">Rs. 150</p>
+    </div>
+    <div class = "movies">
+      <h3 class = "heading">Romance - 1</h3>
+      <p class = "price" data-category = "romance">Rs 200</p>
+    </div>
+    <div class = "movies">
+      <h3 class = "heading">Romance - 2</h3>
+      <p class = "price" data-category = "romance">Rs. 150</p>
+    </div>
+    <div class = "movies">
+      <h3 class = "heading">Romance - 3</h3>
+      <p class = "price" data-category = "romance">Rs. 150</p>
+    </div>
+    <div class = "movies">
+      <h3 class = "heading">Action Movie-4</h3>
+      <p class = "price" data-category = "action">Rs 200</p>
+    </div>
+    <div class = "movies">
+      <h3 class = "heading">Comedy - 1</h3>
+      <p class = "price" data-category = "comedy">Rs. 100</p>
+    </div>
+    <div class = "movies">
+      <h3 class = "heading">Romance - 4</h3>
+      <p class = "price" data-category = "romance">Rs. 100</p>
+    </div>
+    <div class = "movies">
+      <h3 class = "heading">Comedy - 2</h3>
+      <p class = "price" data-category = "comedy">Rs 200</p>
+    </div>
+    <script>
+      // Q Make the filter work
+
+      
+    </script>
+  </body>
+</html>
+
+```
+
+
 
 #### Solution
+
+
 
 **Parent element:** This is a property which will get the parent element from the DOM tree of a specific child.
 
@@ -1062,7 +1201,7 @@ Make remove all button work  and make individual delete btn work
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/285/original/upload_ce32e1b3379121858f8ccc0ec9bb1268.png?1695148118)
 
 ---
-title: createElement() method
+title: Destroy and create Buttons
 description:
 duration: 900
 card_type: cue_card
