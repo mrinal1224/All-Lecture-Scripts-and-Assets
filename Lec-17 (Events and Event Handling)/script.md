@@ -8,16 +8,16 @@ card_type: cue_card
 1. **Events and Event Handling**
     - An introductory segment explaining the core concept of events in web development and how to handle them using JavaScript. This would cover the basics of events like clicks, keyboard input, handling dropdown events etc
 
-2. **Make the Filter Work -> Problem-1** 
+2. **Problem-1 Make the Filter Work** 
     - A practical exercise where the task is to make a filter function work. The scenario involves filtering movie tickets based on categories like action, romance, and comedy. The solution involves manipulating the DOM to only display movies of the selected category.
 
-3. **Key Tap Implementation for Section Scrolling and Page Navigation-> Problem-2**
+3. **Problem-2 Key Tap Implementation for Section Scrolling and Page Navigation**
     - This section focuses on enhancing navigation within a web page through keyboard inputs. It includes implementing functionality where pressing certain keys (1, 2, 3, b, t) navigates the user to different sections of the page or to the top/bottom of the page.
 
-4. **Button Working -> Problem-3**
+4. **Problem-3  Remove sepecific and remove ALL**
     - A practical guide on creating interactive elements with JavaScript. The task involves making a "Remove All" button that deletes all items in a list and individual delete buttons for each item. It's a common pattern seen in to-do lists or item management systems.
 
-5. **Destroy and create Buttons -> Probelm-4**
+5. **Probem-4 Destroy and create Buttons -> Probelm-4**
     - This segment covers the `Destroy and Create Buttons` problem. The exercise involves a button that, upon being clicked, is replaced by two new buttons, demonstrating dynamic DOM manipulation.
 
  The exercises range from basic DOM manipulation to more advanced topics like event handling and dynamic content creation.
