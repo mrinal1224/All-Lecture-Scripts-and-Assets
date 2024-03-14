@@ -183,7 +183,7 @@ First show the BoilerPlate code to the Learners and explain what is already give
 
 9. **Apply the Changes**: Implement the visibility adjustments so that only the relevant movies are displayed according to the user's selection.
 
-So , We have broken down the problem and now we exactly know what we have to do!
+So , We have broken down the problem and the solution approach and now we exactly know what we have to do!
 
 **Note to instructor - Ask the learners as they now know what are all the things to do , How they may approach it? listen to their solutions and interact with them , praise them if they are able to tell even each feature's implementation**
 
@@ -356,6 +356,14 @@ Now start with solving the Problem step by step
 4. **Filtering Logic**: The script then checks if the selected genre is `'none'`. If so, it loops through all elements in `allTickets` and sets their parent element's (the `.movies` div) `display` style to `'block'`, making sure all movies are visible.
 
 **Note to Instructor** -> Learners maybe unaware of How we are accessing the parentElement please take time and explain them what is a parent element and how we are accessing it from the child
+
+You can give this example 
+
+**Parent element:** This is a property which will get the parent element from the DOM tree of a specific child.
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/278/original/upload_4c37b0f4e346d0b8f6bf6f51f07d2c7a.png?1695147551)
+
+
 
 5. **Genre Filtering**: If a specific genre is selected (other than `'none'`), the script loops through each element in `allTickets` and checks if its `data-category` attribute matches the selected genre (`filterVal`):
    
