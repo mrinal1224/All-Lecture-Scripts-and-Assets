@@ -159,16 +159,39 @@ Develop a dynamic filter functionality for a webpage that lists movies by their 
 
 ```
 
+First show the BoilerPlate code to the Learners and explain what is already given and Show the layout on the Browser , Explain what needs to be done here point by point
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/281/original/upload_fd792df135de98bd7dc930ac5ea9316e.png?1695147830)
+
+**high-level approach to implement the dynamic filter functionality for the webpage:**
+
+1. **Initialize the Page**: Wait until the HTML document is fully loaded to ensure all elements are accessible.
+
+2. **Access Dropdown Menu**: Identify and select the dropdown menu element on the page.
+
+3. **Monitor Dropdown Changes**: Set up a mechanism to detect when the user selects a different option in the dropdown menu.
+
+4. **Retrieve Selected Category**: When a change is detected, determine which category the user has selected from the dropdown.
+
+5. **Access All Movie Elements**: Identify all the movie elements listed on the page.
+
+6. **Determine Movies to Display**: For each movie, check if its category matches the selected category from the dropdown.
+
+7. **Update Movie Visibility**: Based on the matching result, adjust the visibility of each movie element. If a movie matches the selected category, it should be visible. If it does not match, it should be hidden.
+
+8. **Special Case for 'None' Selection**: If the user selects "None" that signifies no filter should be applied, ensure all movies are shown regardless of category.
+
+9. **Apply the Changes**: Implement the visibility adjustments so that only the relevant movies are displayed according to the user's selection.
+
+So , We have broken down the problem and now we exactly know what we have to do!
+
+**Note to instructor - Ask the learners as they now know what are all the things to do , How they may approach it? listen to their solutions and interact with them , praise them if they are able to tell even each feature's implementation**
+
+
+Now start with solving the Problem step by step
 
 
 #### Solution
-
-
-
-**Parent element:** This is a property which will get the parent element from the DOM tree of a specific child.
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/278/original/upload_4c37b0f4e346d0b8f6bf6f51f07d2c7a.png?1695147551)
-
 
 ```javascript
 <!DOCTYPE html>
@@ -317,6 +340,30 @@ Develop a dynamic filter functionality for a webpage that lists movies by their 
 ```
 
 **Output:**
+
+**Code Breakdown:**
+
+1. **Select Element Query**: The script starts by querying the DOM to find the `<select>` element using `document.querySelector('select')`. This element is stored in the variable `select`.
+
+2. **Event Listener**: An event listener is added to the `select` element, listening for the `'change'` event. This event triggers whenever the user selects a different option from the dropdown menu.
+
+3. **Change Event Function**: When the dropdown's value changes, the function defined in the event listener is executed. This function does the following:
+   
+   a. **Retrieve Selected Value**: It first retrieves the current value of the `select` element (`select.value`). This value corresponds to the selected genre (`'action'`, `'romance'`, `'comedy'`, or `'none'`), stored in `filterVal`.
+   
+   b. **Query All Movies**: It then queries all elements with the class `.price` (representing all the movie prices and implicitly their associated movies, since each `.price` is inside a `.movies` div). This list of elements is stored in `allTickets`.
+
+4. **Filtering Logic**: The script then checks if the selected genre is `'none'`. If so, it loops through all elements in `allTickets` and sets their parent element's (the `.movies` div) `display` style to `'block'`, making sure all movies are visible.
+
+**Note to Instructor** -> Learners maybe unaware of How we are accessing the parentElement please take time and explain them what is a parent element and how we are accessing it from the child
+
+5. **Genre Filtering**: If a specific genre is selected (other than `'none'`), the script loops through each element in `allTickets` and checks if its `data-category` attribute matches the selected genre (`filterVal`):
+   
+   a. **Mismatch Genre**: If an element's `data-category` does not match `filterVal`, the script sets that element's parent `.movies` div's `display` style to `'none'`, hiding it from view.
+   
+   b. **Match Genre**: If an element's `data-category` matches `filterVal`, the script sets that element's parent `.movies` div's `display` style to `'block'`, ensuring it remains visible.
+
+This JavaScript functionality effectively allows users to filter the displayed movies based on their genre, showing only those that match the selected category from the dropdown menu, or showing all movies if 'None' is selected.
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/281/original/upload_fd792df135de98bd7dc930ac5ea9316e.png?1695147830)
 
