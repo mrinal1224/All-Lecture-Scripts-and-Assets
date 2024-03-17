@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .star-rating .star {
+  cursor: pointer;
+  color: #ccc; /* Unfilled star color */
+  font-size: 24px;
+  padding: 5px;
+}
+
+.star-rating .star.filled {
+  color: gold; /* Filled star color */
+}
+  </style>
+</head>
+<body>
+  <div class="star-rating" id="rating1"></div>
+</body>
+  <script>
+function initializeStarRating(containerId) {
+  const container = document.getElementById(containerId);
+  const ratingValue = document.createElement("span");
+  ratingValue.textContent = "Rating: 0";
+  
+  for (let i = 1; i <= 5; i++) {
+    const star = document.createElement("i");
+    star.classList.add("star");
+    star.textContent = "☆"; // Use "★" for filled star in 'updateRating' function
+    star.addEventListener("click", () => updateRating(i));
+    container.appendChild(star);
+  }
+
+  container.appendChild(ratingValue);
+
+  function updateRating(rating) {
+    const stars = container.querySelectorAll(".star");
+    ratingValue.textContent = `Rating: ${rating}`;
+    stars.forEach((star, index) => {
+      if (index < rating) {
+        star.classList.add("filled");
+        star.textContent = "★";
+      } else {
+        star.classList.remove("filled");
+        star.textContent = "☆";
+      }
+    });
+  }
+}
+
+// Initialize for each container
+initializeStarRating("rating1");
+  </script>
+</html>
+
+

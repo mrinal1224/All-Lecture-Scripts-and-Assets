@@ -1227,28 +1227,406 @@ export const publicMethod = () => console.log("I am public");
 import { publicMethod } from "./module.js";
 ```
 
-### 30. Memory Leaks in JavaScript: Identify and prevent them.
+Certainly, I'll enhance the explanations and include HTML examples alongside the JavaScript code to offer a more comprehensive understanding and demonstrate practical applications.
 
-**Problem Description:** Memory leaks can significantly affect the performance of web applications. Explain what causes memory leaks in JavaScript and how to prevent them.
+### 30. Explain the difference between `document.getElementById()` and `document.querySelector()`. When would you use each?
 
-**Sample Answer:**
-Memory leaks in JavaScript occur when the application retains unnecessary memory, leading to decreased performance and eventual crashes. Common causes include global variables, forgotten timers or callbacks, and detached DOM elements that are still referenced in JavaScript. To prevent memory leaks, ensure proper event listener management by removing listeners when they're no longer needed, avoiding the use of global variables, and using weak references with `WeakMap` or `WeakSet` when dealing with large amounts of data that don't need to be retained indefinitely.
+#### Explanation:
+`document.getElementById()` selects an HTML element based on its unique ID. It's a fast and straightforward way to access an element when you know its ID.
 
-**Example:**
+`document.querySelector()`, conversely, is more versatile, allowing you to select the first element that matches a specified CSS selector, such as an ID, class, or any complex selector.
 
-```javascript
-// Potential memory leak with event listeners
-const element = document.getElementById('button');
-function onClick(event) {
-  // Event handling code
-}
-element.addEventListener('click', onClick);
-// Prevent memory leak by removing the event listener when the element is no longer needed
-element.removeEventListener('click', onClick);
-
-// Using WeakMap to avoid memory leaks
-let weakMap = new WeakMap();
-let domNode = document.getElementById('example');
-weakMap.set(domNode, {data: 'Some data'});
-// If the DOM node is removed, it becomes eligible for garbage collection since there are no more references to it
+#### Example:
+HTML:
+```html
+<div id="uniqueElement"></div>
+<div class="someClass"></div>
 ```
+
+JavaScript:
+```javascript
+// Selecting by ID
+const elementById = document.getElementById('uniqueElement');
+
+// Selecting by class (or any CSS selector)
+const elementByQuery = document.querySelector('.someClass');
+```
+
+### 31. What is Event Bubbling in the DOM and how can you stop it?
+
+#### Explanation:
+Event bubbling is a process where an event on a child element propagates up through its ancestors in the DOM tree. You can stop this propagation using `event.stopPropagation()` in the event handler.
+
+#### Example:
+HTML:
+```html
+<div id="parent">Parent
+  <div id="child">Child</div>
+</div>
+```
+
+JavaScript:
+```javascript
+document.getElementById('child').addEventListener('click', function(event) {
+  event.stopPropagation(); // Stops the event from bubbling up
+  console.log('Child element clicked!');
+});
+
+document.getElementById('parent').addEventListener('click', function() {
+  // This won't be called if the child is clicked, due to stopPropagation()
+  console.log('Parent element clicked!');
+});
+```
+
+### 32. Create a function to toggle a class on an element when it is clicked. Show the event listener attachment.
+
+#### Problem Statement:
+Write a JavaScript function to toggle a class `active` on an element when it is clicked.
+
+#### Solution Code:
+HTML:
+```html
+<div id="toggleElement">Click me</div>
+```
+
+JavaScript:
+```javascript
+function toggleActiveClass(event) {
+  event.target.classList.toggle('active');
+}
+
+document.getElementById('toggleElement').addEventListener('click', toggleActiveClass);
+```
+
+#### Explanation:
+This function listens for a click event on the specified element. Upon clicking, it toggles the `active` class on the element, adding it if it's not present, and removing it if it is.
+
+### 33. Describe the difference between `innerText` and `textContent`, with an example.
+
+#### Explanation:
+`innerText` returns the visible text of an element and its descendants. It respects CSS styles, which means it does not include text hidden by CSS.
+
+`textContent` gives the full text content of an element and its descendants, including text in `<script>` and `<style>` elements, ignoring CSS styling.
+
+#### Example:
+HTML:
+```html
+<div id="example">Hello <span style="display:none;">World</span></div>
+```
+
+JavaScript:
+```javascript
+// innerText ignores the text within <span> due to display:none
+console.log(document.getElementById('example').innerText); // Outputs: Hello
+
+// textContent includes all text, regardless of styling
+console.log(document.getElementById('example').textContent); // Outputs: Hello World
+```
+
+### 34. Explain how to create and append a new element to the DOM.
+
+#### Explanation:
+To add a new element to the DOM, you create the element using `document.createElement()` and then append it to an existing element with `appendChild()`.
+
+#### Example:
+HTML:
+```html
+<div id="container"></div>
+```
+
+JavaScript:
+```javascript
+const newElement = document.createElement('div');
+newElement.innerText = 'I am new here!';
+document.getElementById('container').appendChild(newElement);
+```
+
+Creating machine coding problems that focus on the JavaScript DOM (Document Object Model) can be a great way to assess a candidate's understanding of web technologies and their ability to interact with web page content dynamically. Below are five coding problems that range from basic to intermediate complexity. Each problem includes the problem statement, necessary requirements, a solution approach, and the complete solution with code.
+
+### Problem 35: Dynamic List Creation
+
+**Problem Statement:**
+Create a function that dynamically adds items to an unordered list in the HTML document when invoked. The function should accept a string, which will be the content of the list item to be added.
+
+**Necessary Requirements:**
+- HTML document with an empty unordered list (`<ul>`).
+- JavaScript function that accepts a string parameter.
+
+**Solution Approach:**
+- Select the unordered list element using `document.querySelector()` or `document.getElementById()`.
+- Create a new list item (`<li>`) element using `document.createElement()`.
+- Set the text content of the new list item to the string parameter using `textContent`.
+- Append the new list item to the unordered list using `appendChild()`.
+
+**Complete Solution:**
+
+HTML:
+```html
+<ul id="myList"></ul>
+```
+
+JavaScript:
+```javascript
+function addItemToList(itemText) {
+  const list = document.getElementById("myList");
+  const listItem = document.createElement("li");
+  listItem.textContent = itemText;
+  list.appendChild(listItem);
+}
+```
+
+### Problem 36: Toggle Element Visibility
+
+**Problem Statement:**
+Implement a function that toggles the visibility of a specified HTML element on the page each time the function is called.
+
+**Necessary Requirements:**
+- An HTML element with a unique identifier.
+- JavaScript function that toggles visibility.
+
+**Solution Approach:**
+- Select the target element using `document.getElementById()` or `document.querySelector()`.
+- Check the current value of the element's `style.display` property.
+- If the display property is `"none"`, set it to `""` or a specific display value (e.g., `"block"`); otherwise, set it to `"none"`.
+
+**Complete Solution:**
+
+HTML:
+```html
+<div id="toggleElement">Toggle me!</div>
+```
+
+JavaScript:
+```javascript
+function toggleVisibility(elementId) {
+  const element = document.getElementById(elementId);
+  if (element.style.display === "none") {
+    element.style.display = "";
+  } else {
+    element.style.display = "none";
+  }
+}
+```
+
+### Problem 37: Form Input Validation
+
+**Problem Statement:**
+Create a function that validates the input of a text field in a form. The input should not be empty and must contain at least 8 characters. Display an error message next to the input field if the validation fails.
+
+**Necessary Requirements:**
+- A form with a text input field and a submission button.
+- An area to display the error message.
+
+**Solution Approach:**
+- Select the form, input field, and area for the error message using appropriate selectors.
+- Add an event listener to the form's `submit` event.
+- In the event listener, prevent the form's default submission with `preventDefault()` if the validation fails.
+- Check the length of the input field's value; if it doesn't meet the criteria, display the error message.
+
+**Complete Solution:**
+
+HTML:
+```html
+<form id="myForm">
+  <input type="text" id="myInput">
+  <button type="submit">Submit</button>
+  <div id="errorMessage" style="color: red;"></div>
+</form>
+```
+
+JavaScript:
+```javascript
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  const inputField = document.getElementById("myInput");
+  const errorMessage = document.getElementById("errorMessage");
+
+  if (inputField.value.length < 8) {
+    event.preventDefault();
+    errorMessage.textContent = "Input must be at least 8 characters long.";
+  } else {
+    errorMessage.textContent = "";
+  }
+});
+```
+
+### Problem 38: Dynamic Table Population
+
+**Problem Statement:**
+Write a JavaScript function that populates a table with data from a given array of objects. Each object in the array represents a row in the table, and each property of the object represents a cell.
+
+**Necessary Requirements:**
+- A `<table>` element in the HTML document.
+- An array of objects with consistent properties.
+
+**Solution Approach:**
+- Select the table element.
+- Iterate over the array of objects.
+  - For each object, create a new table row (`<tr>`).
+  - For each property in the object, create a table cell (`<td>`) and fill it with the property's value.
+  - Append the cells to the row, and then append the row to the table.
+
+**Complete Solution:**
+
+HTML:
+```html
+<table id="myTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </
+
+thead>
+  <tbody>
+  </tbody>
+</table>
+```
+
+JavaScript:
+```javascript
+const data = [
+  { name: "John Doe", age: 30 },
+  { name: "Jane Doe", age: 25 }
+];
+
+function populateTable(data) {
+  const tableBody = document.querySelector("#myTable tbody");
+
+  data.forEach(item => {
+    const row = document.createElement("tr");
+    Object.values(item).forEach(value => {
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      row.appendChild(cell);
+    });
+    tableBody.appendChild(row);
+  });
+}
+
+populateTable(data);
+```
+
+### Problem 39: Real-time Search Filter
+
+**Problem Statement:**
+Implement a function that filters a list of elements based on the user's input in real-time, hiding elements that do not match the search query.
+
+**Necessary Requirements:**
+- An input field for the search query.
+- A list of items (e.g., `<ul>` with multiple `<li>` elements) to be filtered.
+
+**Solution Approach:**
+- Add an event listener to the input field for the `input` event.
+- On each input event, iterate over the list items.
+  - If the item's text content does not include the input value, hide it using `style.display = "none"`.
+  - Otherwise, ensure the item is visible.
+
+**Complete Solution:**
+
+HTML:
+```html
+<input type="text" id="searchInput">
+<ul id="itemsList">
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Cherry</li>
+</ul>
+```
+
+JavaScript:
+```javascript
+document.getElementById("searchInput").addEventListener("input", function() {
+  const searchValue = this.value.toLowerCase();
+  const items = document.querySelectorAll("#itemsList li");
+
+  items.forEach(item => {
+    if (!item.textContent.toLowerCase().includes(searchValue)) {
+      item.style.display = "none";
+    } else {
+      item.style.display = "";
+    }
+  });
+});
+```
+
+
+### Problem 40: Star Rating Component
+
+**Problem Statement:**
+Develop a JavaScript function to create a dynamic star rating component that allows users to rate on a scale of 1 to 5 stars. When a user clicks on a star, all stars up to that point should be highlighted. The component should also display the current rating value in text next to the stars. Ensure that the component is reusable, allowing multiple instances on the same page without interference.
+
+**Necessary Requirements:**
+- An HTML container for the star rating component.
+- Each star can be an `<i>` element with classes for filled and unfilled states (e.g., using Font Awesome icons) or simple `<span>` elements styled with CSS.
+- A text element to display the current rating value dynamically.
+- The component should be initialized through a JavaScript function that can be applied to any container, making it reusable.
+
+**Solution Approach:**
+- Write a JavaScript function that accepts a container element as an argument.
+- Within the function, generate five star elements and append them to the container. Attach a click event listener to each star for the rating functionality.
+- When a star is clicked, determine its index (rating value) and update the appearance of all stars to reflect the current rating.
+- Display the current rating value in a text element next to the stars.
+
+**Complete Solution:**
+
+HTML (Container example):
+```html
+<div class="star-rating" id="rating1"></div>
+
+```
+
+CSS (Basic styles for stars):
+```css
+.star-rating .star {
+  cursor: pointer;
+  color: #ccc; /* Unfilled star color */
+  font-size: 24px;
+  padding: 5px;
+}
+
+.star-rating .star.filled {
+  color: gold; /* Filled star color */
+}
+```
+
+JavaScript:
+```javascript
+function initializeStarRating(containerId) {
+  const container = document.getElementById(containerId);
+  const ratingValue = document.createElement("span");
+  ratingValue.textContent = "Rating: 0";
+  
+  for (let i = 1; i <= 5; i++) {
+    const star = document.createElement("i");
+    star.classList.add("star");
+    star.textContent = "☆"; // Use "★" for filled star in 'updateRating' function
+    star.addEventListener("click", () => updateRating(i));
+    container.appendChild(star);
+  }
+
+  container.appendChild(ratingValue);
+
+  function updateRating(rating) {
+    const stars = container.querySelectorAll(".star");
+    ratingValue.textContent = `Rating: ${rating}`;
+    stars.forEach((star, index) => {
+      if (index < rating) {
+        star.classList.add("filled");
+        star.textContent = "★";
+      } else {
+        star.classList.remove("filled");
+        star.textContent = "☆";
+      }
+    });
+  }
+}
+
+// Initialize for each container
+initializeStarRating("rating1");
+```
+
+**More questions will be added**
+
+
+
