@@ -395,38 +395,32 @@ After executing the CSS code, the output is
 We will see how to get data from an API. We will use the **fetch API**. The **fetch()** method will be used here.
 > Type fetch method in the browser and just show the docs as a glimpse. 
 
-The URL will be passed to the fetch() method as a parameter. We will understand how to use the fetch() method inside our JS code.
+The API URL will be passed to the fetch() method as a parameter. We will understand how to use the fetch() method inside our JS code.
 
-We will be coming across various terms like async, await but they will be covered in depth in the later lectures.
 
-Before diving deep into the fetch() method, we will understand the try and catch block which is a pre-requisite for this.
-
-The try block is used to execute the code that might encounter an error. An error can lead to unexpected termination of the program. Hence we put it inside the try block and any error that might be encountered by the try block is sent to the catch block. This is the exception handling concept. 
+The try block is used to execute the code that might encounter an error. An error can lead to unexpected termination of the program. Hence we put it inside the try block and any error that might be encountered by the try block is sent to the catch block.
 
 In the try block, we will define the URL which is the API call. 
 
 ```javascript
  let url = `https://api.weatherapi.com/v1/current.json?key=35af7ff606db422880d141328231305&q=${target}&aqi=no`
  ```
-Here we have wrapped the url in backticks so that we can use the string template literals which denoted bt the `${}` symbol. 
+Here we have wrapped the url in backticks so that we can use the string template literals which denoted bt the `${}` symbol.
 
-* Let us understand using a real-life analogy about asynchronous programming. 
 
-* Suppose you are teaching a batch of 100 students. One student asks doubt and it takes 5 minutes to resolve it. Another student asks a doubt which takes another 5 minutes. One more student asks a doubt and it takes 5 minutes. To solve the doubts of 3 students, 97 students has to waste their 15 minutes.
+Now as API in an external data source so the program may take some time to get the data from there , and whenever there are some heavy time consuming operation what do we use?
 
-> Ask the students what could a better approach for this?
+Exactly! Asynchronous Programming!
 
-* A better approach is to teach first and in the last few minutes of the lecture, take up the doubts of the students. In this way, the time of the other students is not wasted. 
+Here we will just use an Async Function which will be responsile for getting data from the API and to get the data from an API we use the fetch method 
 
-* Now just replace students with functions. The first approach is the synchronous programming where everything happens in a sequence. 
 
-* In synchronous programming, important instructions get blocked due to some previous instructions, which causes a delay in the user interface. **Asynchronous** code execution allows to execution next instructions immediately and **doesn't block the flow** because of previous instructions.
 
 **Key points**
 * In APIs, we will be using the asynchronous JS. 
-* We will be using **async** and **await** keywords which are important. 
+* We will be using **async** and **await** keywords which are important to work asychronously
 * The **async** keyword needs to be added before the function which tells the function that it is asynchronous. 
-* The **await** keyword tells that it needs wait till the data comes. 
+* The **await** keyword tells that it needs wait till the data comes and the promise resolves
 
 ```javascript
 const response = await fetch(url)
