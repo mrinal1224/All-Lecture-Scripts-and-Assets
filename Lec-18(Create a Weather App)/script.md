@@ -146,7 +146,7 @@ JSON is the medium through which data is exchanged between clients and servers i
 4. **API Endpoints**: APIs are structured around endpoints, each serving a specific function. An endpoint for retrieving user data might return a JSON object with user attributes, while another endpoint for posting user data might accept JSON-formatted user details.
 
 
-Overall an API is just an interface which will allow two systems to communicate with each other with each other and the format it uses is JSON , there are other formats as well and ways as well lie SOAP architecture is there which uses XML as simlarly what we are are learning falls under REST where we use JSON as mode of communication
+Overall an API is just an interface which will allow two systems to communicate with each other with each other and the format it uses is JSON , there are other formats as well and ways as well lie SOAP architecture is there which uses XML  simlarly what we are are learning falls under REST where we use JSON as mode of communication ,more on REST Architecture later...
 
 So Now , Imagine we want to create a  weather application the features of the application should be- 
 
