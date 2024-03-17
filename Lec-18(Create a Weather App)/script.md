@@ -143,106 +143,41 @@ JSON is the medium through which data is exchanged between clients and servers i
 
 4. **API Endpoints**: APIs are structured around endpoints, each serving a specific function. An endpoint for retrieving user data might return a JSON object with user attributes, while another endpoint for posting user data might accept JSON-formatted user details.
 
-#### Example: A Simple REST API Call
 
-Imagine an application needs to display the current weather in a user's location. It might use a weather API that provides weather data. The process would look something like this:
+Overall an API is just an interface which will allow two systems to communicate with each other with each other and the format it uses is JSON , there are other formats as well and ways as well lie SOAP architecture is there which uses XML as simlarly what we are are learning falls under REST where we use JSON as mode of communication
+
+So Now , Imagine we want to create a  weather application the features of the application should be- 
+
+- It will have a search bar where you can enter any cities name an their will be a button to get it's weather Info.
+
+- As soon as you click on the button you should be served with that cities weather Information in a decent looking card
+
+These properties should be shown compulsarily- 
+  - City Name
+  - Temparature
+  - Condition (hot , humid , cold , Rainy etc)
+  - current date and time in the city
+
+  Rest you can add any other property that you want to show!
+
+So , This is a very simple app , we just need data for this , and how we are going to get the data? 
+
+Exactly an API!
+
+Now What can be the steps to get the data from an API?
+Suppos there is a weather API which has data about the weather conditions of diffrent places , how should we communicate with that and get exact data that we are looking for?
+
+**Steps to get the data from an API -**
 
 1. The application sends a request to the weather API's endpoint, possibly including the location's coordinates in a JSON-formatted request body.
 2. The weather API processes this request and responds with a JSON object containing weather details like temperature, humidity, and weather conditions.
 3. The application then parses this JSON response and uses the data to display the weather information to the user.
 
-#### Conclusion
-
-APIs and JSON together streamline the process of data interchange across the internet, making it simpler, faster, and more efficient. JSON's role as a universally compatible data format makes it the backbone of modern API design, allowing seamless integration and communication between different systems and applications. This synergy between APIs and JSON data not only enhances the functionality and efficiency of applications but also contributes to a more interconnected and interoperable digital ecosystem.
-
-
-**API**
-* Stands for **Application Programming Interface**.
-* It is an interface where all the data and protocols can be stored in a section-wise manner. 
-* Just like the above example in the way we served the request to the customers, the data will be saved in an interface called as API
-* Consider that apart from the customers, the you also cater to the needs of a restaurant by providing them with the products that they need. 
-* In this way, the demands of both customers and restaurant gets their demands fulfilled.
-* These customers are basically **clients**. The shops are nothing but **servers**.
-> Ask the students if they are familiar with the concept of client and server. 
-
-* The data is being requested from an external factor. Whatever the client needs, he will seek that from the external source. 
-* There are different use cases of various data and it is impossible to store it in a single place. 
-
-**Key points**
-* API acts as a bridge between client and server. 
-* It has huge sets of data that can be used for applications.
-* API not only has data, but also has protocols, method implementations etc. 
-
-#### Example
-Consider you want to order a burger from Zomato or Swiggy. You decide to order it from Burger King. For that, Zomato will need to use the API of burger king to get the data of Burger king. 
-
-* This data is coming from the API.
-* The API is stored in JSON format.
-
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/289/original/upload_53dd165cb742742e9f97796f9941eaf0.png?1695148884)
 
 
-> Ask students if they have heard about APIs, then mention that some of the experienced folks might have heard about this. Earlier, REST APIs and SOAP APIs were used to store data and write APIs. Now JS devs thought about introducing JSON which is similar to the JS Syntax.
+**Let's create this application then!!**
 
-
-**Key points**
-* JSON stands for JavaScript Object Notation. 
-* It has a format similar to that of objects in JS. It has key-value pairs.
-* The value can be obtained by using a key.
-* The JSON file should end with '.json' extension. 
-
-
->Open VSCode and create a Farm.json file.
-
-Coming to the previous example, a farm can have name, registration number, number of goods etc. There are many farms as such. **We want to create a dataset of all the farms where we can see data of each individual farm.**
-
-
-#### Code
-
-First start with this code, and tell the students to ensure that the **keys** are enclosed in **double quotes** so that it does not throw an error. 
-```javascript
-
-[
-    {
-        "name":"Farm 1",
-        "products":["Eggs","Milk","vegetables"],
-        "registrationNo":1234,
-        "Employees":70,
-        "isOperating": true
-    }
-]
-```
-
-This is the first object. Whenever we are creating different objects within the same JSON file, ensure that the **keys remain the same** for all the objects. They should **not change**. 
-
-The code for 3 farms is-
-```javascript
-
-{
-    {
-        "name":"Farm 1",
-        "products":["Eggs","Milk","vegetables"],
-        "registrationNo":1234,
-        "Employees":70,
-        "isOperating": true
-    },
-    {
-        "name":"Farm 2",
-        "products":["Eggs","Milk","Cheese"],
-        "registrationNo":12345,
-        "Employees":60,
-        "isOperating": false
-    },
-    {
-        "name":"Farm 1",
-        "products":["vegetables"],
-        "registrationNo":12346,
-        "Employees":30,
-        "isOperating": true
-    }
-    
-}
-``` 
 
 > Show some examples of APIs to the students. Tell them that we will be creating a weather app today and open it. 
 > https://www.weatherapi.com/
