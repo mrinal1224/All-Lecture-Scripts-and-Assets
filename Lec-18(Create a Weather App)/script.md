@@ -212,6 +212,8 @@ Here the "q" stands for **query** and here we are querying for London. The call 
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/293/original/upload_04a31b2878e550d5e6bf91f446d29778.png?1695149064)
 
+So Now that you know what API we are using and how on querying for  a specific city we are getting weather data for for that city in JSON format , Now let's put this data into use to create an application!
+
 
 ---
 title: Weather App Project
