@@ -778,3 +778,8 @@ function getDayFullName(num) {
 
 fetchData(target)
 ```
+
+
+This is how we have compeleted the whole weather app project!
+
+Start the doubt Session!
