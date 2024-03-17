@@ -8,26 +8,121 @@ card_type: cue_card
 ---
 
 ## Agenda
+* What is JSON? and How to work with JSON data
 * Create a weather app using an API.
 * We will be using the "weather API" for getting the data of real-time weather and use that data in our app. 
-* Pre-requisites required for this app include **JSON**, **API** which will be covered in this lecture itself. 
+
 
 
 
 ---
-title: Introduction to JSON and API
+title: Introduction to JSON 
 description:
 duration: 120
 card_type: cue_card
 ---
 
 ### JSON
-* It stands for JavaScript Object Notation which is a data representation format.
-* Let us consider an example to understand. Suppose, you have a farm and you sell products like vegetables, fruits, eggs etc. When a customer comes, everything is organized in different sections. You won't be storing everything inside a single container. It will be segregated like this- 
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/288/original/upload_ec216d48c7ab4156e45c07960e9bb9c4.png?1695148844)
+JSON, which stands for JavaScript Object Notation, is a lightweight format for storing and transporting data. It is easy for humans to read and write, and easy for machines to parse and generate. JSON is based on the JavaScript programming language, but it is language-independent, meaning it can be used with many programming languages, including Python, Ruby, PHP, and many others. Let's break this down into simpler concepts:
 
-When a customer demands a product, that particular product will be given to them. In the same way, an API also works. 
+### 1. What is JSON?
+
+Imagine you're writing down your shopping list in a way that you want both your friends and a computer to understand. You would choose a simple, structured format, right? JSON is exactly that but for data. It uses a set of rules to represent data as text, making it easy to send this data across the internet or save it in files.
+
+### 2. Structure of JSON
+
+JSON's format is reminiscent of JavaScript object literal syntax, but with some restrictions. It mainly consists of two structures:
+
+- **Objects**: These are collections of key/value pairs. In JSON, an object begins with `{` (left brace) and ends with `}` (right brace). Each key is followed by a colon (`:`) and then the value assigned to that key. Key-value pairs are separated by commas. For example:
+
+  ```json
+  {
+    "name": "John Doe",
+    "age": 30,
+    "isEmployed": true
+  }
+  ```
+
+- **Arrays**: These are ordered lists of values. In JSON, an array begins with `[` (left bracket) and ends with `]` (right bracket). Values are separated by commas. For example:
+
+  ```json
+  ["apple", "banana", "cherry"]
+  ```
+
+Values in JSON can be strings (text wrapped in double quotes `" "`), numbers, objects, arrays, `true`, `false`, or `null`.
+
+### 3. How JSON Works with JavaScript
+
+Now , the major application of this JSON format is to pass data from one System to another , As Most of the internet's data transmission protocols, like HTTP, are text-based. They are designed to transmit data as text rather than in proprietary formats (objects or arrays). JSON, being a text-based format, fits seamlessly into this architecture.
+
+So Now as JSON is text(string) based so to transfer data from one system another we need to convert data that we need to transfer into JSON string
+
+We will take a very fun example for this
+
+Imagine you have a box of toys. In the world of web development, your toys are your data, like names, ages, or places. Now, you want to send this box to a friend who lives far away. But there's a catch: you can't send the box as it is; you need to pack it in a special way so that it can travel through the internet. This is where **JSON** comes into play.
+
+**JSON** is a way to pack your data (toys) so that they can travel easily over the internet. It turns your data into a string (a sequence of letters, numbers, and symbols) that can be sent and then unpacked by your friend (or another computer).
+
+Let's create a simple example to illustrate both parsing and stringifying with toys as our data. First, we'll "pack" our toy data into a JSON string using `JSON.stringify()`, and then we'll "unpack" it using `JSON.parse()`.
+
+```javascript
+// Define our toys as a JavaScript object
+var toys = {
+  toy1: {name: "Teddy Bear", color: "Brown"},
+  toy2: {name: "Race Car", color: "Red"},
+  toy3: {name: "Doll", color: "Pink"}
+};
+// Now Here this is in  Javascript object Format and in this format data cannot be sent over the internet as this is not universally understood by the data transfer protocols
+
+// Pack our toys into a box (convert our toys object into a JSON string)
+var toysJSONString = JSON.stringify(toys);
+console.log("Packed Toys:", toysJSONString);
+
+
+// Here We have converted the javascript object into JSON string now this is understood by the protocolos
+
+// Now, let's say this JSON string is sent over the internet.
+// On the other side, we receive this packed box of toys as a JSON string.
+
+
+// Now as we are recieving a JSON string , so while writing javascript code we will not be able to apply object properties in a JSON string , so now to convert the string again to object we will parse it
+
+
+// Unpack our toys from the box (parse the JSON string back into a JavaScript object)
+var unpackedToys = JSON.parse(toysJSONString);
+console.log("Unpacked Toys:", unpackedToys);
+
+// Now, 'unpackedToys' is a JavaScript object with our toys,
+// and we can access and work with them like before.
+console.log("Let's play with the:", unpackedToys.toy1.name); // Accessing the Teddy Bear
+```
+
+In this example:
+- We start with our toys organized in a JavaScript object.
+- We "pack" these toys using `JSON.stringify()`, turning them into a string that can be easily sent over the internet.
+- We simulate receiving this packed string on the other side and then "unpack" it using `JSON.parse()`, turning it back into a JavaScript object that we can work with.
+- Finally, we access one of the toys from our unpacked object to show that it's back to its original, usable form.
+
+
+### 4. Why Use JSON?
+
+JSON is popular for several reasons:
+
+- It is text, and can be read and written by humans.
+- It is easy for machines to parse and generate.
+- It is fully compatible with JavaScript and many other languages, making it a good choice for data interchange on the web.
+
+In summary, JSON is a universally accepted format for structuring data, making it an essential part of modern web development. Its simplicity, ease of use, and compatibility with many programming languages have made it a preferred choice for data interchange on the internet.
+
+
+---
+title: Introduction to API 
+description:
+duration: 120
+card_type: cue_card
+---
+
 
 **API**
 * Stands for **Application Programming Interface**.
@@ -167,7 +262,7 @@ console.log(data)
 </html>
 ```
 
-You will see an array of objects. This is not in the JSON format. To obtain the JSON format, we will enclose the objects in backtick. 
+
 
 **Key points**
 * To convert JSON to JavaScript readable code, we use the **JSON.parse()** method
