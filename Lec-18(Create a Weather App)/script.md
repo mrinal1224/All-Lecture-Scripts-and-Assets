@@ -131,6 +131,8 @@ After understanding the basics of JSON and its importance in web development, it
 
 An API is a set of rules and protocols that allows one software application to access the data or functionality of another application, server, or service. APIs are like menus in a restaurant; the menu provides a list of dishes you can order, along with a description of each dish. When you specify which dish you want, the kitchen (the system) prepares the dish and serves it. In the digital world, APIs work similarly: they allow developers to request specific data or actions, and the system responds accordingly.
 
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/289/original/upload_53dd165cb742742e9f97796f9941eaf0.png?1695148884)
+
 #### The Role of JSON in APIs
 
 JSON is the medium through which data is exchanged between clients and servers in many APIs. It serves as the "language" that both the requesting and the responding parties understand. Here's how JSON is used in the context of APIs:
@@ -173,7 +175,7 @@ Suppos there is a weather API which has data about the weather conditions of dif
 2. The weather API processes this request and responds with a JSON object containing weather details like temperature, humidity, and weather conditions.
 3. The application then parses this JSON response and uses the data to display the weather information to the user.
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/289/original/upload_53dd165cb742742e9f97796f9941eaf0.png?1695148884)
+
 
 
 **Let's create this application then!!**
