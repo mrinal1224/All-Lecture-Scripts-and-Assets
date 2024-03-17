@@ -181,7 +181,13 @@ Suppos there is a weather API which has data about the weather conditions of dif
 **Let's create this application then!!**
 
 
-> Show some examples of APIs to the students. Tell them that we will be creating a weather app today and open it. 
+> Show some examples of APIs to the students , You can just google JSON API and go to images , there will be so mnay omages that will represent data in JSON format
+
+Tell them that we will be creating a weather app today and open it. (Show the DEMO of the APP)
+
+**To start creating this app we need access to API from where we are going to get the data**
+
+For our app we will be using the API from here -
 > https://www.weatherapi.com/
 > Inform that they need to sign-in.
 
@@ -189,54 +195,6 @@ Suppos there is a weather API which has data about the weather conditions of dif
 * Select the protocol as **HTTPS**.
 * Click on show response. You can see the JSON format in the response section.
 
-Proceeding to our code, create an `index.html` file. Inside the script tag, paste the above JSON code.
-
-```javascript
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    <meta charset = "UTF - 8">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-        let data = [
-    {
-        "name":"Farm 1",
-        "products":["Eggs","Milk","vegetables"],
-        "registrationNo":1234,
-        "Employees":70,
-        "isOperating": true
-    },
-    {
-        "name":"Farm 2",
-        "products":["Eggs","Milk","Cheese"],
-        "registrationNo":12345,
-        "Employees":60,
-        "isOperating": false
-    },
-    {
-        "name":"Farm 1",
-        "products":["vegetables"],
-        "registrationNo":12346,
-        "Employees":30,
-        "isOperating": true
-    }
-    
-]
-console.log(data)
-</script>
-</body>
-</html>
-```
-
-
-
-**Key points**
-* To convert JSON to JavaScript readable code, we use the **JSON.parse()** method
-* The data received from a web server is a string, so to convert we use the JSON.parse() method to convert to a JavaScript object. 
-* When working with APIs, we get everything in string, so to parse that JSON, we use the JSON.parse() method. 
 
 
 >Brief the students about the steps to sign up on the https://www.weatherapi.com/. Ask them to do it accordingly. 
