@@ -297,7 +297,7 @@ Execute the above code, the output is
 
 This is a simple HTML code, we will have to add CSS to style it.
 
-> Inform the students that we will not focus on the CSS part as it is simple. We will just paste the code. 
+> Inform the students that we will not focus on the CSS part design takes a lot of time, today the primary focus will be on JS and working with an API , So just copy paste the CSS code and ask learners to explore the CSS in their own time
 
 **Style.css**-
 ```css
