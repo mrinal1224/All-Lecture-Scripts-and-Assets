@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .toolbox-cont {
+        height: 5rem;
+        background-color: #4b4b4b;
+        display: flex;
+        align-items: center;
+      }
+
+      .toolbox-cont > * {
+        margin-left: 4rem;
+      }
+
+      .toolbox-priority-cont {
+        height: 3.5rem;
+        width: 18rem;
+        background-color: #3d3d3d;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+
+      .toolbox-priority-cont > *:hover {
+        background-color: #485460;
+      }
+
+      .color {
+        height: 1.5rem;
+        width: 3rem;
+      }
+
+      .lightpink {
+        background-color: lightpink;
+      }
+
+      .lightgreen {
+        background-color: lightgreen;
+      }
+
+      .lightblue {
+        background-color: lightblue;
+      }
+
+      .black {
+        background-color: black;
+      }
+
+      .action-btn-cont {
+        height: 3.5rem;
+        width: 8rem;
+        background-color: #3d3d3d;
+        display: flex;
+      }
+
+      .action-btn-cont > * {
+        display: flex;
+        width: 50%;
+        font-size: 2rem;
+        color: white;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .add-btn:hover {
+        background-color: #4bb543;
+      }
+
+      .remove-btn:hover {
+        background-color: #4bb543;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbox-cont">
+      <div class="toolbox-priority-cont">
+        <div class="lightpink color"></div>
+        <div class="lightgreen color"></div>
+        <div class="lightblue color"></div>
+        <div class="black color"></div>
+      </div>
+
+      <div class="action-btn-cont">
+        <div class="add-btn">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="remove-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://kit.fontawesome.com/589957875e.js" crossorigin="anonymous"></script>
+</html>

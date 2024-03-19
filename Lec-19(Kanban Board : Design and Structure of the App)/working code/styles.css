@@ -1,0 +1,43 @@
+.toolbox-cont {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+    /* Additional styling for overall toolbox appearance */
+}
+
+.toolbox-priority-cont, .action-btn-cont {
+    display: flex;
+    /* Aligns items in a row */
+}
+
+.color, .add-btn, .remove-btn {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    /* Common dimensions and spacing for color indicators and buttons */
+}
+
+.color {
+    border-radius: 50%;
+    /* Makes color indicators circular */
+}
+
+.lightpink { background-color: #ffafcc; }
+.lightgreen { background-color: #bdecb6; }
+.lightblue { background-color: #add8e6; }
+.black { background-color: #000000; }
+/* Specific background colors for each priority level */
+
+.add-btn, .remove-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* Centers the icon within the button and shows a pointer cursor on hover */
+}
+
+.add-btn:hover, .remove-btn:hover {
+    background-color: #e0e0e0;
+    /* Adds a hover effect to the buttons */
+}
