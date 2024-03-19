@@ -373,6 +373,10 @@ body {
 
 ```
 
+**Output-**
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/305/original/upload_d2b4ce1974ce2ded96f913efa5888f58.png?1695962865)
+
 
 
 
@@ -496,7 +500,7 @@ Provide the font size to the both add-btn and remove-btn and also add the displa
     justify-content: space-around;   
 }
 ```
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/305/original/upload_d2b4ce1974ce2ded96f913efa5888f58.png?1695962865)
+
 
 Now let's add the hover effect to the button of add-btn and remove-btn as follows:
 ```css
