@@ -82,12 +82,7 @@ Initially showing the demonstartion of the adding task, setting the colors, unlo
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/298/original/upload_ad6e9829fa6c28b5099af52832588dac.png?1695962233)
 
-In toolbox container there are two container namely toolbox-priority-cont and action-btn-cont.
 
-- Inside the toolbox-priority-cont we are having the four divs of colors(pink, blue, purple and green).
-- In the toolbox-priority-cont having the two divs of add-btn and remove-btn. Alaso adding the font from the cdn font library.
-
-Opening the live server and just seeing the effects of the added code till now and nothing is visible till now since no css has been added.
 
 ---
 
