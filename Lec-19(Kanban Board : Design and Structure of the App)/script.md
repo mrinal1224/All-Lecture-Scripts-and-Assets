@@ -7,19 +7,50 @@ card_type: cue_card
 
 ## Agenda
 
-**Topics to cover in Javascript:**
+**Brief description about the Project**
 
-Certainly, here are the headings for the provided topics:
+1. The project is a web-based Kanban board application designed to enhance task management and productivity for individuals. 
 
-1. **Kanban Board**
-2. **Create and Update Task**
-3. **Lock and Unlock Tasks**
-4. **Colors**
-5. **Pop-up Dialog Box**
-6. **Delete**
-7. **Local Storage**
+2. At its core, the Kanban board facilitates organizing tasks into a visual format, allowing users to easily manage their workloads and prioritize tasks according to urgency and importance. 
 
-We will try to cover most of these topics in today's sessions and the remaining in the next.
+3. The application is built using HTML, CSS, and JavaScript, ensuring a responsive and interactive user experience across various devices and screen sizes.
+
+**Overview Features and Demo of the Project**
+let's delve into the features of the Kanban board project
+
+1. **Dynamic Task Addition**: 
+   - Users can create new tasks via a modal pop-up, which becomes visible upon clicking the add (+) button. This feature is essential for inputting new tasks into the board, allowing users to detail what needs to be done.
+
+2. **Task Priority Color Coding**:
+   - Each task can be assigned a priority level represented by colors (light pink, light green, light blue, black). This visual differentiation helps users quickly identify task importance or categorize them based on priority, enhancing task management efficiency.
+
+3. **Task Filtering by Color**:
+   - The Kanban board provides functionality to filter tasks based on their priority color. Clicking on a color in the toolbox shows only tasks of that color, while a double-click resets the filter, showing all tasks. This feature aids in focusing on tasks of a specific priority or category, making it easier to manage large numbers of tasks.
+
+4. **Editable Task Descriptions**:
+   - Tasks are editable after their creation. Users can unlock a task to edit its description directly on the board and lock it back once done. This inline editing feature makes it convenient to update task details without needing a separate edit mode or pop-up.
+
+5. **Local Storage for Persistence**:
+   - The application uses the web browser's local storage to save tasks, ensuring that user data is preserved between sessions. This means that tasks remain on the board even after the browser is closed or refreshed, providing a persistent user experience.
+
+6. **Task Deletion**:
+   - Users can delete tasks from the board. A delete (or remove) mode can be toggled, after which clicking on a task will remove it. This feature allows for the easy removal of completed or unwanted tasks, maintaining a clean and up-to-date task list.
+
+7. **Priority Color Selection in Modal**:
+   - When adding a new task, users can select its priority color within the modal through a set of color options. This selection process lets users categorize or prioritize the task right at the point of creation.
+
+8. **Unique Task Identification**:
+   - Each task is assigned a unique ID, ensuring that tasks can be individually identified. This is particularly useful for managing tasks programmatically, such as updating or deleting specific tasks based on user actions.
+
+9. **Interactive UI Elements**:
+   - The application includes interactive UI elements such as buttons for adding and removing tasks and color selections for priority. These elements are designed to provide a user-friendly experience, making task management both efficient and enjoyable.
+
+10. **Responsive Design**:
+    - The project is styled with responsiveness in mind, meaning it's designed to look and function well on a variety of devices and screen sizes. This adaptability enhances accessibility and user experience across different platforms.
+
+
+
+**We will cover the Structure and Design part in Today's Session**
 
 So let's start.
 
@@ -32,7 +63,7 @@ card_type: cue_card
 
 ---
 
-## Demo of the project:
+## Demo and Wireframe of the project:
 
 Initially showing the demonstartion of the adding task, setting the colors, unlock/lock feature, filtering based on the colors and delete feature.
 
@@ -46,11 +77,6 @@ Initially showing the demonstartion of the adding task, setting the colors, unlo
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/297/original/upload_072c08517a1a2e792b109cd3e694555b.png?1695962206)
 
-Discussing about the local storage and the crud operation and also try to cover the drag-drop functionalities, accessibility.
-
-On the highest level, mainly there are two components, to mark those will be using the two divs namely toolbox-container and maincontainer.
-
-Inside the toolbox container first there are different tags for colors which we ca have and after that these two boxes of + and X. Apart fro that we can those ticket also.
 
 ### WireFrame of the Kanban Board
 
@@ -66,7 +92,7 @@ Opening the live server and just seeing the effects of the added code till now a
 ---
 
 title: Desiging the toolBox
-description: Discussion about the various functionalities with html, css and javascript code in detail.
+description:
 duration: 2100
 card_type: cue_card
 
@@ -394,13 +420,13 @@ body {
 ---
 
 title: Designing the Ticket
-description: Discussion about the various functionalities with html, css and javascript code in detail.
+description:
 duration: 2100
 card_type: cue_card
 
 ---
 
-Let's dive into this snippet, which illustrates the HTML structure for a ticket in a Kanban board application and the corresponding CSS styles. This is an example of a task or ticket that might appear in such an application, including elements like a color-coded priority indicator, a ticket ID, a task description area, and a lock icon for editing control.
+Let's start creating the design for tickets This will be a task  ticket that will appear in the application, including elements like a color-coded priority indicator, a ticket ID, a task description area, and a lock icon for editing control.
 
 ### HTML Structure
 
@@ -532,8 +558,7 @@ Let's dive into this snippet, which illustrates the HTML structure for a ticket 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
-    <style></style>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="toolbox-cont">
@@ -586,6 +611,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Toolbox styles */
 
 .toolbox-cont {
   height: 5rem;
@@ -667,6 +694,8 @@ body {
   display: none;
 }
 
+/* Ticket styles */
+
 .main-cont {
   display: flex;
   gap: 2rem;
@@ -715,156 +744,57 @@ body {
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/313/original/upload_2d430278f46b2c037ad120ae71d7a62c.png?1695963341)
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/299/original/upload_e30d878377b9bd9cf474cb1301fc205a.png?1695962642)
+---
 
-Nothing is visible as no css has been added.
+title: Designing the Pop-up Modal
+description:
+duration: 2100
+card_type: cue_card
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/300/original/upload_c2936d373f1e1a5f3d8ab5201bec1447.png?1695962669)
+---
 
-Let's start creating the css file namely style.css, and adding the code for the colors first by creating the css variables for the colors like pink, green, purple etc.
+Let's Design The modal component used for adding or editing tasks in a Kanban board application. It includes a text area for entering the task's content and a side panel for selecting the task's priority through color codes. Let's walk through each part of the HTML and CSS and build tis from scratch
 
-```css
-/* create css variables  */
-:root {
-  --ligthBackground: #f9f5eb;
-  --background: #e4dccf;
-  --red: #ea5455;
-  --blue: #002b5b;
-  --green: #245953;
-}
+### HTML Structure
 
-* {
-  box-sizing: border-box;
-}
+#### Modal Container
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--background);
-}
+```html
+<div class="modal-cont"></div>
 ```
 
-Now adding the css for the toolbox container starting with height, background-color and then adding the toolbox-priority-container by providing it with height, background-color. Same for the action-btn also same color and height.
+- This `div` acts as the container for the entire modal. It's designed to overlay other content and provide a focused area for inputting task details and selecting a priority.
 
-```css
-/* styling starts from here */
+#### Text Area for Task Input
 
-/* ************toolbox_cont **********/
-.toolbox-cont {
-  height: 5rem;
-  background-color: var(--blue);
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-}
+```html
+<textarea class="textArea-cont" placeholder="Enter Your Task"></textarea>
 ```
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/301/original/upload_d4f9f4cf35c5bfa09c037dd33e66d59f.png?1695962712)
+- A `textarea` element where users can type the task they wish to add or edit. The `placeholder` attribute provides a hint about what to enter. It's styled to integrate seamlessly with the modal's design.
 
-Now adding the display: flex in the parent conatiner namely in the toolbox-container in the css code. Add margin-left in the toolbox-priority-cont and margin-left in the action-btn-cont. Also change the background-color of the action-btn-cont to the light.
+#### Priority Colors Container
 
-Now add the color blocks in the toolbox-priority-cont. Providing the height and width to the color block. Also add the display:space-evenly and align-items:center to the parent class.
-
-```css
-.toolbox-priority-cont {
-  height: 3rem;
-  width: 18rem;
-  background-color: var(--ligthBackground);
-  margin-left: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.action-btn-cont {
-  height: 3rem;
-  width: 10rem;
-  background-color: var(--ligthBackground);
-  margin-left: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.color {
-  height: 1.5rem;
-  width: 3rem;
-}
-.red {
-  background-color: var(--red);
-}
-
-.blue {
-  background-color: var(--blue);
-}
-
-.green {
-  background-color: var(--green);
-}
-
-.black {
-  background-color: black;
-}
+```html
+<div class="priority-colors-container"></div>
 ```
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/302/original/upload_42e73b6053c5fad1c385afff28524242.png?1695962753)
+- This `div` houses the priority color options. It's a distinct section within the modal, allowing users to choose a priority for their task visually.
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/303/original/upload_3a3b8bfceafc27620ccce6c37351288b.png?1695962778)
+#### Priority Color Options
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/304/original/upload_f85dbc2e4cc9ebf27377b4e604430cbd.png?1695962805)
-
-Provide the font size to the both add-btn and remove-btn and also add the display:flex, align-item:center and justify-content:space-evenly in the action-btn-cont.
-
-```css
-.add-btn,
-.remove-btn {
-  font-size: 1.25rem;
-}
-.action-btn-cont {
-  height: 3rem;
-  width: 10rem;
-  background-color: var(--ligthBackground);
-  margin-left: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
+```html
+<div class="lightpink priority-color"></div>
+<div class="lightgreen priority-color"></div>
+<div class="lightblue priority-color"></div>
+<div class="black priority-color active"></div>
 ```
 
-Now let's add the hover effect to the button of add-btn and remove-btn as follows:
+- Individual `div` elements represent different priority levels through color (`lightpink`, `lightgreen`, `lightblue`, `black`). The `active` class on the last element indicates the current selection or default value.
 
-```css
-.add-btn:hover {
-  background-color: #4bb543;
-}
-.remove-btn:hover {
-  background-color: #4bb543;
-}
-```
+### CSS Styles
 
-**Asking Question?**
-
-Can you add the hover effect to these color boxes in the nav bar?
-**Ans:** You can try by themself.
-
-Now lets start creating the modal with its html and css structure as follows:
-
-```htmlembedded
-    <div class = "modal-cont">
-        <textarea class = "textarea-cont" placeholder = "Enter Your Task"></textarea>
-        <div class = "priority-color-cont">
-            <div class = "priority-color red"></div>
-            <div class = "priority-color blue"></div>
-            <div class = "priority-color green"></div>
-            <div class = "priority-color black active"></div>
-        </div>
-    </div>
-
-```
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/306/original/upload_b5fb49c924748828c00aa7fcd3b96aec.png?1695962964)
+#### Modal Container
 
 ```css
 .modal-cont {
@@ -875,8 +805,14 @@ Now lets start creating the modal with its html and css structure as follows:
   position: absolute;
   top: 30%;
   left: 27%;
-  display: none;
 }
+```
+
+- Styles the modal container with a fixed size relative to the viewport (`vh` and `vw` units), centers it on the screen using `position: absolute` and offsets from the top and left. The `display: flex` property indicates its children (the text area and priority colors container) will be laid out in a row.
+
+#### Text Area
+
+```css
 .textArea-cont {
   height: 100%;
   width: 75%;
@@ -887,6 +823,13 @@ Now lets start creating the modal with its html and css structure as follows:
   font-size: 2rem;
   color: black;
 }
+```
+
+- Configures the task input area to take up the majority of the modal's space, removing the default border and resize handle for a cleaner look. The large font size improves readability.
+
+#### Priority Colors Container
+
+```css
 .priority-colors-container {
   height: 100%;
   width: 25%;
@@ -896,132 +839,215 @@ Now lets start creating the modal with its html and css structure as follows:
   align-items: center;
   justify-content: space-around;
 }
+```
+
+- Sets up a sidebar for priority color selection, occupying a smaller portion of the modal. It's designed to display color options in a column, centered and evenly spaced.
+
+#### Priority Color Options
+
+```css
 .priority-color {
   height: 3rem;
   width: 5rem;
 }
+```
 
+- Ensures each priority color option has a consistent size, making them easy to select.
+
+#### Active Priority Color
+
+```css
 .active {
   border: 5px solid lightsalmon;
 }
 ```
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/307/original/upload_5cc60a83b1501db2f03ac1db28e1f9aa.png?1695963048)
+- Highlights the currently selected or default priority color by adding a distinct border. This visual cue helps users see their current selection at a glance.
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/308/original/upload_6897796c561e5883f5e5d43bcf818ec0.png?1695963073)
+Together, the HTML and CSS create a modal component that serves as a user interface for adding or editing tasks. It combines functional elements like a text input area and interactive priority color selections with aesthetic considerations to create a user-friendly experience. The modal's design ensures that it grabs the user's attention by overlaying other content and provides clear, straightforward options for task input and priority selection.
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/309/original/upload_b649635bc4877058c29f45833a32b7f9.png?1695963095)
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/310/original/upload_918fb74d1dda35302a77b8d06711e3d5.png?1695963117)
+**Complete HTML Code for the whole design**
 
-This CSS code defines styles for a modal container and its components:
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Board Class</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/589957875e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Toolbox (Navbar) -->
+    <div class="toolbox-cont">
+      <div class="toolbox-priority-cont">
+        <div class="lightpink color"></div>
+        <div class="lightgreen color"></div>
+        <div class="lightblue color"></div>
+        <div class="black color"></div>
+      </div>
 
-1. **.modal-cont:**
+      <div class="action-btn-cont">
+        <div class="add-btn">
+          <i class="fa-solid fa-plus"></i>
+        </div>
 
-   - Defines the modal's dimensions and appearance.
-   - Positioned absolutely with a specific top and left offset.
-   - Initially hidden with `display: none`.
+        <div class="remove-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+    </div>
 
-2. **.textArea-cont:**
+    <!-- Task Ticket -->
 
-   - Represents a text area within the modal.
-   - Takes 75% of the modal's width.
-   - Has specific styling for background color, font size, and no borders.
+    <div class="main-cont">
+      <div class="ticket-cont">
+        <div class="ticket-color"></div>
+        <div class="ticket-id">12345</div>
+        <div class="task-area" contenteditable="false">Random Task</div>
+        <div class="ticket-lock">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+      </div>
+    </div>
 
-3. **.priority-colors-container:**
+    <!-- Modal Task Area -->
 
-   - A container for priority color elements.
-   - Takes 25% of the modal's width.
-   - Aligns items vertically and adds a background color.
+    <div class="modal-cont">
+      <textarea class="textArea-cont" placeholder="Enter Your Task"> </textarea>
 
-4. **.priority-color:**
+      <div class="priority-colors-container">
+        <div class="lightpink priority-color"></div>
+        <div class="lightgreen priority-color"></div>
+        <div class="lightblue priority-color"></div>
+        <div class="black priority-color active"></div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
+```
 
-   - Represents priority color elements.
-   - Fixed dimensions for each element.
+**Complete CSS Code for the whole design**
 
-5. **.active:**
-   - Adds a border to elements with this class, using a lightsalmon color.
-
-Overall, these styles are likely used for a modal interface, with a text area and priority color options.
-
-Now we will be working for the buttons of + and X by giving the event listener to them. Here is a basic structure of the event Litener for them as follows:
-
-```htmlembedded
-Eventlistener.(click):
-let flag=false
-flag=true
-if(flag=true){
-modal visible
+```css
+ 
+*{
+    box-sizing: border-box;
 }
-```
 
-```javascript!
-let addBtn = document.querySelector('.add-btn')
-let modalCont = document.querySelector('.modal-cont')
-let addTaskFlag = false
 
-addBtn.addEventListener('click' , function(){
-    // Display the model
-    addTaskFlag = !addTaskFlag
-
-    if(addTaskFlag == true){
-        modalCont.style.display = 'flex'
-    }
-    else{
-        modalCont.style.display = 'none'
-    }
-
-})
-```
-
-This JavaScript code adds functionality to a button:
-
-1. `addBtn` and `modalCont` variables are defined to select HTML elements with specific classes.
-
-2. An event listener is added to `addBtn` for a click event.
-
-3. When the button is clicked, a flag (`addTaskFlag`) toggles between true and false.
-
-4. If `addTaskFlag` is true, the modal container (`modalCont`) is displayed by changing its `display` style property to 'flex'.
-
-5. If `addTaskFlag` is false, the modal container is hidden by setting its `display` property to 'none'.
-
-This code toggles the visibility of the modal when the button is clicked.
-
-Now lets create the structure of the task ticket as follows:
-
-```htmlembedded
-<!-- Task Ticket -->
-
-<div class = "main-cont">
-     <!-- <div class = "ticket-cont">
-         <div class = "ticket-color"></div>
-         <div class = "ticket-id">12345</div>
-         <div class = "task-area" contenteditable = "false">Random Task</div>
-          <div class = "ticket-lock">
-            <i class = "fa-solid fa-lock"></i>
-          </div>
-</div> -->
-```
-
-Now also give the styling to the task ticket:
-
-```javascript
- .modal-cont{
-   height: 50vh;
-   width: 45vw;
-   display: flex;
-   background-color: lightsalmon;
-   position: absolute;
-   top:30%;
-   left: 27%;
-   display: none;
+body{
+    margin: 0;
+    padding: 0;
 }
+
+.toolbox-cont{
+    height: 5rem;
+    background-color: #4b4b4b;
+    display: flex;
+    align-items: center;
+
+}
+
+.toolbox-cont > *{
+    margin-left: 4rem;
+}
+
+
+.toolbox-priority-cont{
+    height: 3.5rem;
+    width: 18rem;
+    background-color:#3d3d3d;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.toolbox-priority-cont>*:hover{
+    background-color: #485460;
+}
+
+
+
+.color{
+    height: 1.5rem;
+    width: 3rem;
+}
+
+
+.lightpink{
+    background-color: lightpink;
+}
+
+
+.lightgreen{
+    background-color: lightgreen;
+}
+
+
+.lightblue{
+    background-color: lightblue;
+}
+
+.black{
+    background-color: black;
+}
+
+
+.action-btn-cont{
+    height: 3.5rem;
+    width: 8rem;
+    background-color:#3d3d3d ;
+    display: flex;
+}
+
+
+.action-btn-cont>*{
+    display: flex;
+    width: 50%;
+    font-size: 2rem;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.add-btn:hover{
+ background-color: #4BB543;
+ }
+
+ .remove-btn:hover{
+    background-color: #4BB543;
+ }
+
+
+
+
+
+
+.main-cont{
+    display: flex; 
+    gap:2rem;
+    justify-content: center;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
 .ticket-cont{
     height: 12rem;
     width: 15rem;
     background-color: coral;
 }
+
 .ticket-color{
     height: 1rem;
 }
@@ -1030,34 +1056,76 @@ Now also give the styling to the task ticket:
     background-color: yellow;
     height: 2rem;
 }
+
+.ticket-lock{
+    display: flex;
+
+    justify-content: flex-end;
+    margin-top: 90px;
+    margin-right: 5px;
+    font-size: 1.5rem;
+}
+
+.modal-cont{
+    height: 50vh;
+    width: 45vw;
+    display: flex;
+    background-color: lightsalmon;
+    position: absolute;
+    top:30%;
+    left: 27%;
+    display: none;
+ 
+ 
+ }
+
+
+
+ .textArea-cont{
+     height: 100%;
+     width: 75%;
+     resize: none;
+     outline: none;
+     border: none;
+     background-color: #dfe4ea;
+     font-size: 2rem;
+     color: black;
+ }
+
+
+ .priority-colors-container{
+     height: 100%;
+     width: 25%;
+     display: flex;
+     flex-direction: column;
+     background-color: #4b4b4b;
+     align-items: center;
+     justify-content: space-around;
+
+ }
+
+
+ .priority-color{
+     height: 3rem;
+     width: 5rem;
+ }
+
+
+ .active{
+     border: 5px solid lightsalmon;
+ }
+
 ```
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/311/original/upload_39d93710a1f82436e4b11ae641ab6240.png?1695963264)
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/308/original/upload_6897796c561e5883f5e5d43bcf818ec0.png?1695963073)
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/312/original/upload_9a008ba1c7965ffce4d7f4ea2c2e34e2.png?1695963295)
+So This is how we have designed all the sections that will be needed for the project!
 
-This CSS code defines styles for a modal container and its associated ticket elements:
+In the next Class we will move to JavaScript , We will use DOM and will start working on making these elements interactive and will add all the Features
 
-1. **.modal-cont:**
+Start the Doubt Session!
 
-   - Defines the modal's dimensions and appearance.
-   - Positioned absolutely with specific top and left offsets.
-   - Initially hidden with `display: none`.
-   - Has a flex display and a light salmon background color.
 
-2. **.ticket-cont:**
 
-   - Represents a ticket container.
-   - Fixed height and width for each ticket.
-   - Coral background color.
 
-3. **.ticket-color:**
 
-   - Represents a color strip on the ticket.
-   - Fixed height and width, typically used for visual categorization.
-
-4. **.ticket-id:**
-   - Represents the ID section of the ticket.
-   - Has a yellow background color and a specific height.
-
-These styles appear to be used for creating a modal with tickets, each with a color strip and an ID section.
