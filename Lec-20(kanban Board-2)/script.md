@@ -131,7 +131,27 @@ function createTicket() {
   mainCont.appendChild(ticketCont)
 ```
 
-So we are passing the HTML codes here, so whenever a ticket is created , these 3 divs will also be there.
+Here we have created function named `createTicket()` that dynamically generates a new HTML element structure representing a "ticket" and appends it to an existing element in the DOM (Document Object Model). Here's a step-by-step explanation:
+
+1. **Define a New Ticket Container Element**: 
+   - `let ticketCont = document.createElement('div');`
+   This line creates a new `<div>` element and stores it in the variable `ticketCont`. This `<div>` will serve as the container for the ticket content.
+
+2. **Set a Class Attribute for the Ticket Container**:
+   - `ticketCont.setAttribute('class', 'ticket-cont');`
+   This line sets the `class` attribute of the `ticketCont` `<div>` to `'ticket-cont'`. This class can be used to apply specific CSS styles to the ticket container.
+
+3. **Create the HTML Content for the Ticket Container**:
+   - The `ticketCont.innerHTML = `...`` section assigns a string of HTML content to the `innerHTML` property of the `ticketCont` element. This HTML string includes the structure and content of the ticket, which is composed of three parts:
+     - A `<div>` with a class of `"ticket-color"` which could be used to display a color indicator for the ticket.
+     - A `<div>` with a class of `"ticket-id"` which contains a hardcoded ticket ID `12345`. There's a typo here: the closing tag should be `</div>` instead of `/div>`.
+     - A `<div>` with a class of `"task-area"` which contains the text `Random Task`, representing the task or content of the ticket.
+
+4. **Append the Ticket Container to the Main Container**:
+   - `mainCont.appendChild(ticketCont)`
+   This line adds the newly created `ticketCont` element as a child to an existing element in the DOM identified by the variable `mainCont`. The `mainCont` variable is presumed to reference an existing element on the page, acting as the main container for these tickets. This action effectively inserts the ticket into the webpage, making it visible to the user.
+
+ the `createTicket()` function dynamically constructs a new ticket element with a specific structure and content, then adds this ticket to a parent container on the webpage.
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/613/original/upload_ed6901a16250a577c26b8e2795b1f89d.png?1695229185)
 
