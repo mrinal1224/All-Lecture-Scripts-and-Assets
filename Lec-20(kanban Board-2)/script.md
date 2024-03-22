@@ -9,11 +9,76 @@ card_type: cue_card
 
 **Agenda of this Lecture:**
 
+
+* Modal Popup with Toggle 
 * Ticket Generation
 * Adding Task, colour, ID to generated ticket
 * Ticket Removal
 * Locking Mechanism
 * Editing Ticket Content
+
+---
+title: Pop up modal Generation
+description: 
+duration: 900
+card_type: cue_card
+---
+
+1. Whenever the (+) button is clicked we need to open the modal pop up box so that we can enter our Task and whenerver we click on the button (+) again the pop up closes.
+
+How we will Implement this?
+
+1. So to implement this we can use a very simple technique i.e we can set up a flag , 
+2. by deafault we will keep it to `false`, so nothing will happen but as soon as we click the (+) button we will change the flag to `true` , and when it is true we will open the modal pop up
+3. Again when you click on this now the flag will again turn back to `false` and the pop up will close
+
+
+**Implementation**
+
+**create a script.js file and link it with project's html and start wrting JS code**
+
+
+
+```javascript
+let addBtn = document.querySelector('.add-btn')
+let modalCont = document.querySelector('.modal-cont')
+let addTaskFlag = false
+
+addBtn.addEventListener('click' , function(){
+    // Display the model
+    addTaskFlag = !addTaskFlag
+    
+    if(addTaskFlag == true){
+        modalCont.style.display = 'flex'
+    }
+    else{
+        modalCont.style.display = 'none'
+    }
+
+})
+```
+This code snippet is a simple JavaScript implementation for toggling the visibility of a modal container element on a web page when a button is clicked. Here's a step-by-step explanation of what each part of the code is doing:
+
+1. `let addBtn = document.querySelector('.add-btn')`: This line selects the first HTML element with the class name `add-btn` and stores a reference to it in the variable `addBtn`. This element is intended to be a button that, when clicked, will trigger the display or hiding of the modal container.
+
+2. `let modalCont = document.querySelector('.modal-cont')`: Similar to the first line, this selects the first HTML element with the class name `modal-cont` and stores a reference to it in the variable `modalCont`. This element is the modal container that will be shown or hidden.
+
+3. `let addTaskFlag = false`: This line initializes a boolean flag named `addTaskFlag` to `false`. This flag will be used to keep track of the modal's visibility state—whether it is currently shown (`true`) or hidden (`false`).
+
+4. `addBtn.addEventListener('click' , function(){ ... })`: This line adds an event listener to the `addBtn` element. The listener listens for `click` events, meaning it will execute the provided function every time the `addBtn` is clicked.
+
+   Inside the event listener function:
+   
+   a. `addTaskFlag = !addTaskFlag`: This toggles the value of `addTaskFlag`. If it was `false`, it becomes `true`, and vice versa. This effectively changes the state of the modal's visibility each time the button is clicked.
+   
+   b. `if(addTaskFlag == true){`: This checks if `addTaskFlag` is `true`. If so, it means the modal should be displayed.
+   
+   - `modalCont.style.display = 'flex'`: This line changes the CSS `display` property of the `modalCont` element to `flex`, making it visible. Flexbox is a CSS layout model that allows items within a container to be laid out in a flexible, responsive manner.
+   
+   c. `else {`: If `addTaskFlag` is not `true` (i.e., it is `false`), this block will execute.
+   
+   - `modalCont.style.display = 'none'`: This sets the `display` property of `modalCont` to `none`, effectively hiding it from view.
+
 
 ---
 title: Ticket Generation
@@ -24,7 +89,7 @@ card_type: cue_card
 
 ### Explanation 
 
-We'll begin by implementing the ticket generation feature, which involves creating a function to dynamically generate new task tickets. These tickets will then be manipulated and moved across the columns using DOM (Document Object Model) manipulation.
+Now , let's try to generate a task ticket, which involves creating a function to dynamically generate new task tickets.
 
 In the file `script.js` we will add this function:
 
@@ -72,7 +137,7 @@ So we are passing the HTML codes here, so whenever a ticket is created , these 3
 
 
 ---
-title: Adding Event Listener
+title: Adding Event Listener to Generate Ticket
 description: 
 duration: 900
 card_type: cue_card
