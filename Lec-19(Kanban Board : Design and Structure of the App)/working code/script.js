@@ -1,6 +1,8 @@
 
 let addBtn = document.querySelector('.add-btn')
+let addTaskFlag = false
 let removeBtn = document.querySelector('.remove-btn')
+let removeTaskFlag = false
 let modalCont = document.querySelector('.modal-cont')
 let mainCont = document.querySelector('.main-cont')
 let textAreaCont = document.querySelector('.textArea-cont')
@@ -14,8 +16,8 @@ let toolboxColors = document.querySelectorAll('.color')
 let lockClass = 'fa-lock' // closed lock
 let unlockClass = 'fa-lock-open' // open-lock
 
-let addTaskFlag = false
-let removeTaskFlag = false
+
+
 
 let modalPrioritycolor = colors[colors.length-1]
 

@@ -180,6 +180,29 @@ modalCont.addEventListener('keydown', function(e) {
   }
 })
 ```
+
+This code adds an event listener to an element referred to as `modalCont`, which listens for `keydown` events—these are triggered when a user presses a key while the element has focus. The functionality implemented in this listener performs specific actions when the `Shift` key is pressed. Here's a detailed breakdown:
+
+1. **Add Event Listener**:
+   - `modalCont.addEventListener('keydown', function(e) { ... })`
+   This line attaches a `keydown` event listener to the `modalCont` element. Whenever a key is pressed down while this element is focused, the specified anonymous function will be called, receiving the event object `e` as its argument.
+
+2. **Get the Pressed Key**:
+   - `let key = e.key;`
+   Within the event handler function, this line retrieves the `key` property from the event object `e`. The `key` property represents the value of the key that was pressed.
+
+3. **Conditionally Execute Actions for the Shift Key**:
+   - The `if (key === 'Shift') { ... }` block checks if the pressed key is the `Shift` key. If it is, the code block inside the `if` statement is executed, which involves three actions:
+     - `createTicket();`
+       This line calls the `createTicket()` function, which, as described previously, creates a new ticket element and adds it to the page.
+     - `modalCont.style.display = 'none';`
+       This line hides the `modalCont` element by setting its `display` style property to `'none'`. This is typically used to hide modal dialogs or similar components after completing an action.
+     - `textArea.value = '';`
+       This line clears the content of an element referred to by `textArea`. Presumably, `textArea` is a variable referencing a `<textarea>` element or another input field, and this action resets its value to an empty string, effectively clearing any text the user had entered.
+
+Overall, the purpose of this code is to listen for a keydown event on the `modalCont` element and, if the `Shift` key is pressed, to create a new ticket, hide the `modalCont` element (likely a modal dialog), and clear the contents of a `textArea` input field.
+
+
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/624/original/upload_55a8528debc5766a05e91dfe21a5cad8.png?1695232320)
 
 
@@ -192,11 +215,15 @@ card_type: cue_card
 
 ### Explanation
 
-As of now everything like Task, color and ID of the created task is static. In this we will be making it dynamic.
+1. As of now only the static ticket is getting generated on press of the `shift` 
+
+2. everything like Task, color and ID of the created task is static and we are not abel to set the values form ourselves.
+
+3. Now let's move forward and generate everything dynamically one by one
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/625/original/1.png?1695232401)
 
-So we can choose color, and the ticket will come with a randomly generated ID.
+So we can choose color so a specific color band will be applied to the ticket, and the ticket will also have a unique ID for which we will generate IDs for them
 
 To identify and select these priority color divs, we will use `querySelectorAll` method
 
@@ -305,11 +332,11 @@ modalCont.addEventListener('keydown', function(e) {
 
 Now we need to update the task details
 
-* The `createTicket` function accepts two parameters: `ticketColor` for the color of the ticket and `ticketTask` for the content of the ticket's task.
-* The `ticketTask` parameter is used to dynamically insert the task content into the task-area div element.
-* In the modalCont event listener, the content of the `textAreaCont` element is retrieved using .value and assigned to taskContent.
-* When the 'Shift' key is pressed, a new ticket is created with the selected color and task content, and then the modal is hidden.
-* The content of the `textAreaCont` element is cleared for the next input.
+1. The `createTicket` function accepts two parameters: `ticketColor` for the color of the ticket and `ticketTask` for the content of the ticket's task.
+2. The `ticketTask` parameter is used to dynamically insert the task content into the task-area div element.
+3. In the modalCont event listener, the content of the `textAreaCont` element is retrieved using .value and assigned to taskContent.
+4. When the 'Shift' key is pressed, a new ticket is created with the selected color and task content, and then the modal is hidden.
+5. The content of the `textAreaCont` element is cleared for the next input.
 
 ```javascript 
 function createTicket(ticketColor, ticketTask) {
@@ -344,6 +371,12 @@ modalCont.addEventListener('keydown', function(e) {
 Now we need to uniquely generate ID for each task created:
 
 We will be using an external library **shortID** for this
+
+1. use this script - 
+
+ <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
+
+Add this script to your HTML file at the bottom and this will give out a function `shortid()` whenever invoked it generates a unique ID
 
 ```javascript 
 function createTicket(ticketColor, ticketID, ticketTask) {
@@ -385,7 +418,7 @@ duration: 900
 card_type: cue_card
 ---
 
-To remove the task, we can do similarly to what we did for adding task:
+To remove the ticket, we can do similarly to what we did for adding task:
 
 ```javascript 
 let removeTaskFlag = false;
@@ -396,9 +429,374 @@ removeBtn.addEventListener('click', function() {
   
   if (removeTaskFlag) {
     alert('Delete button is activated.');
+    removeBtn.style.color = 'red'
   }
+   else{
+        removeBtn.style.color = 'white'
+    }
+
 });
 ```
+We know how to toggle the delete button and set it to active and not active we  will implement the removal functionality in the next class , we also haven't handled the lock
 
----
+So the agenda for the next class will be
+
+1. Handle ticket removal
+2. Handle locking and unlocking content 
+3. Set up the function to filter tasks according to the color selected
+4. Implement Local storage for task persistance
+
+Complete code for this class
+
+
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board Class</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/589957875e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+       <!-- Toolbox (Navbar) -->
+    <div class="toolbox-cont">
+        <div class="toolbox-priority-cont">
+            <div class="lightpink color"></div>
+            <div class="lightgreen color"></div>
+            <div class="lightblue color"></div>
+            <div class="black color"></div>
+        </div>
+
+
+        <div class="action-btn-cont">
+
+            <div class="add-btn">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+
+           <div class="remove-btn">
+            <i class="fa-solid fa-xmark"></i>
+           </div>
+        </div>
+    </div>
+
+
+    <!-- Task Ticket -->
+
+    <div class="main-cont">
+         <!-- <div class="ticket-cont">
+             <div class="ticket-color"></div>
+             <div class="ticket-id">12345</div>
+             <div class="task-area" contenteditable="false">Random Task</div>
+              <div class="ticket-lock">
+                <i class="fa-solid fa-lock"></i>
+              </div> -->
+              <!-- commented as this is now getting generated dynamically -->
+         </div>
+        
+
+         
+    </div>
+
+
+
+
+    <!-- Modal Task Area -->
+
+
+    <div class="modal-cont">
+
+        <textarea class="textArea-cont" placeholder="Enter Your Task">
+
+        </textarea>
+
+        <div class="priority-colors-container">
+            <div class="lightpink priority-color"></div>
+            <div class="lightgreen priority-color"></div>
+            <div class="lightblue priority-color"></div>
+            <div class="black priority-color active"></div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+    <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
+   <script src="./script.js"></script>
+
+
+</body>
+</html>
+
+```
+
+
+```css
+
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.toolbox-cont{
+    height: 5rem;
+    background-color: #4b4b4b;
+    display: flex;
+    align-items: center;
+
+}
+
+.toolbox-cont > *{
+    margin-left: 4rem;
+}
+
+
+.toolbox-priority-cont{
+    height: 3.5rem;
+    width: 18rem;
+    background-color:#3d3d3d;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.toolbox-priority-cont>*:hover{
+    background-color: #485460;
+}
+
+
+
+.color{
+    height: 1.5rem;
+    width: 3rem;
+}
+
+
+.lightpink{
+    background-color: lightpink;
+}
+
+
+.lightgreen{
+    background-color: lightgreen;
+}
+
+
+.lightblue{
+    background-color: lightblue;
+}
+
+.black{
+    background-color: black;
+}
+
+
+.action-btn-cont{
+    height: 3.5rem;
+    width: 8rem;
+    background-color:#3d3d3d ;
+    display: flex;
+}
+
+
+.action-btn-cont>*{
+    display: flex;
+    width: 50%;
+    font-size: 2rem;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.add-btn:hover{
+ background-color: #4BB543;
+ }
+
+ .remove-btn:hover{
+    background-color: #4BB543;
+ }
+
+
+
+
+
+
+.main-cont{
+    display: flex; 
+    gap:2rem;
+    justify-content: center;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
+.ticket-cont{
+    height: 12rem;
+    width: 15rem;
+    background-color: coral;
+}
+
+.ticket-color{
+    height: 1rem;
+}
+
+.ticket-id{
+    background-color: yellow;
+    height: 2rem;
+}
+
+.ticket-lock{
+    display: flex;
+
+    justify-content: flex-end;
+    margin-top: 90px;
+    margin-right: 5px;
+    font-size: 1.5rem;
+}
+
+.modal-cont{
+    height: 50vh;
+    width: 45vw;
+    display: flex;
+    background-color: lightsalmon;
+    position: absolute;
+    top:30%;
+    left: 27%;
+    display: none;
+ 
+ 
+ }
+
+
+
+ .textArea-cont{
+     height: 100%;
+     width: 75%;
+     resize: none;
+     outline: none;
+     border: none;
+     background-color: #dfe4ea;
+     font-size: 2rem;
+     color: black;
+ }
+
+
+ .priority-colors-container{
+     height: 100%;
+     width: 25%;
+     display: flex;
+     flex-direction: column;
+     background-color: #4b4b4b;
+     align-items: center;
+     justify-content: space-around;
+
+ }
+
+
+ .priority-color{
+     height: 3rem;
+     width: 5rem;
+ }
+
+
+ .active{
+     border: 5px solid lightsalmon;
+ }
+
+
+```
+
+```js
+let addBtn = document.querySelector('.add-btn')
+let addTaskFlag = false
+let removeBtn = document.querySelector('.remove-btn')
+let removeTaskFlag = false
+let modalCont = document.querySelector('.modal-cont')
+let mainCont = document.querySelector('.main-cont')
+let textAreaCont = document.querySelector('.textArea-cont')
+
+let allPriorityColors = document.querySelectorAll('.priority-color')
+
+let colors = ["lightpink", "lightgreen", "lightblue", "black"];
+
+
+
+addBtn.addEventListener('click' , function(){
+    // Display the model
+    addTaskFlag = !addTaskFlag
+    
+    if(addTaskFlag == true){
+        modalCont.style.display = 'flex'
+    }
+    else{
+        modalCont.style.display = 'none'
+    }
+
+})
+
+
+function createTicket(ticketColor, ticketID, ticketTask) {
+  // Create a new ticket container element
+  let ticketCont = document.createElement('div');
+  ticketCont.setAttribute('class', 'ticket-cont');
+
+  // Create the HTML content for the ticket container
+  ticketCont.innerHTML = `
+    <div class="ticket-color" style="background-color: ${ticketColor};"></div>
+    <div class="ticket-id">${ticketID}</div>
+    <div class="task-area">${ticketTask}</div>
+  `;
+  
+  // Append the ticket container to the main container
+  mainCont.appendChild(ticketCont);
+}
+
+//Selecting a color and setting it for the task
+allPriorityColors.forEach(function(colorElem) {
+  colorElem.addEventListener('click', function() {
+    // Remove 'active' class from all priority colors
+    allPriorityColors.forEach(function(priorityColorElem) {
+      priorityColorElem.classList.remove('active');
+    });
+
+    // Add 'active' class to the clicked colorElem
+    colorElem.classList.add('active');
+
+    modalPriorityColor = colorElem.classList[0]; // Update modalPriorityColor
+  });
+});
+
+// Event listener for 'Shift' key press in modalCont
+modalCont.addEventListener('keydown', function(e) {
+  let key = e.key;
+
+  if (key === 'Shift') {
+    let taskContent = textAreaCont.value; // Get the content from the textarea
+    let ticketID = shortid(); // Generate a unique ticket ID
+    createTicket(modelPriorityColor, ticketID, taskContent); // Create a new ticket with the selected color, ticket ID, and task content
+    modalCont.style.display = 'none'; // Hide the modal
+    textAreaCont.value = ''; // Clear the textarea's content
+  }
+});
+
+
+
+
+
+```
 
