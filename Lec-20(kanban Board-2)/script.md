@@ -114,7 +114,7 @@ function createTicket() {
 
 Whenever this function is called, a new ticket will be created with class `ticket-cont`.
 
-As `ticketCont` contains 3 more divs inside, we will create them inside this function using `innerHTML` function
+As `ticketCont` contains 3 more divs inside, we will create them inside this function using `innerHTML` 
 
 ```javascript 
 function createTicket() {
