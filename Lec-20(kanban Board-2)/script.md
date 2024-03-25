@@ -14,8 +14,6 @@ card_type: cue_card
 * Ticket Generation
 * Adding Task, colour, ID to generated ticket
 * Ticket Removal
-* Locking Mechanism
-* Editing Ticket Content
 
 ---
 title: Pop up modal Generation
@@ -129,6 +127,7 @@ function createTicket() {
     <div class="task-area">Random Task</div>`
   
   mainCont.appendChild(ticketCont)
+}
 ```
 
 Here we have created function named `createTicket()` that dynamically generates a new HTML element structure representing a "ticket" and appends it to an existing element in the DOM (Document Object Model). Here's a step-by-step explanation:
