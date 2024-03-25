@@ -162,7 +162,6 @@ Now let's add functionality related to a "task area" within a ticket, allowing i
 
  This is how we have implemented the Lock Mechanism for the ticket
 
- 
 ---
 title: Changing the Priority color of the Task
 description: 
@@ -171,6 +170,11 @@ card_type: cue_card
 ---
 
 ### Explanation
+Now , We have created the Ticket and have implemented the Lock Functionality.
+
+Now , Suppose you want to change the priority of the task as well , Suppose a ticket is in lightpink color and you want to change it to lightblue , lightgreen or black , (you just want to move a particlular task from one status to another)
+
+How will you do it?
 
 In this section we will handle the color of the tasks
 
@@ -196,6 +200,33 @@ function handleColor(ticket) {
   });
 }
 ```
+
+
+function `handleColor` is designed to change the color of a specific element within a "ticket" based on user interaction (a click). 
+
+
+Here's a step-by-step explanation of what the code does:
+
+1. **Function Definition (`handleColor`)**: The function `handleColor` is defined to take a single parameter, `ticket`, which is expected to be a DOM element that represents a ticket on the webpage.
+
+2. **Selecting the `.ticket-color` Element**: Inside the function, `ticket.querySelector('.ticket-color')` is called to select the first element with the class `.ticket-color` that is a descendant of the `ticket` element. This element is stored in the variable `ticketColorBand`.
+
+3. **Adding an Event Listener**: An event listener for the "click" event is added to `ticketColorBand`. This means that the function provided as the second argument to `addEventListener` will be executed whenever `ticketColorBand` is clicked.
+
+4. **Inside the Click Event Listener Function**:
+   - **Getting the Current Color**: The current color class of `ticketColorBand` is assumed to be stored in its first class, which is accessed with `ticketColorBand.classList[0]`. This current color is stored in the variable `currentColor`.
+   
+   - **Finding the Index of the Current Color**: The index of `currentColor` within the `colors` array is found using `colors.findIndex()`. This method takes a function that returns `true` for the element that matches the current color. The index of this color in the `colors` array is stored in `currentColorIdx`.
+   
+   - **Incrementing the Color Index**: The color index (`currentColorIdx`) is incremented by 1 to move to the next color in the `colors` array. If this increment makes the index equal to the length of the `colors` array, it will wrap around to 0 in the next step due to the modulo operation.
+   
+   - **Calculating the New Color Index**: The new color index is calculated using `currentColorIdx % colors.length`. This ensures that if the incremented index is beyond the last index of the `colors` array, it wraps around to the beginning (cyclic behavior).
+   
+   - **Getting the New Color**: The new color class to be applied is retrieved from the `colors` array using the new index (`newTicketColorIdx`) and stored in `newTicketColor`.
+   
+   - **Updating the Element’s Class**: The current color class is removed from `ticketColorBand` using `classList.remove(currentColor)`, and the new color class is added using `classList.add(newTicketColor)`. This changes the visual appearance of the `ticketColorBand` element to reflect the new color.
+
+In summary, this function allows a user to cycle through a predefined list of color classes for an element within a ticket by clicking on it, changing its visual appearance each time it's clicked.
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/639/original/2.png?1695233433)
 
