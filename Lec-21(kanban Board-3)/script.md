@@ -56,6 +56,7 @@ function createTicket(ticketColor, ticketID, ticketTask) {
 ```
 
 - We have added an additional `div` element with the class `ticket-lock` to represent the lock icon for each ticket.
+
 - Inside the `ticket-lock` div, we are using Font Awesome's icon syntax to include the lock icon using the fa-lock class from the `fa-solid` style.
 
 ![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/638/original/1.png?1695233411)
