@@ -1,4 +1,19 @@
 ---
+title: Agenda
+description:
+duration: 600
+card_type: cue_card
+---
+
+**Agenda of this Lecture:**
+
+- Understanding Local Storage
+- Implementing Local Storage in the Project on appropriate parts
+- Project wrap up with any left overs or finishing touches
+- Deploying the Project with Github Pages
+
+
+---
 title: What is local storage?
 description: Gaining Insight into Local Storage and How to Utilize It
 duration: 600
