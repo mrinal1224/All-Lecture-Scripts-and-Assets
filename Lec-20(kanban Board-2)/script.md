@@ -435,15 +435,29 @@ removeBtn.addEventListener('click', function() {
     }
 
 });
+
+function handleRemoval(ticket) {
+  ticket.addEventListener("click", function () {
+    if (!removeTaskFlag) return;
+    else {
+      ticket.remove();
+    }
+  });
+}
 ```
-We know how to toggle the delete button and set it to active and not active we  will implement the removal functionality in the next class , we also haven't handled the lock
+
+This wil remove the selected ticket from the UI.
+
+
+
+We know how to toggle the delete button and set it to active and not active and when it is active we are now able to delete the ticket.
 
 So the agenda for the next class will be
 
-1. Handle ticket removal
-2. Handle locking and unlocking content 
-3. Set up the function to filter tasks according to the color selected
-4. Implement Local storage for task persistance
+
+1. Handle locking and unlocking content 
+2. Set up the function to filter tasks according to the color selected
+3. Implement Local storage for task persistance
 
 Complete code for this class
 
