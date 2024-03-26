@@ -370,6 +370,8 @@ for (let i = 0; i < toolboxColors.length; i++) {
 }
 ```
 
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/641/original/4.png?1695233480)
+
 To tackle this issue, we're planning to implement a validation mechanism that utilizes unique identifier to ensure that duplicate tickets aren't generated. This way, the filtered ticket array will only consist of distinct tickets corresponding to the selected color.
 
 So, using the unique IDs associated with each ticket is a great way to prevent duplicates. This way, we can ensure that the same ticket isn't added to the filtered array more than once.
@@ -406,7 +408,7 @@ function createTicket(ticketColor, ticketTask, ticketId) {
 }
 ```
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/641/original/4.png?1695233480)
+
 
 Complete JS code for the class -
 
