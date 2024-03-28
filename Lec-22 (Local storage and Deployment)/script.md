@@ -336,7 +336,7 @@ The Project Here stands Finished
 
 
 ---
-title: Deploying the project to Giithub Pages
+title: Deploying the project to Github Pages
 description: 
 duration: 420
 card_type: cue_card
