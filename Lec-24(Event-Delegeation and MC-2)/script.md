@@ -326,7 +326,7 @@ body {
 
 CSS part for the Problem.
 
-Note to instructor - You do not have to write the whole css , yiu can copy paste this css and just explain how eacg element is styled
+Note to instructor - You do not have to write the whole css , you can copy paste this css and just explain how each element is styled
 
 
 
