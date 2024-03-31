@@ -173,7 +173,6 @@ Here are the problem statements for each of the machine coding round problems th
 
 build a nested comment system where users can leave comments on a post. Each comment can have replies, creating a nested structure. Users should be able to reply to comments and collapse/expand comment threads.
 
-2. 
 
 ### Nested Comment System
 
