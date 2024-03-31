@@ -1,4 +1,3 @@
-
 *{
     box-sizing: border-box;
 }
@@ -91,7 +90,18 @@ body{
 
 
 
+ .modal-cont{
+   height: 50vh;
+   width: 45vw;
+   display: flex;
+   background-color: lightsalmon;
+   position: absolute;
+   top:30%;
+   left: 27%;
+   display: none;
 
+
+}
 
 
 .main-cont{
@@ -125,19 +135,6 @@ body{
     margin-right: 5px;
     font-size: 1.5rem;
 }
-
-.modal-cont{
-    height: 50vh;
-    width: 45vw;
-    display: flex;
-    background-color: lightsalmon;
-    position: absolute;
-    top:30%;
-    left: 27%;
-    display: none;
- 
- 
- }
 
 
 
