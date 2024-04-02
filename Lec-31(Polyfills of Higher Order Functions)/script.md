@@ -253,7 +253,7 @@ card_type: cue_card
 ### Problem 1 
 
 **Flattening an Array**
- here's a detailed problem statement:
+
 
 **Problem Statement: Flatten Nested Array**
 
