@@ -11,7 +11,7 @@ card_type: cue_card
 - Interview Problem solving on Funtional Programming
 
 ---
-title: Polyfills of Higer order Functions
+title: Polyfills of Higher order Functions
 description:
 duration: 600
 card_type: cue_card
@@ -183,12 +183,12 @@ card_type: cue_card
 
 The `reduce` method in JavaScript applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value. This method is often used for summing up all elements of an array, but it's versatile enough to handle tasks like building up a single object from an array of objects.
 
-### Writing a Polyfill for the `reduce` Method Without Using `call`
+### Writing a Polyfill for the `reduce`
 
-Creating a polyfill for the `reduce` method without using the `call` method involves implementing the core functionality of `Array.prototype.reduce` from scratch. Here's how you can do it, along with a detailed explanation:
+Creating a polyfill for the `reduce` method  involves implementing the core functionality of `Array.prototype.reduce` from scratch. Here's how you can do it, along with a detailed explanation:
 
 ```javascript
-// Polyfill for Array.prototype.reduce without using 'call'
+// Polyfill for Array.prototype.reduce 
 if (!Array.prototype.myReduce) {
   Array.prototype.myReduce = function(callback, initialValue) {
     // Step 1: Throw a TypeError if 'callback' is not a function
@@ -240,9 +240,135 @@ if (!Array.prototype.myReduce) {
 
 6. **Return Value**: After iterating through the array, the method returns the accumulated value.
 
-This polyfill allows for the use of the `reduce` functionality in environments where it might not be natively supported, ensuring broader compatibility across different JavaScript environments without relying on the `call` method to set the context.
+This polyfill allows for the use of the `reduce` functionality in environments where it might not be natively supported, ensuring broader compatibility across different JavaScript environments.
+
+
+---
+title: Interview Problem solving on Funtional Programming
+description:
+duration: 600
+card_type: cue_card
+---
+
+### Problem 1 
+
+**Flattening an Array**
+ here's a detailed problem statement:
+
+**Problem Statement: Flatten Nested Array**
+
+You are given a nested array containing integers. Your task is to write a JavaScript function to flatten this nested array into a single-dimensional array, where all the nested arrays' elements are moved to the top-level array.
+
+For example, given the following nested array:
+
+```javascript
+const nestedArray = [1, [2, 3], [4, [5, 6]]];
+```
+
+The flattened array should be:
+
+```javascript
+[1, 2, 3, 4, 5, 6]
+```
+
+Your task is to implement a function `flattenArray` that takes the nested array as input and returns the flattened array.
+
+**Input:**
+- A nested array `arr` containing integers.
+
+**Output:**
+- A single-dimensional array containing all the elements of the nested array.
+
+Input:
+```javascript
+const nestedArray = [1, [2, 3], [4, [5, 6]]];
+```
+
+Output:
+```javascript
+[1, 2, 3, 4, 5, 6]
+```
+
+**Note:**
+- Ensure that your solution works for arrays of any depth and can handle arrays with mixed data types.
 
 
 
+### Solution
+
+let's break down the solution step by step:
+
+1. **Define the `flattenArray` function**: First, we define a function named `flattenArray` which takes an array `arr` as its parameter.
+
+```javascript
+function flattenArray(arr) {
+    // Function implementation will go here
+}
+```
+
+2. **Use the `reduce` method to iterate over the array**: We'll use the `Array.prototype.reduce()` method to iterate over each element of the array.
+
+```javascript
+function flattenArray(arr) {
+    return arr.reduce((flatArray, item) => {
+        // Logic will be implemented inside this callback function
+    }, []);
+}
+```
+
+3. **Check if the current element is an array or not**: Inside the callback function of `reduce()`, we check whether the current `item` is an array or not.
+
+```javascript
+function flattenArray(arr) {
+    return arr.reduce((flatArray, item) => {
+        if (Array.isArray(item)) {
+            // If it's an array, flatten it
+        } else {
+            // If it's not an array, push it to the flatArray
+        }
+    }, []);
+}
+```
+
+4. **Recursively flatten nested arrays**: If the `item` is an array, we'll recursively call the `flattenArray` function on that nested array.
+
+```javascript
+function flattenArray(arr) {
+    return arr.reduce((flatArray, item) => {
+        if (Array.isArray(item)) {
+            flatArray.push(...flattenArray(item)); // Recursively flatten nested arrays
+        } else {
+            flatArray.push(item); // If it's not an array, push it to the flatArray
+        }
+        return flatArray;
+    }, []);
+}
+```
+
+5. **Return the flattened array**: Finally, we return the `flatArray` which contains all the elements of the nested array flattened into a single-dimensional array.
+
+```javascript
+function flattenArray(arr) {
+    return arr.reduce((flatArray, item) => {
+        if (Array.isArray(item)) {
+            flatArray.push(...flattenArray(item)); // Recursively flatten nested arrays
+        } else {
+            flatArray.push(item); // If it's not an array, push it to the flatArray
+        }
+        return flatArray;
+    }, []);
+}
+
+// Example nested array
+const nestedArray = [1, [2, 3], [4, [5, 6]]];
+
+// Flatten the nested array
+const flattenedArray = flattenArray(nestedArray);
+console.log(flattenedArray); // Output: [1, 2, 3, 4, 5, 6]
+```
+
+This solution effectively flattens any nested array into a single-dimensional array.
 
 
+
+---
