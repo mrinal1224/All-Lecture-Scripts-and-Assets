@@ -244,7 +244,7 @@ This polyfill allows for the use of the `reduce` functionality in environments w
 
 
 ---
-title: Interview Problem solving on Funtional Programming
+title: Interview Problem 1
 description:
 duration: 600
 card_type: cue_card
@@ -254,10 +254,9 @@ card_type: cue_card
 
 **Flattening an Array**
 
-
 **Problem Statement: Flatten Nested Array**
 
-You are given a nested array containing integers. Your task is to write a JavaScript function to flatten this nested array into a single-dimensional array, where all the nested arrays' elements are moved to the top-level array.
+You are given a nested array containing array elements. Your task is to write a JavaScript function to flatten this nested array into a single-dimensional array, where all the nested arrays' elements are moved to the top-level array.
 
 For example, given the following nested array:
 
@@ -372,3 +371,150 @@ This solution effectively flattens any nested array into a single-dimensional ar
 
 
 ---
+title: Interview Problem 2
+description:
+duration: 600
+card_type: cue_card
+---
+
+## Problem-2
+
+**Problem Statement:**
+
+You are given an array of objects representing transactions made by customers. Each object contains the following properties:
+
+- `customerId`: Number, representing the unique ID of the customer.
+- `amount`: Number, representing the amount of the transaction.
+- `date`: String, representing the date of the transaction (in the format "YYYY-MM-DD").
+
+Your task is to write a JavaScript function using functional programming techniques that takes this array of transaction objects and returns an object containing the following information:
+
+- `totalTransactions`: Total number of transactions.
+- `totalAmount`: Total amount of all transactions.
+- `averageTransactionAmount`: Average amount of transactions.
+- `transactionsPerDay`: An object where keys are dates and values are arrays containing transactions made on that date.
+- `transactionsByCustomer`: An object where keys are customer IDs and values are arrays containing transactions made by that customer.
+
+**Example Input:**
+```javascript
+const transactions = [
+  { customerId: 1, amount: 100, date: '2024-03-01' },
+  { customerId: 2, amount: 150, date: '2024-03-01' },
+  { customerId: 1, amount: 200, date: '2024-03-02' },
+  { customerId: 3, amount: 50, date: '2024-03-02' },
+  { customerId: 2, amount: 120, date: '2024-03-03' }
+];
+```
+
+**Solution with Step-by-Step Explanation:**
+
+```javascript
+const transactions = [
+  { customerId: 1, amount: 100, date: '2024-03-01' },
+  { customerId: 2, amount: 150, date: '2024-03-01' },
+  { customerId: 1, amount: 200, date: '2024-03-02' },
+  { customerId: 3, amount: 50, date: '2024-03-02' },
+  { customerId: 2, amount: 120, date: '2024-03-03' }
+];
+
+// Step 1: Calculate the total number of transactions.
+const totalTransactions = transactions.length;
+
+// Step 2: Calculate the total amount of all transactions.
+const totalAmount = transactions.reduce((total, transaction) => total + transaction.amount, 0);
+
+// Step 3: Calculate the average amount of transactions.
+const averageTransactionAmount = totalAmount / totalTransactions;
+
+// Step 4: Group transactions by date.
+const transactionsPerDay = transactions.reduce((acc, transaction) => {
+  if (!acc[transaction.date]) {
+    acc[transaction.date] = [];
+  }
+  acc[transaction.date].push(transaction);
+  return acc;
+}, {});
+
+// Step 5: Group transactions by customer.
+const transactionsByCustomer = transactions.reduce((acc, transaction) => {
+  if (!acc[transaction.customerId]) {
+    acc[transaction.customerId] = [];
+  }
+  acc[transaction.customerId].push(transaction);
+  return acc;
+}, {});
+
+// Step 6: Combine all results into a single object.
+const result = {
+  totalTransactions,
+  totalAmount,
+  averageTransactionAmount,
+  transactionsPerDay,
+  transactionsByCustomer
+};
+
+console.log(result);
+```
+
+let's go through the solution step by step:
+
+**Step 1: Calculate the total number of transactions.**
+```javascript
+const totalTransactions = transactions.length;
+```
+Here, we're simply using the `.length` property of the `transactions` array to get the total number of transactions.
+
+**Step 2: Calculate the total amount of all transactions.**
+```javascript
+const totalAmount = transactions.reduce((total, transaction) => total + transaction.amount, 0);
+```
+We're using the `reduce` function to iterate over each transaction in the `transactions` array. The `total` accumulator starts at 0, and for each transaction, we add its `amount` to the total.
+
+**Step 3: Calculate the average amount of transactions.**
+```javascript
+const averageTransactionAmount = totalAmount / totalTransactions;
+```
+We've already calculated `totalAmount` and `totalTransactions` in the previous steps. Here, we're simply dividing the total amount by the total number of transactions to get the average.
+
+**Step 4: Group transactions by date.**
+```javascript
+const transactionsPerDay = transactions.reduce((acc, transaction) => {
+  if (!acc[transaction.date]) {
+    acc[transaction.date] = [];
+  }
+  acc[transaction.date].push(transaction);
+  return acc;
+}, {});
+```
+We're using `reduce` to iterate over each transaction. For each transaction, we check if there's already an entry in the accumulator (`acc`) for the transaction's date. If not, we initialize it as an empty array. Then, we push the transaction into the array corresponding to its date. This way, we're grouping transactions by date.
+
+**Step 5: Group transactions by customer.**
+```javascript
+const transactionsByCustomer = transactions.reduce((acc, transaction) => {
+  if (!acc[transaction.customerId]) {
+    acc[transaction.customerId] = [];
+  }
+  acc[transaction.customerId].push(transaction);
+  return acc;
+}, {});
+```
+Similar to Step 4, we're using `reduce` to iterate over each transaction. For each transaction, we check if there's already an entry in the accumulator (`acc`) for the transaction's `customerId`. If not, we initialize it as an empty array. Then, we push the transaction into the array corresponding to its `customerId`. This way, we're grouping transactions by customer.
+
+**Step 6: Combine all results into a single object.**
+```javascript
+const result = {
+  totalTransactions,
+  totalAmount,
+  averageTransactionAmount,
+  transactionsPerDay,
+  transactionsByCustomer
+};
+```
+Finally, we're combining all the results into a single object called `result`, containing `totalTransactions`, `totalAmount`, `averageTransactionAmount`, `transactionsPerDay`, and `transactionsByCustomer`.
+
+These are the kind of problems you can be asked in an interview to solve , Do pratice questions like these and Solve you assignments
+
+
+Start the Doubt Session!
+
+
