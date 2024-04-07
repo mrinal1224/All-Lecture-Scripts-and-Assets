@@ -23,27 +23,33 @@ description: this keyword in javaScript and its relevance to OOP
 duration: 2100
 card_type: cue_card
 ---
+
+
 ## This Keyword
- When covering Object-Oriented Programming (OOP) in JavaScript, the `this` keyword is a crucial concept to understand. Here's a breakdown of topics you can cover regarding the `this` keyword in JavaScript and its relevance to OOP:
+ NOTE TO INSTRUCTOR - When covering Object-Oriented Programming (OOP) in JavaScript, the `this` keyword is a crucial concept to understand. Here's a breakdown of topics you can cover regarding the `this` keyword in JavaScript and its relevance to OOP:
 
 1. **Introduction to `this` keyword:**
-   - Explain that `this` is a special keyword in JavaScript that refers to the current execution context or the current object.
-   - Mention that its value depends on how a function is called, rather than where it is defined.
+   a. Explain that `this` is a special keyword in JavaScript that refers to the current execution context or the current object.
+   b. Mention that its value depends on how a function is called, rather than where it is defined.
 
 2. **Global Context:**
-   - Describe that in the global context (outside of any function), `this` refers to the global object (e.g., `window` in browsers, `global` in Node.js).
+   a. Describe that in the global context (outside of any function), `this` refers to the global object (e.g., `window` in browsers, `global` in Node.js).
 
 3. **Function Context:**
-   - Explain that within a function, the value of `this` can change based on how the function is invoked.
-   - Discuss function invocation methods:
-     - Regular function invocation: `this` usually refers to the global object (in non-strict mode) or `undefined` (in strict mode).
-     - Method invocation: `this` refers to the object that the method is called on.
-     - Constructor invocation: `this` refers to the instance being created by the constructor function.
-     - `call()` and `apply()` methods: Explicitly set `this` for a function call. (this we will underdtand in future classes)
-     - Arrow functions: `this` retains the value of the enclosing lexical context.(this we will understand in future classes)
+   a.  Explain that within a function, the value of `this` can change based on how the function is invoked.
+   b.  Discuss function invocation methods:
+   c. Regular function invocation: `this` usually refers to the global object (in non-strict mode) or `undefined` (in strict mode).
+   d. Method invocation: `this` refers to the object that the method is called on.
+
+   e. Constructor invocation: `this` refers to the instance being created by the constructor function.(future class)
+
+   f. `call()` and `apply()` methods: Explicitly set `this` for a function call. (this we will underdtand in future classes)
+  
+   g Arrow functions: `this` retains the value of the enclosing lexical context.(this we will understand today on what are arrow functions)
 
 4. **Object-Oriented Programming (OOP) and `this`:**
    - Explain how `this` is used in the context of OOP to refer to the instance of an object.
+
    - Describe how methods within an object can access other properties and methods using `this`.
 
 
@@ -378,7 +384,10 @@ const arrowFuncVar = obj.arrowFunc;
 arrowFuncVar(); // Output: Arrow function: undefined
 ```
 
-In an arrow function, the value of `this` is lexically scoped, meaning it's determined by the surrounding scope where the arrow function is defined, rather than how it is called. As a result, arrow functions do not have their own `this` context; they inherit the `this` value from the enclosing lexical context. In the examples above, `this` within the arrow function refers to the `this` value of the enclosing scope where `obj.arrowFunc` is defined, which is typically the global object (`window`), resulting in `undefined`.
+In an arrow function, the value of `this` is lexically scoped, meaning it's determined by the surrounding scope where the arrow function is defined, rather than how it is called. As a result, arrow functions do not have their own `this` context; they inherit the `this` value from the enclosing lexical context. 
+
+
+In the examples above, `this` within the arrow function refers to the `this` value of the enclosing scope where `obj.arrowFunc` is defined, which is typically the global object (`window`), resulting in `undefined`.
 
 In summary, arrow functions do not have their own `this` binding, whereas regular functions do, and the value of `this` in a regular function depends on how it is called.
 

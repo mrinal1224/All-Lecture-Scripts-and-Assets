@@ -461,19 +461,10 @@ Here's how you might include them:
 
 3. **With `defer`**: The browser downloads the script in the background while continuing to parse HTML. It executes the script after completing the parsing, in the order the scripts appeared in the document.
 
-### Diagram in Markdown
 
-Here's a simple diagram to illustrate the differences:
+That's all for Today's Session
 
-```markdown
-| Action        | Without Attributes | With async      | With defer       |
-|---------------|--------------------|-----------------|------------------|
-| Downloading   | Pauses HTML parsing| In background   | In background    |
-| Execution     | Immediately after download | After download, during HTML parsing | After HTML parsing, in script order |
-| Use Case      | Small scripts, high priority | Independent scripts, metrics | Dependent scripts, DOM manipulation |
-```
-
-This table summarizes how scripts are downloaded and executed with each attribute, highlighting their optimal use cases.
+Start the Doubt Session
 
 
 
