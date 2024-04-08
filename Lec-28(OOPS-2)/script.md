@@ -8,12 +8,10 @@ card_type: cue_card
 ## Agenda
 **Topics to cover in Javascript Oops** 
 * Constructor functions
-* Classes & Class based Inheritance
-* Prototype &  Prototypal Inheritance
-* Call ,Apply & Bind Methods
-* Memory of objects (Reference Datatypes)
-
-Certainly! Let's dive into JavaScript's constructor functions, covering all the aspects you've mentioned.
+* Classes 
+* Class based Inheritance with super and extends
+* Static Methods of classes
+* How to create Private properties
 
 
 ---
