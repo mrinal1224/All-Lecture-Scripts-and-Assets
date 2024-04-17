@@ -215,11 +215,6 @@ You can even check ReactDOM in the same way and it will show you whatever you wi
 
 
 
-<img src='https://i.ibb.co/5cBjwrR/Screenshot-2024-04-18-at-3-54-10-AM.png'>
-
-
-
-
 
 
 
