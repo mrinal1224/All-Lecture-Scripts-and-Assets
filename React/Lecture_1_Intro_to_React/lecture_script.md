@@ -108,7 +108,7 @@ Yes! Let's not go into the technical details as of now of what react? why react?
 
 
 ---
-title: Hello World in React with CDN 
+title: Ingesting react with CDN
 description: Discussion of basic application in react in detail.
 duration: 2100
 card_type: cue_card
@@ -213,237 +213,151 @@ You can even check ReactDOM in the same way and it will show you whatever you wi
 
 
 
-
-
-
-
-
-
 ---
-title: Bare bone React example 
+title: Creating Hello World with React
 description: Discussion of basic application in react in detail.
 duration: 2100
 card_type: cue_card
 ---
-### What is JSX
-JSX: JSX, short for JavaScript XML, is like HTML on steroids. It allows you to write JavaScript logic directly inside HTML code.
+
+So Now as We have `React` Support , Now lets try to create the same `Hello World` program with React!
 
 
+ We will use the React and ReactDOM libraries and achieve the Result
 
-### Context for instructor : In this exercise, we'll recreate the "hello" component we built earlier using plain JavaScript. We'll focus on understanding while establishing following facts
-* JSX is inspired from javascripts's template string
-* components are nothing javascript function that always returns HTML code 
-* code execution always starts from ReactDOM.render
+### HTML Template with React CDN (Without JSX or Components)
 
-Now let's talk how the experiement's setup. 
-1. We will be having->  `reactDOM.js` (this files resposble to emulate ReactDOM cdn link )
-```javascript
-let ReactDOM = {};
-function render(component, root) {
-    let OptimizedDOM = react(component);
-    console.log("Rendering to DOM");
-    // it puts into the root element
-    root.innerHTML = OptimizedDOM;
-}
-ReactDOM.render = render;
-```
-
-2. `react.js`->(it will be used emulate react cdn link)
-
-```javascript
-function react(component) {
-    // calling that fn
-    let dom = component();
-    console.log("....optimizing changes");
-    return dom;
-}
-```
-
-3. Now these above two files should be added to the file that will be used emulate the whole HELLO component
-```jsx
+```html
 <!DOCTYPE html>
-<html lang = "en">
-
+<html lang="en">
 <head>
-    <meta charset = "UTF-8">
-    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>Document</title>
-    <script src = "./lib/react.js"></script>
-    <script src = "./lib/reactDOM.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App</title>
+    <!-- Adding React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 </head>
-
 <body>
-    <div id = "root"></div>
+    <!-- Very Important to create a root as all the things you will build will go inside the root -->
+    <div id="root"></div>
     <script>
+        // Get the root element where the React app will be mounted
+        const rootElement = document.getElementById('root');
 
-        function HELLO() {
-            let name = "React";
-            let age = 30
-            return `<h1>Hello  ${name} Thanks Babel and you are ${age<18 ?"underage":"eligble"}</h1>`;
-        }
+        // Create an element using React.createElement
+        // React.createElement takes at least three arguments:
+        // 1. The tag name of the HTML element to create
+        // 2. The properties of the element (or null if none) Adding null here for now we will discuss props later
+        // 3. The children of this element (or text content)
+        const headingElement = React.createElement('h1', null, 'Hello from React');
 
-ReactDOM.render(HELLO, document.getElementById("root"));
+        // Render the element to the DOM using ReactDOM
+        // ReactDOM.render takes two arguments:
+        // 1. The React element to render
+        // 2. The DOM element where the React element should be mounted
+        ReactDOM.render(headingElement, rootElement);
     </script>
 </body>
-
-</html> 
-```
-4. Now if you compare the above code with this HELLO component you can clearly see relation b/w jsx and template strings
-```jsx
-<!DOCTYPE html>
-<html lang = "en">
-
-<head>
-    <meta charset = "UTF-8">
-    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>Document</title>
-    <!-- algorithm to efficiently manipulate your UI -->
-    <script src = "https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    
-    <!-- React DOM  -> uses react to update the DOM-->
-    <script src = "https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    
-    <!-- transpiler -> JSX -> into javascript -->
-    <script src = "https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-</head>
-
-<body>
-    <!-- the whole application lives inside-->
-    <div id = "root"></div>
-
-    <!-- single Page applcation : JS -->
-    <script type = "text/babel">
-        // -> component : a function that returns HTML
-        function HELLO() {
-            let age=30;
-            let name = "Jasbir";
-
-            return <h1>Hello {name} Thanks Babel and you are {age<18 ?"underage":"eligble"} </h1>;
-        }
-        // a method in REACTDOM -> puts the returned  HTML from componente in root element
-        ReactDOM.render(<HELLO ></HELLO>, document.getElementById("root"));
-    </script>
-</body>
-
-</html>
-```
-
-### Bare Bone React Example[to be covered in the live class]
-Now to understand JSX and react  better let's implement a very basic version of react.
-
-`Instructor cue`: these are two files that we will be using emulate react and reactDOM(just copy it and not reveal to learners first)
-
-
-`reactDom.js`
-```javascript
-let ReactDOM = {};
-function render(component, root) {
-    let OptimizedDOM = react(component);
-    console.log("Rendering to DOM");
-    // it puts into the root element
-    root.innerHTML = OptimizedDOM;
-}
-ReactDOM.render = render;
-```
-`react.js`
-```javascript
-function react(component) {
-    // calling that fn
-    let dom = component();
-    console.log("....optimizing changes");
-    return dom;
-}
-```
-
-
-`Instructor cue`: Keeping HELLO component code on right side of vscode screen 
-```jsx
-<!DOCTYPE html>
-<html lang = "en">
-
-<head>
-    <meta charset = "UTF-8">
-    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>Document</title>
-    <!-- algorithm to efficiently manipulate your UI -->
-    <script src = "https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    
-    <!-- React DOM  -> uses react to update the DOM-->
-    <script src = "https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    
-    <!-- transpiler -> JSX -> into javascript -->
-    <script src = "https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-</head>
-
-<body>
-    <!-- the whole application lives inside-->
-    <div id = "root"></div>
-
-    <!-- single Page applcation : JS -->
-    <script type = "text/babel">
-        // -> component : a function that returns HTML
-        function HELLO() {
-            let age=30;
-            let name = "Jasbir";
-
-            return <h1>Hello {name} Thanks Babel and you are {age<18 ?"underage":"eligble"} </h1>;
-        }
-        // a method in REACTDOM -> puts the returned  HTML from componente in root element
-        ReactDOM.render(<HELLO ></HELLO>, document.getElementById("root"));
-    </script>
-</body>
-
-</html>
-```
-
-write this below code  for them
-
-```jsx
-<!DOCTYPE html>
-<html lang = "en">
-
-<head>
-    <meta charset = "UTF-8">
-    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>Document</title>
-    <script src = "./lib/react.js"></script>
-    <script src = "./lib/reactDOM.js"></script>
-</head>
-
-<body>
-    <div id = "root"></div>
-    <script>
-
-        function HELLO() {
-            let name = "React";
-            let age = 30
-            return `<h1>Hello  ${name} Thanks Babel and you are ${age<18 ?"underage":"eligble"}</h1>`;
-        }
-
-ReactDOM.render(HELLO, document.getElementById("root"));
-    </script>
-
-</body>
-
 </html>
 ```
 
 
-### Explain these three Take Aways
-* **Components:** In React, components are like special functions written in JavaScript. They return HTML-like code, which is what you see on a webpage.
-* **JSX**: JSX is a cool feature in React that's a lot like using template strings. You can mix JavaScript logic with HTML-like code, and it all gets turned into regular HTML.
-* **Starting the Code**: When you run your React app, it all begins with ReactDOM.render(). This function puts your main component onto the actual webpage for everyone to see. In other words, it's like placing your "Hello" component onto the screen and the content of Hello component is decided by it's reruned HTML
+You can see the Definitions of these methos here 
+
+<img src='https://i.ibb.co/0jW1xmT/Screenshot-2024-04-18-at-4-33-19-AM.png'>
+
+<img src='https://i.ibb.co/q1qPjg5/Screenshot-2024-04-18-at-4-35-29-AM.png'>
 
 
+
+### Step-by-Step Explanation
+
+1. **HTML Setup**:
+   - The HTML structure includes loading React and ReactDOM from CDN. These are necessary for using React's APIs without local installations or build tools.
+   - The `<div id="root"></div>` acts as the mounting point for the React application.
+
+2. **Creating the Element**:
+   - `React.createElement` is used to create a React element. This method creates an element which can be rendered into the DOM. Here, it is used to create an `<h1>` element with the text "Hello from JS".
+   - you manually specify the tag name, properties (if any), and children directly.
+
+3. **Rendering the Element**:
+   - `ReactDOM.render` is used to render the React element into the DOM. It takes two arguments: the React element and the DOM container where the element should be mounted.
+   - This call places the `<h1>` element within the `<div id="root"></div>` in the HTML.
+
+This is How to can use Pure `React` and `ReactDOM` code to achieve the desired result
+
+---
 title: Props
 description: Discussion of basic detail about Props.
 duration: 2100
 card_type: cue_card
 ---
+
+Now at One Place we have given `null` in the code , as you pass any attribute in html you cannot directly do that over here in this form of code , so react Provides something known as props , You can make use of props to pass any attribute that you want
+
+
+let's see this in the same code
+
+
+To add a  `prop` to the `createElement` method in your existing code, let's introduce a `style` property that changes the text color of the `<h1>` element. Properties in React are similar to attributes in HTML but are more powerful due to their dynamic nature, You will witness theri power as we will move forward!
+
+Here's the modified HTML document with the addition of the `style` property:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App</title>
+    <!-- Adding React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        const rootElement = document.getElementById('root');
+
+        // Creating the h1 element with a style property
+        // The properties object now includes a 'style' key with a CSS object
+        const headingElement = React.createElement('h1', { 
+            style: { color: 'blue' } // This style object sets the text color to blue
+        }, 'Hello from React');
+
+        ReactDOM.render(headingElement, rootElement);
+    </script>
+</body>
+</html>
+```
+
+### Explanation of the Changes:
+
+1. **Adding the `style` Property**:
+   - Inside the `React.createElement` call, the second argument is used for properties (props). Here, we've added a `style` prop.
+   - The `style` prop expects an object where the keys are camelCased CSS property names and the values are the corresponding CSS values. In this case, `{ color: 'blue' }` changes the text color of the `<h1>` element to blue.
+
+2. **Effect on Rendering**:
+   - When the element is rendered to the DOM, the `style` property applies the CSS directly to the `<h1>` element, affecting its appearance on the webpage.
+
+
+ **Output**
+
+
+ The Output now has a style attribute which sets the color to Blue
+
+ <img src='https://i.ibb.co/bssSfp6/Screenshot-2024-04-18-at-4-44-02-AM.png'>
+
+
+
+By using this approach, you can dynamically set properties on React elements, giving you the flexibility to customize elements in a variety of ways without touching the CSS files or class attributes directly. This technique is fundamental when developing more complex React applications.
+
+
+
+
+
+
 
 ## Props
 
