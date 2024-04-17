@@ -185,6 +185,9 @@ You will see now  `React` is available to you and you can even open this and see
 You can even Open this CDN link in the Browser , if I just copy the CDN link and paste it in the Browser you will see That `React` is nothimng but plain Written Javascript code , This is the Source Code of React! and all React Stuff that we are going to use is coming from Here Only!
 
 
+<img src='https://i.ibb.co/X4r7hvY/Screenshot-2024-04-18-at-4-07-41-AM.png'>
+
+
 
 Similarly , We have got another CDN link ingested that is for `react-dom`
 
@@ -211,7 +214,6 @@ You can even check ReactDOM in the same way and it will show you whatever you wi
 
 
 
-<img src='https://i.ibb.co/X4r7hvY/Screenshot-2024-04-18-at-4-07-41-AM.png'>
 
 <img src='https://i.ibb.co/5cBjwrR/Screenshot-2024-04-18-at-3-54-10-AM.png'>
 
