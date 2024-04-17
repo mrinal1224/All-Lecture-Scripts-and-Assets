@@ -105,7 +105,7 @@ export default App;
 ```
 
 `LanguageToggle.js`
-```
+```jsx
 import React from 'react';
 import { useLanguage } from './LanguageContext'; // Import useLanguage from LanguageContext.js
 
