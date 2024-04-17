@@ -7,240 +7,220 @@ card_type: cue_card
 ---
 ## Agenda
 
-* What is React & it's advantages
-* Setting up react using CDN links
-* components
+
+**Prerequistes Required before Starting with React**
+
+* Set up all the tools in your laptop
+* VS Code (recommended)
+* Chrome Browser (recommended)
+* Proper revision of HTML/CSS and Javascript is a must
+
+So Let's see What we are going to Look at in this LLD-3 module , Yes! `React`
+
+Everyone Who is doing even a little work in Javascript  have heard about this tool called `React`.
+
+`React` has become the most capable tool in today's era in frontend Development for creating beautiful looking smooth and fast UI hence enhaning the UX as well 
+
+
+React has been Built and mainatined by Facebook and Big Tech giants like Netflix , Uber and many more are using it in their Org
+
+
+Now , why `React` got so Popular , Why it is this  big thing in the industry that everyone want's a React developer in their Team
+
+
+In this whole module we Will be Finding Answers to all of these questions and by the end you will have a solid foundation of How to use React and work with it!
+
+But to get to the end You will have start from the basics
+
+*As the Saying goes-*
+
+`To reach the summit's grace, one must embrace the roots' embrace.`
+
+Yeah OK! I could have said something better.
+
+but you get the idea that we will be starting from the very Basics
+
+
+**Agenda of The Lecture**
+
+* Build your first Hello World program using just HTML and JS
+* Ingesting React with CDN to build the same Hello World
+* Create an Element
+* Create nested React Elements
+* Use root.render
+* Functional Component
 * JSX -> Javascript and XML
-* Props
-* Component composition
-* Rendering Lists
+* How JSX is read (Babel Transpiler)
+* Advantages of JSX
+
 
 ---
-title: Challenges in modern frontend
-description: Discussion of challenges faced in the modern frontend in detail.
+title:
+Build your first Hello World program using just HTML and JS
+description:
 duration: 2100
 card_type: cue_card
 ---
 
-## Challenges in Modern Frontend
+Before Moving to react ,Let's just do a simple exercise of Creating a heading element with the Text 'Hello from JS' We will be using plain HTML and JS for now
 
 
-`Instructor cue : Explore the single-page layout of LinkedIn and its diverse UI interactions. Identify various functionalities such as Home, My Network, Jobs, Messaging, and other `
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/056/489/original/upload_a8b0bac0a165c827242385575fafe404.png?1699630915)
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script>
+    const headingElement = document.createElement("h1");
+    headingElement.innerHTML = "Hello from JS";
+
+    const root = document.getElementById("root");
+    root.appendChild(headingElement);
+  </script>
+</html>
+```
+
+The JavaScript code in the provided HTML document does the following:
+
+1. **Create an HTML Element**: It creates a new `<h1>` element and assigns it to the variable `headingElement`.
+
+2. **Set Element Content**: It sets the inner HTML of the `headingElement` to the text "Hello from JS". This means the `<h1>` element will display "Hello from JS" as its content when rendered on the webpage.
+
+3. **Access an Existing Element**: It retrieves the `<div>` element with the ID "root" from the HTML document and assigns it to the variable `root`.
+
+4. **Append Element to DOM**: It appends the newly created `headingElement` as a child to the `root` `<div>` element. This effectively inserts the `<h1>` element within the `<div>` element in the HTML structure.
 
 
-**Ask A question to learners and collate there answers**
 
-### Que What are the Challenges faced in the modern frontend and build a webapp like linkedin
+As a result, when the HTML document is loaded in a browser, it will display a heading that says "Hello from JS" inside the `<div>` element with the ID "root".
 
-**These are the major challenges:**
+Very Simple Right? Now Let's try to do this with `React` , 
 
-**Single Page Application (SPA) Challenges**: Websites are now behaving more like applications, where they don't reload the entire page but only specific parts of the UI. 
+Yes! Let's not go into the technical details as of now of what react? why react? how it works? and all , let's just start using it and slowy everything will be covered
 
-**Code Maintainability**:  As the web app becomes more complex, keeping the code organized and easy to understand becomes challenging. Collaboration among developers becomes important to ensure everyone is on the same page. Writing clear and readable code, breaking down the code into smaller parts, and adding comments help in maintaining the code. Additionally, testing the code regularly ensures that new changes don't break existing features, making it easier to fix issues and add new features in the future..
-
-**Handling Complexity and Performance Optimization**: Websites like Facebook, Instagram, Twitch, and Flipkart have numerous dynamic components and micro-interactions, making the UI highly interactive. Managing this complexity while ensuring performance and responsiveness poses a significant challenge. This includes optimizing DOM manipulation, minimizing re-renders, and reducing the load on the browser.
-
-
-
-`Instructor cue : Now talk about solution of each one by one`
-
-### Solution
-* Single Page Application : to develop a single-page application (SPA), we utilize technologies like the Fetch API or AJAX requests. These technologies allow us to fetch data from the server without needing to reload the entire page. Additionally, we leverage the History API, which enables us to change routes within the application without triggering a full page reload. This helps in creating smoother and more seamless user experiences. 
-
-
-* **Code Maintainability** : Previously, tools like webpack, gulp, and grunt were used to address this issue. However, now tools like create-react-app or vite help us manage code maintainability more efficiently. These tools streamline the process of splitting the application into multiple parts, components, or files, and then combining them together seamlessly. This simplifies the development process and ensures that the codebase remains organized and easy to maintain]
-
-* **Handling Complexity and Performance Optimization** : "Previously, we relied on the DOM API to manage user interface (UI) interactions. However, with the increasing complexity of modern web applications and the need for dynamic user experiences, using just the DOM API becomes insufficient. The level of interactivity demanded by today's applications often surpasses what can be efficiently managed solely through the DOM API, presenting challenges for developers to maintain and optimize performance.
-
-**Take away** : There were no solutions to effciently update DOM  -> **React solves this problem** 
 
 ---
-title: What Actually is React
-description: Discussion of react in detail.
-duration: 2100
-card_type: cue_card
----
-
-In this section we will understand what is the purpose of React 
-
-`Instructor cue :  write this question and give the answer yourself`
-
-## What is React?
-
-**React:** It  has the algorithm which can efficiently tell you how to manipulate the UI . This is more-or less only purpose of react 
-
-`Instructor cue : Now ask the question ->  `
-
-### Why did i say User intefaces not DOM any idea ??
-
-**ans** : Because react is generic it explain you how to update the UI and UI can be anything like `Mobile, Desktop, VR`  and there should be an associating library that will actual do the changes. Let's see some examples 
-
-**Here are  different User intefaces and the library we need to use with react to do the changes:**
-
-
-|         |              |
-|:-------:|:------------:|
-| Mobile  | React Native |
-|   Web   |  React DOM   |
-|   VR    |   React VR   |
-
-### `Instructor cue : Now summarize the whole thing`
-
-1. React: It's like a set of instructions that tells your web application how to change what you see on the screen.
-2. React DOM: This is the tool that actually makes those changes happen on the webpage you're looking at.
-
----
-
-### Why react is awesome ?[only to be covered in beginner batch]
-`Instructor cue: only cover it for beginner persona`
-* React vs other frameworks : It is used way more than any other frontend framework out there . You can also refer this [link](https://insights.stackoverflow.com/trends?tags=reactjs%2Cangular%2Cvue.js%2Csvelte)  
-(![stack_overflow](https://hackmd.io/_uploads/SJE31zqsp.png)
-)
-
-* There are always a lot of openings for react developers -> entry level , intermmediate and senior level [link](https://www.google.com/search?q=react+developer+jobs&sca_esv=598503895&rlz=1C5CHFA_enIN1022IN1022&sxsrf=ACQVn0_Ekoj7OEitiFFsdwLWATc3cWd98A%3A1705301395877&ei=k9WkZaudNYD04-EPvdek2Aw&ved=0ahUKEwjrsr7f5t6DAxUA-jgGHb0rCcsQ4dUDCBA&uact=5&oq=react+developer+jobs&gs_lp=Egxnd3Mtd2l6LXNlcnAiFHJlYWN0IGRldmVsb3BlciBqb2JzMg0QABiABBiKBRhDGLEDMggQABiABBiSAzIFEAAYgAQyBRAAGIAEMgUQABiABDIKEAAYgAQYigUYQzIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgARIngxQ_AFYoAtwAXgBkAEAmAG6AqABqweqAQcwLjIuMC4yuAEDyAEA-AEBwgIKEAAYRxjWBBiwA8ICDRAAGIAEGIoFGEMYsAPCAhAQABiABBiKBRhDGLEDGIMBwgIIEAAYgAQYsQPiAwQYACBBiAYBkAYK&sclient=gws-wiz-serp)
-*  There is a awesome ecosystem around react [link](https://github.com/enaqx/awesome-react?tab=readme-ov-file#react-renderers) 
-
----
-
-title: Hello World in react with CDN 
+title: Hello World in React with CDN 
 description: Discussion of basic application in react in detail.
 duration: 2100
 card_type: cue_card
 ---
-## Hello World in React 
 
 
+Now the First thing that we will do is Get `REACT` in our Codebase , Now there are various ways of setting up a React app,
 
-`Instructor cue: Now emphasis that -> Let's start by understanding all the different parts involved in creating a React app. This will help us grasp the flow of the code better without diving into various technical jargons`
+* We can use CDN Links
+* We can use Build tools like (CRA  , Parcel , Vite) (this we will cover Later)
 
-### Steps
-* create `hello.html` file
-```jsx
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    <meta charset = "UTF-8">
-    <meta http-equiv = "X-UA-Compatible" content = "IE = edge"> 
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>Document</title>
-</head>
-<body>
-</body>
-</html>
-```
 
-*  Add cdn link of react and reactDOM  : you can choose to open  the  link and show that react is nothing but js file 
+Let's see How to ingest React in our codebase using the CDN
+
+Follow this link - https://legacy.reactjs.org/docs/cdn-links.html
+
+Yes! this is the old React Documentation , but as I said `Basics`!
+
+You wil see Something like this when you follow the Link
+
+<img src='https://i.ibb.co/YdKGVHC/Screenshot-2024-04-18-at-3-48-13-AM.png'>
+
+
+Now create a Fresh Html file or you can continue in the one you wrote your Hello World program Only!
+
+What you have to do is get these CDN links ingested inside the html files  like this
+
 ```html
-<head>
-    <!-- algorithm to efficiently manipulate your UI -->
-    <script src = "https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <!-- React DOM  -> uses react to update the DOM-->
-    <script src = "https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-</head>
-```
 
-* Write the Hello world component 
-    * Root : it is the div in which the whole react application is rendered
-    * `script`: in script all the  react code is written
-    * `HELLO component` :  it is the component and component starts with Uppercase and in the return it will return HTML 
-    * `ReactDOM.render`: This function is responsible for generating the HTML code for the `Hello` component and inserting it into the root element. 
-root element
-```jsx    
-<body>
-    <!-- the whole application lives inside-->
-    <div id = "root"></div>
-    <!-- single Page applcation : JS -->
-    <script>
-        function HELLO() {
-            return <h1>Hello React </h1>;
-        }
-        ReactDOM.render(<HELLO></HELLO>, document.getElementById("root"));
-    </script>
-</body>
-```
-`Instructor cue: run the code in browser. It will give  error , now ask the students why are you getting the error`.
-
-This just prints nothing on the browser as shown below:
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/056/497/original/upload_72f4116cfcee76aa78c5781b70fa258b.png?1699633345)
-
-**ask to learner**
-
-`Que`: What are the languages that are understood by Browser ?
-Ans : HTML , CSS , JS  cool 
-
-**Ask the learner** : is the above code a valid JS ??
-
-Answer : no, if that is the case now we will need a translator that can convert this code to valid JS code 
-
-**solution**: As in the above function Hello which is returning something which is neither html and not the javascript. Hence we use the `Bable` transpiler to convert the code of the one language to another. Bable is a javascript transpiler to one language to another here it is JSX to JS 
-
-`Instructor cue: here for further understanding you can take the learners to babel playground and paste the above component that will convert this code into js code `
-
-*  Adding babel
-
-```jsx
 <!DOCTYPE html>
-<html lang = "en">
-<head>
-    
-     <!-- transpiler -> JSX -> into javascript -->
-    <script src = "https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-</head>
-    
-
-<body>
-    <!-- the whole application lives inside-->
-    <div id = "root"></div>
-    <!-- we are telling that it is to be converted by babel from JSX to js -->
-    <script type = "text/babel">
-    -------
-    react code 
-    -------
-    </script>
-</body>
-
-</html>
-```
-### complete code (for instructors reference)
-```jsx
-<!DOCTYPE html>
-<html lang = "en">
-
-<head>
-    <meta charset = "UTF-8">
-    <meta http-equiv = "X-UA-Compatible" content = "IE = edge"> 
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- algorithm to efficiently manipulate your UI -->
-    <script src = "https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <!-- React DOM  -> uses react to update the DOM-->
-    <script src = "https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-     <!-- transpiler -> JSX -> into javascript -->
-    <script src = "https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-</head>
-<body>
-    <!-- the whole application lives inside-->
-    <div id = "root"></div>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
 
-    <!-- single Page applcation : JS -->
-    <script type = "text/babel">
-       
-        function HELLO(obj) {
-            return <h1>Hello React </h1>;
-        }
-
-        ReactDOM.render(<HELLO></HELLO>, document.getElementById("root"));
-    </script>
-</body>
-
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+  </body>
 </html>
+
 ```
 
 
----
+Now as You have ingested them , Now all the Powers of `React` are with you!
+
+Let's see Something Interesting now
+
+
+Go to the Console and Type React
+
+You will see now  `React` is available to you and you can even open this and see what React Offers , In the future all the `methods ` and `properties` that you see we will be using them
+
+
+
+
+
+
+
+<img src='https://i.ibb.co/NmvFxDf/Screenshot-2024-04-18-at-3-53-42-AM.png'>
+
+<img src='https://i.ibb.co/tHzJsxb/Screenshot-2024-04-18-at-3-54-18-AM.png'>
+
+
+You can even Open this CDN link in the Browser , if I just copy the CDN link and paste it in the Browser you will see That `React` is nothimng but plain Written Javascript code , This is the Source Code of React! and all React Stuff that we are going to use is coming from Here Only!
+
+
+
+Similarly , We have got another CDN link ingested that is for `react-dom`
+
+Now you must be thinking that why there are Two CDN links , one is React and one is React-DOM!
+
+So the Catch is that 
+
+React and ReactDOM are used together because each library serves a specific purpose in building web applications:
+
+1. **React**: Provides the framework for creating components manage Them and  It defines the structure and behavior of the components.
+   
+2. **ReactDOM**: Handles rendering of the React components to the DOM (Document Object Model), making them visible on the web browser. It also manages updates to the DOM when React makes some  changes.
+
+Essentially, while React creates and manages the components and their internal logic, ReactDOM takes care of rendering these components in the web environment. 
+
+
+This separation of concerns allows React to be used not just for web applications but also for other platforms like mobile (through React Native), while ReactDOM specifically deals with web-specific interaction with the DOM.
+
+
+You can even check ReactDOM in the same way and it will show you whatever you will use to handle DOM operations with React
+
+<img src='https://i.ibb.co/Vtp4D6V/Screenshot-2024-04-18-at-3-55-32-AM.png'>
+
+
+
+
+<img src='https://i.ibb.co/X4r7hvY/Screenshot-2024-04-18-at-4-07-41-AM.png'>
+
+<img src='https://i.ibb.co/5cBjwrR/Screenshot-2024-04-18-at-3-54-10-AM.png'>
+
+
+
+
+
+
+
 
 ---
 title: Bare bone React example 
