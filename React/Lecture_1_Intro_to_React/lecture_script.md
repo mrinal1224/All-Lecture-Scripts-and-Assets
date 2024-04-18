@@ -351,278 +351,213 @@ Here's the modified HTML document with the addition of the `style` property:
 
 
 
-By using this approach, you can dynamically set properties on React elements, giving you the flexibility to customize elements in a variety of ways without touching the CSS files or class attributes directly. This technique is fundamental when developing more complex React applications.
-
-
-
-
-
-
-
-## Props
-
-In React, we use it to make websites interactive. Now, let's learn how we can make components act differently by giving them information.
-
-Here's how it works:
-We give components something called "props". Props are like properties that we give to components. We pass these props as objects, kind of like passing parameters
-
-```javascript
-<script type = "text/babel">
-        function HELLO(obj) {
-            let {age,occupation} = obj;
-            let name = "Jasbir";
-
-            return <h1>Hello {name} Thanks Babel :) is {age} old and works as {occupation} </h1>;
-        }
-        ReactDOM.render(<HELLO age = {35} occupation = {"mentor and SDE "}></HELLO>, document.getElementById("root"));
-</script>
-```
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/056/514/original/upload_3a5c83aa759fedde3fa4ddb2fa3ce43e.png?1699635530)
-
 ---
-title: Component Composition
+title: JSX and Components
 description: Discussion of basic details about the component composition in detail.
 duration: 2100
 card_type: cue_card
 ---
-## Component Composition
-
-In this section we will talk about concept of `component composition`.
-
-### Anology :
-In the LinkedIn example below, think of creating a comment list as similar to how LinkedIn organizes information on its comments page. You can break down the comment into smaller parts, just like LinkedIn has multiple components within a comment. For example, a comment could contain components for a profile picture, options menu (like three dots), and user information
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/056/516/original/upload_42b7a589753bea34470b27f115f6835a.png?1699635748)
 
 
-**Question to learner:  Imagine you want to display the "HELLO" component five times and the "BYE" component once.**  
+We are able to achieve the result what we wanted , but If you look at the code right now , you will feel there could have been a better way of doing all this , 
+atleast I feel so! , 
 
-**Answer**: 
-We will use `component composition`, which is a fancy way of saying we can combine smaller components to make bigger ones.
-
-Imagine you have two parts of your app: a "HELLO" part and a "BYE" part. If you want to show "HELLO" five times and "BYE" once, you can combine them together to make a bigger component.
-
-For example, we can create a new component called HELLO PARENT. This component will include five instances of the "HELLO" component and one instance of the "BYE" component. This idea of putting smaller components together to make a larger one is what we call component composition.
+I won't like to write React code like this 
 
 
-```jsx
+There are several problems with this way of writing code and the List is endless - 
+
+1. **Verbosity and Readability**:
+   - Using `React.createElement` directly makes the code verbose and harder to read, especially as the application grows.
+
+2. **Lack of Componentization**:
+   - One of the core features of React is its component-based architecture, which allows developers to break down the UI into reusable, isolated, and manageable pieces called components. By not using components, you lose out on the benefits of modularity and reusability , We will see the compoenent Architecture in this class only that How it will improve the whole React Experience
+
+3. **Maintenance and Scalability**:
+   - Applications written without components are harder to maintain and scale. As the application grows, the complexity of managing state and interactions between UI elements increases. Components help manage this complexity by encapsulating functionality and separating concerns.
+
+5. **Integration Challenges**:
+   - you might find it difficult in this way to integrate third-party libraries or follow community best practices, which could slow down development and integration processes.
+
+
+### Conclusion
+
+While it's useful to understand how React works under the hood with `React.createElement`, for practical application development
+
+
+Adopting JSX and a component-based architecture is highly recommended.
+
+Let's see What is this `JSX` and React's Component Based Architechture
+
+
+---
+title: Component and JSX
+description: Discussion of basic details about the component composition in detail.
+duration: 2100
+card_type: cue_card
+---
+
+
+To create a React program using JSX and functional components, let's first understand what a component and JSX are
+
+### What is a Component?
+
+To understand a React component using a real-life analogy, consider a **house** as an example. A house is built using various smaller components such as rooms, doors, and windows. Each of these components serves a specific purpose and can be designed individually yet function together as part of the larger structure.
+
+### Breaking Down the Analogy:
+
+1. **House (The Entire Application)**:
+   - Think of the complete React application as a house. This house is made up of different parts—rooms, doors, windows, etc.—which together make the house functional and livable.
+
+2. **Rooms (React Components)**:
+   - Each room in a house can be thought of as a React component. Just like rooms, components are self-contained. A kitchen has all the appliances and space to cook meals, 
+   
+   A living room might have sofas and a TV for relaxation, and a bedroom provides furniture for sleeping and personal space.
+
+   Similary You have a WashRoom for your hygiene needs
+
+   A Game Room can be there to have fun as well , I am definetely Going to make one for me
+
+   
+
+
+So , In React, a **component** is independent piece of UI. It's like a JavaScript function that returns elements describing what should appear on the screen. Components can be simple and display static content (like a header or button), or complex and maintain internal state and lifecycle events (like a form or interactive dashboard). Components help in building encapsulated units of functionality that manage their own state, leading to organized and manageable code. They can be classified mainly into two types:
+
+- **Functional Components**: These are simple JavaScript functions that return JSX.
+- **Class Components**: These are ES6 classes that extend `React.Component` and can include more complex logic, lifecycle methods, and state management.
+
+
+Class Components are now nearly deprecated beacuse of their complexity we will be using `Functional Components`
+
+### What is JSX?
+
+**JSX** is a syntax extension for JavaScript that looks similar to XML or HTML. JSX is used with React to describe what the UI should look like. It lets you write HTML-like code in your JavaScript files. 
+
+Under the hood, JSX is transformed into `React.createElement` calls by preprocessors like Babel. This makes it easier to write and understand the UI code.
+
+### Creating React Application Without Babel (JSX won't be recognized)
+
+First, let's write the code without using Babel, where JSX will not be recognized:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
 <body>
-    <!-- the whole application lives inside-->
-    <div id = "root"></div>
-
-    <!-- single Page applcation : JS -->
-    <script type = "text/babel">
-        // -> component : a function that returns HTML
-        function HELLO(prop) {
-            let {name,age} = prop
-            return <h1>Hello {name} Thanks Babel is {age} old </h1>;
-        }
-        function BYE(){
-            return <p>BYE Component</p>
+    <div id="root"></div>
+    <script>
+        // Functional Component using JSX
+        function App() {
+            return <h1>Hello from React</h1>;
         }
 
-        function HELLOPARENT() {
-            return <div>
-                <HELLO name = {"Rohan"} age = {10}></HELLO>
-                <HELLO name = {"Rajneesh"} age = {30}></HELLO>
-                <HELLO name = "Krishna" age = {40}></HELLO>
-                <HELLO ></HELLO>
-                <BYE></BYE>
-                </div>
-
-        }
-        ReactDOM.render(<HELLOPARENT></HELLOPARENT>, document.getElementById("root"));
+        ReactDOM.render(<App />, document.getElementById('root'));
     </script>
 </body>
+</html>
 ```
 
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/056/515/original/upload_4c0071f1727e30cb02ea4e927d07de0c.png?1699635619)
+### Step-by-Step Explanation
+
+1. **Creating a Functional Component**:
+   - `function App() { ... }`
+     - **App** is defined as a function, which makes it a functional component in React terms. In React, a functional component is simply a JavaScript function that returns React elements.
+     - Components can be named using any valid JavaScript identifier but typically use PascalCase (where each word starts with a capital letter).
+
+2. **Returning JSX from the Component**:
+   - `return <h1>Hello from React</h1>;`
+     - Inside the `App` function, JSX is returned. JSX allows you to write HTML-like syntax directly within JavaScript, which makes the structure of the component’s UI clear and readable.
+     - **JSX Element**: The `<h1>Hello from React</h1>` is a JSX element. JSX compiles into `React.createElement()` calls behind the scenes, but it’s written like HTML for better readability and familiarity.
+
+3. **Rendering the Component**:
+   - `ReactDOM.render(<App />, document.getElementById('root'));`
+     - This line of code is where React starts interacting with the DOM.
+     - **ReactDOM.render**: This function is used to render a React element into the DOM in the supplied `container` and returns a reference to the component (or returns `null` for stateless components).
+       - **First Argument `<App />`**: Here, the `App` component is instantiated. The JSX tag `<App />` translates to a React element representing the `App` component. This is similar to creating an instance of a class or calling a function.
+       - **Second Argument `document.getElementById('root')`**: This specifies where the React application should be mounted in the DOM. In this case, it targets a DOM element with the ID `root`, typically a `<div>` element in your HTML.
+     - This method tells React to wipe out any existing content inside the `<div id="root">` and replace it with the JSX returned by the `App` component, which in this case, is `<h1>Hello from React</h1>`.
+
+### What is JSX Here?
+
+- **JSX**: In this script, `<h1>Hello from React</h1>` and `<App />` are examples of JSX. JSX lets you expressively layout the component’s HTML structure within JavaScript with a syntax that resembles HTML. The JSX expression `<h1>Hello from React</h1>` represents an HTML `h1` element with text content "Hello from React".
+
+
+Now you will notice that this code will not run and will not provide the expected Output!
+
+
+It Gives a Blank page
+
+<img src='https://i.ibb.co/x1CwMw0/Screenshot-2024-04-18-at-5-23-35-AM.png'>
+
+
+Why is this Happeing?
+
+Your Browser can Only understand HTML , CSS and JS code , but if you see JSX is a differnent format altoghther , So Your Browser is not able to understand what this code means and hence not able to understand and render the output.
+
 
 
 ---
-title: React rendering process
-description: How react takes in JSX and convert that to UI.
+title: Adding Babel to parse JSX
+description: Discussion of basic details about the component composition in detail.
 duration: 2100
 card_type: cue_card
 ---
 
-`Instructor cue: In this section you have to only explain the steps of rendering  in react . You don't need to write the steps manually. Simply copy and paste the provided definitions and code snippets from the below  explaination
 
-## How react render your application on dom 
+### Adding Babel and Using JSX
 
-**JSX Transpilation**:
-Before React code can run in the browser, JSX (JavaScript XML) needs to be converted into plain JavaScript. This process is called JSX transpilation and is handled by a tool called `Babel`.
+To use JSX, we need Babel to convert JSX into `React` calls. Here's how you can include Babel:
 
-`Input`:
-
-```js
- function HELLO() {
-            let age=30;
-            let name = "Jasbir";
-
-            return <h1>Hello {name} Thanks Babel and you are {age<18 ?"underage":"eligble"} </h1>;
-        }
-```
-
-`Ouput`
-
-```js
-function HELLO() {
-  let age = 30;
-  let name = "Jasbir";
-  return /*#__PURE__*/React.createElement("h1", null, "Hello ", name, " Thanks Babel and you are ", age < 18 ? "underage" : "eligble", " ");
-}
-```
-
-**Virtual DOM Creation**:
-eact creates a virtual representation of the actual Document Object Model (DOM) in memory. This virtual DOM is a lightweight copy of the real DOM. React uses the React.createElement function to create elements, which are then used to construct the virtual DOM.
-
-```js
-const vdom ={
-    type: 'div',
-
-    props: {
-        class: "container",
-        children: [
-            {
-                type: 'h1', 
-                props: {
-                    children: ' this is '
-                }
-            },
-            {
-                type: 'p', props: {
-                    class: 'paragraph',
-                    children: [
-                        ' I am ',
-                        {
-                            type: (props) => ({
-                                type: "button", props:
-                                    { children: props.counter + "Clicks" }
-                            }),
-                            props: { counter: 1 }
-                        }
-                        ,
-                        ' from'
-                    ]
-                }
-            }
-        ]
-    }
-}
-```
-
-**Component Mounting**:
-When React elements represent components, React initializes these components by instantiating their classes or functional components. This initialization process sets up the component's state, props, and other internal data in preparation for rendering.
-
-```js
-const vdom ={
-    type: 'div',
-    props: {
-        class: "container",
-        children: [
-            {
-                type: 'h1', props: {
-                    children: ' this is '
-                }
-            },
-            {
-                type: 'p', props: {
-                    class: 'paragraph',
-                    children: [
-                        ' I am ',
-                        {
-                            type: "button",
-                            children : "1 Clicks"
-                        }
-                        ,
-                        ' from'
-                    ]
-                }
-            }
-        ]
-    }
-}
-```
-
-**Render Step**:
-React takes the created React elements and renders them into the actual browser DOM. It traverses the virtual element tree and generates corresponding DOM nodes, thereby creating the visual representation of the user interface on the webpage.
-    
-**DOM Update**:
-After rendering the components, React updates the browser DOM to reflect the changes made. It adds the generated DOM nodes to the appropriate places in the document structure, establishing the initial layout of the user interface.
-    
-**Event Handling**:
-React sets up event listeners on relevant DOM elements to handle user interactions, such as clicks or input changes. These event listeners ensure that specified event handlers are executed when triggered, allowing for interactive features within the user interface.
-
-
----
-title: Rendering list from Data
-description: Discussion of basic introduction of using the list in the react in detail.
-duration: 2100
-card_type: cue_card
----
-
-## Rendering List from Data
-
-Intially the list items are fetched using the simple for loop from the list and gets rendered on the browser.
-
-```jsx
-<div id = "root"></div>
-    <script type = "text/babel">
-        let statinoary = ["Pen", "Pencil", "Eraser", "Ruler"];
-        
-        // console.log(liItemsArr)
-        
-        function List() {
-            return<div>
-                <h2>List Items</h2>
-                <ul>{statinoary.map((item) => {
-                    return <li>{item}</li>
-                })}</ul>
-            </div>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- // Babel -->
+    <script type="text/babel">
+        // Functional Component using JSX
+        function App() {
+            return <h1>Hello from React</h1>;
         }
 
-        ReactDOM.render(<List></List>, document.getElementById("root"));
+        ReactDOM.render(<App />, document.getElementById('root'));
     </script>
+</body>
+</html>
 ```
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/056/517/original/upload_0b90af9c88d82aaa1b7535a2cb1650cd.png?1699635846)
 
-When you want to print a list it expects an array of string and that string code should be valid html, so when you map you get the valid html in the form of an array and then react internally spread that and then put it as li element.
+### How Babel Reads JSX
 
----
-title: Key Prop
-description: Key Props help identify each item uniquely.
-duration: 2378
-card_type: cue_card
----
+Babel is a JavaScript compiler that transforms syntax. With the React preset, Babel converts JSX into `React.createElement` calls. For example, `<h1>Hello from React</h1>` in JSX is transformed by Babel into `React.createElement("h1", null, "Hello from React")`. This transformation makes the JSX syntax usable in browsers that only understand standard JavaScript.
 
-## Key Prop
+### Explanation:
 
-**[Ask the learners]**
-Do you see any mistake here?
-
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/056/518/original/upload_93a7ee3cb2e710a3513898f5e5c65fb1.png?1699635897)
-
-`Instrcutor Queue`: Please mention these to below points 
--> Every child in a list should have a key prop. A unique value for each list item..
--> It also helps react to identify each item uniquely among sibbling in VDOM so it can effciently find the keys 
+- Babel's inclusion as a script that processes all `<script type="text/babel">` tags allows us to write modern JavaScript and JSX directly in our HTML files.
+- The `App` function is a simple React functional component that returns JSX. This function is then used within `ReactDOM.render` to mount our component to the DOM.
+- The JSX inside `App()` looks like HTML and is more intuitive and easier to maintain than `React.createElement` calls.
 
 
-```jsx
-<div id = "root"></div>
-    <script type = "text/babel">
-        let statinoary = ["Pen", "Pencil", "Eraser", "Ruler"];
-        
-        // console.log(liItemsArr)
-        
-        function List() {
-            return<div>
-                <h2>List Items</h2>
-                <ul>{statinoary.map((item,idx) => {
-                    return <li key = {idx}>{item}</li>
-                })}</ul>
-            </div>
-        }
-        ReactDOM.render(<List></List>, document.getElementById("root"));
-    </script>
-```
+So Now you have Idea about React , React DOM , Component , JSX and Babel
+
+But this setup is ideal  for learning purposes. For production or larger projects, more sophisticated build setups is needed 
+
+So in the Next class , We will be talking about Build Tools and will see how to set up react with Build Tools.
+
+
+Start the Doubt Session.
+
+
