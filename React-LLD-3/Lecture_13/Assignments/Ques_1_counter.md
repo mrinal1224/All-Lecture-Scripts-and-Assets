@@ -40,30 +40,36 @@ export default Counter;
 
 **Instructions:**
 
-1. Initialize the state inside the constructor of the Counter component. The state should have a property `count` initialized to 0.
+1. **Initialize the State:**
+   In the constructor of the Counter component, initialize the state with a `count` property set to 0. Remember, state initialization is crucial for tracking changes in your component.
 
-2. Implement the `onClick` event handler for the increment button. This event handler should update the count by incrementing it by 1 when the button is clicked.
+2. **Implement the `onClick` Event Handlers:**
+   - For incrementing the count: Implement an `incrementCount` method. This method should update the state, increasing the `count` by 1.
+   - For decrementing the count: Implement a `decrementCount` method. This method should update the state, decreasing the `count` by 1.
 
-3. Implement the `onClick` event handler for the decrement button. This event handler should update the count by decrementing it by 1 when the button is clicked.
+**Hints:**
+- To modify the state in a class-based component, use `this.setState()`. This ensures the component re-renders and displays the updated state.
+- Bind the `incrementCount` and `decrementCount` methods in the constructor or use arrow functions to ensure they have access to `this`.
 
-**Note:**
-- You are not allowed to use functional components or hooks for this task. Only class-based components are permitted.
-- Ensure that the component updates the count and re-renders properly when the buttons are clicked.
+3. **Bind and Attach the Event Handlers:**
+   In your render method, bind the `incrementCount` and `decrementCount` methods to the respective buttons. This will make sure that the count updates correctly when the buttons are clicked.
 
+4. **Update the UI:**
+   Display the current count in the render method's div element, ensuring it updates when either button is clicked.
 
 **Solution Approach:**
 
 To solve this problem, we need to complete the Counter component by implementing its state management and event handlers. Here's the approach we'll take:
 
-1. Initialize the state in the constructor: We'll initialize the state with a property `count` set to 0.
+1. **Initialize the state in the constructor:** We'll initialize the state with a property `count` set to 0.
 
-2. Implement event handlers:
-   - Increment: We'll implement an `incrementCount` method that updates the count by incrementing it by 1.
-   - Decrement: We'll implement a `decrementCount` method that updates the count by decrementing it by 1.
+2. **Implement event handlers:**
+   - **Increment:** We'll implement an `incrementCount` method that updates the count by incrementing it by 1.
+   - **Decrement:** We'll implement a `decrementCount` method that updates the count by decrementing it by 1.
 
-3. Bind event handlers: We'll bind the event handlers to the respective buttons in the render method.
+3. **Bind event handlers:** We'll bind the event handlers to the respective buttons in the render method.
 
-4. Update the UI: We'll ensure that the UI displays the current count and updates accordingly when the buttons are clicked.
+4. **Update the UI:** We'll ensure that the UI displays the current count and updates accordingly when the buttons are clicked.
 
 **Solution Code:**
 
