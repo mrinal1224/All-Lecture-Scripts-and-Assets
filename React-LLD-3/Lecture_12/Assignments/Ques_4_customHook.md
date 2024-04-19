@@ -1,89 +1,75 @@
-**Problem Statement:**
+### Problem Statement: Currency Converter Hook
 
-You are tasked with building a simple web application that fetches and displays data from an API using React hooks. Your task is to implement a custom hook called `useFetch` that will handle fetching data from the provided API endpoint and return the fetched data to be displayed on the UI. You are provided with a basic React component structure and a stub for the `useFetch` hook. Your goal is to complete the implementation of the `useFetch` hook and render the fetched data onto the UI.
+Create a custom React hook called `useCurrencyConverter` that converts an amount from one currency to another using static exchange rates. This hook will facilitate currency conversions within components where such functionality is required.
 
-**Instructions:**
+#### Requirements:
 
-1. Implement the `useFetch` hook inside the `useFetch.js` file.
-2. Use the provided API endpoint (`https://api.example.com/data`) to fetch the data.
-3. Handle loading, error, and success states appropriately within the hook.
-4. Pass the fetched data to the `DataDisplay` component.
-5. Display the fetched data on the UI by mapping over it and rendering each item in a list.
-6. Style the UI using CSS according to your preference.
+1. The hook should accept two parameters:
+   - `baseCurrency`: The currency from which the conversion should start.
+   - `targetCurrency`: The currency to which the amount will be converted.
+2. The hook should return a function:
+   - `convert(amount)`: Takes a numerical value (the amount in `baseCurrency`) and returns the converted amount in `targetCurrency`.
+3. Use the following predefined exchange rates for conversion:
+   - USD to EUR: 0.93
+   - EUR to USD: 1.07
+   - GBP to USD: 1.21
+4. If an unsupported currency pair is used or if the input amount is not a number, the `convert` function should return `null`.
 
-**Code Stub:**
+#### Code Stub
 
 ```jsx
-// useFetch.js
-import { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 
-const useFetch = (url) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function useCurrencyConverter(baseCurrency, targetCurrency) {
+    const convert = useCallback((amount) => {
+        // Conversion logic will be placed here.
+    }, [baseCurrency, targetCurrency]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
+    return convert;
+}
+
+export default useCurrencyConverter;
+```
+
+#### Simplified Solution
+
+For a straightforward approach, we can use a series of `if` statements to determine the conversion based on the currency pair:
+
+```jsx
+import { useCallback } from 'react';
+
+function useCurrencyConverter(baseCurrency, targetCurrency) {
+    const convert = useCallback((amount) => {
+        if (isNaN(amount)) {
+            return null; // Return null if the amount is not a number
         }
-        const json = await response.json();
-        setData(json);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    fetchData();
+        if (baseCurrency === 'USD' && targetCurrency === 'EUR') {
+            return amount * 0.93;
+        } else if (baseCurrency === 'EUR' && targetCurrency === 'USD') {
+            return amount * 1.07;
+        } else if (baseCurrency === 'GBP' && targetCurrency === 'USD') {
+            return amount * 1.21;
+        } else {
+            return null; // Return null for unsupported currency pairs
+        }
+    }, [baseCurrency, targetCurrency]);
 
-    // Cleanup function
-    return () => {
-      // Cleanup code here
-    };
-  }, [url]);
+    return convert;
+}
 
-  return { data, loading, error };
-};
-
-export default useFetch;
+export default useCurrencyConverter;
 ```
 
-```jsx
-// App.js
-import React from 'react';
-import useFetch from './useFetch';
+#### Test Cases
 
-const App = () => {
-  const { data, loading, error } = useFetch('https://api.example.com/data');
+1. **Test Case 1**: Convert 100 USD to EUR.
+   - Expected Output: 93 (since the rate from USD to EUR is 0.93)
+2. **Test Case 2**: Convert 50 EUR to USD.
+   - Expected Output: 53.5 (since the rate from EUR to USD is 1.07)
+3. **Test Case 3**: Convert 10 GBP to USD.
+   - Expected Output: 12.1 (since the rate from GBP to USD is 1.21)
+4. **Test Case 4**: Convert 30 USD to GBP (unsupported currency pair).
+   - Expected Output: null
 
-  return (
-    <div className="app">
-      <h1>Data Fetching App</h1>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      {data && (
-        <div className="data-container">
-          <h2>Data:</h2>
-          <ul>
-            {data.map(item => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default App;
-```
-
-**Note:**
-
-- Ensure you handle loading, error, and success states appropriately.
-- You may need to adjust the API endpoint URL depending on the actual API you're using for testing.
-- Feel free to style the UI according to your preference using CSS.
+.
