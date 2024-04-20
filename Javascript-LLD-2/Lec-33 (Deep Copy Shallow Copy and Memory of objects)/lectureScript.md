@@ -8,7 +8,7 @@ card_type: cue_card
 **Agenda of this Lecture:**
 - Memory of JS Datatypes (Primitive and reference)
 - Shallow Copy and Deep Copy
-- Type Conversion and Type Coercion
+- Flatteing an Object
 - Truthy and Falsy Values
 
 
@@ -141,8 +141,383 @@ How is this happening?
 Now you know the difference between primitive and reference data types.
 
 ---
-title: Promise.all
+title: Deep Copy Shallow Copy
 description:
 duration: 600
 card_type: cue_card
 ---
+
+
+In JS , We often have to make copies of Objects , There are several use cases of making copies of objects , the most important use case is Immbutablity
+
+
+Immutability: In functional programming paradigms, data immutability is a core concept. This means once data is created, it should not be changed. When you need to update an object, you create a copy of it with the modifications, rather than changing the original object. 
+
+
+So Now , There are two ways of Creating of creating object Copies in JS
+
+1. Shallow Copy
+2. Deep Copy
+
+
+#### Shallow copy
+
+Shallow copying refers to the process of creating a new object that is a copy of an existing object, with its properties referencing the same values or objects as the original. In JavaScript, this is often achieved using methods like `Object.assign()` or the `spread syntax ({...originalObject})`. 
+
+Shallow copying only creates a new reference to the existing objects or values and doesn’t create a deep copy, which means that nested objects are still referenced, not duplicated.
+
+
+Let's see with an Example
+
+```js
+let zoo = {
+  name: "Amazing Zoo",
+  location: "Melbourne, Australia",
+  animals: [
+    {
+      species: "Lion",
+      favoriteTreat: "Meat",
+    },
+    {
+      species: "Panda",
+      favoriteTreat: "Leaves",
+    },
+  ],
+};
+
+let shallowCopyZoo = { ...zoo };
+console.log(shallowCopyZoo) // Prints the whole copied Zoo Object
+
+shallowCopyZoo.location = 'Kerela , India'
+
+console.log(zoo)
+console.log(shallowCopyZoo)
+
+
+// shallowCopyZoo.animals[0].favoriteTreat = "🍖";
+// console.log(zoo.animals[0].favoriteTreat); 
+// "🍖", not "🥩"
+```
+1. console.log(shallowCopyZoo) prints the copied zoo object showing its details including the modified location. (Kerela India)
+
+2. console.log(zoo) prints the original zoo object, which remains unchanged with respect to the location.
+(Australia , Melbourne)
+
+
+Perfect!
+
+But Now let's try to change any nested properties inside the array or the nested object , let's change favourite treat
+
+
+```js
+let zoo = {
+  name: "Amazing Zoo",
+  location: "Melbourne, Australia",
+  animals: [
+    {
+      species: "Lion",
+      favoriteTreat: "Meat",
+    },
+    {
+      species: "Panda",
+      favoriteTreat: "Leaves",
+    },
+  ],
+};
+
+let shallowCopyZoo = { ...zoo };
+console.log(shallowCopyZoo) // Prints the whole copied Zoo Object
+
+shallowCopyZoo.location = 'Kerela , India'
+
+console.log(zoo)
+console.log(shallowCopyZoo)
+
+// Changing the favorite treat of Panda in copied obj
+shallowCopyZoo.animals[1].favoriteTreat = "Fruits";
+
+// Accesing the favorite treat from original Object
+console.log(zoo.animals[1].favoriteTreat); 
+//"Fruits" will be printed, not "Leaves"
+
+
+console.log(zoo)
+console.log(shallowCopyZoo)
+
+
+console.log(zoo.animals === shallowCopyZoo.animals)
+// true
+
+console.log(zoo === shallowCopyZoo)
+// false
+```
+
+
+This can lead to potential issues in code bases and make life especially hard when working with large Modifying a nested object in the shallow copy also affects the original object and any other shallow copies, as they all share the same reference.
+
+
+
+## Deep Copy
+
+To create a deep copy of an object in JavaScript when the object contains nested structures (like arrays or other objects), a common technique involves using `JSON.stringify()` and `JSON.parse()`. This method serializes the object to a JSON string and then parses that string back into a new JavaScript object. Here’s how you can do it for the given `zoo` object and what each step does:
+
+### Step-by-Step Explanation
+
+1. **Serialize the Object to a JSON String**:
+   Using `JSON.stringify()`, convert the entire `zoo` object into a JSON-formatted string. This string represents a flat, textual version of the original object, including all nested structures.
+
+   ```javascript
+   let zooString = JSON.stringify(zoo);
+   ```
+
+   At this point, `zooString` contains a string representation of the `zoo` object. The entire structure of the object, including its nested arrays and their contents, is flattened into this string.
+
+2. **Deserialize the JSON String back to a JavaScript Object**:
+   Using `JSON.parse()`, convert the JSON string back into a JavaScript object. This step creates a new object that is structurally identical to the original but completely independent of it.
+
+   ```javascript
+   let deepCopyZoo = JSON.parse(zooString);
+   ```
+
+   Now, `deepCopyZoo` is a new object that has the same data as `zoo` but with completely separate references for all its nested structures. This means changes to nested objects in `deepCopyZoo` won't affect those in the original `zoo` object.
+
+### Implementation Code
+Here’s how you would modify your code to create a deep copy of the `zoo` object using the described method and demonstrate that it behaves as expected:
+
+```javascript
+let zoo = {
+  name: "Amazing Zoo",
+  location: "Melbourne, Australia",
+  animals: [
+    {
+      species: "Lion",
+      favoriteTreat: "Meat",
+    },
+    {
+      species: "Panda",
+      favoriteTreat: "Leaves",
+    },
+  ],
+};
+
+// Creating a deep copy using JSON.stringify and JSON.parse
+let zooString = JSON.stringify(zoo);
+let deepCopyZoo = JSON.parse(zooString);
+
+// Modifying the location in the deep copy
+deepCopyZoo.location = 'Kerala, India';
+
+// Changing the favorite treat of Panda in the deep copy
+deepCopyZoo.animals[1].favoriteTreat = "Fruits";
+
+console.log(zoo);  // Original object, location and panda's treat are unchanged
+console.log(deepCopyZoo);  // Modified object, location changed to Kerala and panda's treat to Fruits
+
+// Accessing the favorite treat from original Object
+console.log(zoo.animals[1].favoriteTreat);  // "Leaves" will be printed, not "Fruits"
+```
+
+### Conclusion
+- This method works well for objects without functions, Dates, undefined, or other non-serializable values because `JSON.stringify()` can lose or alter these types of data.
+- For objects containing functions or other complex types, a different deep copying method would be needed, such as using a library or a custom recursive function.
+
+---
+title:Your Own Deep Copy Function
+description:
+duration: 600
+card_type: cue_card
+---
+
+**Can be skipped for Beginner Learners can be provide in post reads**
+
+
+Creating a simple JavaScript object with nested properties and a method is a straightforward process. Then, we will write a custom function to deep clone this object, ensuring that even the methods and nested structures are copied correctly. Let's go through each step:
+
+### Step 1: Create the Original Object
+We'll define an object named `originalObj` with nested properties and a method. The object will have the following structure:
+
+- `name`: a simple string property.
+- `details`: a nested object with properties.
+  - `age`: a numeric property.
+  - `hobbies`: an array of strings.
+- `greet`: a method that prints a greeting message.
+
+Here's the code for the original object:
+
+```javascript
+const originalObj = {
+    name: "Alice",
+    details: {
+        age: 30,
+        hobbies: ["reading", "cycling", "hiking"]
+    },
+    greet() {
+        console.log(`Hello, my name is ${this.name}!`);
+    }
+};
+```
+
+### Step 2: Write a Deep Clone Function
+The function to deep clone this object needs to handle various data types such as objects, arrays, and functions. We'll use recursion to ensure all nested properties are cloned.
+
+Here's a simple implementation of a deep clone function using recursion:
+
+```javascript
+function deepClone(obj) {
+    if (obj === null || typeof obj !== 'object') {
+        return obj;
+    }
+
+    if (obj instanceof Array) {
+        let copy = [];
+        for (let i = 0; i < obj.length; i++) {
+            copy[i] = deepClone(obj[i]);
+        }
+        return copy;
+    }
+
+    if (obj instanceof Function) {
+        return obj.bind({});
+    }
+
+    if (obj instanceof Object) {
+        let copy = {};
+        for (let attr in obj) {
+            if (obj.hasOwnProperty(attr)) {
+                copy[attr] = deepClone(obj[attr]);
+            }
+        }
+        return copy;
+    }
+
+    throw new Error('Unable to copy obj! Its type is not supported.');
+}
+```
+
+### Explanation of the Deep Clone Function
+- **Base Case**: If the object is not an object or is `null`, return it directly.
+- **Arrays**: If it's an array, clone each element.
+- **Functions**: If it's a function, return a bound copy of the function to an empty object. This maintains the function but does not bind it to the original object's context.
+- **Objects**: If it's a regular object, recursively copy each property.
+
+### Step 3: Test the Deep Clone Function
+We need to verify if the deep clone function works as expected, particularly that it copies the method and executes it in the context of the new object.
+
+```javascript
+// Clone the object
+const clonedObj = deepClone(originalObj);
+
+// Test the method
+clonedObj.greet();  // Should output: "Hello, my name is Alice!"
+
+// Verify that changes to the cloned object do not affect the original
+clonedObj.name = "Bob";
+clonedObj.details.age = 25;
+console.log(originalObj.name);  // Outputs: "Alice"
+console.log(originalObj.details.age);  // Outputs: 30
+```
+
+### Conclusion
+The deep clone function provided can handle objects with nested properties and methods, and the testing shows that it works as expected, maintaining separation between the original and the cloned objects. This implementation is easy to understand and effective for most common use cases in JavaScript.
+
+
+---
+title: Truthy and Falsy values
+description:
+duration: 600
+card_type: cue_card
+---
+
+### Truthy and Falsy Values in JavaScript
+
+In JavaScript, truthy and falsy values are an important concept that deals with how values are treated when evaluated in a Boolean context. This can affect flow control (like in `if` statements) and logical operations.
+
+#### Falsy Values
+Falsy values in JavaScript are values that are considered false when evaluated in a Boolean context. There are exactly six falsy values in JavaScript:
+1. `false` - The boolean value false.
+2. `0` - The number zero.
+3. `-0` - Negative zero.
+4. `""` (empty string) - A string with no content.
+5. `null` - Represents no value or a null reference.
+6. `undefined` - Indicates a variable has not been assigned a value.
+7. `NaN` - Stands for "Not a Number", used as a result of an undefined or erroneous arithmetic operation.
+
+Here's a code example that demonstrates how each falsy value behaves in a conditional statement:
+
+```javascript
+// List of falsy values
+const falsyValues = [false, 0, -0, "", null, undefined, NaN];
+
+// Test each falsy value in an if statement
+falsyValues.forEach(value => {
+  if (value) {
+    console.log(`${value} is truthy`);
+  } else {
+    console.log(`${value} is falsy`);
+  }
+});
+```
+
+In this example, the console will print "`falsy`" for each value, indicating that none of them satisfy the `if` condition.
+
+#### Truthy Values
+Truthy values are all the values in JavaScript that are not falsy. This includes:
+- All numbers (positive and negative) except zero and NaN.
+- All strings except the empty string `""`.
+- All objects, including arrays and functions, even if they are empty.
+
+Here’s a code example to illustrate truthy values:
+
+```javascript
+// Examples of truthy values
+const truthyValues = [1, -1, "hello", {}, [], () => {}];
+
+// Test each truthy value in an if statement
+truthyValues.forEach(value => {
+  if (value) {
+    console.log(`${value} is truthy`);
+  } else {
+    console.log(`${value} is falsy`);
+  }
+});
+```
+
+In this example, the console will print "`truthy`" for each value, as they all pass the `if` condition.
+
+### Applications of Truthy and Falsy Values
+
+Truthy and falsy values are used extensively in JavaScript programming for several purposes:
+
+1. **Conditional Execution:** Simplify conditions in `if` statements, ternary operators, or anywhere else a condition is needed. It helps in writing concise and less verbose code.
+   ```javascript
+   const message = "";
+   if (!message) {
+     console.log("No message provided");
+   }
+   ```
+
+2. **Logical Operators:** In logical operations like `&&` and `||`, JavaScript returns one of the operands' actual values, not just true or false. This is used for assigning default values or running functions conditionally.
+   ```javascript
+   const port = process.env.PORT || 3000; // Use PORT from environment or default to 3000
+   console.log(`Server running on port ${port}`);
+   ```
+
+3. **Function Arguments:** Check if optional arguments are provided or fall back to a default.
+   ```javascript
+   function greet(name) {
+     name = name || "Guest";
+     console.log(`Hello, ${name}!`);
+   }
+   ```
+
+Understanding truthy and falsy values can help in mastering JavaScript's behavior in various scenarios, leading to better coding practices and debugging skills.
+
+
+
+
+
+
+
+
+
+
