@@ -328,10 +328,9 @@ duration: 600
 card_type: cue_card
 ---
 
-**Can be skipped for Beginner Learners can be provide in post reads**
+1. Creating a simple JavaScript object with nested properties and a method
 
-
-Creating a simple JavaScript object with nested properties and a method is a straightforward process. Then, we will write a custom function to deep clone this object, ensuring that even the methods and nested structures are copied correctly. Let's go through each step:
+2. Then, we will write a custom function to deep clone this object, ensuring that even the methods and nested structures are copied correctly. Let's go through each step:
 
 ### Step 1: Create the Original Object
 We'll define an object named `originalObj` with nested properties and a method. The object will have the following structure:
