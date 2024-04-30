@@ -1,4 +1,3 @@
-Sure, here's an advanced programming question that involves Express, Express middleware, and MongoDB Atlas:
 
 ---
 
