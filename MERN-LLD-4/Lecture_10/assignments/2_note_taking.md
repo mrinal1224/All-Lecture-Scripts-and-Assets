@@ -157,4 +157,3 @@ app.delete('/notes/:id', async (req, res, next) => {
 
 ---
 
-I hope this problem statement, solution, and test cases provide an interesting and challenging task for implementing a backend service with Express, middleware, and MongoDB Atlas. If you need further clarification or additions, feel free to ask!
