@@ -5,7 +5,6 @@ duration: 120
 card_type: cue_card
 ---
 ## Agenda
-- what and why and how of tailwind [pre-read]
 - React Devtools
     - Review of features
 - UsEffect and it's 3 versions

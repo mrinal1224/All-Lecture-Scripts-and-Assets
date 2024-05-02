@@ -51,7 +51,9 @@ We will be using Vite for our development purpose
 
 ### React Development with Vite
 
-React is a powerful tool designed to manage the complex front-end needs of modern web applications. While traditional HTML, CSS, and JavaScript offer some capabilities, they fall short when it comes to building and managing larger applications, such as LinkedIn or Facebook. For this reason, frameworks like React have been developed, along with build tools like Vite that streamline development and optimize production-ready code.
+React is a powerful tool designed to manage the complex front-end needs of modern web applications. While traditional HTML, CSS, and JavaScript offer some capabilities, they fall short when it comes to building and managing larger applications, such as LinkedIn or Facebook. 
+
+For this reason, frameworks like React have been developed, along with build tools like Vite that streamline development and optimize production-ready code.
 
 #### Why Vite?
 
