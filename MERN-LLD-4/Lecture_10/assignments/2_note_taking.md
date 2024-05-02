@@ -1,6 +1,3 @@
-
----
-
 ### Problem Statement:
 
 You're tasked with developing a backend service for a simple note-taking application. The service should allow users to perform CRUD (Create, Read, Update, Delete) operations on notes. Notes should be stored in a MongoDB Atlas database, and the backend should be built using Express and middleware for handling request and response data. Below are the requirements:
