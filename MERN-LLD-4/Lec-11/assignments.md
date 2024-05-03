@@ -1,10 +1,10 @@
 Here are 10 multiple-choice questions along with their correct answers and explanations:
 
 1. **What is Stripe?**
-   - A) A type of programming language
-   - B) A payment processing platform
-   - C) A frontend JavaScript framework
-   - D) An operating system
+   - A. A type of programming language
+   - B. A payment processing platform
+   - C. A frontend JavaScript framework
+   - D. An operating system
    - **Correct Answer:** B) A payment processing platform
    - **Explanation:** Stripe is a popular payment processing platform that allows businesses to accept payments over the internet.
 
