@@ -1,4 +1,4 @@
-Sure, here are 10 multiple-choice questions related to Node.js architecture and non-blocking I/O along with explanations for the correct answers:
+
 
 1. What is Node.js primarily known for?
 
