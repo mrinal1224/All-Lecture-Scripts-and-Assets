@@ -500,7 +500,11 @@ Navigate to your App.jsx file, where you should see this below:
 
 Clear the return element starting from line 9, and replace it with the text below to test your Tailwind to know if it is working. Input this:
 
+```html
 <h1 className="text-3xl font-bold underline text-center">Hello world!</h1> 
+```
+
+
 h1 element with tailwind css classnames
 Now you have this:
 
