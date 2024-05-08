@@ -514,3 +514,19 @@ According to the above image, text-3xl font-bold text-red-500 underline text-cen
 
 ### Conclusion
 You have now created a React and Tailwind CSS app using Vite, a frontend build tool. You have learned what Vite is and how to create a Vite app with a React template, as well as how to install Tailwind and other dependencies.
+
+
+In this class we now have an Idea of what client ide routing is and We have also set up tailwind for our movies project and have dicussused the wireframe and features of it
+
+From Next Class we wil start building it further and will implement all the features one by one
+
+
+**Homework**
+
+Build a navigation bar and have two `LINKS` on it, one by the name `Home` and one by the name `Watchlist`
+
+Create two Components by the name `Home` and `Watchlist`
+
+When you click on `Home` on the Navbar `Home` component should get rendered and when you click on `Watchlist` so `Watchlist` should get Rendered
+
+`Use React-Router-DOM to achieve this`
