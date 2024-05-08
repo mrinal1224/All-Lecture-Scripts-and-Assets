@@ -316,9 +316,14 @@ export default Routing
 * Use best practices and define a new file for each component.
 
 
+---
+title: IMDB Project
+description:
+duration: 4827
+card_type: cue_card
+---
 
-
-## IMDB Clone React Website
+## IMDB Clone React Project
 
 ### Project Description
 
@@ -356,20 +361,152 @@ Tailwind CSS is a highly popular and innovative utility-first CSS framework for 
 4. **Performance Optimization:** Tailwind CSS is designed with performance in mind. It generates optimized CSS files by purging unused classes, resulting in smaller file sizes and faster loading times for web pages.
 5. **Active Community and Ecosystem:** Tailwind CSS has a thriving community of developers who contribute to its growth and share resources. Additionally, there are numerous plugins and extensions available that enhance Tailwind's capabilities, making it suitable for a wide range of web development projects.
 
-In this application we will be integrating tailwind to our react app.
 
-- **tailwind.confing.js**
 
-```javascript=
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-```
 
+You can learn more about tailwind and how to set it up here with this link - https://tailwindcss.com/
+
+
+Let's now Setup Tailwind in our React app
+
+#### Step 1 – Create Your Project Folder
+
+Open your terminal, and navigate to the folder where you want to build your project – for example Desktop. Input the command below in the terminal and click enter:‌
+
+`npm create vite@latest your-project-name -- --template react`
+
+
+"your-project-name" shoud be replaced with your project name. `movies-app` for example
+
+The command above will create your project folder.‌
+
+My project name is "movies-app", the movies-app folder will be created in the Programming folder on my Desktop
+
+**‌Note that we have used -- --template react to specify that we are building a React app with Vite.**
+
+#### Step 2 – Navigate to Your Project Folder
+Input the command below in your terminal and click enter:
+
+`cd movies-app`
+
+‌This command will navigate to your project folder. You should have this:
+
+Inputing "cd movies-app" in terminal to navigate to the "movies-app" folder
+
+#### Step 3 – Install Tailwind CSS and Other Dependencies
+Input the command below in your terminal and click enter:
+
+`npm install -D tailwindcss postcss autoprefixer`
+
+
+Input this command to install the tailwindcss, postcss and autoprefixer dependencies
+
+This command will install the following:
+
+1. The Tailwind CSS framework
+2. Post CSS, which provides plugins to perform different functionalities like prefixes in Vanilla CSS
+3. Autoprefixer, which is a PostCSS plugin to parse CSS and add vendor prefixes to CSS rules.
+
+
+Your folder should look like this in your VSCode:‌
+
+<img src='https://www.freecodecamp.org/news/content/images/2023/01/Screenshot-2023-01-03-004354.png
+'/>
+
+Confirm that you have the below text in your package.json‌:
+
+<img src='https://www.freecodecamp.org/news/content/images/2023/01/Screenshot-2023-01-03-004416.png'> 
+Notice the autoprefixer, postcss and tailwindcss dependencies 
+
+
+The version number might have changed when you read this.
+
+Step 4 – Generate the Configuration Files
+Input the command below in your terminal and click enter:
+
+`npx tailwindcss init -p`
+
+This command will generate tailwindcss config file
+This command generates tailwind.config.cjs andpostcss.config.cjs configuration files, also known as config files. They help you interact with your project and customize everything.
+
+#### Step 5 – Configure Source Paths
+Add the paths to all of your template files in your tailwind.config.cjs file. Template files include HTML templates, JavaScript components, and other source files that contain Tailwind class names. This is to make sure that vanilla CSS is generated for the corresponding elements.
+
+Your tailwind.config.cjs looks like this for now:
+
+<img src='https://www.freecodecamp.org/news/content/images/2023/01/Screenshot-2023-01-03-235907.png'>
+
+Current config file named as tailwind.config.cjs, it contains module.export object to customize tailwind with property like content, theme and plugins
+
+Add this in your content section.
+
+`"./index.html",`
+
+
+`"./src/**/*.{js,ts,jsx,tsx}",`
+
+
+strings added to the content property separated with commas
+So your file should now look like this:
+
+<img src='https://www.freecodecamp.org/news/content/images/2023/01/Screenshot-2023-01-04-000648.png'>
+
+config file after updating the content property
+
+#### Step 6 – Add Tailwind Directives to Your CSS
+Tailwind directives are custom Tailwind-specific statements that instruct CSS how to behave. 
+
+You'll need to add directives for three of Tailwind’s layers.
+
+@tailwind base injects Tailwind's base styles and base styles registered by plugins, 
+
+@tailwind components injects Tailwind's component classes and component classes registered by plugins
+
+@tailwind utilities injects Tailwind's utility classes and utility classes registered by plugins.
+
+Add the statements below to your ./src/index.css file:
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+Your index.css file contains some default styling. You can clear all that and paste the three lines of directives above.
+
+#### Step 7 – Start Your Vite Server
+Run your build process with the npm run dev command in the terminal. You should get this message below in your terminal‌:
+
+The message you get after running your Vite server that provides localhost link, network and help.
+
+Hold the ctrl key and click on the link at Local – here it's http://127.0.0.1:5174. It will open a new tab in your browser if you do that.
+
+A screenshot of the webpage on first run
+
+<img src='https://www.freecodecamp.org/news/content/images/2023/01/Screenshot-2023-01-04-005850.png'>
+
+Our styles are broken because we cleared the default CSS in the index.css file to input our directives.
+
+Step 8 – Start Writing Tailwind CSS
+You can start using Tailwind’s utility classes to style your content. 
+
+Navigate to your App.jsx file, where you should see this below:
+<img src='https://www.freecodecamp.org/news/content/images/2023/01/Screenshot-2023-01-04-184158.png'>
+
+
+
+
+
+
+Clear the return element starting from line 9, and replace it with the text below to test your Tailwind to know if it is working. Input this:
+
+<h1 className="text-3xl font-bold underline text-center">Hello world!</h1> 
+h1 element with tailwind css classnames
+Now you have this:
+
+Adding the h1 element to the App.jsx file with tailwindcss styles applied
+According to the above image, text-3xl font-bold text-red-500 underline text-center has been added as a className to the div element. This is the standard for writing Tailwind CSS styling.
+
+
+### Conclusion
+You have now created a React and Tailwind CSS app using Vite, a frontend build tool. You have learned what Vite is and how to create a Vite app with a React template, as well as how to install Tailwind and other dependencies.
