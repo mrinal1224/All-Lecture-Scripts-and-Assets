@@ -762,4 +762,7 @@ useEffect(() => {
 ```
 
 
+We will move to creating Watclist component from the next class
+
+
 
