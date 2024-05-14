@@ -1,348 +1,267 @@
-# Full Stack LLD: React-5: context API and it's usecases
-
 ---
-title: Agenda of the lecture
-description: What will be covered in the topic?
-duration: 369
+title: Agenda
+description: Agenda
+duration: 120
 card_type: cue_card
 ---
 
-## Agenda
-* Prop Drilling
-* Context API
-* Add Context API to our Project
-* Disadvantage of context API
-* When to use Context API/REDUX
+- Getting Data from TMDB API
+- Populating movies in Movies Page
+- Creating the watchlist
+- Features of Watchlist
+- Local Storage for keeping data persistent
 
-### Setup for Understanding Prop Drilling
-* Let us we add Cart and User Components to the folder.
-* Add routes for these two components to the `Home.jsx`
-* Navigate to Navbar and add Links to Home, Users, and Cart.
-* Add styling to Navbar in App.css
-* Add minimal content in the Cart and Users
-*  Now go to Page 3 on the Home page and from there visit users and back to the home page.
-* Let us build a component tree for our Application
-
-**Cart.jsx**
-
-```javascript
-import React from 'react'
-
-function Cart() {
-  return (
-    <h1>Cart</h1>
-  )
-}
-
-export default Cart
-```
-
-**User.jsx**
-```javascript
-import React from 'react'
-
-function User() {
-    return (
-        <h1>User</h1>
-    )
-}
-
-export default User
-```
-
-**Routing in App.jsx**
-
-```javascript
-<Route path = "/cart" element = {<Cart></Cart>}></Route>
-<Route path = "/user" element = {<User></User>}> </Route>
-```
-
-**Navbar**
-
-```javascript
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-function NavBar() {
-  return (
-    <div
-    className = 'navbar'
-    >
-
-      <Link to = "/">Home </Link>
-      <Link to = "/user">Users</Link>
-      <Link to = "/cart">Cart</Link>
-    </div>
-  )
-}
-
-export default NavBar
-```
-
-
-### Component tree for the App
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/057/012/original/upload_be375aac43be22e663e0f16167b918cd.png?1700132317)
-
-
-### Case Study : Issue with Pagination 
-
-[Ask to learners]
-**Que Let's say i go to page 3 and then  from home page to users  and return back what do you think happens ??**
-Ans: when we come back pagination is again reset to page number 1  
-
-**Reason**
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/057/014/original/upload_2812b17564fd227c8948c7a03fd84859.png?1700132466)
-* We have Route and when Route finds a match it removes the current page and adds another page.
-* So in our case when it finds users it removes home and when we come back home, the user's page is removed.
-* Here, the whole state is removed and it renders like it is rendering for the first time.
-* We return to Page 1 instead of Page 3. 
-
-[Ask the learners]
-**Que Is this a good user experience?**
-* It is not a good user experience.
-
-### Solving the Issue -> State Uplifting?
--> We can store pageState to the App and send this as a prop to the Home. 
-This is called Page Uplifting.
-
-Problem: if a component is removed from the UI
-Due to routing or any other reason. If we want to
-preserve the state.
-Solution: uplift the state to an ancestor which will not be re-rendered.
-
-### Issue-1 with State Uplifting 
-Page Uplifting also has a problem. Here, if I visit for All Categories I have page number 3 but for individual categories, there are not more than 2. So if I go to some other category, it is still on Page 3 and I will have to go previous which is again not a good user experience.
-
-**Solution** For this particular issue what we can do is, whenever there is any change in the Home Page, at that time we can set the page number to 1. This is for any type of operation.
-
-## Issue 2 : Prop Drilling
-* Now coming to the older problems, we are required to uplift the page number.
-* When we lift the state the problem that arises is the Prop Drilling 
-* **Prop Drilling** -> When the descendant needs a prop and the height of that component tree is huge then we have to pass props to the whole chain.
-* What can be the possible solution for this is to wrap the whole thing around the whole application and any of the elements should be able to access the state whenever they want.
-* This block that covers the entire application and must be able to serve all the components is called the context area.
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/057/018/original/upload_b185c110b061fc7a92562faf57b9fe54.png?1700132603)
-* This is a three-step process
-    * **Step 1:** create an context wrapper object using the method `createContext()`.
-    * **Step 2:** Now use `<ContextWrapper.Provider>` tag to wrap all the components inside it.
-    * **Step 3:** To save values, use a `value` prop and assign some value to it.
-```jsx
-import React, { useContext } from 'react';
-// 1
-const ContextWrapper = React.createContext();
-function Context() {
-    return (
-        //2
-        <ContextWrapper.Provider value = "Be safe">
-            <GrandParent></GrandParent>
-        </ContextWrapper.Provider>
-    )
-}
-
-function GrandParent() {
-    return <>
-        <h2>GrandParent</h2>
-        <div>⬇</div>
-        <Parent></Parent>
-    </>
-}
-
-function Parent() {
-    return <>
-        <h2>Parent</h2>
-        <div>⬇</div>
-        <Children></Children>
-    </>
-}
-function Children() {
-    const message = useContext(ContextWrapper);
-    return <>
-        <h2> Children</h2>
-        <div>⬇</div>
-        <div>{message}</div>
-    </>
-}
-
-
-export default Context
-```
-* Now wherever you want to pass these values you can wrap them around using the same variable and `.Provider`.
-* Now to derive value we use a method given by React `useContext(ContextWrapper)` to extract value.
-* What we are doing is we are wrapping the entire app inside a wrapper. To this wrapper, we are giving a message. With the help of the `useContext` method, we can extract the message from a child's note without sending it to the parent or grandparent.
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/057/021/original/upload_e77fb81c703e7137eee773faf6846991.png?1700132688)
-* Its usecase is Theme -> Dark and Light Theme
 
 ---
-title: Theme Manager
-description: An application of context provider is a theme manager
-duration: 3960
+title: TMDB API
+description: Replacing dummy entries with data from TMDB API?
+duration: 120
 card_type: cue_card
 ---
 
+## Replacing dummy entries with data from TMDB API
 
-## Theme Manager
-* Add Creator, Article, Footer, and ThemeManager pages to the project.
-* We have two classes light and dark in the `themeManager.css` file.
-* The header needs the current theme variable. If it is `light` then a light theme is applied and if it is `dark` a dark theme is applied.
-* `ThemeManager.jsx` has three sections Header, Article, and Footer.
-* Now only, the header and footer need theme changing.
-* We just have to pass props to the header as well as the footer but not to the article.
-* The first step is simple, we just have to create context. By default, we have a light theme.
-* Wrap the required elements inside it.
-* Next let us console.log() the current context object we have.
-* Finally call the `useContext` method wherever required.
-* We are not following good practices as well as this is not a complete solution.
-* Use the state variable in ThemeManager for the current theme. We can have a toggle button that changes the theme when clicked.
+#### Que We can't use the static images  and to drive out our application so we need a server that can give use realtime data.
 
-**Header.jsx**
-```jsx
-import "./themeManager.css";
-import { ThemeWrapper } from "./ThemeManger";
-import React, {useContext} from "react";
-function Header() {
-    // console.log(CTheme);
-    return (<div style = {{ border: "1px solid ", padding: "1rem", margin: "1rem" }}>
-        <div >Header</div>
-        <div>⬇</div>
-        <Options></Options>
-        <Options></Options>
-        <Options></Options>
-        <div>-----------------------------</div>
-    </div>)
-}
-function Options() {
-    const { CTheme } = useContext(ThemeWrapper);
-    return <div className = {CTheme == "light" ? "light" : "dark"}>Option</div>
-}
-export default Header;
-```
+#### Solution : 
+In the above use case we need to talk to servers that just send data in a given format`. 
 
-**Footer.jsx**
-```jsx
-import { useContext } from "react";
-import "./themeManager.css";
-import { ThemeWrapper } from "./ThemeManger";
+let's understand how it's done with the help of an analogy
+#### Analogy
+Imagine you're in charge of creating certificates for a course completion. You have a template for the certificate design that includes placeholders for the student's name, course title, and completion date. This template is like React components. React is like your design tool, allowing you to structure and design the certificate layout.
 
-function Footer() {
-    return (<div style = {{ border: "1px solid ", padding: "1rem", margin: "1rem" }}>
-        <div >Footer</div>
-        <div>⬇</div>
-        <Options></Options>
-        <Options></Options>
-        <Options></Options>
-        <div>-----------------------------</div>
-    </div>)
-}
-function Options() {
-    // 3
-   const {CTheme} = useContext(ThemeWrapper)
-    return <div className = {CTheme == "light" ? "light" : "dark"}>Option</div>
-}
-export default Footer;
-```
+Now, to fill in the actual data and generate the final certificate, you need information about the student who completed the course. This is where APIs come in. APIs act as messengers, fetching the necessary data from a database or external source. In our analogy, the API is gets the information about the student from various sources and brings it to you.
 
-**Article**
-```jsx
-import "./themeManager.css";
-function Article() {
-    return (<div styl = {{ border: "1px solid ", padding: "1rem", margin: "1rem" }}>
-        <div >Article</div>
-        <div>⬇</div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, id.</p>
-    </div>)
-}
+So, to create the final certificate:
 
-export default Article;
-```
+1. **React Components (Template)**: You start with React components, just like you start with a certificate template. These components provide the structure and layout for the certificate.
+    
+2. **API Calls (Data Gathering)**: Next, you make API calls to gather the specific data needed to fill in the placeholders on the certificate. This is akin to collecting information about the student's name, course details, and completion date from different sources.
+    
+3. **Data Integration (Data into Template)**: Once the API returns the necessary data, you integrate it into the React components. This process involves replacing the placeholders in the template with the actual student data, similar to how you fill in the student's name, course details, and completion date onto the certificate.
+    
+4. **Final UI (Final Certificate)**: Finally, with the data integrated into the React components, you have a fully populated certificate – your final UI. This certificate is ready to be presented to the student, showcasing their achievement.
+    
 
-**ThemeManager.jsx**
-```jsx
-import React, { useState } from 'react'
-import Header from './Header';
-import Article from './Article';
-import Footer from './footer';
-//1
-export const ThemeWrapper = React.createContext();
-function ThemeManger() {
-    // cTheme-> Header, Footer+ also change that
-    const [CTheme, setCTheme] = useState("light");
-    const toggleTheme = () => {
-        const newTheme =
-            CTheme == "light" ? "dark": "light";
-        setCTheme(newTheme)
-    }
+In summary, React provides the framework for designing the certificate layout, while APIs fetch the relevant data to populate the certificate, resulting in a seamless process to generate the final UI, just like creating a personalized certificate for each course completion
 
-    return (
-        // 2. 
-        <ThemeWrapper.Provider
-            value = {{ CTheme }}>
-            <h1>Theme Management</h1>
-            <button
-                onClick = {toggleTheme}
-            >Toggle Theme</button>
-            <Header></Header>
-            <Article></Article>
-            <Footer></Footer>
-        </ThemeWrapper.Provider >
-    )
-}
+Now ,
 
-export default ThemeManger
-```
 
-**themeManager.css**
-```css
-.light {
-    background-color: white;
-    color: black;
-}
+To use the TMDB (The Movie Database) API in a React app to get upcoming movies data with images, follow these steps:
 
-.dark {
-    background-color: black;
-    color: white;
-}
-```
+Create a TMDB Account and Get an API Key:
 
----
-title: Adding Context Provider 
-description: Adding Context Provider to the project
-duration: 5619
-card_type: cue_card
----
+Go to TMDB and sign up for an account.
+Navigate to your account settings and find the API section.
+Create an API key which you will use to make requests to TMDB.
 
-## Adding Context to the Project
+Step by Step Screenshots are added ahead
 
-### Things to Think Around
-* Features
-* data 
-* State
-* UI
+1. Go to Login if you alreay have an account or join TMBD if you are  a new user
 
-1. Steps/ 
-   * Initial Data 
-        * Searching
-        * Sorting
-        * Categorization
-        * Pagination
-        * Render the Results
+<img src='https://i.ibb.co/tB7nQcZ/Screenshot-2024-05-14-at-8-30-59-PM.png'/>
+
+2. After Signing up go to profile settings 
+
+<img src='https://i.ibb.co/CBZy4nz/Screenshot-2024-05-14-at-9-00-26-PM.png'/>
+
+3. Go to API option and genarate a API Key, My key is already generated .
+
+
+<img src='https://i.ibb.co/JsbgccQ/Screenshot-2024-05-14-at-9-00-41-PM.png'/>
+
+4. Now go to API Reference and get started 
+<img src='https://i.ibb.co/nC8MS1W/Screenshot-2024-05-14-at-8-34-53-PM.png'/>
+
+5. you will get movies options where you will get different options, I am going for trending movies
+
+<img src='https://i.ibb.co/HVxS3g3/Screenshot-2024-05-14-at-8-35-32-PM.png'/>
+
+
+You can play around in this section and do different stuff with movie Data 
+
+
+but our main goal is to fetch the data of upcoming movie from the API.
+
+
+### Structure of data receieved from TMDB API
+
+We will be using this url to get list of movies 
+`https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=1`
+
+
+ - make sure to add your API key which you generated in the api key field in the url
+
+it will return the data in the form of  an array then that will contain lot of properties that populates 
+
+when you will fetch the data you will get a list of 20 movies like this .
+![image](https://hackmd.io/_uploads/BksttvzyR.png)
+* Here's `backdrop_path` property that is responsible for helping you get the poster image
+* title will give you title of the movie
+* adult property will tell you if the movie is only for adult or not 
+
+In short it is up to you how you want to use this data
+
+
+## Populating Banner and Movies   from TMDB
+let's  understand the how we can replace the dummy data in Banner.jsx and Movies.jsx
+
+* Banner.jsx :  we need to replace the dummy image url and replace that with some realtime url of a movies
+
+ **Adding dynamic Poster to Banner**
  
-2. Data 
-    * Products
-    * Categories
+let's see how it is done
+* install axios
+```
+npm i axios
+```
+* import axios in Banner component
+* We will next use an useEffect for fetching the data
+* use the fetched data populate our banner component
 
-### Pagination Context Provider
-* Create a new Component Pagination inside the context folder => `contexts/PaginationContext.jsx`.
-* Next inside this file export the default funtion `PaginationProvider()` that will return `PaginationContext.Provider`.
-* This takes `Children` as a prop and calls it between its tags.
-* In React we have this Children Prop that we can use.
-* To implement Pagination we need two props `pageSize` and `pageNum`.
-* So we will shift these two useStates inside PaginationProvider. 
-* Let's move ahead and try to use it everywhere.
-* We can access it at any part of the program using `useContext` to get all the state variables.
-* All the state variables are at the same place, you don't need to have props.
-* All the state variables can be added to this file and can be coded for better user experience.
-* It is majorly used where data is constant for the entire website.
-* We can also add categories as well as search for context.
 
-[Link](https://github.com/Jasbir96/Full_stack_may_2023/tree/master/React/5_context_api/products/src) to final code.
+
+`Banner.jsx`
+```jsx
+\\ create a state variable to hold the image and title to hold title
+const [bannerImage , setBannerImage] = useState("https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68");
+const [title, setTitle]=useState("Placeholder title")
+
+ useEffect(() => {
+    console.log("use effect fetched data");
+    axios
+      .get(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=1`
+      )
+      .then(function (res) {
+        //           we will get the list of all the films
+        console.log("Films", res.data.results);
+        //           for the sake of our example we will be using the first object that represents first movie
+        const firstMovie = res.data.results[0];
+        const firstMovieTitle = firstMovie.title;
+        const firstMoviePoster = firstMovie["backdrop_path"];
+        setTitle(firstMovieTitle);
+
+        setBannerImage(
+          `https://image.tmdb.org/t/p/original/${firstMoviePoster}`
+        );
+      });
+  }, []);
+
+```
+Now we have fetched the required banner image. Let's update our Banner component to support this
+```jsx=
+return (
+    <div
+      className="h-[20vh] md:h-[75vh] bg-cover bg-center flex items-end"
+      style={{
+        backgroundImage:
+          `url(${bannerImage})`,
+      }}
+    >
+      <div className="text-white w-full text-center text-2xl">
+        {title}
+      </div>
+    </div>
+  );
+}
+```
+update imports
+```jsx=
+import React, { useState, useEffect } from "react";
+```
+
+
+`Movies.jsx` :  we need to replace the dummy image url and replace that with some realtime url of a movies
+ 
+```
+   const [movies, setMovies] = useState([
+        {url:"https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68", title:"Movie 1"},
+         {url:"https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68", title:"Movie 2"},
+         {url:"https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68", title:"Movie 3"},
+         {url:"https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68", title:"Movie 4"},
+         {url:"https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68", title:"Movie 5"},
+         
+     ]);
+``` 
+
+now let's talk how we can leverage TMDB API to get that data
+
+We will be using axios to get the data from the same  url  that is given by TMDB->
+
+`https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=1`
+
+let's see how it is done 
+
+
+* import axios in movies component
+* We will next use an useEffect for fetching the data
+* set the movies from the incoming data 
+
+`movies.jsx`
+```jsx
+ const [movies, setMovies] = useState([]);
+
+ useEffect(() => {
+    console.log("use effect fetched data");
+    axios
+      .get(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=1`
+      )
+      .then(function (res) {
+        console.log(res.data.results);
+        setMovies(res.data.results);
+      });
+  }, []);
+```
+
+`instructor cue`: show the console to show list of movies and show that with the help backdrop_path you get the movie posters
+
+`moviecard.jsx`
+```jsx!
+ <div
+            className="h-[40vh] w-[200px] bg-center bg-cover rounded-xl hover:scale-110 duration-300 hover:cursor-pointer flex flex-col justify-between items-end"
+            style={{
+                backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieObj.backdrop_path})`,
+            }}
+        >
+            <div className="text-white w-full text-center text-xl p-2 bg-gray-900/70 rounded-lg">
+                {movieObj.title}
+            </div>
+        </div>
+```
+### Modify the pagination to work with data coming 
+Let's keep the pagination in sync with movies for that 
+we already have pageNumber state variable . 
+Now we can use this to update the list of movies as we change the page number.
+
+**Solution**: Update the useEffect to depend upon pageNo state variable-> add it to dependency array and the url
+
+`movies.jsx`
+```
+useEffect(() => {
+        console.log("use effect fetched data");
+        axios
+            .get(
+                `https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=${pageNo}`
+            )
+            .then(function (res) {
+                console.log(res.data.results);
+                setMovies(res.data.results);
+            });
+    }, [pageNo]);
+```
+
+
+Now you will see that our project now looks somewhat like this after getting all the movies and with the Banner
+
+<img src='https://i.ibb.co/bKqtPmD/Screenshot-2024-05-14-at-9-29-41-PM.png'>
+
+
+<img src='https://i.ibb.co/17RhCRy/Screenshot-2024-05-14-at-9-30-54-PM.png'>
+
+
+
+
 
