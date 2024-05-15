@@ -254,12 +254,12 @@ useEffect(() => {
 ```
 
 
-Now you will see that our project now looks somewhat like this after getting all the movies and with the Banner
+Now you will see that our project now looks somewhat like this after getting all the movies  with the Banner
 
 <img src='https://i.ibb.co/bKqtPmD/Screenshot-2024-05-14-at-9-29-41-PM.png'>
 
 
-<img src='https://i.ibb.co/17RhCRy/Screenshot-2024-05-14-at-9-30-54-PM.png'>
+<img src='https://i.ibb.co/17RhCRy/Screenshot-2024-05-14-at-9-30-54-PM.png '>
 
 
 
