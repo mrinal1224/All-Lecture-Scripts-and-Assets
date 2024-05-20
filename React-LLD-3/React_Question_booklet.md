@@ -180,11 +180,12 @@ In summary, key is crucial for optimizing rendering performance and maintaining 
 
 ## 8. How will you pass data from one component to the other in React?
 
--**Props**: Data is passed from parent to child components via props. -**Context API**: Provides a way to share data across the component tree without prop drilling. -**State Lifting**: Share state between components by lifting it up to a common ancestor component. -**Redux or other State Management Libraries**: Centralized state management for sharing data across components. -**Event Handling**: Components communicate indirectly by passing callback functions as props. -**Refs**: Allows access to DOM nodes or React elements, primarily for managing focus, text selection, or triggering imperative animations.
-
-`Answer` : The real DOM is the actual tree-like structure of HTML elements in the document, while the virtual DOM is a lightweight copy of the real DOM, used for efficient updates in React.
-
-## Q How does React works ?(react lead)
+- **Props**: Data is passed from parent to child components via props.
+- **Context API**: Provides a way to share data across the component tree without prop drilling.
+- **State Lifting**: Share state between components by lifting it up to a common ancestor component.
+- **Redux or other State Management Libraries**: Centralized state management for sharing data across components.
+- **Event Handling**: Components communicate indirectly by passing callback functions as props.
+- **Refs**: Allows access to DOM nodes or React elements, primarily for managing focus, text selection, or triggering imperative animations.
 
 ## Q If React.createElement() is not available, how would you create a polyfill for it, and what would be its basic implementation?(react lead)
 
