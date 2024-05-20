@@ -2,8 +2,8 @@
 
 React is a JavaScript library for building user interfaces using a component-based architecture. It divides the UI into reusable components, each managing its own state and lifecycle. React uses a virtual DOM to efficiently update the real DOM, minimizing performance costs. It follows a declarative approach, where developers describe how the UI should look for different states, and React handles the updates. Data flows unidirectionally from parent to child components, making state management more predictable.
 
-```
-import React, { useState } from 'react';
+```javascript
+import React, { useState } from "react";
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -11,9 +11,7 @@ function Counter() {
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
