@@ -23,11 +23,86 @@ This code defines a simple counter component using the useState hook to manage i
 
 ## 2. Why don't we update the state directly?
 
-## Q. Compare functional components with class components in React.
+In React, we avoid updating the state directly to ensure predictable and efficient updates. Direct state manipulation can lead to unexpected behavior and bugs because React relies on state management functions, like setState or hooks such as useState, to know when to re-render components. These functions trigger the reconciliation process, where React compares the current state with the new state and updates the virtual DOM accordingly. Direct state updates bypass this mechanism, leading to inconsistencies between the UI and the underlying state.
 
-## Q : Describe the main advantages of using React hooks over class components and the useState and useEffect hooks
+Here's an example to illustrate this:
 
-## Q. Compare the usage of inline styles in React with inline styles in regular HTML.
+```javascript
+// Incorrect way - directly modifying the state
+this.state.count = this.state.count + 1;
+
+// Correct way with useState hook
+const [count, setCount] = useState(0);
+setCount(count + 1);
+```
+
+Using these methods ensures React is aware of the changes and can properly manage re-rendering.
+
+## 3. Compare functional components with class components in React.
+
+Functional components are simpler and are written as JavaScript functions. They receive props as an argument and return JSX. They were initially stateless, but with the introduction of hooks (e.g., useState, useEffect), functional components can now manage state and side effects.
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  }, [count]);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+Class components are ES6 classes that extend React.Component. They have more boilerplate code and use this.state to manage state and lifecycle methods like componentDidMount for side effects. They can access props via this.props.
+
+```javascript
+import React, { Component } from "react";
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  componentDidMount() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+  componentDidUpdate() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+      </div>
+    );
+  }
+}
+```
+
+## 4. Describe the main advantages of using React hooks over class components and the useState and useEffect hooks.
+
+React hooks offer several advantages over class components:
+
+1. Simpler Syntax: Hooks simplify state and lifecycle management in functional components.
+2. Enhanced Reusability: Custom hooks make it easy to reuse stateful logic.
+3. Better Separation of Concerns: Group related logic together, improving code organization.
+4. No this Binding: Avoids confusion with this keyword in classes.
+
+## 5. Compare the usage of inline styles in React with inline styles in regular HTML.
 
 ## Q Describe the concept of React component lifecycles and how they work in different phases
 
