@@ -457,7 +457,7 @@ In this example:
 
 ## 17. Define Fragments?
 
-Fragments in React provide a way to group multiple children elements without adding extra nodes to the DOM. They allow you to return multiple elements from a component's render method without needing to wrap them in a parent element like a "<div>". Fragments can be declared using either the <React.Fragment> syntax or the shorthand syntax <> and </>.
+Fragments in React provide a way to group multiple children elements without adding extra nodes to the DOM. They allow you to return multiple elements from a component's render method without needing to wrap them in a parent element like a "div". Fragments can be declared using either the <React.Fragment> syntax or the shorthand syntax <> and </>.
 
 Example:
 
