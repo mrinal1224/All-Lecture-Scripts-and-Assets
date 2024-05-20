@@ -187,31 +187,337 @@ In summary, key is crucial for optimizing rendering performance and maintaining 
 - **Event Handling**: Components communicate indirectly by passing callback functions as props.
 - **Refs**: Allows access to DOM nodes or React elements, primarily for managing focus, text selection, or triggering imperative animations.
 
-## Q If React.createElement() is not available, how would you create a polyfill for it, and what would be its basic implementation?(react lead)
+## 9. If React.createElement() is not available, how would you create a polyfill for it, and what would be its basic implementation?(react lead)
 
-## Q Compare and contrast Webpack and Rollup in terms of their usage, features, and how they optimize and bundle JavaScript code.(react lead)
+To create a polyfill for React.createElement():
 
-## Q Suppose we have a child component with 3 input fields namely "Firstname", "middlename" and "lastname". There is a parent component with a submit button. On clicking the submit button data in the child component should be validated. Explain how you will achieve this scenario?
+1. Define a function named createElement that takes at least three arguments: type (element type), props (optional props object), and children (element children).
+2. Use these arguments to construct and return an object representing the React element.
+   Here's a basic implementation:
 
-## Q What are hooks and its types?
+```typescript
+function createElement(type, props, ...children) {
+  const elementProps = props || {};
+  const elementChildren = children.length > 1 ? children : children[0];
+  return {
+    type: type,
+    props: elementProps,
+    children: elementChildren,
+  };
+}
+```
 
-## Q Write a normal useState and useEffect hook?
+## 10. Compare and contrast Webpack and Rollup in terms of their usage, features, and how they optimize and bundle JavaScript code.(react lead)
 
-## Q Define dependency array?
+### Webpack:
 
-## Que Explain lifecycle methods?
+- **Usage**: Highly configurable, suitable for large projects with complex dependencies.
+- **Features**: Offers code splitting, extensive loaders, and plugins for various functionalities.
+- **Optimization**: Utilizes tree shaking, chunking, and caching for efficient bundle optimization.
 
-## Que How do you handle all lifecycle methods in functional components??
+### Rollup:
 
-## Que Define Fragments?
+- **Usage**: Simple and focused on ES module bundling, ideal for smaller projects and libraries.
+- **Features**: Prioritizes native ES module support, efficient tree shaking, and multiple output formats.
+- **Optimization**: Excels at tree shaking, scope hoisting, and offers simpler configuration compared to Webpack.
 
-## Que What is redux?
+In essence, Webpack is more feature-rich and configurable, suitable for larger projects, while Rollup prioritizes simplicity and performance, making it ideal for smaller projects and libraries with a focus on modern JavaScript.
 
-## Que Explain core principles of Redux?
+## 11. Suppose we have a child component with 3 input fields namely "Firstname", "middlename" and "lastname". There is a parent component with a submit button. On clicking the submit button data in the child component should be validated. Explain how you will achieve this scenario?
 
-## Que Why we use redux over local storage?
+In this scenario, we have a child component with three input fields: "Firstname", "middlename", and "lastname", and a parent component with a submit button. When the submit button is clicked, the data in the child component needs to be validated.
 
-## Que21 Explain about Mounting in Detail in React?
+Here's how we can achieve this:
+
+### Child Component:
+
+- Manage state for the input fields using React's useState hook.
+- Implement onChange event handlers for each input field to update the component's state as the user types.
+- Implement validation logic to ensure that the input data is valid.
+- Provide a function to gather the input data and pass it to a callback function provided by the parent component when the submit button is clicked.
+
+### Parent Component:
+
+- Render the child component and a submit button.
+- Define a function to handle the submit button click event.
+- This function should invoke the validation logic of the child component to ensure the input data is valid.
+- If the data is valid, proceed with further actions, such as submitting the data to a server. If not, display error messages to the user.
+
+By following these steps, we can create a parent-child component relationship where the child component handles input and validation, while the parent component handles submission logic triggered by the submit button click event.
+
+```javascript
+// ChildComponent.js
+import React, { useState } from 'react';
+
+const ChildComponent = ({ onSubmit }) => {
+  const [formData, setFormData] = useState({
+    firstname: '',
+    middlename: '',
+    lastname: ''
+  });
+  const [errors, setErrors] = useState({
+    firstname: '',
+    middlename: '',
+    lastname: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    if (validate()) {
+      onSubmit(formData);
+    }
+  };
+
+  const validate = () => {
+    let isValid = true;
+    const newErrors = {};
+
+    // Validation logic for each input field
+    if (!formData.firstname.trim()) {
+      newErrors.firstname = 'First name is required';
+      isValid = false;
+    }
+    // Add validation logic for middlename and lastname similarly
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  return (
+    <div>
+      <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} />
+      {errors.firstname && <span>{errors.firstname}</span>}
+      {/* Repeat for middlename and lastname */}
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
+};
+
+export default ChildComponent;
+
+// ParentComponent.js
+import React from 'react';
+import ChildComponent from './ChildComponent';
+
+const ParentComponent = () => {
+  const handleSubmit = (data) => {
+    // Handle submission logic here (e.g., send data to server)
+    console.log('Submitted data:', data);
+  };
+
+  return (
+    <div>
+      <ChildComponent onSubmit={handleSubmit} />
+    </div>
+  );
+};
+
+export default ParentComponent;
+```
+
+## 12. What are hooks and its types?
+
+Hooks are a feature introduced in React 16.8 that allows you to use state and other React features in functional components. They enable you to reuse stateful logic across components without having to use class components.
+
+There are several types of hooks in React:
+
+### State Hook (useState):
+
+- Manages state in functional components.
+- Returns a stateful value and a function to update it.
+- Used for simple local state management.
+
+### Effect Hook (useEffect):
+
+- Performs side effects in functional components.
+- Runs after every render, including the initial render.
+- Used for data fetching, subscriptions, or DOM manipulation.
+
+### Context Hook (useContext):
+
+- Consumes a React context in functional components.
+- Provides a way to access context values without nesting components.
+- Useful for sharing global state across the component tree.
+
+### Reducer Hook (useReducer):
+
+- Manages state with a reducer function in functional components.
+- Similar to useState but allows more complex state logic.
+- Useful for managing state transitions in more structured way.
+
+### Callback Hook (useCallback):
+
+- Memoizes a callback function to prevent unnecessary re-renders.
+- Ensures that the callback function remains the same between renders.
+- Useful for optimizing performance in child components that rely on reference equality.
+
+## 13. Write a normal useState and useEffect hook?
+
+```typescript
+import React, { useState, useEffect } from "react";
+
+function ExampleComponent() {
+  // useState hook to manage state
+  const [count, setCount] = useState(0);
+
+  // useEffect hook to perform side effects
+  useEffect(() => {
+    // Update the document title using the count state
+    document.title = `You clicked ${count} times`;
+  }, [count]); // Dependency array ensures effect runs only when count changes
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+
+export default ExampleComponent;
+```
+
+## 14. Define dependency array?
+
+The dependency array in React's useEffect hook is an optional second argument that determines when the effect function should be re-run. It's an array of values that the effect depends on. When provided, React compares the current values in the dependency array with the previous values from the last render. If any of the values have changed, the effect function is re-run. If the dependency array is empty, the effect runs only once after the initial render and doesn't re-run for subsequent renders.
+
+Example:
+
+```typescript
+import React, { useState, useEffect } from "react";
+
+function ExampleComponent() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // This effect will run whenever 'count' changes
+    console.log("Count has changed:", count);
+  }, [count]); // 'count' is a dependency
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+
+export default ExampleComponent;
+```
+
+## 15. Explain lifecycle methods?
+
+Lifecycle methods in React are special methods that are invoked at various stages of a component's lifecycle. These methods allow you to hook into specific points during the component's creation, updating, and destruction phases. Understanding React's component lifecycle helps you manage state, perform side effects, and optimize performance.
+
+## 16. How do you handle all lifecycle methods in functional components?
+
+In functional components, you can handle all lifecycle methods using the useEffect hook along with some additional techniques. Here's how you can handle each phase of the component's lifecycle:
+
+```typescript
+import React, { useState, useEffect } from "react";
+
+function ExampleComponent({ prop }) {
+  const [state, setState] = useState(0);
+
+  // Equivalent to componentDidMount
+  useEffect(() => {
+    console.log("Component mounted");
+    return () => {
+      console.log("Component will unmount");
+    };
+  }, []);
+
+  // Equivalent to componentDidUpdate
+  useEffect(() => {
+    console.log("Component updated");
+  }, [prop, state]);
+
+  // Equivalent to componentWillUnmount (clean-up function)
+  useEffect(() => {
+    return () => {
+      console.log("Clean-up function");
+    };
+  }, []);
+
+  return <div>{prop}</div>;
+}
+
+export default ExampleComponent;
+```
+
+In this example:
+
+- We use useState to initialize state.
+- We use useEffect to mimic the behavior of lifecycle methods. We can control when they run by providing appropriate dependencies in the dependency arrays.
+- We return a cleanup function from the effect to handle component unmounting.
+
+## 17. Define Fragments?
+
+Fragments in React provide a way to group multiple children elements without adding extra nodes to the DOM. They allow you to return multiple elements from a component's render method without needing to wrap them in a parent element like a <div>. Fragments can be declared using either the <React.Fragment> syntax or the shorthand syntax <> and </>.
+
+Example:
+
+```typescript
+import React from "react";
+
+function MyComponent() {
+  return (
+    <>
+      <h1>Heading 1</h1>
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+    </>
+  );
+}
+```
+
+## 18. What is redux?
+
+Redux is an open-source JavaScript library used for managing the application state in JavaScript applications, primarily used with libraries like React or Angular for building user interfaces. It follows the principles of Flux architecture and is inspired by functional programming concepts.
+
+Redux is commonly used in complex applications with large amounts of state that need to be shared across multiple components. It helps manage the complexity of state management and makes it easier to debug and maintain applications.
+
+## 19. Explain core principles of Redux?
+
+The core principles of Redux:
+
+### Single Source of Truth:
+
+Redux maintains the entire application state in a single store.
+
+### State is Immutable:
+
+State cannot be modified directly; instead, new state objects are created.
+
+### State is Read-Only:
+
+Components dispatch actions to modify the state; they cannot directly change it.
+
+### Changes are Made with Pure Functions:
+
+Reducers specify how the state should change in response to actions using pure functions.
+
+### Changes are Made by Pure Reducers:
+
+Reducers are pure functions that don't produce side effects or directly modify the state.
+
+### Unidirectional Data Flow:
+
+Data flows in one direction—from the store to components—ensuring a predictable flow of data changes.
+
+## 20. Why we use redux over local storage?
+
+- Handles complex state more effectively.
+- Facilitates real-time updates across the application.
+- Optimizes performance with efficient state management.
+- Promotes a structured application architecture.
+- Integrates seamlessly with popular front-end frameworks and libraries.
+
+## 21. Explain about Mounting in Detail in React?
 
 ## Que22 Explain about Updating in Detail in React?
 
