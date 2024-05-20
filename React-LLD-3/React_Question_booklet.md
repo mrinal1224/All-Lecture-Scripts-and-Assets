@@ -104,19 +104,83 @@ React hooks offer several advantages over class components:
 
 ## 5. Compare the usage of inline styles in React with inline styles in regular HTML.
 
-## Q Describe the concept of React component lifecycles and how they work in different phases
+In regular HTML, inline styles are written as a string within the style attribute. CSS property names are in kebab-case.
 
-## Q Explain the difference between the real DOM and the virtual DOM in the context of React
+Example:
 
-## Que71 What role does the render method play in React?
+```javascript
+<div style="background-color: red; color: white;">Hello World</div>
+```
 
-## Que34 Explain JSX in react.
+In React, inline styles are specified as a JavaScript object with camelCase property names. Values are written as strings, except for numerical values that do not require units (e.g., width, height).
 
-## Que35 Explain controlled and uncontrolled components in react.
+Example:
 
-## Que36 Why do we use key in react?
+```javascript
+const divStyle = {
+  backgroundColor: "red",
+  color: "white",
+};
 
-## Q How will you pass data from one component to the other in React?
+function StyledDiv() {
+  return <div style={divStyle}>Hello World</div>;
+}
+```
+
+## 6. Describe the concept of React component lifecycles and how they work in different phases?
+
+React component lifecycles consist of mounting, updating, and unmounting phases.
+
+1. Mounting: Occurs when a component is created and inserted into the DOM. Includes methods like constructor, render, and componentDidMount.
+2. Updating: Happens when a component re-renders due to changes in props or state. Includes methods like shouldComponentUpdate, render, and componentDidUpdate.
+3. Unmounting: Occurs when a component is removed from the DOM. Includes the componentWillUnmount method.
+   These methods allow developers to execute code at specific points during a component's lifecycle, enabling tasks like initialization, cleanup, and performance optimization.
+
+## 7. Explain the difference between the real DOM and the virtual DOM in the context of React.
+
+The Real DOM is the actual HTML DOM, directly manipulated and potentially slow for updates. The Virtual DOM is a lightweight representation managed by React, enabling efficient updates by comparing changes and batch processing updates.
+
+## 71. What role does the render method play in React?
+
+The 'render()' method in React is responsible for returning the JSX (JavaScript XML) that defines the UI of a component. It determines what will be displayed on the screen based on the current state and props of the component. The 'render()' method is called whenever the state or props of the component change, triggering a re-render of the component and its child components if necessary. It is a required method for class components and is implicitly used in functional components to define their output. The return value of the 'render()' method is typically a hierarchy of React elements, which ultimately gets converted into HTML elements and displayed in the browser.
+
+## 34. Explain JSX in react.
+
+JSX is a syntax extension in React for writing HTML-like code within JavaScript. It allows embedding JavaScript expressions and supports component composition.
+
+```javascript
+import React from "react";
+
+function Greeting(props) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>Welcome to my React app.</p>
+    </div>
+  );
+}
+
+export default Greeting;
+```
+
+## 35. Explain controlled and uncontrolled components in react.
+
+1. Controlled Components: React manages the state of form inputs, updating them via state changes. Offers precise control over form data and behavior.
+2. Uncontrolled Components: DOM manages the state of form inputs directly. Simpler to implement but less control and flexibility compared to controlled components.
+
+Controlled components are ideal for complex forms requiring validation or synchronization, while uncontrolled components are suitable for simpler forms or integration with non-React code.
+
+## 36. Why do we use key in react?
+
+1. Efficient Updates: React uses the key attribute to optimize rendering by efficiently updating, adding, or removing elements in lists.
+2. Preservation of State: key ensures correct preservation of component state, especially when elements are re-ordered or modified.
+3. Performance Optimization: Using key improves the performance of rendering large lists by reducing unnecessary re-renders and DOM manipulations.
+
+In summary, key is crucial for optimizing rendering performance and maintaining component state integrity in React applications, particularly when working with lists or collections of elements.
+
+## 8. How will you pass data from one component to the other in React?
+
+-**Props**: Data is passed from parent to child components via props. -**Context API**: Provides a way to share data across the component tree without prop drilling. -**State Lifting**: Share state between components by lifting it up to a common ancestor component. -**Redux or other State Management Libraries**: Centralized state management for sharing data across components. -**Event Handling**: Components communicate indirectly by passing callback functions as props. -**Refs**: Allows access to DOM nodes or React elements, primarily for managing focus, text selection, or triggering imperative animations.
 
 `Answer` : The real DOM is the actual tree-like structure of HTML elements in the document, while the virtual DOM is a lightweight copy of the real DOM, used for efficient updates in React.
 
