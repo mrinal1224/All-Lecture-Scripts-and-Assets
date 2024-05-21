@@ -1607,7 +1607,8 @@ export default FormWithValidation;
 2. Milestone 2: Place a Pawn Anywhere on the Board Allow users to place a single pawn anywhere on the chessboard by clicking on a square. When a square is clicked, a pawn should appear on that square.
 3. Milestone 3: Place Multiple Pawns Extend the application to support placing multiple pawns on the chessboard. Users should be able to place additional pawns on different squares as desired.
 4. Milestone 4: Move Multiple Pawns with Drag and Drop Enhance the application to enable users to move multiple pawns using drag and drop. Users should be able to click and drag a pawn from one square to another, effectively moving the pawn to the new position on the chessboard.
-   **Follow-up Question: Explain the usage of useEffect and useState() in React and how they are beneficial in this chessboard application.**
+
+**Follow-up Question: Explain the usage of useEffect and useState() in React and how they are beneficial in this chessboard application.**
 
 - `useState()`: It is a React hook used for state management within functional components. By using useState(), I was able to create and maintain the state of the chessboard, such as keeping track of pawn positions, board changes, etc.
 - `useEffect()`: This hook enables performing side effects in functional components, like updating the state after a component has rendered. In the chessboard application, useEffect() helped me update the board whenever there was a change in the state (e.g., pawn placement or movement).
