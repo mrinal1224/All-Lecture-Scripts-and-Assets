@@ -519,11 +519,60 @@ Data flows in one direction—from the store to components—ensuring a predicta
 
 ## 21. Explain about Mounting in Detail in React?
 
-## Que22 Explain about Updating in Detail in React?
+Mounting in React involves creating and inserting a component into the DOM. During this phase, several lifecycle methods are called:
 
-## Que24 Difference between componentdidMount, componentDidUpdate and UseEffect?
+- constructor(props): This is called when the component is created. It initializes state and binds event handlers.
 
-## Que25 Pass the data from Parent component to child component in React using an example.
+- static getDerivedStateFromProps(props, state): This method is invoked right before rendering and is used to update the state based on initial props. It returns an object to update the state or null to update nothing.
+
+- render(): This method is required and returns the JSX to be rendered to the DOM. It must be a pure function, meaning it doesn't modify the component's state.
+
+- componentDidMount(): This method is called immediately after the component is inserted into the DOM. It is commonly used to perform side effects, such as data fetching or integrating with third-party libraries:
+
+## 22. Explain about Updating in Detail in React?
+
+In the updating phase in React, when a component's state or props change, several lifecycle methods are called. static getDerivedStateFromProps is called before rendering to update state based on props. shouldComponentUpdate determines whether the component should re-render, optimizing performance. render then outputs the updated JSX. getSnapshotBeforeUpdate allows capturing information before the DOM updates, and componentDidUpdate is called after the update, ideal for DOM operations or data fetching based on the new state or props. These methods help manage and optimize the component's behavior during updates.
+
+## 24. Difference between componentdidMount, componentDidUpdate and UseEffect?
+
+**componentDidMount**: Runs after the component is first rendered in the DOM.
+**componentDidUpdate**: Runs after each update to the component's state or props.
+**useEffect**: Hook used in functional components to perform side effects after rendering, with optional dependencies to control when it runs. It combines the functionality of componentDidMount, componentDidUpdate, and componentWillUnmount.
+
+## 25. Pass the data from Parent component to child component in React using an example.
+
+```javascript
+// ParentComponent.js
+import React from 'react';
+import ChildComponent from './ChildComponent';
+
+function ParentComponent() {
+  const data = "Hello from Parent";
+
+  return (
+    <div>
+      <h2>Parent Component</h2>
+      <ChildComponent data={data} />
+    </div>
+  );
+}
+
+export default ParentComponent;
+
+// ChildComponent.js
+import React from 'react';
+
+function ChildComponent(props) {
+  return (
+    <div>
+      <h3>Child Component</h3>
+      <p>Data from Parent: {props.data}</p>
+    </div>
+  );
+}
+
+export default ChildComponent;
+```
 
 ## Que27 Explain closures in react.
 
