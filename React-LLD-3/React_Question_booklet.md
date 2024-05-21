@@ -1700,7 +1700,7 @@ export default Chessboard;
 
 ### Fields:- first name, last name, dob, email, phone number, state, city, pincode, password, confirm password, profile image.
 
-### state city value are master driven, city master must have the reference of State master.
+### State city value are master driven, city master must have the reference of State master.
 
 ### Apply all the necessary validation on input at front-end & server side both.
 
