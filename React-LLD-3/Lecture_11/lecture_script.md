@@ -38,83 +38,147 @@ card_type: cue_card
 
 Imagine a scenario where you have built a comprehensive React application with multiple components, pages, and features. In a standard setup, all of your JavaScript code, including all the components, gets bundled into one large file during the build process. When a user accesses your application, this entire bundle is loaded and executed in the browser.
 
-Suppose we have this app with three compnents `HomePage`,`AboutPage`,`ContactPage`
+Suppose we have this app with three compnents `HomePage`,`AboutPage`,`ContactPage` and a `Navbar` component to navigate between them 
 
+ Below is an example of how you can create `HomePage`, `AboutPage`, and `ContactPage` components and implement routing for these components using `react-router-dom`.
 
-`HomePage`
-```js
+First, you need to install `react-router-dom` if you haven't already:
+
+```bash
+npm install react-router-dom
+```
+
+Then, you can create your components and implement the routing as follows:
+
+1. **Create the HomePage Component:**
+
+```jsx
+// HomePage.jsx
 import React from 'react';
-import './HomePage.css';
 
 const HomePage = () => {
-    return (
-        <div className="homepage">
-            <h1>Welcome to the Home Page</h1>
-            <p>This is the homepage of our website.</p>
-        </div>
-    );
-}
-
-export default HomePage;
-
-```
-
-`About.js`
-```js
-import React from 'react';
-import './AboutPage.css';
-
-const AboutPage = () => {
-    return (
-        <div className="aboutpage">
-            <h1>About Us</h1>
-            <p>Learn more about our company and team.</p>
-        </div>
-    );
-}
-
-export default AboutPage;
-
-
-```
-`ContactPage.js`
-```js
-import React from 'react';
-import './ContactPage.css';
-
-const ContactPage = () => {
-    return (
-        <div className="contactpage">
-            <h1>Contact Us</h1>
-            <p>Feel free to reach out to us via email or phone.</p>
-        </div>
-    );
-}
-
-export default ContactPage;
-
-
-```
-
-```javascript
-// App.js
-import React from 'react';
-import HomePage from './components/HomePage';
-import AboutPage from './components/AboutPage';
-import ContactPage from './components/ContactPage';
-
-function App() {
   return (
     <div>
-      <HomePage />
-      <AboutPage />
-      <ContactPage />
+      <h1>Home Page</h1>
+      <p>Welcome to the Home Page!</p>
     </div>
   );
-}
+};
+
+export default HomePage;
+```
+
+2. **Create the AboutPage Component:**
+
+```jsx
+// AboutPage.jsx
+import React from 'react';
+
+const AboutPage = () => {
+  return (
+    <div>
+      <h1>About Page</h1>
+      <p>Learn more about us on this page.</p>
+    </div>
+  );
+};
+
+export default AboutPage;
+```
+
+3. **Create the ContactPage Component:**
+
+```jsx
+// ContactPage.jsx
+import React from 'react';
+
+const ContactPage = () => {
+  return (
+    <div>
+      <h1>Contact Page</h1>
+      <p>Get in touch with us through this page.</p>
+    </div>
+  );
+};
+
+export default ContactPage;
+```
+
+4. **Create the Navbar Component:**
+
+```jsx
+// Navbar.jsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;
+```
+
+5. **Set Up Routing in the App Component:**
+
+```jsx
+// App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
+import ContactPage from './ContactPage';
+import Navbar from './Navbar';
+
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
 export default App;
 ```
+
+6. **Update your main entry file (index.js):**
+
+```jsx
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+This setup creates a simple React application with three pages: Home, About, and Contact, and a navbar to navigate between them using `react-router-dom`. When you click on the links in the navbar, the corresponding page component will be rendered.
+
 
 In this example, all the components (HomePage, AboutPage, and ContactPage) are loaded at once, regardless of whether the user needs them immediately or not.
 
@@ -133,7 +197,12 @@ Here you can see a complete bundle has been loaded which has loaded all the comp
 
 
 
-
+---
+title: Dynamic Imports
+description: Code peformance wrt to build file 
+duration: 3000
+card_type: cue_card
+---
 
 
 ### Understanding Dynamic Import in Detail 
@@ -142,76 +211,120 @@ Dynamic import is a powerful feature in JavaScript that allows you to load modul
 
 In React, dynamic import can be used to load components only when they are needed. This helps in splitting your code and loading it in smaller chunks, which is often referred to as "code splitting".
 
-Let's take the same example and implement dynamic import using functional components and hooks.
 
-#### Before Dynamic Import
+Let's take a same example and implement dynamic import using functional components and hooks.
 
-```javascript
-// App.js
-import React from 'react';
-import HomePage from './components/HomePage';
-import AboutPage from './components/AboutPage';
-import ContactPage from './components/ContactPage';
 
-function App() {
-  return (
-    <div>
-      <HomePage />
-      <AboutPage />
-      <ContactPage />
-    </div>
-  );
-}
 
-export default App;
-```
+Sure! Let's delve into React's dynamic import and understand how it can optimize the loading of components by only loading them when needed, creating chunks for better performance.
 
-#### After Dynamic Import
+### What is Dynamic Import?
 
-With dynamic import, you can load components only when they are required. Here’s how you can modify the example to use dynamic import with functional components and hooks:
+Dynamic import is a feature that allows you to import JavaScript modules (including React components) dynamically and asynchronously. Instead of loading all components at once, you can load them on demand, which can significantly reduce the initial load time of your application. This process is known as code splitting.
 
-```javascript
-// App.js
-import React, { useState } from 'react';
+### Step-by-Step Guide to Implement Dynamic Import
 
-function App() {
+1. **Setup the Project:**
+
+   Make sure you have the basic project setup with `react-router-dom` installed, as shown in the initial example.
+
+2. **Update Component Imports to Use Dynamic Imports:**
+
+   Instead of importing the components at the top of the file, use the `import()` function to load them dynamically within the routes.
+
+3. **Modify App Component to Use Dynamic Imports:**
+
+   Here's how you can modify the `App.jsx` to use dynamic imports:
+
+   **Note to Instructor - I have kept the nav at the same file for simplicity, you can choose to have it separately**
+
+```jsx
+// App.jsx
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+
+const App = () => {
   const [HomePage, setHomePage] = useState(null);
   const [AboutPage, setAboutPage] = useState(null);
   const [ContactPage, setContactPage] = useState(null);
 
+  useEffect(() => {
+    // Preload HomePage component
+    import('./HomePage').then((module) => setHomePage(() => module.default));
+  }, []);
+
   const loadHomePage = () => {
-    import('./components/HomePage').then((module) => {
-      setHomePage(() => module.default);
-    });
+    import('./HomePage').then((module) => setHomePage(() => module.default));
   };
 
   const loadAboutPage = () => {
-    import('./components/AboutPage').then((module) => {
-      setAboutPage(() => module.default);
-    });
+    import('./AboutPage').then((module) => setAboutPage(() => module.default));
   };
 
   const loadContactPage = () => {
-    import('./components/ContactPage').then((module) => {
-      setContactPage(() => module.default);
-    });
+    import('./ContactPage').then((module) => setContactPage(() => module.default));
   };
 
   return (
-    <div>
-      <button onClick={loadHomePage}>Load Home Page</button>
-      <button onClick={loadAboutPage}>Load About Page</button>
-      <button onClick={loadContactPage}>Load Contact Page</button>
-
-      {HomePage && <HomePage />}
-      {AboutPage && <AboutPage />}
-      {ContactPage && <ContactPage />}
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/" onClick={loadHomePage}>Home</Link>
+            </li>
+            <li>
+              <Link to="/about" onClick={loadAboutPage}>About</Link>
+            </li>
+            <li>
+              <Link to="/contact" onClick={loadContactPage}>Contact</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={HomePage ? <HomePage /> : <div>Loading...</div>} />
+          <Route path="/about" element={AboutPage ? <AboutPage /> : <div>Loading...</div>} />
+          <Route path="/contact" element={ContactPage ? <ContactPage /> : <div>Loading...</div>} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
 ```
+
+### How Dynamic Import Optimizes the Code
+
+1. **Code Splitting:**
+   - Dynamic imports create separate chunks for each component. When you run `npm run build`, Webpack (the module bundler used by Create React App) will create separate files for `HomePage`, `AboutPage`, and `ContactPage`. These files are only loaded when needed.
+
+2. **On-Demand Loading:**
+   - Instead of loading all components at once, components are loaded only when a user navigates to the respective route. This reduces the initial load time, making the app faster to start.
+
+3. **Improved Performance:**
+   - By splitting the code and loading components on-demand, you reduce the size of the initial JavaScript bundle. This can lead to faster page loads and improved performance, especially for users with slower network connections.
+
+### Example of Webpack Chunk Creation
+
+When you build the app, Webpack will create chunks like:
+
+```
+main.js
+HomePage.chunk.js
+AboutPage.chunk.js
+ContactPage.chunk.js
+```
+
+These chunks will be loaded dynamically when a user navigates to the respective route. This can be observed in the network tab of the browser's developer tools when you navigate through the app.
+
+<img src='https://i.ibb.co/QbD8rxH/Screenshot-2024-05-25-at-1-30-51-PM.png'>
+
+
+
+<img src='https://i.ibb.co/mDm83NR/Screenshot-2024-05-25-at-1-31-10-PM.png'>
+
+By using dynamic imports, you optimize your React application by loading only the necessary components when they are required, which improves the overall performance and user experience.
 
 In this implementation:
 - We maintain state using the `useState` hook to keep track of whether each component has been loaded.
@@ -222,11 +335,7 @@ In this implementation:
 
 Now you will see whenever you click on a button only the component associated with that button will get loaded and chunks will be created for each respective component separately
 
-<img src='https://i.ibb.co/QbD8rxH/Screenshot-2024-05-25-at-1-30-51-PM.png'>
 
-
-
-<img src='https://i.ibb.co/mDm83NR/Screenshot-2024-05-25-at-1-31-10-PM.png'>
 
 ### Key Points About Dynamic Import
 
@@ -258,136 +367,122 @@ While dynamic import as shown in the example above can be a powerful tool, there
 4. **Best Practices**: Using `React.lazy` and `Suspense` is a React-recommended approach for code splitting and lazy loading. It leverages React’s built-in mechanisms, ensuring better integration and reliability.
 
 
+---
+title: Lazy and Suspense
+description: 
+duration: 3000
+card_type: cue_card
+---
 ### Implementing Code Splitting with lazy and suspense 
 
-Let’s revisit the initial scenario and implement code splitting and lazy loading using `React.lazy` and `Suspense`.
+ Let's enhance the example with code splitting and lazy loading using `React.lazy()` and `React.Suspense`. We'll also discuss the drawbacks of just using dynamic imports and explain how `React.lazy()` and `React.Suspense` with a fallback component can address these issues.
 
-#### Before Code Splitting and Lazy Loading
 
-```javascript
-// App.js
-import React from 'react';
-import HomePage from './components/HomePage';
-import AboutPage from './components/AboutPage';
-import ContactPage from './components/ContactPage';
+### Using `React.lazy()` and `React.Suspense`
 
-function App() {
-  return (
-    <div>
-      <HomePage />
-      <AboutPage />
-      <ContactPage />
-    </div>
-  );
-}
+`React.lazy()` allows you to define a component that is loaded dynamically. `React.Suspense` provides a way to handle the loading state while the component is being loaded.
 
-export default App;
-```
+1. **Setup the Project:**
 
-#### After Code Splitting and Lazy Loading
+   Ensure you have the basic project setup with `react-router-dom` installed.
 
-```javascript
-// App.js
+2. **Update Component Imports to Use `React.lazy()`:**
+
+   Modify the imports in `App.jsx` to use `React.lazy()` for dynamic imports.
+
+3. **Wrap Components with `React.Suspense`:**
+
+   Use `React.Suspense` to handle the loading state with a fallback component.
+
+### Step-by-Step Implementation
+
+1. **Create the Components:**
+
+   Ensure you have `HomePage`, `AboutPage`, and `ContactPage` components as before.
+
+2. **Update App Component:**
+
+   Here's how you can modify the `App.jsx` to use `React.lazy()` and `React.Suspense`:
+
+```jsx
+// App.jsx
 import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-const HomePage = lazy(() => import('./components/HomePage'));
-const AboutPage = lazy(() => import('./components/AboutPage'));
-const ContactPage = lazy(() => import('./components/ContactPage'));
+// Lazy load the components
+const HomePage = lazy(() => import('./HomePage'));
+const AboutPage = lazy(() => import('./AboutPage'));
+const ContactPage = lazy(() => import('./ContactPage'));
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <HomePage />
-      </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
-        <AboutPage />
-      </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
-        <ContactPage />
-      </Suspense>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </Suspense>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
 ```
 
-Let's break down the provided code step by step, focusing on the `lazy` and `Suspense` functions in React.
+### Explanation of `React.lazy()` and `React.Suspense`
 
-### Step 1: Importing Dependencies
+1. **`React.lazy()`**
+   - `React.lazy()` allows you to dynamically import components, which means the component will only be loaded when it is needed. This helps in reducing the initial load time of the application by splitting the code into smaller chunks.
 
-```javascript
-import React, { Suspense, lazy } from 'react';
-```
+   ```jsx
+   const HomePage = lazy(() => import('./HomePage'));
+   ```
 
-- `React`: The core React library.
-- `Suspense`: A component from React that allows you to show a fallback (like a loading indicator) while waiting for some code to load.
-- `lazy`: A function from React that lets you load components dynamically, which is useful for code-splitting.
+2. **`React.Suspense`**
+   - `React.Suspense` is a component that can wrap lazy-loaded components and handle the loading state. It takes a `fallback` prop, which is a React element that will be displayed while the component is being loaded.
 
-### Step 2: Dynamically Importing Components
+   ```jsx
+   <Suspense fallback={<div>Loading...</div>}>
+     <Routes>
+       <Route path="/" element={<HomePage />} />
+       <Route path="/about" element={<AboutPage />} />
+       <Route path="/contact" element={<ContactPage />} />
+     </Routes>
+   </Suspense>
+   ```
 
-```javascript
-const HomePage = lazy(() => import('./components/HomePage'));
-const AboutPage = lazy(() => import('./components/AboutPage'));
-const ContactPage = lazy(() => import('./components/ContactPage'));
-```
+   The `fallback` prop is used to display a loading indicator while the lazy-loaded component is being fetched. This provides a better user experience as the user is informed that something is happening in the background.
 
-- `HomePage`, `AboutPage`, and `ContactPage`: These are the components that are being imported lazily.
-- `lazy(() => import('./components/HomePage'))`: This syntax is used to dynamically import the `HomePage` component. The `import` statement inside `lazy` is a dynamic import, which means that this component will only be loaded when it is needed, instead of loading it upfront with the initial bundle.
+### Benefits of Using `React.lazy()` and `React.Suspense`
 
-### Step 3: Creating the `App` Component
+1. **Simplified Code:**
+   - You don't need to manually handle the loading logic for each component. `React.lazy()` and `React.Suspense` provide a cleaner and more maintainable approach.
 
-```javascript
-function App() {
-  return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <HomePage />
-      </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
-        <AboutPage />
-      </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
-        <ContactPage />
-      </Suspense>
-    </div>
-  );
-}
-```
+2. **Better User Experience:**
+   - The `fallback` component ensures that users see a loading indicator, reducing confusion during component loading.
 
-- `Suspense`: This component wraps the lazily loaded components and specifies a fallback UI to display while the component is being loaded.
-- `fallback={<div>Loading...</div>}`: This is the fallback content that will be displayed while the component is being loaded. In this case, it is a simple `<div>` with the text "Loading...".
+3. **Automatic Code Splitting:**
+   - Webpack (used by Create React App) automatically creates separate chunks for each lazy-loaded component, optimizing the application's performance.
 
-### Step 4: Exporting the `App` Component
+By using `React.lazy()` and `React.Suspense`, you can easily implement code splitting and lazy loading in your React application, leading to improved performance and a better user experience.
 
-```javascript
-export default App;
-```
-
-- `export default App;`: This statement exports the `App` component as the default export of the module, making it available for import in other parts of the application.
-
-### Detailed Explanation of `lazy` and `Suspense`
-
-1. **`lazy` Function**:
-   - `lazy` is used to dynamically import a component. This helps in code-splitting, which means breaking down the code into smaller chunks and loading them on demand.
-   - The `lazy` function takes a function that returns a dynamic import statement. For example, `lazy(() => import('./components/HomePage'))` will load the `HomePage` component only when it is needed.
-
-2. **`Suspense` Component**:
-   - `Suspense` is a component that allows you to specify a loading fallback while waiting for the lazily loaded component to be fetched.
-   - You wrap the lazily loaded component with `Suspense` and provide a `fallback` prop, which is the content you want to show while the component is loading. In the example, `<div>Loading...</div>` is shown while each of the components (`HomePage`, `AboutPage`, `ContactPage`) is being loaded.
-
-By using `lazy` and `Suspense`, you can improve the performance of your application by only loading the components when they are needed, which can result in faster initial load times and a better user experience.
-
-### Benefits of Implementing Lazy Loading
-
-1. **Optimized Load Time**: By splitting the code into smaller chunks and loading them on-demand, the initial load time is significantly reduced.
-2. **Improved Performance**: The browser handles smaller JavaScript files, which can lead to better performance, especially on slower networks or devices.
-3. **Efficient Resource Utilization**: Users download only the code they need, which saves bandwidth and improves the overall user experience.
-
-### Conclusion
-
-Implementing code splitting and lazy loading in a React application can lead to significant performance improvements. By dynamically loading components, you can reduce the initial load time, improve the application’s responsiveness, and ensure efficient use of resources. The combination of `React.lazy` and `Suspense` makes it easy to integrate these techniques into your application, providing a better experience for your users.
 
 
 
