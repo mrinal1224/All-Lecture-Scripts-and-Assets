@@ -15,12 +15,6 @@ card_type: cue_card
 * Memoization
     * useMemo
     * useCallBack
-    * React.Memo
-* Important concepts-> for optimization
-    *  diffing /reconciler algorithm
-    *  VDOM and real DOM
-    * fiber architecture
-
 
 ---
 title: Code Splitting and Lazy Loading
@@ -483,6 +477,219 @@ export default App;
 
 By using `React.lazy()` and `React.Suspense`, you can easily implement code splitting and lazy loading in your React application, leading to improved performance and a better user experience.
 
+---
+title: useMemo Hook
+description: Code peformance wrt to build file 
+duration: 3000
+card_type: cue_card
+---
+
+ let's create a React example that demonstrates a scenario where `useMemo` can significantly improve performance. We will start with a component that performs a costly computation every time it renders, and then we will optimize it using `useMemo`.
+
+### Initial Scenario without `useMemo`
+
+Here, we have a simple React component that calculates the sum of a large array of numbers whenever it renders. This can be a costly computation and can lead to performance issues if the component re-renders frequently.
+
+```javascript
+import React, { useState } from 'react';
+
+const generateLargeArray = () => {
+  const largeArray = [];
+  for (let i = 0; i < 1000000; i++) {
+    largeArray.push(i);
+  }
+  return largeArray;
+};
+
+const sumArray = (arr) => {
+  console.log('Calculating sum...');
+  return arr.reduce((acc, curr) => acc + curr, 0);
+};
+
+const LargeArraySum = () => {
+  const [count, setCount] = useState(0);
+  const largeArray = generateLargeArray();
+  const sum = sumArray(largeArray);
+
+  return (
+    <div>
+      <h1>Sum: {sum}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <p>Count: {count}</p>
+    </div>
+  );
+};
+
+export default LargeArraySum;
+```
+
+#### Explanation:
+- `generateLargeArray`: Generates a large array with 1,000,000 elements.
+- `sumArray`: Calculates the sum of all elements in the array and logs when it's being called.
+- `LargeArraySum`: A component that displays the sum of the array and has a button to increment a counter.
+
+**Performance Issue:**
+- Every time the component re-renders (e.g., when the button is clicked), the `sumArray` function is called again, recalculating the sum of the array even though the array has not changed. This is inefficient and can lead to poor performance.
+
+### Optimized Scenario with `useMemo`
+
+We can use the `useMemo` hook to memoize the result of the `sumArray` function so that it's only recalculated when the array changes.
+
+```javascript
+import React, { useState, useMemo } from 'react';
+
+const generateLargeArray = () => {
+  const largeArray = [];
+  for (let i = 0; i < 1000000; i++) {
+    largeArray.push(i);
+  }
+  return largeArray;
+};
+
+const sumArray = (arr) => {
+  console.log('Calculating sum...');
+  return arr.reduce((acc, curr) => acc + curr, 0);
+};
+
+const LargeArraySum = () => {
+  const [count, setCount] = useState(0);
+  const largeArray = useMemo(() => generateLargeArray(), []);
+
+  const sum = useMemo(() => sumArray(largeArray), [largeArray]);
+
+  return (
+    <div>
+      <h1>Sum: {sum}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <p>Count: {count}</p>
+    </div>
+  );
+};
+
+export default LargeArraySum;
+```
+
+#### Explanation:
+- `useMemo(() => generateLargeArray(), [])`: Memoizes the large array, so `generateLargeArray` is only called once when the component mounts.
+- `useMemo(() => sumArray(largeArray), [largeArray])`: Memoizes the result of `sumArray`, so it's only recalculated when `largeArray` changes. Since `largeArray` doesn't change in this example, `sumArray` is only called once.
+
+**Performance Improvement:**
+- By using `useMemo`, the costly `sumArray` function is not re-executed on every render unless the dependency (`largeArray`) changes. This prevents unnecessary recalculations and significantly improves performance.
+
+### Step-by-Step Explanation:
+
+1. **Initial Render:**
+   - Without `useMemo`: `generateLargeArray` and `sumArray` are called on every render.
+   - With `useMemo`: `generateLargeArray` is called once, and `sumArray` is called once.
+
+2. **Subsequent Renders:**
+   - Without `useMemo`: `generateLargeArray` and `sumArray` are called on every render.
+   - With `useMemo`: Neither `generateLargeArray` nor `sumArray` is called again unless the dependencies change.
+
+3. **Button Click (Increment Counter):**
+   - Without `useMemo`: Causes a re-render, `sumArray` recalculates the sum.
+   - With `useMemo`: Causes a re-render, but `sumArray` is not called again as the large array hasn't changed.
+
+By memoizing expensive computations with `useMemo`, we ensure that our component only performs these calculations when absolutely necessary, leading to more efficient and performant React applications.
 
 
+---
+title: useCallback Hook
+description: Code peformance wrt to build file 
+duration: 3000
+card_type: cue_card
+---
 
+
+### Scenario without `useCallback`
+
+Let's consider a simple React component that renders a list of items. There's a button for each item that, when clicked, removes the item from the list.
+
+#### Without `useCallback`
+
+```jsx
+import React, { useState } from 'react';
+
+const ItemList = () => {
+  const [items, setItems] = useState(['Item 1', 'Item 2', 'Item 3']);
+
+  const removeItem = (itemToRemove) => {
+    setItems((prevItems) => prevItems.filter((item) => item !== itemToRemove));
+  };
+
+  return (
+    <div>
+      {items.map((item) => (
+        <div key={item}>
+          {item} 
+          <button onClick={() => removeItem(item)}>Remove</button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ItemList;
+```
+
+#### Explanation
+
+In this example:
+- The `removeItem` function is recreated every time the `ItemList` component re-renders. 
+- Since the `removeItem` function is passed as a prop to each button's `onClick` event, each button receives a new function reference on each render.
+- This can lead to performance issues, especially if the list of items is large, because the component and its children are unnecessarily re-rendered.
+
+### Optimizing with `useCallback`
+
+To optimize this scenario, we can use the `useCallback` hook to memoize the `removeItem` function, ensuring that it is only recreated when the dependencies change.
+
+```jsx
+import React, { useState, useCallback } from 'react';
+
+const ItemList = () => {
+  const [items, setItems] = useState(['Item 1', 'Item 2', 'Item 3']);
+
+  const removeItem = useCallback((itemToRemove) => {
+    setItems((prevItems) => prevItems.filter((item) => item !== itemToRemove));
+  }, []);
+
+  return (
+    <div>
+      {items.map((item) => (
+        <div key={item}>
+          {item} 
+          <button onClick={() => removeItem(item)}>Remove</button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ItemList;
+```
+
+#### Explanation
+
+- **`useCallback`**: The `useCallback` hook returns a memoized version of the callback function that only changes if one of the dependencies has changed. In this case, we have no dependencies, so `removeItem` will be memoized and will not change across renders.
+- **Optimization**: Since `removeItem` is now memoized, it maintains the same reference between renders unless the state changes. This prevents unnecessary re-renders of the child components, thus improving performance.
+
+### Step-by-Step Explanation
+
+1. **Initial State and Function Creation**:
+   - Initially, `useState` is used to create the `items` state.
+   - `removeItem` is a function defined within the `ItemList` component.
+
+2. **Without `useCallback`**:
+   - `removeItem` is recreated on every render.
+   - Each button's `onClick` event receives a new function reference on every render.
+   - This can lead to performance issues due to unnecessary re-renders.
+
+3. **Using `useCallback`**:
+   - `removeItem` is wrapped with `useCallback`.
+   - `useCallback` memoizes the function, ensuring that it keeps the same reference across renders unless dependencies change.
+   - The component and its children do not re-render unnecessarily, improving performance.
+
+By using `useCallback`, we ensure that the `removeItem` function reference remains stable, avoiding unnecessary re-renders and improving the overall performance of the component.
+
+
+Start the Doubt Session!
