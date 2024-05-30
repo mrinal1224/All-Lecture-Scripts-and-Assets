@@ -91,6 +91,13 @@ ReactDOM.render(<Welcome name="Alice" />, document.getElementById('root'));
 
 This is a basic example of a class-based component in React, demonstrating how to define a component, use props, and render JSX.
 
+---
+title: State with Class Components
+description: What will be covered in the topic?
+duration: 369
+card_type: cue_card
+---
+
 ### Step 2: Adding State to Class-Based Components
 
 Class-based components can have state, which is a way to manage data that changes over time.
@@ -202,6 +209,12 @@ export default Counter;
 - **State Update**: The state is updated when the button is clicked using `this.setState({ count: this.state.count + 1 })`.
 
 Each time the state is updated using `this.setState`, React re-renders the component, displaying the updated count value. This is a fundamental concept in React, enabling interactive and dynamic UI updates.
+---
+title: Component Lifecycle
+description: What will be covered in the topic?
+duration: 369
+card_type: cue_card
+---
 
 ### Step 3: Lifecycle Methods in Class-Based Components
 
@@ -381,6 +394,14 @@ export default TodoList;
 
 Each lifecycle method has a specific purpose and is called at different stages of the component's existence. By understanding and using these methods appropriately, you can manage your component's behavior more effectively, just like managing the different phases of living in a house.
 
+
+---
+title: Migrating to Functional Component
+description: What will be covered in the topic?
+duration: 369
+card_type: cue_card
+---
+
 ### Step 4: Functional Components with Hooks
 
 Now, let's recreate the same examples using functional components and hooks and then we will draw a comparison between the two
@@ -514,6 +535,15 @@ export default TodoList;
    ```
 
    - **Purpose**: Defines the UI, just like the `render` method in class components.
+
+
+---
+title: Difference between Class and Functional components
+description: What will be covered in the topic?
+duration: 369
+card_type: cue_card
+---
+
 
 ### Differences and Comparison
 
