@@ -1,17 +1,84 @@
 
+---
+title: Agenda of the lecture
+description: What will be covered in the topic?
+duration: 120
+card_type: cue_card
+---
 
 ## Agenda
-**Topics to cover in Node:**
+* curiculumn
 * Exploring different node inbuilt modules
 * Understanding server side development with node (http)
 * Understanding http  module with req and res
-* Serving static html sites & json files via the server
-
-We will try to cover most of these topics in today's sessions and the remaining in the next.
-
-It is going to be a bit challenging, advanced, but very interesting session covering topics that are asked very frequently in interviews.
-
+* Serving static html via the server
 So let's start.
+
+---
+title: Curiculumn 
+description: Breakdown of each class in Projects module 
+duration: 780
+card_type: cue_card
+---
+
+## How are we going to learn backend  development 
+In total there will be 16 classes in the module they will as follows
+ 1. Intro to nodejs and backend development  
+ 2. Intro to API, express and CRUD
+ 3. Intro to Mongodb and CRUD operation
+ 4. Rest API ,Imp API features and integration BMS to frontend 
+ 5. Data validation, aliasing, pre-post hook 
+ 6. Login Signup,Hashing Password
+ 7. Authentication,JWT and cookies 
+* cookies 
+* Authentication ,authorization and identification 
+* JWT algorithm 
+ 8. Update,reset,forgot Password & sending email
+* Sending Email using sendgrid and Nodemailer
+* Integrating email sent on forget password
+9. Authorization , conditional flow of data , Admin dashboard  
+ 10. Data Modelling and Theatre API and MVC 
+* converting the code into MVC architecture
+* Build the Theater API
+ 11. Payment Gateway Integration and shows API
+  12.  security.
+* Security
+    * Guidelines for security policy of your backend
+* Types of attacks
+    * Denial of service attack
+    * XSS
+    * NoSQL injection
+* Ways to secure
+    * Password hashing
+    * Adding rate limiter
+    * Adding required headers 
+
+ 13. Testing, CORS and Deployment 
+ 14. Websockets
+* usecase of realtime applications
+* How websocket are a better at real time communication
+* Process of upgradation from HTTP -> websockets
+* Websockets using node js 
+* Project : Chat application
+ 15. Backend Interview Prep-1
+* Types of modules in nodejs
+* Nodejs modules
+* Nodejs streams	
+* Nodejs child process
+ 16. Backend Interview Prep-2
+*  first principles of Nodejs
+    * event driven 
+	* single threaded
+	* asynchronous 
+* Understanding architecture of nodejs -> 
+* Identifying things that are async and those are sync 
+
+---
+title: Intro to Nodejs and Server side development 
+description: 
+duration: 2100
+card_type: cue_card
+---
 
 ## Nodejs
 Node.js is an open-source, server-side JavaScript runtime environment that allows you to run JavaScript code on the server. It was created by Ryan Dahl and first released in 2009. Node.js is built on the V8 JavaScript engine, which is also used in Google Chrome, and it provides an event-driven, non-blocking I/O model that makes it well-suited for building scalable and high-performance network applications.
@@ -23,50 +90,12 @@ Node.js is a popular choice for web servers, especially in scenarios involving h
 3. **Low Overhead:** Node.js has a relatively small memory footprint compared to some other web server technologies. This makes it well-suited for small server applications where resource utilization needs to be efficient. You can run multiple Node.js instances on a single server without consuming excessive system resources.
 5. **Rich Ecosystem:** Node.js has a vast ecosystem of libraries and modules available through npm, which can simplify the development of web servers for various purposes. Developers can find packages to handle specific I/O tasks, such as file uploads, database connections, and HTTP requests, making it easier to build web servers tailored to their needs.
 
-## How are we going to learn nodejs development 
-Learning Node.js development and building a full-stack MERN (MongoDB, Express.js, React, Node.js) application involves multiple steps and concepts. Here's a roadmap to guide you through the process:
-
-1. **Basic JavaScript Knowledge**:
-   Before diving into Node.js, ensure you have a strong foundation in JavaScript, as Node.js is JavaScript on the server-side.
-
-2. **Node.js Fundamentals**:
-   Start by learning the basics of Node.js, including installation, core modules, and working with the Node.js runtime. You can find introductory tutorials and courses online.
-
-3. **Module and Package Management (npm)**:
-   Understand how to use npm (Node Package Manager) to manage dependencies and create projects. Learn how to initialize a project, install packages, and create a package.json file.
-
-4. **Server Concepts with Node.js**:
-   Explore the core concepts of building a server with Node.js. This includes creating an HTTP server, handling requests, and sending responses.
-
-5. **Web Server with Express.js**:
-   Dive into Express.js, a popular Node.js framework for building web applications and APIs. Learn how to set up routes, handle HTTP requests, and use middleware for tasks like authentication and error handling.
-
-6. **RESTful API with Express.js**:
-   Extend your Express.js knowledge to create RESTful APIs. Understand HTTP methods (GET, POST, PUT, DELETE), request and response handling, and best practices for building APIs.
-
-7. **MVC Architecture**:
-   Explore the Model-View-Controller (MVC) architectural pattern and how it applies to building web applications with Node.js and Express.js. Organize your code into models, views, and controllers for better maintainability.
-
-8. **MongoDB**:
-   Learn about MongoDB, a NoSQL database commonly used with Node.js. Understand how to install MongoDB, perform CRUD operations, and work with collections and documents.
-
-9. **Mongoose**:
-   Integrate Mongoose, an ODM (Object-Document Mapping) library, with your Node.js and Express.js application to simplify database operations and schema management.
-
-10. **JWT Authentication**:
-    Implement JSON Web Token (JWT) authentication to secure your APIs. Learn how to generate tokens, validate them, and protect routes using JWT.
-
-11. **React Integration**:
-    If you want to build a MERN application, learn React for front-end development. Understand React components, state management, and how to create a user interface.
-
-12. **Integration of MERN App**:
-    Combine your knowledge of Node.js, Express.js, MongoDB, and React to build a full-stack MERN application. Create RESTful APIs on the server and connect them to your React front-end.
-
-13. **Miscellaneous**:
-    Explore other concepts like error handling, testing (using tools like Jest), deployment (using platforms like Heroku or AWS), and performance optimization.
-
-14. **Practice and Build Projects**:
-    The best way to solidify your skills is by working on projects. Start with simple projects and gradually move on to more complex ones to gain practical experience.
+---
+title: Internal Modules of nodejs Part-1
+description: file system module
+duration: 120
+card_type: cue_card
+---
 
 ## Fs module in depth 
 The `fs` module in Node.js stands for "File System," and it provides a way to work with the file system on your computer or server. It allows you to read from and write to files, manipulate directories, perform file operations, and more. Let's explore some of the key functionalities of the `fs` module in-depth:
@@ -141,27 +170,6 @@ fs.unlink('file-to-delete.txt', (err) => {
 });
 ```
 
-**6. File Statistics:**
-
-The `fs.stat()` method provides information about a file's status, including its size, permissions, and modification timestamp.
-
-```javascript
-fs.stat('example.txt', (err, stats) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.log('File size: ' + stats.size);
-  console.log('Is directory? ' + stats.isDirectory());
-});
-```
-
-**7. Watching for Changes:**
-
-Node.js also allows you to watch for changes to files and directories using `fs.watch()` and `fs.watchFile()` methods, which can be useful for real-time monitoring of file system changes.
-
-
-In Node.js, you can use the `fs` module to create and delete directories. Here's how you can do it:
 
 **Creating a Directory:**
 
@@ -200,7 +208,6 @@ fs.rmdir(directoryName, { recursive: true }, (err) => {
   }
 });
 ```
-
 In this code, `fs.rmdir()` is used to delete the "my-directory" directory. The `{ recursive: true }` option is provided to ensure that the directory and its contents are deleted recursively. The callback function is called when the deletion is complete, and any errors are logged.
 
 Make sure to handle errors appropriately when creating or deleting directories in your Node.js applications to ensure that your code is robust and reliable.
@@ -225,46 +232,12 @@ if (fs.existsSync(directoryPath)) {
 
 Replace `/path/to/your/directory` with the actual path to the directory you want to check. `fs.existsSync()` returns `true` if the directory exists and `false` if it doesn't.
 
-**Checking if a File Exists:**
-
-To check if a file exists, you can use the `fs.existsSync()` method as well. Here's an example:
-
-```javascript
-const fs = require('fs');
-
-const filePath = '/path/to/your/file.txt';
-
-if (fs.existsSync(filePath)) {
-  console.log(`The file "${filePath}" exists.`);
-} else {
-  console.log(`The file "${filePath}" does not exist.`);
-}
-```
-
-Replace `/path/to/your/file.txt` with the actual path to the file you want to check. `fs.existsSync()` returns `true` if the file exists and `false` if it doesn't.
-
-
-It's worth noting that `fs.existsSync()` is a synchronous method, so it can block the Node.js event loop. If you prefer an asynchronous approach, you can use the `fs.access()` method. Here's an example:
-
-```javascript
-const fs = require('fs');
-
-const pathToCheck = '/path/to/your/directory-or-file';
-
-fs.access(pathToCheck, fs.constants.F_OK, (err) => {
-  if (err) {
-    console.log(`The path "${pathToCheck}" does not exist.`);
-  } else {
-    console.log(`The path "${pathToCheck}" exists.`);
-  }
-});
-```
-
-Replace `/path/to/your/directory-or-file` with the actual path you want to check. The `fs.access()` method asynchronously checks if the path exists and whether it's accessible (in this case, using the `fs.constants.F_OK` flag to check for existence).
-
-Both approaches can be used to determine whether a directory or file exists in your Node.js application, depending on your preference for synchronous or asynchronous code.
-
-
+---
+title: Internal Modules of nodejs Part-2
+description: path module
+duration: 120
+card_type: cue_card
+---
 ## Path Module
 The `path` module in Node.js provides utilities for working with file and directory paths. It's an essential module when dealing with file system operations and path manipulation in your Node.js applications. Here are some important functions and concepts from the `path` module:
 
@@ -274,14 +247,12 @@ The `path` module in Node.js provides utilities for working with file and direct
    const path = require('path');
    const fullPath = path.join('folder', 'subfolder', 'file.txt');
    ```
-
 2. **`path.resolve([...paths])`**: Resolves an absolute path from multiple path segments, starting from the root directory. It can be helpful for creating absolute paths based on relative ones.
 
    ```javascript
    const path = require('path');
    const absolutePath = path.resolve('folder', 'subfolder', 'file.txt');
    ```
-
 3. **`path.basename(path[, ext])`**: Returns the base filename of a path, optionally removing a file extension if provided.
 
    ```javascript
@@ -296,134 +267,29 @@ The `path` module in Node.js provides utilities for working with file and direct
    const dirName = path.dirname('/path/to/file.txt');
    ```
 
-5. **`path.extname(path)`**: Returns the file extension of a path, including the dot.
-
-   ```javascript
-   const path = require('path');
-   const extension = path.extname('/path/to/file.txt');
-   ```
-
-6. **`path.parse(pathString)`**: Parses a path string into an object with properties like `root`, `dir`, `base`, `name`, and `ext`.
-
-   ```javascript
-   const path = require('path');
-   const pathInfo = path.parse('/path/to/file.txt');
-   ```
-
-7. **`path.normalize(path)`**: Normalizes a path by resolving '..' and '.' segments and converting slashes to the appropriate platform format.
-
-   ```javascript
-   const path = require('path');
-   const normalizedPath = path.normalize('/path/to/../file.txt');
-   ```
-
-8. **`path.isAbsolute(path)`**: Checks if a path is an absolute path.
-
-   ```javascript
-   const path = require('path');
-   const isAbsolute = path.isAbsolute('/path/to/file.txt');
-   ```
-
-9. **`path.relative(from, to)`**: Returns the relative path from one path to another.
-
-   ```javascript
-   const path = require('path');
-   const relativePath = path.relative('/path/from', '/path/to');
-   ```
 
 The `path` module is particularly useful when working on cross-platform applications or when dealing with file and directory paths dynamically in your Node.js code. It ensures that your path manipulation is consistent and compatible with various operating systems.
 
-### Copy a file from one folder to another in Node.js
-To copy a file from one folder to another in Node.js, you can use the `fs` module. Here's how you can do it:
-
-```javascript
-const fs = require('fs');
-const path = require('path');
-
-// Define the source and destination file paths
-const sourceFilePath = '/path/to/source-folder/source-file.txt';
-const destinationFilePath = '/path/to/destination-folder/destination-file.txt';
-
-// Create a readable stream from the source file
-const readStream = fs.createReadStream(sourceFilePath);
-
-// Create a writable stream to the destination file
-const writeStream = fs.createWriteStream(destinationFilePath);
-
-// Pipe the data from the source file to the destination file
-readStream.pipe(writeStream);
-
-// Handle any errors that may occur during the copy process
-readStream.on('error', (err) => {
-  console.error(`Error reading the source file: ${err}`);
-});
-
-writeStream.on('error', (err) => {
-  console.error(`Error writing to the destination file: ${err}`);
-});
-
-// When the copy is complete, log a success message
-writeStream.on('finish', () => {
-  console.log('File copied successfully.');
-});
-```
-
-In this code:
-
-1. Replace `/path/to/source-folder/source-file.txt` with the actual path to the source file you want to copy.
-2. Replace `/path/to/destination-folder/destination-file.txt` with the desired path and name for the destination file.
-
-Here's an explanation of what the code does:
-
-- It uses the `fs.createReadStream()` method to create a readable stream from the source file.
-- It uses the `fs.createWriteStream()` method to create a writable stream to the destination file.
-- It uses the `.pipe()` method to pipe the data from the source stream to the destination stream, effectively copying the file.
-- It sets up error event listeners on both the source and destination streams to handle any errors that may occur during the copy process.
-- It sets up a finish event listener on the destination stream to log a success message when the copy is complete.
-
-This code will copy the contents of the source file to the destination file. If the destination file already exists, it will be overwritten. Make sure to handle errors and adjust file paths as needed for your specific use case.
-
 
 ---
-title: Server side development  
-description: Exploring Server side Development with http module
+title: Server creation with http module
+description: 
 duration: 2100
 card_type: cue_card
 ---
 ## Server side development
-Server-side development, client-side development, and working with database clients are essential components of modern web application development. Let's explore these concepts:
 
-**1. Server-Side Development:**
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/057/500/original/upload_af7747181e71dae0ad309735bcc4284c.png?1700553526)
 
-Server-side development refers to the part of web application development that occurs on the server, typically using server-side technologies and programming languages. Here are key aspects:
+Usually when a user visits a website ->to get some data. It makes the http request by clicking on a button or by doing some other action . A request will be send to a backend server and then the server will search the content related to the request and return the resp. 
 
-- **Server:** A server is a computer or software application that responds to client requests over a network. In web development, a server typically hosts the backend of a web application.
-- **Server-Side Technologies:** Common server-side technologies include Node.js, Python (with frameworks like Django or Flask), Ruby (with Ruby on Rails), Java (with Spring or Java EE), PHP, and more. These technologies enable you to create the server logic, handle requests from clients, interact with databases, and generate dynamic content.
-- **Server Logic:** Server-side code manages user authentication, business logic, data processing, and database interactions. It often generates HTML, JSON, or other data to send back to the client.
-- **Security:** Security measures like input validation, authentication, authorization, and protecting against common vulnerabilities (e.g., SQL injection, XSS) are typically implemented on the server side.
-
-**2. Client-Side Development:**
-
-Client-side development focuses on the part of web application development that occurs in the user's web browser. Here are key aspects:
-
-- **Client:** The client is the user's device (e.g., web browser) that sends requests to a server to access web content or services.
-- **Client-Side Technologies:** Common client-side technologies include HTML, CSS, and JavaScript. HTML is used for structuring web content, CSS for styling, and JavaScript for adding interactivity and functionality to web pages.
-- **Front-End Frameworks:** Developers often use front-end frameworks and libraries like React, Angular, or Vue.js to build complex and responsive user interfaces.
-- **User Experience:** Client-side development is responsible for creating an engaging and user-friendly experience. This includes handling user interactions, form validations, and rendering dynamic content without requiring full page reloads.
-- **Performance:** Optimizing client-side performance is crucial, as the client device has limited resources. Techniques like lazy loading, minification, and caching are employed to enhance the user experience.
-
-**3. Database Client:**
-
-A database client is a software component or library that allows your server-side code to communicate with a database management system (DBMS). Here are key aspects:
-
-- **Database Management System (DBMS):** A DBMS is software that manages databases, including storing, retrieving, updating, and organizing data. Examples of DBMSs include MySQL, PostgreSQL, MongoDB, and SQLite.
-- **Database Client Libraries:** To interact with a DBMS, developers use specific client libraries or drivers for their chosen programming language. These libraries provide functions and methods to connect to the database, execute queries, and retrieve results.
-- **ORM (Object-Relational Mapping):** Some server-side frameworks and languages offer ORMs (e.g., Sequelize for Node.js, Hibernate for Java) that provide a higher-level abstraction for working with databases. ORMs map database tables to objects in code, simplifying database interactions.
-- **Data Access:** Server-side code uses database clients to perform CRUD operations (Create, Read, Update, Delete) on data stored in databases. This includes querying data, inserting new records, updating existing records, and deleting records.
-
+On a Higher level
+**Server** : 
+* It is used to serv html document , assets like images and data also.
+* It is also used to provide authentication , autorization to the client  
 
 ## Server-side development using the `http` module
-Server-side development using the `http` module in Node.js allows you to create a basic HTTP server to handle incoming requests and send responses. Here's a step-by-step guide to building a simple HTTP server using the `http` module:
+In nodejs we have   the `http` module in Node.js that allows you to create a basic HTTP server to handle incoming requests and send responses. Here's a step-by-step guide to building a simple HTTP server using the `http` module:
 
 1. **Import the `http` Module:**
    Start by requiring the `http` module in your Node.js script:
@@ -470,7 +336,6 @@ Server-side development using the `http` module in Node.js allows you to create 
      console.log(`Server is listening on http://${host}:${port}`);
    });
    ```
-
 5. **Start the Server:**
    Finally, you can start the server by calling the `server.listen()` method. This will start listening for incoming HTTP requests on the specified port and host.
 
@@ -536,38 +401,5 @@ In this code:
 - The response is ended with `res.end()`.
 
 Now, when you access the server in your web browser, you will receive an HTML response with the specified `<h1>` tag. This demonstrates how you can send HTML content as a response using the Node.js `http` module.
-const http = require('http');
 
-Code Stub:
-```
-const server = http.createServer((req, res) => {
-    // Your code goes here
-});
 
-server.listen(3000, () => {
-    console.log('Server is running at http://localhost:3000');
-});
-```
-## solution
-```js
-const http = require('http');
-
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    
-    if (req.url === '/') {
-        res.write('<h1>Hello, World!</h1>');
-    } else if (req.url === '/about') {
-        res.write('<h1>About Page</h1>');
-    } else {
-        res.writeHead(404);
-        res.write('<h1>404 Page Not Found</h1>');
-    }
-    
-    res.end();
-});
-
-server.listen(3000, () => {
-    console.log('Server is running at http://localhost:3000');
-});
-```
