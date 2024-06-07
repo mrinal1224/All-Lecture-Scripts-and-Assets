@@ -1,6 +1,5 @@
-Sure, here are two JavaScript programming questions on objects and promises, including all the required details and boilerplate code.
 
-### Question 1: Working with Objects
+### Question 7: Working with Objects
 
 **Problem Statement:**
 Create a function that takes an array of user objects and returns an object that maps user ids to user names.
@@ -47,60 +46,3 @@ function mapUserIdsToNames(users) {
 ```
 
 ---
-
-### Question 2: Working with Promises
-
-**Problem Statement:**
-Create a function that fetches user data from an API and processes the response to return user names in uppercase.
-
-**Problem Description:**
-Write a function `fetchAndProcessUserNames(url)` that fetches user data from the given API endpoint. The API returns an array of user objects, each containing `id`, `name`, and `email`. The function should return a promise that resolves to an array of user names in uppercase.
-
-**Hints:**
-1. Use the `fetch` API to get data from the given URL.
-2. Parse the response as JSON.
-3. Use `map` to transform the array of user objects into an array of uppercase user names.
-4. Handle any errors that may occur during the fetch operation.
-
-**Complete Solutions Approach:**
-1. Define the function `fetchAndProcessUserNames`.
-2. Use `fetch` to make an HTTP GET request to the given URL.
-3. Parse the JSON response.
-4. Use `map` to transform the array of user objects to an array of uppercase user names.
-5. Return a promise that resolves to this array.
-6. Handle errors using `catch`.
-
-**Boilerplate Code:**
-```javascript
-function fetchAndProcessUserNames(url) {
-  // Your code here
-}
-
-// Example usage:
-fetchAndProcessUserNames('https://api.example.com/users')
-  .then(userNames => {
-    console.log(userNames);
-    // Expected output: ['ALICE', 'BOB', 'CHARLIE']
-  })
-  .catch(error => {
-    console.error('Error fetching user names:', error);
-  });
-```
-
-**Complete Solution:**
-```javascript
-function fetchAndProcessUserNames(url) {
-  return fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(users => users.map(user => user.name.toUpperCase()))
-    .catch(error => {
-      console.error('Error fetching user names:', error);
-      throw error;
-    });
-}
-```
