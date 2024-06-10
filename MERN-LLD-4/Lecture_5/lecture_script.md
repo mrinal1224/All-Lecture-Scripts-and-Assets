@@ -737,7 +737,5 @@ Both the Pages will look something like this
 
 
 `Resgiter Page`
-<img src='
-https://i.ibb.co/QMbGtT7/Screenshot-2024-06-10-at-9-54-13-PM.png'/>
-
+<img src='https://i.ibb.co/QMbGtT7/Screenshot-2024-06-10-at-9-54-13-PM.png'/>
 
