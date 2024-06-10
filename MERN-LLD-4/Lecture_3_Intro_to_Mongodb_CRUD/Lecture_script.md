@@ -1,63 +1,15 @@
 ---
+title: Agenda
+duration: 780
+card_type: cue_card
+---
 
 ## Agenda
-
-- Introducing env file 
+- Intro to MongoDB
 - Data storage in mongodb
 - Connecting to Mongodb atlas
 - Intro to Mongoose ORM : Model ,schema 
 - CRUD with DB
-
----
-title: adding env file in our project
-description: 
-duration: 780
-card_type: cue_card
----
-## Use case of env variables
-**Problem Statement** :In every Project there are certain values that uniquely identifies a project for Example: DB Password , Port , any API keys. Also these  information can be sensitive and should not be shared to outside world directly so to prevent this to happen 
-
-**Solution**: 
-* create a file with the name `.env`  at top most level of your project  . Where you  store all these sensitive  information   in `KEY=VALUE` format where by convention keys should be in upper case 
-
-```env
-
-PORT = 3000
-DB_PASSWORD = RoK2jkO2LFU6fpXc
-DB_USER = Jasbir
-```
-* add that .env file to `.gitignore`  so that file could not be uploaded to GitHub
-* install dot.env package and follow the below step to access all the env variables 
-```javascript
-const dotenv = require("dotenv");
-dotenv.config();
-const { PORT, DB_PASSWORD, DB_USER } = process.env;
-```
-
-
-
----
-title: Usecase of  DB in a server
-description: 
-duration: 780
-card_type: cue_card
----
-## usecase of DB
-### Req-Res Cycle of A Simple Request  
-![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/057/782/original/upload_eb74e29082819ee7fd16de4fbcbf7427.png?1700828085)
-
-Usually when a user visits a website ->to get some data. It makes the http request by clicking on a button or by doing some other action . A request will be send to a backend server and then the server will search the content related to the request and return the resp.
-
-**Problem** :  
-
-In a production level server there is a lot of data that is stored for example Amazon has 2 million plus products and store data and all the assets in the same server is not possible . 
-**Solution** : First two steps that everyone takes solve it are
-* Having a special software whose task is work with data efficiently . Also can provide features related to data like validation , access management and other features specific to a particular use-case : for this we can use **Data base management system : DBMS**. [To know more](https://byjus.com/commerce/concept-and-features-of-dbms/) 
-* Now to further scale them we can have a different server just for the DBMS.
-so in today's lecture we will  see how to perform these two steps 
-
-**Now for starters our setup will look like this** 
- ![Pasted image 20231120190010](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/057/783/original/upload_850e0fd00a33aa2fd62fc50b946e1957.png?1700828195)
 
 ---
 title: Intro to Mongodb 
@@ -66,7 +18,15 @@ duration: 670
 card_type: cue_card
 ---
 
- MongoDB is a database system that is used to store data that resembles JSON format  . For someone new to backend development, understanding its core concepts like BSON, collections, and documents is essential.
+ ### Introduction to MongoDB
+MongoDB, an open-source document-oriented database, is purpose-built for efficiently handling extensive datasets. It falls within the NoSQL (Not only SQL) database category due to its departure from the conventional table-based storage and retrieval of data.
+
+### MongoDB Architecture
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/049/544/original/Screenshot_2023-09-20_184157.png?1695215721)
+
+Now we know that MongoDB serves as a database server where data is stored. In other words, MongoDB provides an environment where you can initiate a server and subsequently create multiple databases within it.
+
+Data in MongoDB is organized into collections and documents. This establishes a hierarchical relationship between databases, collections, and documents.
  
  ### Core Concepts:
 
@@ -177,146 +137,636 @@ duration: 780
 card_type: cue_card
 ---
 
-## Important Terms of Mongoose
-In Mongoose, schemas and models play crucial roles in defining and working with data in MongoDB.
-### Schema:
+Now Let;s suppose in our database we want to crud operations with Products, so for that we weill need to define the Scehmas and Models now what are schemad and models let's understand
 
-- **What it is:** <br> A schema in Mongoose is a blueprint that defines the structure of your data.
-- **Significance:**
-    - **Structure Definition:** <br> It specifies the fields, types, default values, validations, and other constraints for documents in a collection.
-    - **Enforcement:** <br> Schemas help enforce a consistent structure for your data. They define what fields exist, their types, and any rules for their content.
-    - **Validation:** <br> You can define validations for fields, ensuring that data conforms to specific criteria before it's saved to the database.
 
-### Model:
-
-**What it is:**
-
-A model in Mongoose is represent actual data . All the entries that follow the schema will be added to a model
-
-## Creating user Schema
+### Importing Required Modules
 ```javascript
-const userSchemaRules = {
-    name: {
-        type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    password: {
-        type: String,
-        required: true,
-        minlength: 8,
-    }
-    ,
-    confirmPassword: {
-        type: String,
-        required: true,
-        minlength: 8,
-        // validate property 
-        validate: function () {
-            return this.password == this.confirmPassword
-        }
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    }
-}
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+```
+- `express`: Imports the Express framework, which is used to build web applications and APIs.
+- `app`: Initializes an instance of the Express application.
+- `mongoose`: Imports Mongoose, an ODM (Object Data Modeling) library for MongoDB, which allows for easier data management and querying.
+
+### Database Connection
+```javascript
+mongoose
+  .connect(
+    "mongodb+srv://mrinalbhattacharya:jrybX27vUUhJTnXs@cluster0.qkdrsui.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
+  )
+  .then(() => {
+    console.log("db Connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```
+- `mongoose.connect()`: Connects to the MongoDB database using the provided connection string.
+- `.then(() => { ... })`: Executes the callback if the connection is successful, logging "db Connected".
+- `.catch((err) => { ... })`: Executes the callback if there's an error during connection, logging the error.
+
+So far so good and we have done uptill this point.
+
+### Defining a Schema and Model
+```javascript
+const productSchema = new mongoose.Schema({
+  product_name: {
+    type: String,
+    required: true,
+  },
+  product_price: {
+    type: String,
+    required: true,
+  },
+  isInStock: {
+    type: Boolean,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+}, { timestamps: true });
+
+const ProductModel = mongoose.model("products", productSchema);
+```
+In Mongoose, a schema defines the structure of documents within a MongoDB collection. It serves as a blueprint for the data, specifying the types and properties of each field, as well as any constraints or validation rules.
+
+Let's break down the example schema:
+
+```javascript
+const productSchema = new mongoose.Schema({
+  product_name: {
+    type: String,
+    required: true,
+  },
+  product_price: {
+    type: String,
+    required: true,
+  },
+  isInStock: {
+    type: Boolean,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+}, { timestamps: true });
+```
+
+### Explanation:
+
+1. **`mongoose.Schema`**:
+   - This is a constructor provided by Mongoose to define a new schema. It takes an object that maps the structure of the documents in a collection.
+
+2. **`product_name`**:
+   - **`type: String`**: Specifies that the `product_name` field should be of type `String`.
+   - **`required: true`**: This field is mandatory, and Mongoose will throw a validation error if this field is not provided when creating a new document.
+
+3. **`product_price`**:
+   - **`type: String`**: Specifies that the `product_price` field should be of type `String`. (Typically, you'd use `Number` for prices, but this example uses `String`.)
+   - **`required: true`**: This field is also mandatory.
+
+4. **`isInStock`**:
+   - **`type: Boolean`**: Specifies that the `isInStock` field should be of type `Boolean`.
+   - **`required: true`**: This field is mandatory.
+
+5. **`category`**:
+   - **`type: String`**: Specifies that the `category` field should be of type `String`.
+   - **`required: true`**: This field is mandatory.
+
+6. **Schema Options**:
+   - **`timestamps: true`**: This option automatically adds two fields to the schema: `createdAt` and `updatedAt`. These fields store the timestamps for when the document was created and last updated, respectively.
+
+### Summary:
+
+The `productSchema` defines a structure for documents in a MongoDB collection. Each document must include the following fields:
+- `product_name` (String, required)
+- `product_price` (String, required)
+- `isInStock` (Boolean, required)
+- `category` (String, required)
+
+Additionally, each document will automatically have `createdAt` and `updatedAt` timestamps managed by Mongoose. This schema helps ensure data consistency and integrity within the collection by enforcing the defined field types and constraints.
+
+
+### Model
+A model in Mongoose represents a MongoDB collection and allows you to interact with the database by providing methods to create, read, update, and delete documents. In the given example, `ProductModel` is a model created from a schema called `productSchema`.
+
+Let's break down the example:
+
+```javascript
+const ProductModel = mongoose.model("products", productSchema);
+```
+ **Model**: A model is a class that we construct from a schema. It provides an interface to interact with the database and perform CRUD operations.
+
+   By calling `mongoose.model("products", productSchema)`, we create a model named `ProductModel` associated with the `products` collection in the database. Mongoose automatically pluralizes the model name to determine the collection name.
+
+   Now, `ProductModel` can be used to interact with the `products` collection:
+
+   ```javascript
+   const ProductModel = mongoose.model("products", productSchema);
+   ```
+
+So the Whole code now looks something like this
+
+```js
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+
+// DB Connection
+
+mongoose
+  .connect(
+    "mongodb+srv://mrinalbhattacharya:jrybX27vUUhJTnXs@cluster0.qkdrsui.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
+  )
+  .then(() => {
+    console.log("db Connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// Schema for product
+
+const productSchema = new mongoose.Schema({
+  product_name: {
+    type: String,
+    required: true,
+  },
+  product_price: {
+    type: String,
+    required: true,
+  },
+
+  isInStock: {
+    type: Boolean,
+    required: true,
+  },
+
+  category: {
+    type: String,
+    required: true,
+  },
+} , {timestamps:true});
+
+const ProductModel = mongoose.model("products", productSchema);
+
+
+app.use(express.json()); // middleware for post request
+
+
+app.listen(PORT, () => {
+  console.log(`The server is running in port ${PORT}`);
+});
+
 
 ```
 
+So now DB connection , schema and model is ready
+Now Let's see how to do CRUD with Mongoose
 
-### Creating Model with Schema
-```javascript
-// schema-> structure and validation 
-const userSchema = new mongoose.Schema(userSchemaRules);
 
-// this model -> will have queries 
-const UserModel = mongoose.model("userModel", userSchema);
-```
 ---
-title: Doing crud with DB   
+title: Database CRUD
 description:
-duration: 680
+duration: 780
 card_type: cue_card
 ---
 
+### Creating a Product
 
-### Create User
-```javascript
-async function createuserHandler(req, res) {
-    try {
-        const userDetails = req.body;
-        // adding user to the file 
-        const user = await UserModel.create(userDetails);
+let's see how to create a product and save it in the database
 
-        res.status(200).json({
-            status: "successfull",
-            message: `added  the user `,
-            user: user
-        })
-    } catch (err) {
-        res.status(500).json({
-            status: "failure",
-            message: err.message
-        })
-    }
-}
-```
-### GetAll User
 
-```javascript
-async function getAllUserHandler(req, res) {
-    try {
-        console.log("I am inside  get method");
+```js
 
-        const userDataStore = await UserModel.find();
-        if (userDataStore.length == 0) {
-            throw new Error("No users are present")
-        }
-        res.status(200).json({
-            status: "success",
-            message: userDataStore
-        })
-    } catch (err) {
-        res.status(404).json({
-            status: "failure",
-            message: err.message
-        })
-    }
+app.post("/api/products", async (req, res) => {
+   const body = req.body
 
-}
+    const product = await ProductModel.create({
+      product_name : body.product_name,
+      product_price : body.product_price,
+      isInStock : body.isInStock,
+      category : body.category
+    })
+
+    console.log(product)
+
+    return res.status(201).json({message : 'Product Created'})
+
+
+});
 ```
 
-### Get User
+This code defines a POST endpoint `/api/products` for creating a new product in a Node.js Express application. Here's a step-by-step explanation of what this code does:
+
+1. **Endpoint Definition**:
+   ```javascript
+   app.post("/api/products", async (req, res) => {
+   ```
+   This line sets up a POST route at the `/api/products` path. When a POST request is made to this endpoint, the provided callback function will be executed. The `req` and `res` parameters represent the request and response objects, respectively.
+
+2. **Extracting Request Body**:
+   ```javascript
+   const body = req.body;
+   ```
+   This line extracts the body of the incoming request and assigns it to the variable `body`. The request body typically contains the data sent by the client in the POST request, such as JSON data. (Use Postman to show this)
+
+3. **Creating a New Product**:
+   ```javascript
+   const product = await ProductModel.create({
+      product_name : body.product_name,
+      product_price : body.product_price,
+      isInStock : body.isInStock,
+      category : body.category
+    });
+   ```
+   This block of code performs the following steps:
+   - Uses the `await` keyword to wait for the asynchronous operation to complete.
+   - Calls the `create` method on the `ProductModel` (presumably a Mongoose model or similar) to create a new product in the database.
+   - The `create` method takes an object as an argument, where properties are assigned values from the `body` object (extracted from the request).
+   - The properties include `product_name`, `product_price`, `isInStock`, and `category`.
+
+4. **Logging the Created Product**:
+   ```javascript
+   console.log(product);
+   ```
+   This line logs the newly created product to the console. This is useful for debugging purposes to ensure the product was created correctly.
+
+5. **Sending Response to Client**:
+   ```javascript
+   return res.status(201).json({message: 'Product Created'});
+   ```
+   This line sends a response back to the client:
+   - Sets the HTTP status code to 201, which indicates that a resource has been successfully created.
+   - Sends a JSON response containing a message indicating that the product has been created.
+
+Here's the entire code snippet again for reference:
 
 ```javascript
-async function getUserById(req, res) {
-    try {
-        const userId = req.params.userId;
-        const userDetails = await UserModel.findById(userId);
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
 
-        if (userDetails == "no user found") {
-            throw new Error(`user with ${userId} not found`);
-        } else {
-            res.status(200).json({
-                status: "successfull",
-                message: userDetails
-            })
-        }
-    } catch (err) {
-        res.status(404).json({
-            status: "failure",
-            message: err.message
-        })
-    }
-}
+// DB Connection
+
+mongoose
+  .connect(
+    "mongodb+srv://mrinalbhattacharya:jrybX27vUUhJTnXs@cluster0.qkdrsui.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
+  )
+  .then(() => {
+    console.log("db Connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// Schema for product
+
+const productSchema = new mongoose.Schema({
+  product_name: {
+    type: String,
+    required: true,
+  },
+  product_price: {
+    type: String,
+    required: true,
+  },
+
+  isInStock: {
+    type: Boolean,
+    required: true,
+  },
+
+  category: {
+    type: String,
+    required: true,
+  },
+} , {timestamps:true});
+
+const ProductModel = mongoose.model("products", productSchema);
+
+
+app.use(express.json()); // middleware for post request
+
+
+// Creating a Product
+app.post("/api/products", async (req, res) => {
+   const body = req.body;
+
+    const product = await ProductModel.create({
+      product_name : body.product_name,
+      product_price : body.product_price,
+      isInStock : body.isInStock,
+      category : body.category
+    });
+
+    console.log(product);
+
+    return res.status(201).json({message: 'Product Created'});
+});
+
+
+app.listen(PORT, () => {
+  console.log(`The server is running in port ${PORT}`);
+});
+
+```
+
+In summary, this code handles a POST request to create a new product, saves it to the database, logs the created product, and responds to the client with a success message.
+
+
+### Get Products and get a Single Product
+
+Now you have created a product , Now if you want to get all the products that you have created or if you want to get a single product from the database , let's see how will we do this
+
+
+```js
+app.get("/api/products", async (req, res) => {
+  const allProducts = await ProductModel.find({})
+  // const allProducts = await ProductModel.find({isInStock :true})
+  console.log(allProducts)
+  const html = `<ul> ${allProducts.map(
+    (product) => `<li>${product.product_name} </li>`
+  )}  </ul>
+    `;
+
+  return res.send(html);
+});
+```
+
+This code is a route handler for a GET request to the endpoint `/api/products` in an Express.js application. Let's break down what each part of the code is doing:
+
+1. **Route Definition**:
+   ```javascript
+   app.get("/api/products", async (req, res) => {
+   ```
+   This line defines a route handler for the GET request to the `/api/products` endpoint. It uses an asynchronous callback function to handle the request.
+
+2. **Fetching Data**:
+   ```javascript
+   const allProducts = await ProductModel.find({});
+   // const allProducts = await ProductModel.find({isInStock: true});
+   ```
+   The code uses Mongoose's `find` method to fetch all products from the database. The commented-out line shows an alternative query that would fetch only the products that are in stock (`isInStock: true`). This query is awaited because it returns a promise.
+
+3. **Logging Data**:
+   ```javascript
+   console.log(allProducts);
+   ```
+   This logs the array of product objects retrieved from the database to the console for debugging purposes.
+
+4. **Generating HTML**:
+   ```javascript
+   const html = `<ul> ${allProducts.map(
+     (product) => `<li>${product.product_name}</li>`
+   )} </ul>`;
+   ```
+   This line creates an HTML string representing an unordered list (`<ul>`). It maps over the array of products (`allProducts`), and for each product, it creates a list item (`<li>`) containing the product's name (`product.product_name`).
+
+5. **Sending Response**:
+   ```javascript
+   return res.send(html);
+   ```
+   Finally, the generated HTML string is sent as the response to the client.
+
+### Example
+If `allProducts` contains the following data:
+```javascript
+[
+  { product_name: "Product A" },
+  { product_name: "Product B" },
+  { product_name: "Product C" }
+]
+```
+The generated HTML will be:
+```html
+<ul>
+  <li>Product A</li>
+  <li>Product B</li>
+  <li>Product C</li>
+</ul>
+```
+This HTML is then sent back to the client as the response.
+
+### Summary
+The code fetches all products from the database, logs them to the console, creates an HTML unordered list from the product names, and sends this HTML back as the response to the client.
+
+## getting a single product
+
+ **Finding a Product by ID**:
+   ```javascript
+   const product = await ProductModel.findById(req.params.id)
+   ```
+   Inside the handler, the code uses `await` to wait for the result of `ProductModel.findById(req.params.id)`. This function call is expected to query the database (or any data source defined by `ProductModel`) to find a product document with the `_id` that matches the value of `req.params.id`.
+
+### Full Explanation
+
+1. **Route Setup**: When a client makes a GET request to `/api/products/:id` (for example, `/api/products/12345`), this route handler is triggered.
+
+2. **Asynchronous Product Retrieval**: The route handler is asynchronous, allowing it to handle the asynchronous operation of querying the database for the product without blocking the execution. `ProductModel.findById` is used to fetch the product with the specified `id` from the database.
+
+
+This approach ensures that the server responds with the requested product information in a structured JSON format, making it easy for clients to process and use the data.
+
+## Update a product in the DB (put method)
+
+```js
+
+app.put("/api/products/:id", async (req, res) => {
+    await ProductModel.findByIdAndUpdate(req.params.id , req.body)
+    return res.status(201).json({message : 'Resources Updated'})
+});
+```
+
+The code is a route handler for an Express.js application that handles HTTP PUT requests to update a product's information in a MongoDB database. Here's a detailed breakdown of what the code is doing:
+
+1. **Route Definition**: 
+   ```javascript
+   app.put("/api/products/:id", async (req, res) => {
+   ```
+   This line sets up an Express.js route to handle PUT requests to the URL pattern `/api/products/:id`. The `:id` part of the URL is a route parameter, meaning it will capture the value in that part of the URL and make it available as `req.params.id`.
+
+2. **Asynchronous Function**:
+   ```javascript
+   async (req, res) => {
+   ```
+   This is an asynchronous function that takes `req` (the request object) and `res` (the response object) as parameters. The `async` keyword indicates that the function contains asynchronous operations.
+
+3. **Finding and Updating a Product**:
+   ```javascript
+   await ProductModel.findByIdAndUpdate(req.params.id, req.body)
+   ```
+   This line uses the `findByIdAndUpdate` method of the `ProductModel` to find a product by its ID (extracted from `req.params.id`) and update it with the new data provided in `req.body`. 
+   
+   The `await` keyword is used to wait for the operation to complete before moving on to the next line of code.
+
+4. **Sending a Response**:
+   ```javascript
+   return res.status(201).json({message: 'Resources Updated'})
+   ```
+   Once the product has been updated, this line sends a JSON response with a status code of 201 (Created) and a message indicating that the resource has been updated. The `return` statement ensures that the response is sent and the function exits.
+
+
+   **Note- Please use Postman to test the code with any random examples**
+
+### Summary
+
+The code sets up an API endpoint to update a product in the database by its ID. When a PUT request is made to `/api/products/:id` with the updated product data in the request body, it:
+
+1. Extracts the product ID from the URL.
+2. Uses the `ProductModel` to find and update the product with the new data.
+3. Sends a response indicating that the resource has been successfully updated.
+
+## Delete a product in the DB
+
+```js
+
+app.delete("/api/products/:id", async (req, res) => {
+  await ProductModel.findByIdAndDelete(req.params.id)
+  return res.status(201).json({message : 'Resource Deleted'})
+});
+```
+ delete a product from a database. 
+
+1. **Endpoint Definition**: The endpoint is defined with the route `"/api/products/:id"`. The `:id` part is a route parameter that will be replaced with the actual product ID when a DELETE request is made.
+2. **Async Handler Function**: The handler function is defined as `async` to use `await` inside it.
+3. **Find and Delete Product**: `ProductModel.findByIdAndDelete(req.params.id)` finds a product by its ID (extracted from the route parameters) and deletes it from the database.
+4. **Response**: After the product is deleted, it sends a response with a status code `201` (typically used for resource creation but used here to indicate success) and a JSON object containing the message `"Resource Deleted"`.
+
+Now the whole code Looks like this
+
+
+```js
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+
+// DB Connection
+
+mongoose
+  .connect(
+    "mongodb+srv://mrinalbhattacharya:jrybX27vUUhJTnXs@cluster0.qkdrsui.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
+  )
+  .then(() => {
+    console.log("db Connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// Schema for product
+
+const productSchema = new mongoose.Schema({
+  product_name: {
+    type: String,
+    required: true,
+  },
+  product_price: {
+    type: String,
+    required: true,
+  },
+
+  isInStock: {
+    type: Boolean,
+    required: true,
+  },
+
+  category: {
+    type: String,
+    required: true,
+  },
+} , {timestamps:true});
+
+const ProductModel = mongoose.model("products", productSchema);
+
+const PORT = 8006;
+
+app.use(express.urlencoded());
+app.use(express.json());
+
+// Routing
+
+app.get("/", (req, res) => {
+  res.send("Welcome to the our Shop");
+});
+
+
+app.get("/api/products", async (req, res) => {
+  const allProducts = await ProductModel.find({})
+  // const allProducts = await ProductModel.find({isInStock :true})
+  console.log(allProducts)
+  const html = `<ul> ${allProducts.map(
+    (product) => `<li>${product.product_name} </li>`
+  )}  </ul>
+    `;
+
+  return res.send(html);
+});
+
+// Route parameters
+
+app.get("/api/products/:id", async (req, res) => {
+    const product = await ProductModel.findById(req.params.id)
+
+    return res.status(200).json({productInfo : product})
+});
+
+// Post Put Delete
+
+// Post Method
+
+// create a DB Entry
+
+app.post("/api/products", async (req, res) => {
+   const body = req.body
+
+    const product = await ProductModel.create({
+      product_name : body.product_name,
+      product_price : body.product_price,
+      isInStock : body.isInStock,
+      category : body.category
+    })
+
+    console.log(product)
+
+    return res.status(201).json({message : 'Product Created'})
+
+
+});
+
+app.listen(PORT, () => {
+  console.log(`The server is running in port ${PORT}`);
+});
+
+// put
+
+app.put("/api/products/:id", async (req, res) => {
+    await ProductModel.findByIdAndUpdate(req.params.id , req.body)
+    return res.status(201).json({message : 'Resources Updated'})
+});
+
+//Delete
+
+app.delete("/api/products/:id", async (req, res) => {
+  await ProductModel.findByIdAndDelete(req.params.id)
+  return res.status(201).json({message : 'Resource Deleted'})
+});
+
 ```
 
 
+If you see we have a populated as well as we have polluted the whole code , DB connection is in the same file , models and schema are in the same file , all the CRUD operations are in the same file
+
+As our project goes larger this kind of code can become very hard to mainatain
+
+So to maintain a cleaner approach we will discuss MVC architecture in the Next class and will make everything organized
+
+Start the doubt session
 
 
 
