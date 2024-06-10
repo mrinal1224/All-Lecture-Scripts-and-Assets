@@ -8,6 +8,7 @@ card_type: cue_card
 ## Today's Content
 - MVC Architecture
 - Refactoring Previous code with MVC Architecture
+- Pre and Post hook
 
 
 ---
