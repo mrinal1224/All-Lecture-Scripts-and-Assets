@@ -1,293 +1,688 @@
+# Full Stack LLD & Projects: FullStack-5: Project Part 2- (Creating User's & Admins Route)
 
-## Agenda
-* cookies and it's usecase  
-* Authentication , Authorization and identification 
-* JWT algorithm 
-* Signup 
-* Login 
-* Protect route 
-code for the lecture : [link](https://github.com/Jasbir96/Full_stack_may_2023/tree/master/Projects_Module/code/Lec_6_cookies_jwt_auth)
-
-
-## cookies and it's usecase 
-
-
-## HTTP packet
-* Header : metadata about the packet
-* cookies -> part of header 
-* Body : contains actual data that is being
-## cookies
-* cookie is a client side storage
-* It stores data in the format `key : value` pairs . These pair should be of type string
-* Server sends these cookies to the client 
-* on the client side these cookies are stored and mapped to the server that has send the cookies
-* For next request -> client will automatically share this cookie with the server
-
-## using  cookies with express 
-```js
-const express = require("express");
-const app = express();
-const cookieParser = require("cookie-parser");
-
-
-// home
-// Movies
-// clearCookie
-app.use(cookieParser());
-// -> home get thre request i will add a cookie -> share that cookie with res
-app.get("/", function (req, res) {
-    /****
-     * To send a cookie you will need 
-*           key and value both in string
-*   Some optional  but important options
-*       **maxAge** : after how many milli seconds cookie will expire
-*       **httpOnly** : true , "now your cookie will only be accessed through server not by client
-     side js  so it can't be tampered
-     * 
-     * **/
-    res.cookie("prevpage", "home", {
-        maxAge: 1000000000000,
-        httpOnly: true
-    })
-    res.status(200).json({
-        message: "thank you for the visit"
-    })
-})
-
-// i will check whether the user visiting for the first or it has already visited
-app.get("/Movie", function (req, res) {
-    console.log("cookie", req.cookies)
-    let messageStr = ""
-    if (req.cookies.prevpage) {
-        messageStr = `You have already visited ${req.cookies.prevpage}`;
-    }
-    res.status(200).json({
-        message: `thank you for accessing Movie route ${messageStr}`
-    })
-})
-
-// clear your cookies -> on a server
-app.get("/clearCookies", function (req, res) {
-    // clearing a cookie
-    res.clearCookie("prevpage", { path: "/" });
-
-    res.status(200).json({
-        message: "i have cleared your cookie"
-    })
-
-})
-
-app.listen(3000, function () {
-    console.log(` server is listening to port 3000`);
-})
-```
-
-
-
-## Identification vs Authentication vs Authorization 
-
-**Identification** : Identification is the process of stating or claiming who you are. It's the initial step where a user asserts an identity, but it doesn't validate the authenticity of the claim. : 
-* User perferences are solved 
-
-* **Authentication**: is the process of verifying whether the claimed identity is valid and accurate.It ensures that the user's identity is genuine before granting access to protected resources or functionalities. 
-    * login ,otp , bometric 
-    * web tokens -> if that token  is secure 
-
-* **Authorization** is the process of determining what actions or resources an authenticated user is permitted to access within a system or application.
+---
+title: Agenda of the lecture
+description: What will be covered in the topic?
+duration: 120
+card_type: cue_card
 ---
 
+## Agenda
+* Setup proxy to connect client and server
+* Establish Axios and Axios Instance
+* Establish Register and Login from the Client
 
-## JSON web token 
 
-* To prevent tampering
-1. JSON token creation :
-JSON web token is built out of three component
-    * `Payload` : plain text (identifier for the user)  
-    * `Algorithm`: in plain text name of the algorithm
-    * `signature`: encryped text that is build using ecrypting  three texts
-        * payload+ algorithm name+ secret key 
-2. Secret key is only known by the server
-3. validation 
-         a. server takes -> payload from incoming token + algorithm from incoming token + secret from the server and builds a fresh signature 
-         b. compare  signature of incoming token and signature that is build in the above step
-         c.) validation fails if signature coming from the client does not match with freshely prepared signature
+---
+title:Setup proxy to connect client and server
+description: Login and register process in the backend
+duration: 2400
+card_type: cue_card
+---
 
-* To prevent client side  access -> httpOnly 
+Now as we have our Pages and Form created and we have also created our Server side Routes for `Login` and `Register` Now we will connect our client and server with using proxy 
 
-## using jwt with express 
+In Your Package.json file at the bottom add this line mentioning the port in which you are running the server
 ```js
-const express = require("express");
-const cookieParser = require("cookie-parser");
-const app = express();
-app.use(cookieParser());
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.14.1",
+    "axios": "^1.6.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:8081"
+}
+```
 
-const jwt = require("jsonwebtoken");
-const promisify = require("util").promisify;
+### Proxy in `package.json`
 
-const promisfiedJWTSign = promisify(jwt.sign);
-const promisfiedJWTVerify = promisify(jwt.verify);
+The `proxy` field in the `package.json` file of a Create React App project is used to redirect API requests during development to avoid CORS issues. 
 
-const payload = "1234";
-const secretKey = "i am a secret";
-/****send the token ***/
-app.get("/sign", async function (req, res) {
-    try {
-        const authToken = await promisfiedJWTSign({ data: payload, }, secretKey, { algorithm: 'HS256' });
-        // transport -> cookies
-        res.cookie("jwt", authToken, { maxAge: 90000000, httpOnly: true });
-        res.status(200).json({
-            message: "signed the jwt and sending it in the cookie",
-            authToken
-        })
+### How it Works
 
-    } catch (err) {
-        console.log("err", err);
-        res.status(400).json({
-            message: err.message,
-            status: "failure"
-        })
+1. **Setup:**
+   In your `package.json`, you have:
+   ```json
+   "proxy": "http://localhost:8081"
+   ```
+
+2. **Request Interception:**
+   When your React app (running on `http://localhost:3000`) makes an API request to, say, `/api/data`, the development server intercepts it.
+
+3. **Forwarding:**
+   The development server forwards this request to `http://localhost:8081/api/data`.
+
+4. **Response Handling:**
+   The backend server at `http://localhost:8081` processes the request and sends back the response. The development server then forwards this response back to your React app.
+
+### Benefit
+
+This setup helps you avoid CORS issues by making the browser think the API requests are coming from the same origin. 
+
+---
+title:Setting up Axios and Axios Instance
+description: Login and register process in the backend
+duration: 2400
+card_type: cue_card
+---
+
+Now in your Client Side Install `axios`
+
+`npm install axios`
+
+You are already familiar with axios as we have used this in our movies app with React , but there we only saw how to get data from an API , but axios is alot more it can handle post , put , delete methods as well from the client.
+
+First we will set up axios and then will see how to use it for different requests
+
+Inside your `src` directory create a directory by the name calls , in this directory we will have all our axios calls
+
+Create a file by the name `index.js` inside it and add this code 
+
+```js
+import axios from 'axios'
+
+
+export const axiosInstance = axios.create({
+    headers : {
+        'Content-Type' : 'application/json'
     }
-})
-
-/*************verifying those tokens********************/
-app.get("/verify", async function (req, res) {
-    try {
-        const token = req.cookies.jwt;
-        const decodedToken = await promisfiedJWTVerify(token, secretKey);
-        // console.log("Token decoded", decodedToken);
-        res.status(200).json({
-            message: `token is decoded`,
-            decodedToken
-        })
-    } catch (err) {
-        console.log("err", err);
-        res.status(400).json({
-            message: err.message,
-            status: "failure"
-        })
-    }
-
-})
-
-
-// server -> run on a port 
-app.listen(3000, function () {
-    console.log(` server is listening to port 3000`);
 })
 ```
 
+This code snippet is setting up a custom instance of Axios, a popular HTTP client library for making HTTP requests in JavaScript, often used in front-end frameworks like React. Here's a breakdown of what the code is doing:
+
+1. **Importing Axios**:
+   ```javascript
+   import axios from 'axios';
+   ```
+   This line imports the `axios` library so it can be used in the file.
+
+2. **Creating an Axios Instance**:
+   ```javascript
+   export const axiosInstance = axios.create({
+       headers: {
+           'Content-Type': 'application/json'
+       }
+   });
+   ```
+   - `axios.create({ ... })`: This method is used to create a new Axios instance with a custom configuration.
+   - The configuration object passed to `axios.create` includes a `headers` property, which sets default headers for all requests made using this instance.
+   - `headers: { 'Content-Type': 'application/json' }`: This sets the `Content-Type` header to `'application/json'` for all requests made using this Axios instance. The `Content-Type` header indicates that the data being sent in the HTTP request is in JSON format.
+
+### Why Use an Axios Instance?
+
+Creating an Axios instance with custom configuration can be useful for several reasons:
+
+- **Default Configuration**: You can set default headers, base URLs, timeouts, and other settings that will apply to all requests made with this instance, ensuring consistency across your API calls.
+- **Custom Interceptors**: You can add request or response interceptors to handle things like authentication tokens or logging for all requests made with this instance.
+- **Reusability**: Having a pre-configured instance makes it easy to reuse the same settings across different parts of your application.
 
 
-## Signup
-## setup for auth 
+Now create a file with the name inside the same `calls` directory with the name `users.js` this file will have all the user related calls for `register` `login` etc.
+
+
+Inside the file `users.js` write your first axios instance
+
 ```js
-/************routes***************/
-app.post("/signup", signupController);
-app.post("/login", loginController);
-app.get("/allowIfLoggedIn", protectRouteMiddleWare, getUserData);
+const {axiosInstance} = require('./index')
+
+//Register new User
+
+export const RegisterUser = async (value) => {
+    try{
+        const response = await axiosInstance.post("api/users/register", value);
+        return response.data;
+    }catch(err){
+        console.log(err);
+    }
+}
 ```
 
-## signup
+Let's break down and explain the code step by step:
 
-```js
-const signupController = async function (req, res) {
+### 1. Importing axiosInstance
+```javascript
+const {axiosInstance} = require('./index');
+```
+This line imports `axiosInstance` from the `index` file in the same directory. `axiosInstance` is presumably a configured instance of Axios, which is a promise-based HTTP client for the browser and Node.js. By using an instance, you can set default configurations (like base URL, headers, etc.) that apply to all requests made using that instance.
+
+### 2. Exporting RegisterUser Function
+```javascript
+export const RegisterUser = async (value) => {
     try {
-        // add it to the db 
-        const userObject = req.body
-        //   data -> req.body
-        let newUser = await UserModel.create(userObject);
-        // send a response 
-        res.status(201).json({
-            "message": "user created successfully",
-            user: newUser,
-            status: "success"
-        })
+        const response = await axiosInstance.post("api/users/register", value);
+        return response.data;
     } catch (err) {
         console.log(err);
-        res.status(500).json({
-            message: err.message,
-            status: "success"
-        })
     }
 }
 ```
+This part of the code defines and exports an asynchronous function `RegisterUser`. Let's break down this function:
 
+#### a. Function Definition
+```javascript
+export const RegisterUser = async (value) => {
+```
+The `RegisterUser` function is declared as an asynchronous function using `async`. This means it will return a promise and you can use `await` inside it to handle asynchronous operations more conveniently.
 
-## login
-```js
-const loginController = async function (req, res) {
-    try {
-
-        /***
-         * 1. enable login -> tell the client that user is logged In
-         *      a. email and password 
-         **/
-
-        let { email, password } = req.body;
-        let user = await UserModel.findOne({ email });
-        if (user) {
-            let areEqual = password == user.password;
-            if (areEqual) {
-                // user is authenticated
-                /* 2. Sending the token -> people remember them
-                       * */
-                // payload : id of that user 
-                let token = await promisifiedJWTSign({ id: user["_id"] }, JWT_SECRET);
-                console.log("sendning token");
-                res.cookie("JWT", token, { maxAge: 90000000, httpOnly: true, path: "/" });
-                res.status(200).json({
-                    status: "success",
-                    message: "user logged In"
-                })
-            } else {
-                console.log("err", err)
-                res.status(404).json({
-                    status: "failure",
-                    message: "email or password is incorrect"
-                })
-            }
-
-
-        } else {
-            res.status(404).json({
-                status: "failure",
-                message:
-                    "user not found with creds"
-            })
-        }
-
-
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            status: "failure",
-            message: err.message
-        })
-    }
+#### b. Try Block
+```javascript
+try {
+    const response = await axiosInstance.post("api/users/register", value);
+    return response.data;
+} catch (err) {
+    console.log(err);
 }
 ```
+The function uses a try-catch block to handle errors that might occur during the HTTP request.
 
-## Protect Route 
+##### i. Making a POST Request
+```javascript
+const response = await axiosInstance.post("api/users/register", value);
+```
+Here, an HTTP POST request is made using the `axiosInstance`. The URL endpoint for this request is `"api/users/register"`, and the data to be sent with the request is `value`, which is passed as an argument to the function. 
+
+- **POST Method:** The `post` method is used to create a new resource on the server. In this case, it is registering a new user.
+- **Endpoint:** `"api/users/register"` is the API endpoint where the request is sent.
+- **Data:** `value` is an object containing the user information to be registered.
+
+##### ii. Returning Response Data
+```javascript
+return response.data;
+```
+If the request is successful, the function returns the `data` property from the response. `response.data` contains the data returned from the server, typically including information about the newly registered user.
+
+#### c. Catch Block
+```javascript
+} catch (err) {
+    console.log(err);
+}
+```
+If an error occurs during the request, it is caught in the catch block. The error is logged to the console using `console.log(err);`. This helps in debugging by providing information about what went wrong during the HTTP request.
+
+### Summary
+- The function `RegisterUser` is designed to register a new user by sending a POST request to the specified API endpoint with user data.
+- It uses an `axiosInstance` for making the HTTP request, which is likely configured elsewhere in the application.
+- The function handles potential errors using a try-catch block, logging any errors to the console.
+- Upon successful registration, it returns the response data from the server.
+
+This is a basic example of how to use Axios for making HTTP requests in a Node.js application with proper error handling.
+
+
+
+
+
+Now we will use this exported  function `RegisterUser`in our `Register.js` page
+
+Go to pages-> Register and import the function `RegisterUser` and add this function onFinish
 
 ```js
-const protectRouteMiddleWare = async function (req, res, next) {
-    try {
-        let jwttoken =req.cookies.JWT;
+import React from "react";
+import {Form, Input, Button, Radio, message } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
+import { RegisterUser } from "../calls/users"; // Register User imported
 
-        let decryptedToken = await promisifiedJWTVerify(jwttoken, JWT_SECRET);
-        if (decryptedToken) {
-            let userId = decryptedToken.id;
-            // adding the userId to the req object
-            req.userId = userId
-            next();
-        }
-    } catch (err) {
-        res.status(500).json({
-            message: err.message,
-            status: "failure"
-        })
-        
+
+function Register() {
+
+
+// Newly added onFinish functions which takes form data and calls the RegisterUser function with the form data 
+const onFinish = async (values)=>{
+  try {
+    const response = await RegisterUser(values)
+    if(response.success){
+     message.success(response.message)
     }
+    else{
+     message.error(response.message)
+    }
+  } catch (error) {
+   message.error(error.message)
+  }
+}
+  return (
+    <>
+      <header className="App-header">
+        <main className="main-area mw-500 text-center px-3">
+          <section className="left-section">
+            <h1>Register to BookMyShow</h1>
+          </section>
+          <section className="right-section">
+   
+            <Form layout="vertical" onFinish={onFinish}>
+              <Form.Item
+                label="Name"
+                htmlFor="name"
+                name="name"
+                className="d-block"
+                rules={[{ required: true, message: "Name is required!" }]}
+              >
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="Enter your name"
+                  rules={[{ required: true, message: "Email is required!" }]}
+                ></Input>
+              </Form.Item>
+              <Form.Item
+                label="Email"
+                htmlFor="email"
+                name="email"
+                className="d-block"
+                rules={[{ required: true, message: "Email is required!" }]}
+              >
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Enter your email"
+                ></Input>
+              </Form.Item>
+              <Form.Item
+                label="Password"
+                htmlFor="password"
+                name="password"
+                className="d-block"
+                rules={[{ required: true, message: "Password is required!" }]}
+              >
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Enter the password"
+                ></Input>
+              </Form.Item>
+    
+
+              <Form.Item>
+                <Button
+                  block
+                  type="primary"
+                  htmlType="submit"
+                  style={{ fontSize: "1rem", fontWeight: "600" }}
+                >
+                  Sign Up
+                </Button>
+              </Form.Item>
+            </Form>
+            <div>
+              <p>
+                Already a user? <Link to="/login">Login now</Link>
+              </p>
+            </div>
+          </section>
+        </main>
+      </header>
+    </>
+  );
 }
 
+export default Register;
+
 ```
+
+The provided code is a React component that renders a registration form using the Ant Design library. The form includes fields for the user's name, email, and password. Here's an explanation of the `onFinish` part and form submission in the code:
+
+### `onFinish` Function
+
+The `onFinish` function is an asynchronous function that is called when the form is successfully submitted. The `values` parameter contains the data entered by the user in the form fields. Here's a step-by-step explanation of what happens inside `onFinish`:
+
+1. **Async/Await**: The function is marked as `async` to allow the use of `await` for handling asynchronous operations.
+
+2. **Try/Catch Block**: The function uses a try/catch block to handle potential errors that may occur during the form submission process.
+
+3. **API Call**: The function calls the `RegisterUser` function, passing the `values` as an argument. This function likely sends a POST request to the server to register the user with the provided details.
+
+4. **Response Handling**:
+    - If the registration is successful (`response.success` is `true`), a success message is displayed using `message.success`.
+    - If the registration fails (`response.success` is `false`), an error message is displayed using `message.error`.
+
+5. **Error Handling**: If an error occurs during the API call, the catch block catches it and displays an error message using `message.error`.
+
+### Form Submission
+
+The form submission is handled by Ant Design's `Form` component:
+
+1. **Form Component**: The form is created using the `Form` component from Ant Design. The `onFinish` prop is set to the `onFinish` function, which means that when the form is submitted successfully (i.e., all validation rules pass), the `onFinish` function is called.
+
+2. **Form.Item Components**: Each input field is wrapped in a `Form.Item` component, which provides the validation and layout for the field. The `name` prop in each `Form.Item` matches the keys in the `values` object passed to the `onFinish` function.
+
+3. **Validation Rules**: Each `Form.Item` has a `rules` prop that defines the validation rules for the input field. For example, the `name` field is required, and if it's empty, the message "Name is required!" is displayed.
+
+4. **Submit Button**: The submit button has the `htmlType` set to `submit`, which means clicking the button will trigger the form submission. When the form is submitted, Ant Design automatically performs validation, and if all fields are valid, the `onFinish` function is called with the form values.
+
+### Example Code Explanation
+
+```jsx
+<Form layout="vertical" onFinish={onFinish}>
+  <Form.Item
+    label="Name"
+    name="name"
+    rules={[{ required: true, message: "Name is required!" }]}
+  >
+    <Input placeholder="Enter your name" />
+  </Form.Item>
+  <Form.Item
+    label="Email"
+    name="email"
+    rules={[{ required: true, message: "Email is required!" }]}
+  >
+    <Input type="email" placeholder="Enter your email" />
+  </Form.Item>
+  <Form.Item
+    label="Password"
+    name="password"
+    rules={[{ required: true, message: "Password is required!" }]}
+  >
+    <Input type="password" placeholder="Enter the password" />
+  </Form.Item>
+  <Form.Item>
+    <Button block type="primary" htmlType="submit">
+      Sign Up
+    </Button>
+  </Form.Item>
+</Form>
+```
+
+- The form is set to a vertical layout.
+- The `onFinish` prop specifies the function to be called on successful submission.
+- Each `Form.Item` defines a form field with a label, input type, placeholder, and validation rules.
+- The submit button triggers the form submission, which calls `onFinish` with the form values if all validations pass.
+
+In summary, the `onFinish` function handles the form submission, performs an API call to register the user, and displays appropriate messages based on the success or failure of the registration. The form submission process is managed by Ant Design's `Form` component, which validates the fields and triggers the `onFinish` function with the form values.
+
+
+Test uptill this point and see if the Register Instance works 
+
+---
+title:Setting up Axios for Login
+description: Login and register process in the backend
+duration: 2400
+card_type: cue_card
+---
+
+Similary now add an Axios Instance for the Login in the same way we have added it for register , just the route will change from `resgiter` to `login` , add this in the same file 
+
+src-> calls-> users.js
+
+
+```js
+// login user
+
+export const LoginUser = async (value) =>{
+    try {
+        const response = await axiosInstance.post("api/users/login", value);
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+```
+
+The `LoginUser` function is an asynchronous function designed to log in a user. Here's a short explanation of what this code is doing:
+
+1. **Function Declaration**: The `LoginUser` function is declared as an asynchronous function, meaning it returns a promise.
+2. **HTTP POST Request**: The function makes a POST request to the endpoint `"api/users/login"` using `axiosInstance` and sends `value` (which contains the login credentials) as the request body.
+3. **Returning Response Data**: If the request is successful, it returns the `data` property from the response, which typically includes information such as a token or user details.
+4. **Error Handling**: If an error occurs during the request, it is caught in the catch block, and the error is logged to the console.
+
+In summary, this function attempts to log in a user by sending their credentials to the server and returns the server's response data or logs an error if the request fails.
+
+Now Similary add the OnFinish Function in Login and if the user will be able to successfully login we will send the user to the home page by using the `useNaviagte` from `react-router-dom`
+
+```js
+import React from 'react'
+import { Button, Form, Input } from "antd";
+import { Link , useNavigate } from "react-router-dom";
+import { LoginUser } from '../calls/users';
+import {message} from 'antd'
+
+
+function Login() {
+  const navigate = useNavigate()
+  const onFinish = async (values)=>{
+    try {
+      const response = await LoginUser(values)
+      if(response.success){
+       message.success(response.message)
+       navigate('/')
+      }
+      else{
+       message.error(response.message)
+      }
+    } catch (error) {
+     message.error(error.message)
+    }
+  }
+  return (
+    <>
+    <header className="App-header">
+      <main className="main-area mw-500 text-center px-3">
+        <section className="left-section">
+          <h1>Login to BookMyShow</h1>
+        </section>
+
+        <section className="right-section">
+          <Form layout="vertical" onFinish={onFinish}>
+    
+          <Form.Item
+              label="Email"
+              htmlFor="email"
+              name="email"
+              className="d-block"
+              rules={[{ required: true, message: "Email is required" }]}
+            >
+              <Input
+                id="email"
+                type="text"
+                placeholder="Enter your Email"
+              ></Input>
+            </Form.Item>
+
+            <Form.Item
+              label="Password"
+              htmlFor="password"
+              name="password"
+              className="d-block"
+              rules={[{ required: true, message: "Password is required" }]}
+            >
+              <Input
+                id="password"
+                type="password"
+                placeholder="Enter your Password"
+                
+              ></Input>
+            </Form.Item>
+
+            <Form.Item className="d-block">
+              <Button
+                type="primary"
+                block
+                htmlType="submit"
+                style={{ fontSize: "1rem", fontWeight: "600" }}
+              >
+                Login
+              </Button>
+            </Form.Item>
+          </Form>
+          <div>
+            <p>
+              New User? <Link to="/register">Register Here</Link>
+            </p>
+          </div>
+        </section>
+      </main>
+    </header>
+  </>
+  )
+}
+
+export default Login
+```
+
+In the provided code, the `onFinish` method and `useNavigate` from React Router are used for handling form submission and navigation in a React component.
+
+### `onFinish` Method
+The `onFinish` method is a handler function that is triggered when the form is successfully submitted. Here is a detailed explanation of its functionality:
+
+1. **Async/Await Function**: The `onFinish` method is an asynchronous function, which means it can handle asynchronous operations using the `await` keyword.
+   
+2. **Form Values**: It takes `values` as a parameter, which contains the form data entered by the user.
+
+3. **API Call**: 
+    - It calls `LoginUser(values)`, an asynchronous function that presumably sends the login credentials to a server for authentication.
+    - `await` is used to wait for the response from the server.
+
+4. **Success Handling**:
+    - If the `response.success` is `true`, a success message is displayed using `message.success(response.message)`.
+    - The user is then navigated to the home page (`'/'`) using `navigate('/')`.
+
+5. **Error Handling**:
+    - If the `response.success` is `false`, an error message is displayed using `message.error(response.message)`.
+
+6. **Exception Handling**:
+    - Any exceptions during the API call are caught in the `catch` block, and an error message is displayed using `message.error(error.message)`.
+
+### `useNavigate`
+The `useNavigate` hook from `react-router-dom` is used to programmatically navigate the user to different routes within the application.
+
+- **Import**: `import { useNavigate } from "react-router-dom";`
+- **Usage**: 
+    - `const navigate = useNavigate();` initializes the `navigate` function.
+    - `navigate('/')` is used to redirect the user to the home page when the login is successful.
+
+### Component Structure
+1. **Form Component**:
+    - The `Form` component from `antd` is used to create a form with two input fields: email and password.
+    - The `onFinish` prop is set to the `onFinish` method, which will be called when the form is submitted.
+
+2. **Form Items**:
+    - `Form.Item` components are used to wrap the `Input` components for email and password.
+    - Validation rules are provided to ensure that both fields are required.
+
+3. **Button Component**:
+    - A `Button` component with `htmlType="submit"` is used to submit the form.
+
+4. **Link to Register**:
+    - A `Link` component from `react-router-dom` is used to navigate to the registration page for new users.
+
+### Code Explanation
+```jsx
+function Login() {
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  const onFinish = async (values) => {
+    try {
+      const response = await LoginUser(values); // Call the login API
+      if (response.success) {
+        message.success(response.message); // Show success message
+        navigate('/'); // Navigate to home page
+      } else {
+        message.error(response.message); // Show error message
+      }
+    } catch (error) {
+      message.error(error.message); // Show error message on exception
+    }
+  };
+
+  return (
+    <header className="App-header">
+      <main className="main-area mw-500 text-center px-3">
+        <section className="left-section">
+          <h1>Login to BookMyShow</h1>
+        </section>
+        <section className="right-section">
+          <Form layout="vertical" onFinish={onFinish}>
+            <Form.Item
+              label="Email"
+              htmlFor="email"
+              name="email"
+              className="d-block"
+              rules={[{ required: true, message: "Email is required" }]}
+            >
+              <Input id="email" type="text" placeholder="Enter your Email"></Input>
+            </Form.Item>
+            <Form.Item
+              label="Password"
+              htmlFor="password"
+              name="password"
+              className="d-block"
+              rules={[{ required: true, message: "Password is required" }]}
+            >
+              <Input id="password" type="password" placeholder="Enter your Password"></Input>
+            </Form.Item>
+            <Form.Item className="d-block">
+              <Button
+                type="primary"
+                block
+                htmlType="submit"
+                style={{ fontSize: "1rem", fontWeight: "600" }}
+              >
+                Login
+              </Button>
+            </Form.Item>
+          </Form>
+          <div>
+            <p>
+              New User? <Link to="/register">Register Here</Link>
+            </p>
+          </div>
+        </section>
+      </main>
+    </header>
+  );
+}
+
+export default Login;
+```
+
+This code handles user login, displaying appropriate messages based on the success or failure of the login attempt, and navigates the user to the home page upon successful login.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

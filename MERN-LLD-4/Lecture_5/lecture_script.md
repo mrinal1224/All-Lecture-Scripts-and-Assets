@@ -739,3 +739,286 @@ Both the Pages will look something like this
 `Resgiter Page`
 <img src='https://i.ibb.co/QMbGtT7/Screenshot-2024-06-10-at-9-54-13-PM.png'/>
 
+
+---
+title: Establish Server-Side Architecture
+description: In this section, we will work on the backend side of the code, specifically routers and models
+duration: 1500
+card_type: cue_card
+---
+
+## Establish Server-Side Architecture
+
+Next, we'll move into the server-side operations. Within our server directory, we'll create a file named 'server.js' and proceed to install the Express framework.
+
+To enhance security, we'll make use of 'bcryptjs', a package specialized in password hashing. The necessary packages can be installed with the following command:
+
+```javascript
+npm install express mongoose bcryptjs jsonwebtoken
+
+```
+
+While the client side encompasses all frontend code, the server side will house the backend logic. In 'server.js', we'll initiate the Express server. This step forms the foundation for our backend operations.
+
+
+#### Pseudocode
+```javascript
+const express = require('express');
+const app = express();
+
+app.listen(8082, () => {
+    console.log('Server is Running');
+});
+
+```
+
+In the code snippet provided, we have the 'server.js' file for our Express application. To start the server, you can use 'npx nodemon server.js.' This command ensures that your server automatically restarts upon code changes, streamlining the development process.
+
+As part of our server setup, we'll create an environment configuration ('`.env`') file where you can store essential information such as the MongoDB URL and `JSON Web Token (JWT)` secrets. This allows us to keep sensitive data secure.
+
+Furthermore, we'll establish a 'dbconfig.js' file in the 'config' folder. This file will contain the configuration settings for connecting to our MongoDB database.
+
+#### Pseudocode
+```javascript
+const mongoose = require('mongoose')
+
+
+
+mongoose.connect(process.env.mongo_url)
+const connection = mongoose.connection
+
+connection.on('connected' , () => {
+    console.log('Connection Succesful')
+})
+```
+
+To bring everything together, the revised 'server.js' code snippet includes the necessary 'require' statements, environment variable loading, and the inclusion of the 'dbConfig' module. This ensures that our server is properly configured and ready to run on port 8082."
+
+
+#### Pseudocode
+```javascript
+const express = require('express');
+const app = express();
+require('dotenv').config(); // Load environment variables
+const dbConfig = require('./config/dbConfig'); // Import database configuration
+
+app.listen(8082, () => {
+    console.log('Server is Running');
+});
+```
+
+
+> Note to instructor - Test the functionality till this point
+
+
+---
+title: Exploring Authentication
+description: In this segment, we'll move into the concepts of authentication and encryption methods.
+duration: 1800
+card_type: cue_card
+---
+
+## Exploring Authentication
+
+Authentication is a fundamental aspect of our application. We'll define the schema and create a model based on that schema. For user registration, our schema will encompass essential fields like name, password, and email.
+
+To structure our project effectively, we'll establish a 'model' folder. Our initial model, 'userModel.js,' will commence with defining a schema. With this schema in place, we'll proceed to create a model, enabling the creation of various user documents. Mongoose will play a pivotal role in defining our schema.
+
+#### Pseudocode
+```javascript
+// userModel.js
+
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  isAdmin: {
+    type: Boolean,
+    required: true,
+    default: false
+  }
+});
+
+module.exports = mongoose.model('users', userSchema);
+```
+
+Additionally, we'll implement email validation and introduce an 'isAdmin' property to manage admin-specific permissions for select users.
+
+Routing is another crucial aspect. We'll create user routes within our 'routes' folder.
+
+
+---
+title: Register Route
+description: 
+duration: 1500
+card_type: cue_card
+---
+#### Pseudocode
+```javascript
+// userRoutes.js
+
+const router = require('express').Router();
+const User = require('../models/userModel');
+
+// Register a user
+router.post('/register', async (req, res) => {
+  try {
+    const userExists = await User.findOne({ email: req.body.email });
+
+    if (userExists) {
+      return res.send({
+        success: false,
+        message: 'User Already Exists'
+      });
+    }
+
+    const newUser = new User(req.body);
+    await newUser.save();
+
+    res.send({ success: true, message: 'Registration Successful, Please login' });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+module.exports = router;
+```
+
+In the 'server.js' file, we will establish a route for user-related operations:
+
+#### Pseudocode
+```javascript
+const express = require('express');
+const app = express();
+require('dotenv').config();
+const dbConfig = require('./config/dbConfig');
+const userRoute = require('./routes/userRoute');
+
+app.use(express.json());
+app.use('/api/users', userRoute);
+
+app.listen(8082, () => {
+    console.log('Server is Running');
+});
+
+```
+
+> Note to instructor - Test the functionality till this point
+
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/325/original/upload_0a1c4c3b0afa456fb137116cf0e88e23.png?1695969450)
+
+---
+title: Login Route
+description: 
+duration: 1500
+card_type: cue_card
+---
+
+
+This code snippet is an Express.js route handler for handling user login requests. It performs the following steps:
+
+1. **POST request to `/login`**:
+    - The endpoint is set up to handle POST requests made to `/login`.
+
+2. **Asynchronous Function**:
+    - The route handler is an asynchronous function to handle asynchronous operations such as database queries.
+
+3. **User Lookup**:
+    - `User.findOne({ email: req.body.email })`: This line searches the database for a user with the provided email.
+
+4. **User Existence Check**:
+    - If no user is found with the provided email, the server responds with a message indicating that the user does not exist and suggests registering.
+
+5. **Password Validation**:
+    - The code originally intended to validate the user's password using bcrypt, but this has been removed. Instead, we will compare the provided password directly with the stored password for simplicity.
+
+6. **Login Success**:
+    - If the user is found and the password is valid, the server responds with a success message.
+
+7. **Error Handling**:
+    - If an error occurs during the process, it is logged to the console.
+
+### Simplified Code Without Bcrypt
+Here's the modified code where the password is compared directly:
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const User = require('./models/User'); // assuming you have a User model defined
+
+router.post('/login', async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+
+        if (!user) {
+            return res.send({
+                success: false,
+                message: "User does not exist. Please register.",
+            });
+        }
+
+        // Simplified password validation (assuming passwords are stored in plain text, which is not recommended)
+        if (req.body.password !== user.password) {
+            return res.send({
+                success: false,
+                message: "Sorry, invalid password entered!"
+            });
+        }
+
+        res.send({
+            success: true,
+            message: "You've successfully logged in!",
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({
+            success: false,
+            message: "An error occurred. Please try again later."
+        });
+    }
+});
+
+module.exports = router;
+```
+
+### Explanation of the Simplified Code
+
+1. **Imports and Setup**:
+    - `express` and `router` are imported and set up.
+    - The `User` model is imported to interact with the database.
+
+2. **Route Handler**:
+    - The route handler listens for POST requests to the `/login` endpoint.
+
+3. **User Lookup**:
+    - The `User.findOne` method searches for a user in the database with the provided email.
+
+4. **User Existence Check**:
+    - If the user is not found, the server responds with a failure message and suggests registration.
+
+5. **Password Validation**:
+    - The provided password (`req.body.password`) is compared directly with the stored password (`user.password`).
+    - If they do not match, a failure message is sent.
+
+6. **Login Success**:
+    - If the user exists and the password matches, a success message is sent.
+
+7. **Error Handling**:
+    - Any errors during the process are caught and logged. The server responds with a generic error message to the client.
+
+### Security Note
+Directly comparing plaintext passwords as shown above is **not secure**. Always use a secure method such as hashing (e.g., bcrypt) to store and compare passwords to protect user data We will be covering hashing in our future classes
