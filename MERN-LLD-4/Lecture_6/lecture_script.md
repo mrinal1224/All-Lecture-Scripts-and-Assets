@@ -670,15 +670,178 @@ export default Login;
 
 This code handles user login, displaying appropriate messages based on the success or failure of the login attempt, and navigates the user to the home page upon successful login.
 
+---
+title:Creating a Protected Route and JWT
+description: 
+duration: 2400
+card_type: cue_card
+---
+
+Now as you have implemented `Login` and `Register` Route and you can now go into `Home` screen.
+
+Now you may have seen that once you login into any app , even you close the window and open that app again you are still logged in and you will not have to validate yourself again and again! have you?
+
+This happens by generating a token from the server side when a user logs in and saving it in the clinet side as well in local storage or as cookies and when a user comes back these two tokens are matched , if match is successfull you will be redirected to the app without the need of login again!  and this token is Know as a JWT token and hence helps us in creating Protected Routes
 
 
+## JSON Web Token (JWT) in Web Development
+
+### Overview
+JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmitting information between parties as a JSON object. JWTs are commonly used for authentication and authorization in web applications.
+
+### Components of JWT
+A JWT is composed of three parts:
+1. **Header**
+2. **Payload**
+3. **Signature**
+
+These parts are separated by dots (`.`) and are encoded in Base64 URL format.
+
+#### 1. Header
+The header typically consists of two parts: the type of token (JWT) and the signing algorithm being used, such as HMAC SHA256 or RSA.
+
+```json
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+```
+
+#### 2. Payload
+The payload contains the claims. Claims are statements about an entity (typically, the user) and additional data. There are three types of claims:
+- **Registered claims**: Predefined claims which are not mandatory but recommended, e.g., `iss` (issuer), `exp` (expiration time), `sub` (subject), `aud` (audience).
+- **Public claims**: Custom claims created to share information, e.g., `name`, `role`.
+- **Private claims**: Custom claims agreed upon between parties, e.g., `user_id`.
+
+Example payload:
+```json
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "admin": true,
+  "iat": 1516239022
+}
+```
+
+#### 3. Signature
+To create the signature, the encoded header, encoded payload, a secret, and the algorithm specified in the header are used. For example, if using HMAC SHA256, the signature is created in the following way:
+
+```
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  secret)
+```
+
+### JWT Structure
+A JWT looks like this:
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+```
+
+### How JWT Works
+1. **Client Authentication**: When a user logs in, the server generates a JWT and sends it back to the client.
+2. **Client Storage**: The client stores the JWT (usually in localStorage or a cookie).
+3. **Subsequent Requests**: The client includes the JWT in the header of each subsequent request to the server, usually in the `Authorization` header as a Bearer token.
+   ```
+   Authorization: Bearer <token>
+   ```
+4. **Server Validation**: The server validates the JWT using the secret key. If the JWT is valid, the server processes the request; otherwise, it rejects the request.
+
+### Benefits of Using JWT
+- **Stateless**: The server does not need to store session information, making it easier to scale.
+- **Compact**: JWTs are small in size, making them suitable for being sent via URLs, POST parameters, or inside HTTP headers.
+- **Self-contained**: JWTs contain all the necessary information about the user, eliminating the need for multiple database queries.
+
+### Use Cases
+- **Authentication**: Ensures that the client is logged in before accessing protected routes.
+- **Information Exchange**: Securely transfers information between parties, ensuring data integrity and authenticity.
 
 
+## JWT Generation
 
 
+* JWT stands for **JSON Web Token**.
+* Tell the students that in most of the websites, we do not need to login again and again. In sites like FB, Instagram, when we login before, it does not ask us to login again whenever we open the app. It is possible because of **JWT**.
+* JWT is important to get logged in for a particular session. 
+* Send [JWT](https://jwt.io/) token link to the students.
+* JWT tokens are unique for each session.
+
+### Generate Tokens
+ Let us try to generate a unique token for in our `userRoute.js` file for login.
+ 
+ We will first require the jwt package. 
+ 
+ ```javascript
+ const jwt = require('jsonwebtoken')
+ ```
+ 
+ We will define a `token` variable and use the `sign` method that creates a token. We have to pass it an ID for it to generate a token. 
+ 
+In our `.env` file, we will define `jwt-secret` is a text that you create by yourself. It should not be exposed which might cause harm to the system. 
+
+In our case, we will assign it-
+```javascript
+jwt_secret = scaler-movies
+```
+
+The `expiresIn` function is used to mention for how much time we want the token to remain alive. 
+ ```javascript!
+ const token = jwt.sign({userId : user._id} , process.env.jwt_secret , {expiresIn :"1d"})
+
+console.log(token)
+````
+
+Using the above token, a session will be available to us. A session is a time period. In the above example, we have used `1d` which means 1 day. The token is alive for 1 day and will expire after it.
+
+We will also send data as token using the following-
+
+```javascript
+ res.send({
+        success : true,
+        message : 'User Logged in',
+        data : token
+})
+```
+In the Postman app, let us try to login and check whether we receive tokens or not. 
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/345/original/upload_737138f77bbf2405b8dd1a6bccbd797e.png?1695973009)
 
 
+Now, paste the data part as selected above and let us go to the JWT website and paste it.
 
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/346/original/upload_ccaf8a491276cc6f0702d41fa1e16f30.png?1695973028)
+
+In the payload part, you can see the `userId` starts with `64` and ends with `56`. Now, when we check in database in postman, we can see the a user with same starting and ending id. 
+
+If you want to check for which particular user a token was generated, we can go to JWT website, paste the token and get the ID of that user. 
+
+In our frontend, we will be going to our `index.js` file and setting the token in our local storage. 
+
+```javascript
+ if(response.success){
+        message.success(response.message)
+        localStorage.setItem('token' , response.data)
+        window.location.href = "/";
+       }
+```
+The token saved as `response.data` will be saved as token in the local storage. That token will be saved for the time period set by us earlier.
+
+Many times we see the message **session expired** that means the token saved in the local storage has gone. 
+
+we login again now. After logging in we can see under the Applications tab and under local storage the token being stored. 
+
+![](https://d2beiqkhq929f0.cloudfront.net/public_assets/assets/000/051/347/original/upload_86e590e42dbba2888f15677de6f5857f.png?1695973053)
+
+
+Now you See a Token has been Generated for the logged in user and also saved in the localstorage
+
+
+In the next class we will create a Protected Route with the help of JWT validation and verification so a valid user will be only able to go inside the web app.
+
+More on Protected Routes and it's details in the next class
+
+Start the Doubt session
 
 
 
