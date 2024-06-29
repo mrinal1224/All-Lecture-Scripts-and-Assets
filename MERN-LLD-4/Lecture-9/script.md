@@ -1565,7 +1565,7 @@ The `TheatresTable` component is designed to display a table of theatres for an 
 
 In the Next class we will start working on Shows
 
-Start the Doubt session
+Start the Doubt session.
 
 
 

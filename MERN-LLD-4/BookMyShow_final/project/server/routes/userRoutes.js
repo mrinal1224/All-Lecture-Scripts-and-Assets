@@ -5,6 +5,8 @@ const jwt = require("jsonwebtoken");
 const authMiddleware = require("../middlewares/authMiddleware");
 const EmailHelper = require("../utils/emailSender");
 const router = express.Router();
+
+
 router.post("/register", async (req, res) => {
   try {
     if (req.body.email == undefined || req.body.password == undefined) {
