@@ -1869,7 +1869,7 @@ Your Bookings will look like this with all the booking details
 
 In the next class we will Send these tickets in the user's Email and will also implement Forget Password Feature with otp reset and also our passwords are nlot secure so we will learn passowrd hashing with bcrypt in the future classes
 
-Start the Doubt Session
+Start the Doubt Session.
  
 
 
