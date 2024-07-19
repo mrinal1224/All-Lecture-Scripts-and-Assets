@@ -7,6 +7,10 @@ card_type: cue_card
 
 
 1. Hashing Password with Bcrypt
+2. Rate Limiter
+3. Helmet
+4. SQL Injection
+5. Deploying The app
 
 
 
